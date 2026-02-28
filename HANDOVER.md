@@ -1,4 +1,4 @@
-﻿# HANDOVER.md
+# HANDOVER.md
 
 This guide is for the operator running the final experiment on a **MacBook Air M4**.
 
@@ -134,6 +134,28 @@ Monitoring:
 ---
 
 ## 8) After Completion
+
+### Sharing results back (to main repo / Windows machine)
+
+Results are in `results/` and are gitignored. To share them back:
+
+```bash
+# 1. Run analysis first (generates CSV, tables, figures)
+python scripts/analyze_results.py --results-dir results --out-dir results/analysis
+
+# 2. Push results to a dedicated branch (does not affect main)
+git checkout -b results/$(date +%Y%m%d)
+git add -f results/
+git commit -m "Experiment results $(date +%Y-%m-%d)"
+git push -u origin HEAD
+```
+
+Then on your main machine:
+```bash
+git fetch origin results/YYYYMMDD
+git checkout results/YYYYMMDD
+# results/ is now populated
+```
 
 1. Run analysis:
    ```bash
