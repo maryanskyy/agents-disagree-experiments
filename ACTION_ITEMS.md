@@ -228,3 +228,24 @@ After fixes, the corrected pilot data should show:
 - GPT-5.2 empty output rate < 5%
 - Multi-agent kappa > 0.50 (ideally > 0.60)
 - No truncated creative responses
+
+---
+
+## STATUS UPDATE (2026-02-28 15:05 PST)
+
+### Fixes Applied (commit 1451798):
+- [x] Fix 1: BT normalization (commit 51c6d74) ✅
+- [x] Fix 2: GPT-5.2 empty retry logic ✅
+- [x] Fix 3: Judge tie bias prompt + temp 0.1 ✅  
+- [x] Fix 4: max_output_tokens (strong=4096, weak=2048) ✅
+- [x] GenAI Gateway integration ✅
+- [x] JSON parsing hardened (markdown fences + partial extraction) ✅
+
+### Still Required Before Main Batch:
+- [ ] Run 20-50 validation runs with fixed code
+- [ ] Run `python scripts/validate_fixes.py` — ALL CHECKS must PASS
+- [ ] Raise --max-cost from $30 to $1200
+- [ ] Decide: fresh results vs keep pre-fix data (recommend fresh)
+
+### New Validation Script Added:
+`scripts/validate_fixes.py` — automated pre-flight check for all 4 fix areas

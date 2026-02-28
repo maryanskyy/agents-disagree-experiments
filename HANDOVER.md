@@ -316,3 +316,78 @@ the main batch.
 | `config/models.yaml` | max_output_tokens, conservative RPMs, judge model swap |
 | `scripts/validate_setup.py` | Gateway token validation instead of API keys |
 
+
+---
+
+## PRE-MAIN-BATCH VALIDATION CHECKLIST
+
+**MANDATORY: Run this before starting the main batch.**
+
+After applying fixes (commit 1451798+) and running 20-50 validation runs:
+
+```bash
+# 1. Run validation script on your post-fix results
+python scripts/validate_fixes.py --results-dir results --min-runs 20
+
+# Expected output: ALL CHECKS PASSED
+# If any check FAILS, do NOT proceed.
+```
+
+### What the script checks:
+
+| Check | Target | Why |
+|-------|--------|-----|
+| Judge tie rate | < 40% per judge | Fix 3 forced A/B decisions. Old: GPT-4o 93% ties |
+| GPT-5.2 empty rate | < 10% | Fix 2 added retry logic. Old: 35-45% empty |
+| Win rate variance | std > 0.05 | Fixes should produce meaningful quality differentiation |
+| Inter-rater kappa | > 0.40 (excl Block 0) | Old kappa inflated by Block 0 trivial ties |
+
+### If validation FAILS:
+
+- **Tie rate still high**: Check judge system prompt in `src/evaluation/llm_judge.py`. The prompt should say "You MUST pick a winner. Do NOT say tie."
+- **Empty rate still high**: Check retry logic in `src/runner.py` (~line 295). Ensure retries fire on empty text.
+- **Win rate flat at 0.50**: The BT correction may not be computing correctly. Check `src/evaluation/corrected_metrics.py`.
+- **Kappa low**: Judges may still be unreliable. Consider replacing the weakest judge model.
+
+### Starting the main batch:
+
+```bash
+# 2. Clear pre-fix results if mixing old/new data
+#    (or run from a fresh results directory)
+
+# 3. Raise max-cost for full batch
+python scripts/run_experiments.py --phase full --max-cost 1200
+
+# 4. Monitor progress
+cat results/progress.json | python -m json.tool
+```
+
+### After main batch completes:
+
+```bash
+# 5. Reprocess all results with corrected metrics
+python scripts/reprocess_results.py
+
+# 6. Run validation again on full data
+python scripts/validate_fixes.py --results-dir results --min-runs 100
+
+# 7. Compress and upload
+tar -czf results/full_results_final.tar.gz results/block*/
+git add results/full_results_final.tar.gz results/progress.json
+git commit -m "Final experiment results"
+git push origin master
+```
+
+---
+
+## IMPORTANT: Separate Pre-Fix and Post-Fix Data
+
+The pilot (280 runs) and partial batch (400 runs) were collected BEFORE the fixes.
+Those results have known issues (high tie rate, empty outputs, uncorrected BT scores).
+
+**Options:**
+- **Option A (recommended):** Start the main batch fresh. Delete old block*/ directories
+  in results/ (keep the .tar.gz archives as backups). Run `--phase all --max-cost 1200`.
+- **Option B:** Keep old data but tag it. The `reprocess_results.py` script adds
+  `corrected_metrics` to all runs. Post-fix runs can be identified by timestamp
+  (after the fix commit) and by having lower tie rates.
