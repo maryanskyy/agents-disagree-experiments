@@ -1,4 +1,4 @@
-﻿"""Manifest generation and serialization utilities for experiment runs."""
+"""Manifest generation and serialization utilities for experiment runs."""
 
 from __future__ import annotations
 
@@ -30,6 +30,7 @@ class RunSpec:
     repetition: int
     model_assignment: list[str]
     quality_threshold: float | None = None
+    posthoc_quality_thresholds: list[float] = field(default_factory=list)
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
@@ -124,7 +125,7 @@ def generate_manifest(
     runs: list[RunSpec] = []
     for block in matrix["blocks"]:
         block_id = block["id"]
-        quality_thresholds = block.get("quality_thresholds", [None])
+        posthoc_thresholds = [float(v) for v in block.get("posthoc_quality_thresholds", [])]
 
         for task_type in block["task_types"]:
             task_instances = tasks_by_type[task_type]
@@ -139,41 +140,40 @@ def generate_manifest(
                                 for model_spec in block["models"]:
                                     assignment = _expand_assignment(model_spec, agent_count, templates)
                                     for rep in range(1, int(block["repetitions"]) + 1):
-                                        for threshold in quality_thresholds:
-                                            part_list = [
-                                                block_id,
-                                                task_type,
-                                                task["id"],
-                                                topology,
-                                                consensus,
-                                                str(agent_count),
-                                                str(disagreement_level),
-                                                ",".join(assignment),
-                                                str(rep),
-                                                str(threshold),
-                                            ]
-                                            run_id = _hash_id(part_list)
-                                            runs.append(
-                                                RunSpec(
-                                                    id=run_id,
-                                                    block_id=block_id,
-                                                    task_type=task_type,
-                                                    task_id=task["id"],
-                                                    topology=topology,
-                                                    consensus=consensus,
-                                                    agent_count=int(agent_count),
-                                                    disagreement_level=int(disagreement_level),
-                                                    temperature=float(level_config["temperature"]),
-                                                    prompt_strategy=str(level_config["prompt_strategy"]),
-                                                    repetition=rep,
-                                                    model_assignment=assignment,
-                                                    quality_threshold=float(threshold) if threshold is not None else None,
-                                                    metadata={
-                                                        "task_title": task.get("title", ""),
-                                                        "prompt_hash": hashlib.sha1(task["prompt"].encode("utf-8")).hexdigest()[:10],
-                                                    },
-                                                )
+                                        part_list = [
+                                            block_id,
+                                            task_type,
+                                            task["id"],
+                                            topology,
+                                            consensus,
+                                            str(agent_count),
+                                            str(disagreement_level),
+                                            ",".join(assignment),
+                                            str(rep),
+                                        ]
+                                        run_id = _hash_id(part_list)
+                                        runs.append(
+                                            RunSpec(
+                                                id=run_id,
+                                                block_id=block_id,
+                                                task_type=task_type,
+                                                task_id=task["id"],
+                                                topology=topology,
+                                                consensus=consensus,
+                                                agent_count=int(agent_count),
+                                                disagreement_level=int(disagreement_level),
+                                                temperature=float(level_config["temperature"]),
+                                                prompt_strategy=str(level_config["prompt_strategy"]),
+                                                repetition=rep,
+                                                model_assignment=assignment,
+                                                quality_threshold=None,
+                                                posthoc_quality_thresholds=posthoc_thresholds,
+                                                metadata={
+                                                    "task_title": task.get("title", ""),
+                                                    "prompt_hash": hashlib.sha1(task["prompt"].encode("utf-8")).hexdigest()[:10],
+                                                },
                                             )
+                                        )
 
     rng.shuffle(runs)
     generated_at = datetime.now(tz=timezone.utc).isoformat()

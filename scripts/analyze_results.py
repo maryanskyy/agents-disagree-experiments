@@ -1,4 +1,4 @@
-﻿"""Post-experiment analysis and figure generation."""
+"""Post-experiment analysis and figure generation."""
 
 from __future__ import annotations
 
@@ -49,11 +49,15 @@ def _collect_rows(results_dir: Path) -> list[dict]:
     for path in results_dir.rglob("*.json"):
         if path.name in {"progress.json", "manifest_snapshot.json"}:
             continue
+        if "human_eval" in path.parts:
+            continue
         payload = json.loads(path.read_text(encoding="utf-8"))
         if payload.get("status") != "ok":
             continue
         cfg = payload["config"]
         ev = payload["evaluation"]
+        disagreement = ev.get("disagreement", {})
+        inter_rater = ev.get("judge_panel", {}).get("inter_rater_reliability", {})
         rows.append(
             {
                 "run_id": payload["run_id"],
@@ -64,9 +68,11 @@ def _collect_rows(results_dir: Path) -> list[dict]:
                 "agent_count": cfg["agent_count"],
                 "disagreement_level": cfg["disagreement_level"],
                 "quality_score": ev["quality_score"],
-                "pairwise_similarity": ev["disagreement"]["pairwise_similarity"],
-                "disagreement_rate": ev["disagreement"]["disagreement_rate"],
-                "response_entropy": ev["disagreement"]["response_entropy"],
+                "semantic_pairwise_similarity": disagreement.get("semantic_pairwise_similarity", 0.0),
+                "disagreement_rate": disagreement.get("disagreement_rate", 0.0),
+                "vote_entropy": disagreement.get("vote_entropy", 0.0),
+                "lexical_diversity": disagreement.get("lexical_diversity", 0.0),
+                "mean_cohen_kappa": inter_rater.get("mean_cohen_kappa", 0.0),
             }
         )
     return rows
@@ -115,7 +121,8 @@ def main() -> None:
             runs=("run_id", "count"),
             quality_mean=("quality_score", "mean"),
             disagreement_mean=("disagreement_rate", "mean"),
-            entropy_mean=("response_entropy", "mean"),
+            entropy_mean=("vote_entropy", "mean"),
+            kappa_mean=("mean_cohen_kappa", "mean"),
         )
         .sort_values(["block_id", "quality_mean"], ascending=[True, False])
     )

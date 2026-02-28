@@ -1,4 +1,4 @@
-﻿version: 1
+version: 2
 providers:
   anthropic:
     default_timeout_seconds: 60
@@ -8,6 +8,7 @@ providers:
 models:
   claude-opus-4-6:
     provider: anthropic
+    family: claude_opus
     api_model: claude-opus-4-1-20250805
     rpm: 50
     tpm: 200000
@@ -17,8 +18,33 @@ models:
     max_output_tokens: 2048
     quality_tier: strong
 
+  claude-sonnet-4-5:
+    provider: anthropic
+    family: claude_sonnet
+    api_model: claude-sonnet-4-5-20250929
+    rpm: 80
+    tpm: 300000
+    pricing_per_1m_tokens:
+      input: 3.00
+      output: 15.00
+    max_output_tokens: 2048
+    quality_tier: strong
+
+  claude-haiku-4:
+    provider: anthropic
+    family: claude_haiku
+    api_model: claude-haiku-4-5-20251001
+    rpm: 120
+    tpm: 500000
+    pricing_per_1m_tokens:
+      input: 0.80
+      output: 4.00
+    max_output_tokens: 2048
+    quality_tier: fast
+
   gemini-2.5-pro:
     provider: google
+    family: gemini_pro
     api_model: gemini-2.5-pro
     rpm: 60
     tpm: 300000
@@ -28,8 +54,21 @@ models:
     max_output_tokens: 2048
     quality_tier: strong
 
+  gemini-1.5-pro:
+    provider: google
+    family: gemini_1_5_pro
+    api_model: gemini-1.5-pro
+    rpm: 80
+    tpm: 400000
+    pricing_per_1m_tokens:
+      input: 1.00
+      output: 4.00
+    max_output_tokens: 2048
+    quality_tier: strong
+
   gemini-2.0-flash:
     provider: google
+    family: gemini_flash
     api_model: gemini-2.0-flash
     rpm: 200
     tpm: 1000000
@@ -39,8 +78,23 @@ models:
     max_output_tokens: 2048
     quality_tier: fast
 
-judge:
-  model: gemini-2.0-flash
+agent_pool:
+  models:
+    - claude-opus-4-6
+    - gemini-2.5-pro
+    - gemini-2.0-flash
+
+judge_pool:
+  panel_size: 3
+  primary_models:
+    - gemini-2.5-pro
+    - claude-opus-4-6
+    - claude-sonnet-4-5
+  reserve_models:
+    - claude-haiku-4
+    - gemini-1.5-pro
+  exclude_agent_models: true
+  prefer_different_families: true
   max_retries: 4
 
 defaults:

@@ -1,11 +1,11 @@
-﻿"""Tests for topology strategies."""
+"""Tests for topology strategies."""
 
 from __future__ import annotations
 
 import asyncio
 
 from src.consensus import AgentOutput, SimpleVoteConsensus
-from src.topologies import FlatTopology, HierarchicalTopology, QuorumTopology
+from src.topologies import BestOfNTopology, FlatTopology, HierarchicalTopology, PipelineTopology, QuorumTopology
 
 
 async def _invoke_agent(idx: int, model: str, system_prompt: str, user_prompt: str, temperature: float, context: dict):
@@ -59,10 +59,35 @@ def test_hierarchical_topology_executes_levels() -> None:
 
 
 def test_quorum_topology_runs_revision_round() -> None:
-    """Quorum topology should execute two rounds."""
+    """Quorum topology should execute draft+revision+consensus rounds."""
 
     async def _run() -> None:
         topo = QuorumTopology()
+        result = await topo.execute(**_common_kwargs())
+        assert len(result.outputs) == 3
+        assert result.rounds == 3
+        assert "debate_rounds" in result.metadata
+
+    asyncio.run(_run())
+
+
+def test_pipeline_topology_runs_sequentially() -> None:
+    """Pipeline topology should emit one output per sequential step."""
+
+    async def _run() -> None:
+        topo = PipelineTopology()
+        result = await topo.execute(**_common_kwargs())
+        assert len(result.outputs) == 3
+        assert result.rounds == 4
+
+    asyncio.run(_run())
+
+
+def test_best_of_n_topology_samples_n_outputs() -> None:
+    """Best-of-N topology should produce N candidate samples."""
+
+    async def _run() -> None:
+        topo = BestOfNTopology()
         result = await topo.execute(**_common_kwargs())
         assert len(result.outputs) == 3
         assert result.rounds == 2

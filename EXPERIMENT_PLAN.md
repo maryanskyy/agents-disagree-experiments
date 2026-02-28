@@ -1,4 +1,4 @@
-﻿# Experiment Plan: Quorum-Based Multi-Agent LLM Orchestration
+﻿# Experiment Plan: Quorum-Based Multi-Agent LLM Orchestration (Revised)
 
 ## 1) Research Questions and Hypotheses
 
@@ -9,118 +9,123 @@
 - **Falsification criterion:** If quality is monotonic decreasing with disagreement (or flat within confidence bounds), H1 is rejected.
 
 ### RQ2 — Topology Effect
-**Question:** Do flat, hierarchical, and quorum topologies differ significantly in quality-cost-latency tradeoffs?
+**Question:** Do flat, hierarchical, quorum, and pipeline topologies differ significantly in quality-cost tradeoffs?
 
-- **H2:** Quorum topology improves quality under analytical tasks at moderate/high disagreement, but with higher token cost.
-- **Falsification criterion:** If quorum does not outperform alternatives on analytical quality after cost-adjusted comparison, H2 is rejected.
+- **H2:** Quorum/pipeline topologies improve quality on analytical tasks at moderate disagreement, with higher cost.
+- **Falsification criterion:** If topology differences vanish after cost-aware normalization, H2 is rejected.
 
 ### RQ3 — MVQ Behavior
-**Question:** Is there a minimum viable quorum size where quality threshold attainment sharply improves?
+**Question:** Is there a minimum viable quorum size where quality-threshold attainment sharply improves?
 
-- **H3:** Threshold attainment probability rises from n=1 to n=3 and saturates near n=5 for selected thresholds.
-- **Falsification criterion:** If attainment does not improve with quorum size, or saturates at n=2 without gain at n>=3, H3 is rejected.
+- **H3:** Threshold attainment probability rises from n=1 to n=3 and saturates near n=5.
+- **Falsification criterion:** If attainment does not improve with quorum size, H3 is rejected.
 
 ### RQ4 — Quorum Paradox
 **Question:** Can adding weak agents to one strong agent degrade overall quality at specific n (e.g., n=3)?
 
-- **H4:** In asymmetric (1 strong + N-1 weak) setups, a non-monotonic dip occurs around n=3 under certain consensus rules.
+- **H4:** In asymmetric (1 strong + N-1 weak) setups, a non-monotonic dip occurs around n=3.
 - **Falsification criterion:** If quality is monotonic non-decreasing as weak agents are added, H4 is rejected.
 
 ---
 
-## 2) Experimental Design and Justification
+## 2) Core Methodology Changes Implemented
 
-### Task Set
-- **2 task families**: analytical reasoning and creative generation.
-- **8 curated instances per family** (16 total) with rubric-rich prompts.
-- Rationale: capture both correctness-sensitive and open-ended generation regimes.
-
-### Models
-- `claude-opus-4-6` (strong/expensive), `gemini-2.5-pro` (strong/moderate), `gemini-2.0-flash` (fast/cheap).
-- Rationale: heterogeneous capability/cost frontier is necessary to test quorum paradox and mixed-agent benefits.
-
-### Factors
-- Agent counts: {1,2,3,5}
-- Topologies: {flat, hierarchical, quorum}
-- Consensus: {simple_vote, debate_then_vote, judge_based}
-- Disagreement levels: 1..5 via prompt diversification + temperature schedule
-
-### Blocks
-- **Block 0 (Calibration):** single-model baseline estimates of capability mean mu and pairwise correlation rho.
-- **Block 1 (Disagreement Dividend):** disagreement sweep for d*.
-- **Block 2 (Topology Comparison):** topology x consensus grid at fixed disagreement.
-- **Block 3 (MVQ Curves):** quorum size vs threshold attainment.
-- **Block 4 (Quorum Paradox):** asymmetric strong+weak scaling.
-- **Block 5 (Interaction Probe):** factorial interaction for ANOVA-style decomposition.
-
-### Operational Choices
-- Async concurrency (default 10) balances throughput and rate limits.
-- Filesystem-only persistence avoids DB failure modes and simplifies portability.
-- Atomic writes + resume scanning guarantee crash-safe continuation.
-- Judge model defaults to Gemini Flash to control scoring cost.
+1. **Pairwise LLM-as-judge** with A/B and B/A orderings.
+2. **Bradley-Terry aggregation** for global quality scores.
+3. **3-judge panel** with per-judge scores + inter-rater reliability (Cohen's kappa).
+4. **Judge pool separated from agent pool** with per-run exclusion of agent models.
+5. **Semantic disagreement metric** (`1 - mean pairwise cosine similarity`) via sentence embeddings.
+6. **Best-of-N baseline** added for Block 1 and Block 4.
+7. **Disagreement confound fix** (temperature and prompt factors disentangled by level design).
+8. **Intermediate debate round logging** (`debate_rounds`) in run outputs.
+9. **Pipeline topology** added.
+10. **Homogeneous-strong controls** added to Block 4.
+11. **Human eval sheet generation** for disagreement/paradox/random-sample runs.
 
 ---
 
-## 3) Power Analysis (Reduced-Scale)
+## 3) Disagreement Level Design (Confound-Fixed)
 
-This design prioritizes effect-size detection over fine-grained null effects. With ~1.6k-1.8k total runs:
-
-- Main effects (topology, consensus, disagreement) are repeatedly sampled across 16 tasks and multiple agent counts.
-- For medium effect sizes (Cohen-style standardized d ~0.4-0.6), cell replication across blocks is typically adequate for stable mean/rank ordering.
-- Interaction detection is weaker than in full-scale studies but sufficient for screening-level inference and hypothesis triage.
-
-Practical criterion: if bootstrap confidence intervals for key contrasts remain wide/overlapping, claims are treated as inconclusive rather than accepted.
+- **Level 1:** same prompt, temp=0.3 (baseline)
+- **Level 2:** same prompt, temp=0.7 (temperature-only)
+- **Level 3:** perspective prompts, temp=0.3 (prompt-only)
+- **Level 4:** perspective prompts, temp=0.7 (both factors)
+- **Level 5:** perspective prompts + model-mix framing, temp=0.9 (maximum)
 
 ---
 
-## 4) Cost Estimate by Block (planning level)
+## 4) Blocks and Run Counts
 
-Using manifest-derived call counts and config pricing (see `scripts/estimate_cost.py`), expected spend is reported per block before launch.
+Manifest counts from current matrix:
 
-Planned trend (relative):
-1. **Highest:** Block 5 (largest factorial surface)
-2. **High:** Block 2 and Block 3
-3. **Moderate:** Block 1
-4. **Lower:** Block 0 and Block 4
+| Block | Purpose | Runs |
+|---|---|---:|
+| block0_calibration | Single-agent calibration | 192 |
+| block1_disagreement_dividend | Multi-agent disagreement sweep | 480 |
+| block1_best_of_n_baseline | Cost-matched baseline for Block 1 | 480 |
+| block2_topology_comparison | 4 topologies × 3 consensus, reps=2 | 768 |
+| block3_mvq_curves | MVQ curves, reps=3, thresholds post-hoc | 192 |
+| block4_quorum_paradox | Asymmetric + homogeneous-strong controls | 384 |
+| block4_best_of_n_baseline | Cost-matched baseline for Block 4 | 192 |
+| block5_interaction_probe | Interaction probe with pipeline, reps=2 | 768 |
+| **Total** |  | **3,456** |
 
-Exact USD values are generated from current manifest + pricing table to avoid stale hard-coded estimates.
-
----
-
-## 5) Expected Outcomes and Success/Failure Criteria
-
-- **RQ1 success:** identifiable non-trivial d* where quality improves over level-1 baseline without unacceptable cost blow-up.
-- **RQ2 success:** statistically and practically meaningful topology separation for at least one task family.
-- **RQ3 success:** monotonic or near-monotonic threshold attainment gains from n=1 to n=5 with identifiable MVQ knee.
-- **RQ4 success:** reproducible quality dip in asymmetric configurations near n=3 under at least one consensus mechanism.
-
-Failure = inability to reproduce these signatures beyond noise bounds.
+Latest dry estimate from `python scripts/estimate_cost.py`:
+- **Estimated total cost:** **$1,147.08**
+- **Estimated API calls:** **158,656** (14,848 agent + 143,808 judge calls)
 
 ---
 
-## 6) Limitations of Reduced-Scale Design
+## 5) Statistical/Design Notes
 
-- Limited task corpus (16 prompts) may not generalize to all domains.
-- LLM-judge scoring introduces model-dependent bias even with blind randomization.
-- No human gold labels for all outputs in this phase.
-- Provider-side drift across long runs can introduce temporal non-stationarity.
-
----
-
-## 7) Connection to Formal Framework (MVQ Theorem and Beyond)
-
-The empirical program maps directly onto formal claims:
-- **MVQ theorem linkage:** Block 3 estimates threshold attainment as function of quorum size and disagreement, enabling empirical knee-point extraction.
-- **Correlation/competence decomposition:** Block 0 supplies mu/rho ingredients used in formal quality aggregation assumptions.
-- **Topology-consensus coupling:** Blocks 2 and 5 test whether orchestration graph structure changes effective aggregation behavior predicted by theory.
+- Block 2 and Block 5 replication increased to **2**.
+- Block 3 replication increased to **3**.
+- Block 3 threshold runs are no longer multiplied in execution; thresholds are post-hoc analyses.
+- Block 4 now includes both:
+  - `paradox_strong_weak`
+  - `homogeneous_opus` controls at n=2,3,5.
 
 ---
 
-## 8) Explicit Falsification Criteria Summary
+## 6) Evaluation Outputs per Run
 
-- **H1 false if** disagreement does not produce a measurable mid-range benefit.
-- **H2 false if** topology differences vanish after cost-aware normalization.
-- **H3 false if** quality-threshold attainment is not improved by larger quorum.
-- **H4 false if** asymmetric quality is monotonic with added weak agents.
+Each run now stores:
 
-All hypotheses are evaluated with pre-registered contrast definitions from manifest factors; inconclusive evidence remains inconclusive and is not reframed as support.
+- `evaluation.quality_score` (BT score for final output)
+- `evaluation.selected_per_judge_scores`
+- `evaluation.judge_panel`:
+  - panel models
+  - global BT scores
+  - per-judge BT scores
+  - inter-rater reliability
+  - pairwise records
+- `evaluation.disagreement`:
+  - semantic similarity
+  - disagreement rate
+  - vote entropy
+  - lexical diversity
+- `debate_rounds` (where applicable)
+- `evaluation.human_review` flag + sheet path
+
+---
+
+## 7) Human Validation Workflow Support
+
+Sheets are auto-generated under `results/human_eval/` for:
+
+1. judge-disagreement cases,
+2. all Block 4 paradox cases,
+3. deterministic random 15% sample.
+
+Each sheet contains blind/anonymized outputs, task prompt/rubric, and score fields for manual raters.
+
+---
+
+## 8) Success/Failure Criteria
+
+- **RQ1 success:** non-trivial d* with better quality than level-1 baseline.
+- **RQ2 success:** meaningful topology separation with cost-aware interpretation.
+- **RQ3 success:** threshold-attainment curve with clear knee behavior.
+- **RQ4 success:** reproducible dip in asymmetric conditions, contrasted against homogeneous-strong controls.
+
+Inconclusive evidence is reported as inconclusive.

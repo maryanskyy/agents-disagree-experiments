@@ -1,6 +1,20 @@
 ﻿# Agents Disagree Experiments
 
-This repository contains a production-oriented, resumable experiment framework for evaluating quorum-based multi-agent LLM orchestration strategies from the paper **"When Agents Disagree: Quorum-Based Consensus and Adaptive Orchestration Topology for Multi-Agent LLM Pipelines."** It is designed for a 24-hour MacBook Air M4 run with async parallelism, crash-safe checkpointing, deterministic manifests, and filesystem-only persistence (no database).
+This repository contains a resumable experiment framework for evaluating multi-agent LLM orchestration strategies from the paper **"When Agents Disagree: Quorum-Based Consensus and Adaptive Orchestration Topology for Multi-Agent LLM Pipelines."**
+
+## What's New (Committee Revision)
+
+The framework now implements the critical methodology fixes:
+
+- **Pairwise LLM-as-judge** (A vs B) with **bidirectional ordering** checks
+- **Multi-judge panel** (3 judges) with **Bradley-Terry aggregation**
+- **Inter-rater reliability** reporting (Cohen's kappa)
+- **Separate `agent_pool` and `judge_pool`** with per-run judge exclusion logic
+- **Semantic disagreement metrics** using `sentence-transformers/all-MiniLM-L6-v2`
+- **Best-of-N baseline topology** (`best_of_n`) for cost-matched controls
+- **Pipeline topology** (`pipeline`) added to topology comparisons
+- **Debate round logging** (`debate_rounds`) for quorum/debate analyses
+- **Human evaluation sheet generation** under `results/human_eval/`
 
 ## Quick Start
 
@@ -36,56 +50,57 @@ This repository contains a production-oriented, resumable experiment framework f
 ## Architecture Overview
 
 ```text
-                        +-----------------------------+
-                        |  config/experiment_matrix   |
-                        +-------------+---------------+
-                                      |
-                                      v
-+----------------+         +----------+----------+         +----------------+
-| config/tasks/* | ------> | src/manifest.py     | ----->  | results/manifest|
-+----------------+         +----------+----------+         +----------------+
-                                      |
-                                      v
-                        +-------------+--------------+
-                        | src/runner.py (async core) |
-                        +------+------------+--------+
-                               |            |
-             +-----------------+            +-----------------+
-             v                                              v
-+-------------------------------+             +-------------------------------+
-| topologies (flat/hier/quorum) |             | consensus (vote/debate/judge) |
-+-------------------------------+             +-------------------------------+
-             |                                              |
-             +-----------------+----------------------------+
-                               v
-                   +-----------+-----------+
-                   | model adapters        |
-                   | anthropic / google    |
-                   +-----------+-----------+
-                               v
-                   +-----------+-----------------------------+
-                   | checkpoint + cost tracker + progress    |
-                   | results/{block}/{run_id}.json (atomic)  |
-                   +------------------------------------------+
+config/experiment_matrix.yaml + config/tasks/*
+                  |
+                  v
+           src/manifest.py
+                  |
+                  v
+             src/runner.py
+                  |
+      +-----------+------------+
+      |                        |
+      v                        v
+  topologies               consensus
+(flat/hier/quorum/      (vote/debate/
+ pipeline/best_of_n)      judge_panel)
+      |                        |
+      +-----------+------------+
+                  v
+          evaluation modules
+  (pairwise judges + BT + kappa +
+   semantic disagreement + human_eval)
+                  |
+                  v
+        results/{block}/{run}.json
 ```
 
-## Resume and Recovery
+## Key Evaluation Behavior
 
-- Every run writes to `results/<block>/<run_id>.json` using **atomic temp-file + rename**.
-- Progress snapshots are written to `results/progress.json` every N runs.
-- Resume mode (`--resume`) scans completed run IDs and skips finished runs.
-- Crashes/sleep interruptions are recoverable without database replay.
-- `src/utils/keep_awake.py` uses `caffeinate -dims` on macOS to prevent sleep during long runs.
+- Pairwise comparisons are done in both orderings for position-bias checks.
+- Judge panel scores are aggregated with Bradley-Terry.
+- `evaluation.judge_panel` stores:
+  - global BT scores
+  - per-judge BT scores
+  - inter-rater reliability
+  - pairwise records
+- `evaluation.disagreement` stores semantic disagreement plus secondary lexical metrics.
+
+## Human Evaluation Infrastructure
+
+Runs are auto-flagged to `results/human_eval/` when:
+
+1. judges disagree (low kappa or pair disagreements),
+2. run belongs to Block 4 paradox probes,
+3. deterministic random 15% sample.
+
+Each sheet includes anonymized candidate outputs, task prompt/rubric, and structured score fields.
 
 ## Monitoring While Running
 
-- Watch `results/progress.json` for:
-  - completed vs pending runs
-  - failed runs
-  - ETA seconds
-  - estimated cost totals by model
-- Inspect `results/cost_log.jsonl` for incremental token/cost entries.
-- Read `results/run_experiments.log` for execution timeline and errors.
+- `results/progress.json`: completed/pending/failed, ETA, cumulative cost
+- `results/cost_log.jsonl`: per-call token and cost records
+- `results/run_experiments.log`: runtime logs
 
 ## Cost Estimation Before Launch
 
@@ -93,7 +108,8 @@ Run:
 ```bash
 python scripts/estimate_cost.py
 ```
-The script reports projected run count, API calls, block-level cost, and model-level cost using pricing in `config/models.yaml`.
+
+The estimator includes both agent-generation calls and judge pairwise calls.
 
 ## Analyze Results After Completion
 
@@ -101,32 +117,20 @@ Run:
 ```bash
 python scripts/analyze_results.py --results-dir results --out-dir results/analysis
 ```
+
 Outputs:
 - `results/analysis/run_metrics.csv`
 - `results/analysis/summary_table.csv`
 - `results/analysis/*.pdf` and `*.png` figures
 
-## Project Layout
+## Tests
 
-See the repository tree in the project brief; code is organized into:
-- `src/` core runtime + adapters
-- `scripts/` operational entry points
-- `config/` models, tasks, matrix
-- `tests/` regression + dry-run integration
-
-## Contributing / Extending
-
-- Add new models in `config/models.yaml` plus adapter support if provider changes.
-- Add task sets under `config/tasks/` (keep IDs stable for reproducibility).
-- Add new topologies in `src/topologies/` by implementing `BaseTopology`.
-- Add new consensus methods in `src/consensus/` by implementing `BaseConsensus`.
-- Always include tests and run:
-  ```bash
-  python -m pytest tests/
-  ```
+```bash
+python -m pytest tests/
+```
 
 ## Reproducibility Notes
 
-- The framework is deterministic at manifest level (`--seed`).
-- Each run stores full config metadata with task ID, topology, consensus, model assignment, and disagreement level.
-- No external DB dependencies: all recoverability is from files under `results/`.
+- Manifest generation is deterministic (`--seed`).
+- Each run stores full config metadata, outputs, consensus details, judge panel details, and disagreement metrics.
+- Persistence is filesystem-only with atomic JSON writes.

@@ -1,8 +1,9 @@
-﻿"""Quorum topology with draft, critique, and revision rounds."""
+﻿"""Quorum topology with draft, cross-review, and revision rounds."""
 
 from __future__ import annotations
 
 import asyncio
+import random
 from typing import Any
 
 from src.consensus.base import AgentOutput
@@ -37,12 +38,24 @@ class QuorumTopology(BaseTopology):
             )
         )
 
+        rng = random.Random(int(context.get("seed", 42)))
+        peer_orders: dict[int, list[AgentOutput]] = {}
+        for idx in range(len(draft_outputs)):
+            peers = [out for j, out in enumerate(draft_outputs) if j != idx]
+            rng.shuffle(peers)
+            peer_orders[idx] = peers
+
         async def _revise(idx: int, model: str, system_prompt: str) -> AgentOutput:
-            peer = draft_outputs[(idx + 1) % len(draft_outputs)]
+            peers = peer_orders[idx]
+            peer_text = "\n\n".join(
+                f"Peer {peer_idx + 1} draft:\n{peer.text}"
+                for peer_idx, peer in enumerate(peers)
+            )
             critique_prompt = (
                 f"Original task:\n{task_prompt}\n\n"
-                f"Peer draft to critique:\n{peer.text}\n\n"
-                "Revise your answer after considering strengths/weaknesses in the peer draft."
+                f"Peer drafts to review:\n{peer_text}\n\n"
+                "Revise your answer after comparing all peer drafts. "
+                "Preserve strong ideas, challenge weak claims, and produce your best final response."
             )
             return await invoke_agent(
                 idx,
@@ -66,9 +79,44 @@ class QuorumTopology(BaseTopology):
             outputs=revised_outputs,
             context=context,
         )
+
+        debate_rounds = [
+            {
+                "round": 1,
+                "phase": "draft",
+                "agent_outputs": [
+                    {"agent_id": out.agent_id, "model_name": out.model_name, "text": out.text}
+                    for out in draft_outputs
+                ],
+            },
+            {
+                "round": 2,
+                "phase": "revision",
+                "agent_outputs": [
+                    {"agent_id": out.agent_id, "model_name": out.model_name, "text": out.text}
+                    for out in revised_outputs
+                ],
+            },
+            {
+                "round": 3,
+                "phase": "final_consensus",
+                "agent_outputs": [
+                    {
+                        "agent_id": consensus_result.selected_agent_id or "consensus",
+                        "model_name": "consensus",
+                        "text": consensus_result.selected_text,
+                    }
+                ],
+            },
+        ]
+
         return TopologyResult(
             outputs=revised_outputs,
             consensus=consensus_result,
-            rounds=2,
-            metadata={"draft_count": len(draft_outputs), "revision_count": len(revised_outputs)},
+            rounds=3,
+            metadata={
+                "draft_count": len(draft_outputs),
+                "revision_count": len(revised_outputs),
+                "debate_rounds": debate_rounds,
+            },
         )

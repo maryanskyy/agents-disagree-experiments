@@ -42,7 +42,12 @@ def test_end_to_end_dry_run(tmp_path: Path) -> None:
         await runner.close()
 
         assert summary["completed_runs"] == 4
-        files = list(tmp_path.rglob("run_*.json"))
-        assert len(files) == 4
+
+        result_files = []
+        for path in tmp_path.rglob("run_*.json"):
+            if "human_eval" in path.parts:
+                continue
+            result_files.append(path)
+        assert len(result_files) == 4
 
     asyncio.run(_run())

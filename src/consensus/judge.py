@@ -1,18 +1,18 @@
-﻿"""Judge-based consensus that scores each candidate independently."""
+"""Judge-based consensus powered by pairwise multi-judge panel evaluation."""
 
 from __future__ import annotations
 
 from .base import AgentOutput, BaseConsensus, ConsensusResult
-from src.evaluation.llm_judge import LLMJudge
+from src.evaluation.llm_judge import JudgePanel
 
 
 class JudgeBasedConsensus(BaseConsensus):
-    """Consensus via external LLM judge scoring."""
+    """Consensus via external LLM judge panel with Bradley-Terry scoring."""
 
     name = "judge_based"
 
-    def __init__(self, judge: LLMJudge) -> None:
-        self.judge = judge
+    def __init__(self, judge_panel: JudgePanel) -> None:
+        self.judge_panel = judge_panel
 
     async def aggregate(
         self,
@@ -27,7 +27,7 @@ class JudgeBasedConsensus(BaseConsensus):
             raise ValueError("JudgeBasedConsensus received no outputs")
 
         seed = int(context.get("seed", 42))
-        judge_result = await self.judge.score_candidates(
+        panel_eval = await self.judge_panel.evaluate_candidates(
             task_type=task_type,
             task_prompt=task_prompt,
             rubric=rubric,
@@ -35,13 +35,17 @@ class JudgeBasedConsensus(BaseConsensus):
             seed=seed,
         )
 
-        winner = outputs[judge_result.winner_index]
-        scores = {outputs[idx].agent_id: score for idx, score in enumerate(judge_result.scores)}
+        winner_index = panel_eval.ranking[0]
+        winner = outputs[winner_index]
+        scores = {outputs[idx].agent_id: float(score) for idx, score in enumerate(panel_eval.bt_scores)}
+
         return ConsensusResult(
             selected_text=winner.text,
             selected_agent_id=winner.agent_id,
-            confidence=max(judge_result.scores),
+            confidence=float(panel_eval.bt_scores[winner_index]),
             scores=scores,
             method=self.name,
-            metadata={"rationale": judge_result.rationale},
+            metadata={
+                "judge_panel": panel_eval.to_dict(candidate_ids=[o.agent_id for o in outputs]),
+            },
         )

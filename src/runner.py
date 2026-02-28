@@ -1,4 +1,4 @@
-﻿"""Asynchronous, resumable experiment runner."""
+"""Asynchronous, resumable experiment runner."""
 
 from __future__ import annotations
 
@@ -20,12 +20,18 @@ from .consensus import (
     SimpleVoteConsensus,
 )
 from .evaluation.disagreement import disagreement_summary
-from .evaluation.llm_judge import LLMJudge
-from .evaluation.metrics import evaluate_analytical, evaluate_creative
+from .evaluation.human_eval import HumanEvalManager
+from .evaluation.llm_judge import JudgePanel, PairwiseJudge
 from .manifest import ExperimentManifest, RunSpec
 from .models import AnthropicModelClient, BaseModelClient, GoogleModelClient
 from .tasks.loader import TaskInstance, load_all_tasks
-from .topologies import FlatTopology, HierarchicalTopology, QuorumTopology
+from .topologies import (
+    BestOfNTopology,
+    FlatTopology,
+    HierarchicalTopology,
+    PipelineTopology,
+    QuorumTopology,
+)
 from .utils.checkpoint import CheckpointManager, ProgressSnapshot, utc_now_iso
 from .utils.cost_tracker import CostTracker, PriceConfig
 from .utils.rate_limiter import AsyncRateLimiter, retry_with_backoff
@@ -71,12 +77,14 @@ class ExperimentRunner:
         self.cost_tracker = CostTracker(pricing=pricing, results_dir=config.results_dir)
 
         self._client_cache: dict[str, BaseModelClient] = {}
-        self._judge: LLMJudge | None = None
+        self.human_eval = HumanEvalManager(config.results_dir / "human_eval", random_sample_rate=0.15, seed=config.seed)
 
         self.topologies = {
             "flat": FlatTopology(),
             "hierarchical": HierarchicalTopology(),
             "quorum": QuorumTopology(),
+            "pipeline": PipelineTopology(),
+            "best_of_n": BestOfNTopology(),
         }
 
     async def run_manifest(self, manifest: ExperimentManifest) -> dict[str, Any]:
@@ -87,7 +95,12 @@ class ExperimentRunner:
         completed_ids = self.checkpoint.load_completed_ids() if self.config.resume else set()
         pending = [run for run in manifest.runs if run.id not in completed_ids]
 
-        self.logger.info("Manifest runs total=%d pending=%d completed=%d", len(manifest.runs), len(pending), len(completed_ids))
+        self.logger.info(
+            "Manifest runs total=%d pending=%d completed=%d",
+            len(manifest.runs),
+            len(pending),
+            len(completed_ids),
+        )
 
         if not pending:
             return {
@@ -183,7 +196,9 @@ class ExperimentRunner:
         task = self._get_task(run_spec.task_type, run_spec.task_id)
         system_prompts = self._build_system_prompts(run_spec)
         topology = self.topologies[run_spec.topology]
-        consensus = await self._build_consensus(run_spec)
+
+        judge_panel = self._build_judge_panel(run_spec)
+        consensus = await self._build_consensus(run_spec, judge_panel=judge_panel)
 
         async def invoke_agent(
             agent_idx: int,
@@ -240,13 +255,19 @@ class ExperimentRunner:
         )
 
         output_texts = [o.text for o in topology_result.outputs]
+        output_agent_ids = [o.agent_id for o in topology_result.outputs]
         disagreement = disagreement_summary(output_texts)
         final_text = topology_result.consensus.selected_text
 
-        quality_score = (
-            evaluate_analytical(task.prompt, final_text)
-            if run_spec.task_type == "analytical"
-            else evaluate_creative(final_text)
+        panel_payload, quality_score, selected_per_judge_scores = await self._evaluate_final_quality(
+            run_spec=run_spec,
+            task=task,
+            output_texts=output_texts,
+            output_agent_ids=output_agent_ids,
+            final_text=final_text,
+            selected_agent_id=topology_result.consensus.selected_agent_id,
+            consensus_metadata=topology_result.consensus.metadata,
+            judge_panel=judge_panel,
         )
 
         threshold_met = (
@@ -254,8 +275,17 @@ class ExperimentRunner:
             if run_spec.quality_threshold is not None
             else None
         )
+        thresholds = {
+            str(threshold): quality_score >= threshold
+            for threshold in run_spec.posthoc_quality_thresholds
+        }
 
-        return {
+        debate_rounds = self._extract_debate_rounds(
+            run_spec=run_spec,
+            topology_result=topology_result,
+        )
+
+        result_payload = {
             "run_id": run_spec.id,
             "block_id": run_spec.block_id,
             "status": "ok",
@@ -272,9 +302,11 @@ class ExperimentRunner:
                 "prompt_strategy": run_spec.prompt_strategy,
                 "repetition": run_spec.repetition,
                 "quality_threshold": run_spec.quality_threshold,
+                "posthoc_quality_thresholds": run_spec.posthoc_quality_thresholds,
             },
             "task": {
                 "title": task.title,
+                "prompt": task.prompt,
                 "rubric": task.rubric,
             },
             "outputs": [
@@ -301,12 +333,113 @@ class ExperimentRunner:
                 "rounds": topology_result.rounds,
                 "metadata": topology_result.metadata,
             },
+            "debate_rounds": debate_rounds,
             "evaluation": {
                 "quality_score": quality_score,
                 "threshold_met": threshold_met,
+                "thresholds": thresholds,
+                "selected_per_judge_scores": selected_per_judge_scores,
+                "judge_panel": panel_payload,
                 "disagreement": disagreement,
             },
         }
+
+        human_decision = self.human_eval.decide(result_payload)
+        if human_decision.should_flag:
+            sheet_path = self.human_eval.create_sheet(result_payload, human_decision.reasons)
+            result_payload["evaluation"]["human_review"] = {
+                "flagged": True,
+                "reasons": human_decision.reasons,
+                "sheet_path": str(sheet_path),
+            }
+        else:
+            result_payload["evaluation"]["human_review"] = {
+                "flagged": False,
+                "reasons": [],
+                "sheet_path": None,
+            }
+
+        return result_payload
+
+    async def _evaluate_final_quality(
+        self,
+        *,
+        run_spec: RunSpec,
+        task: TaskInstance,
+        output_texts: list[str],
+        output_agent_ids: list[str],
+        final_text: str,
+        selected_agent_id: str | None,
+        consensus_metadata: dict[str, Any],
+        judge_panel: JudgePanel,
+    ) -> tuple[dict[str, Any], float, dict[str, float]]:
+        # Reuse panel evaluation from judge-based consensus when possible.
+        panel_payload = consensus_metadata.get("judge_panel") if run_spec.consensus == "judge_based" else None
+
+        if panel_payload is not None:
+            score_map = panel_payload.get("bt_scores", {})
+            selected_id = selected_agent_id
+            if selected_id not in score_map:
+                # Fallback by text match if selected ID came from hierarchical cluster IDs.
+                for agent_id, text in zip(output_agent_ids, output_texts):
+                    if text == final_text and agent_id in score_map:
+                        selected_id = agent_id
+                        break
+            if selected_id in score_map:
+                quality = float(score_map[selected_id])
+                per_judge = {
+                    judge: float(scores.get(selected_id, 0.0))
+                    for judge, scores in panel_payload.get("per_judge_bt_scores", {}).items()
+                }
+                return panel_payload, quality, per_judge
+
+        # Otherwise score final output against candidate pool explicitly.
+        candidate_texts = [final_text, *output_texts]
+        candidate_ids = ["final_consensus", *output_agent_ids]
+        panel_eval = await judge_panel.evaluate_candidates(
+            task_type=task.task_type,
+            task_prompt=task.prompt,
+            rubric=task.rubric,
+            outputs=candidate_texts,
+            seed=self.config.seed + run_spec.repetition + 999,
+        )
+        payload = panel_eval.to_dict(candidate_ids=candidate_ids)
+        quality = float(payload["bt_scores"].get("final_consensus", 0.0))
+        per_judge = {
+            judge: float(scores.get("final_consensus", 0.0))
+            for judge, scores in payload.get("per_judge_bt_scores", {}).items()
+        }
+        return payload, quality, per_judge
+
+    def _extract_debate_rounds(self, *, run_spec: RunSpec, topology_result) -> list[dict[str, Any]]:
+        metadata_rounds = topology_result.metadata.get("debate_rounds") if topology_result.metadata else None
+        if metadata_rounds:
+            return metadata_rounds
+
+        if run_spec.consensus == "debate_then_vote":
+            return [
+                {
+                    "round": 1,
+                    "phase": "initial_outputs",
+                    "agent_outputs": [
+                        {"agent_id": out.agent_id, "model_name": out.model_name, "text": out.text}
+                        for out in topology_result.outputs
+                    ],
+                },
+                {
+                    "round": 2,
+                    "phase": "final_consensus",
+                    "agent_outputs": [
+                        {
+                            "agent_id": topology_result.consensus.selected_agent_id or "consensus",
+                            "model_name": "consensus",
+                            "text": topology_result.consensus.selected_text,
+                        }
+                    ],
+                },
+            ]
+
+        return []
 
     def _get_task(self, task_type: str, task_id: str) -> TaskInstance:
         try:
@@ -316,6 +449,17 @@ class ExperimentRunner:
 
     def _build_system_prompts(self, run_spec: RunSpec) -> list[str]:
         base = "You are an expert agent. Be explicit, structured, and self-critical."
+        perspectives = [
+            "adopt a skeptical perspective",
+            "adopt a systems-level perspective",
+            "adopt a pragmatic implementation perspective",
+            "adopt a risk-management perspective",
+            "adopt a contrarian perspective",
+        ]
+        rng = random.Random(f"{self.config.seed}:{run_spec.id}")
+        shuffled_perspectives = list(perspectives)
+        rng.shuffle(shuffled_perspectives)
+
         prompts: list[str] = []
         for idx in range(run_spec.agent_count):
             if run_spec.prompt_strategy == "identical":
@@ -323,32 +467,94 @@ class ExperimentRunner:
             elif run_spec.prompt_strategy == "slight_variation":
                 prompts.append(base + f" Focus area {idx + 1}: emphasize precision and concise argumentation.")
             elif run_spec.prompt_strategy == "perspective_diversity":
-                perspectives = [
-                    "adopt a skeptical perspective",
-                    "adopt a systems-level perspective",
-                    "adopt a pragmatic implementation perspective",
-                    "adopt a risk-management perspective",
-                    "adopt a contrarian perspective",
-                ]
-                prompts.append(base + ". " + perspectives[idx % len(perspectives)] + ".")
+                prompts.append(base + ". " + shuffled_perspectives[idx % len(shuffled_perspectives)] + ".")
             elif run_spec.prompt_strategy == "perspective_plus_model_mix":
-                prompts.append(base + f" Take perspective #{idx + 1} and challenge hidden assumptions aggressively.")
+                prompts.append(
+                    base
+                    + ". "
+                    + shuffled_perspectives[idx % len(shuffled_perspectives)]
+                    + ". Challenge hidden assumptions and present an alternative framing before concluding."
+                )
             else:
                 prompts.append(base + " Use adversarial reasoning to expose weak claims before finalizing.")
         return prompts
 
-    async def _build_consensus(self, run_spec: RunSpec):
+    async def _build_consensus(self, run_spec: RunSpec, *, judge_panel: JudgePanel):
         if run_spec.consensus == "simple_vote":
             return SimpleVoteConsensus()
         if run_spec.consensus == "debate_then_vote":
             return DebateThenVoteConsensus()
         if run_spec.consensus == "judge_based":
-            if self._judge is None:
-                judge_model = self.models_config["judge"]["model"]
-                judge_client = self._get_client(judge_model)
-                self._judge = LLMJudge(judge_client=judge_client, dry_run=self.config.dry_run)
-            return JudgeBasedConsensus(judge=self._judge)
+            return JudgeBasedConsensus(judge_panel=judge_panel)
         raise ValueError(f"Unsupported consensus type: {run_spec.consensus}")
+
+    def _build_judge_panel(self, run_spec: RunSpec) -> JudgePanel:
+        selected_models = self._select_judge_models(run_spec.model_assignment)
+        judges: list[PairwiseJudge] = []
+
+        for judge_model in selected_models:
+            judge_client = self._get_client(judge_model)
+
+            def _recorder(model_name: str, response, tag: str, *, _block=run_spec.block_id, _run=run_spec.id):
+                self.cost_tracker.record_call(
+                    block_id=_block,
+                    run_id=_run,
+                    model_name=model_name,
+                    input_tokens=response.input_tokens,
+                    output_tokens=response.output_tokens,
+                    latency_ms=response.latency_ms,
+                    tag=tag,
+                )
+
+            judges.append(
+                PairwiseJudge(
+                    judge_client=judge_client,
+                    dry_run=self.config.dry_run,
+                    call_recorder=_recorder,
+                )
+            )
+
+        return JudgePanel(judges=judges)
+
+    def _select_judge_models(self, agent_models: list[str]) -> list[str]:
+        judge_cfg = self.models_config.get("judge_pool", {})
+        panel_size = int(judge_cfg.get("panel_size", 3))
+        primary = [str(m) for m in judge_cfg.get("primary_models", [])]
+        reserve = [str(m) for m in judge_cfg.get("reserve_models", [])]
+
+        pool = []
+        for model in [*primary, *reserve]:
+            if model not in pool:
+                pool.append(model)
+
+        if not pool:
+            raise ValueError("judge_pool is empty in models config")
+
+        agent_set = set(agent_models)
+        if bool(judge_cfg.get("exclude_agent_models", True)):
+            pool = [m for m in pool if m not in agent_set]
+
+        if bool(judge_cfg.get("prefer_different_families", True)):
+            run_families = {
+                str(self.models_config["models"][model].get("family", model))
+                for model in agent_models
+                if model in self.models_config["models"]
+            }
+            preferred = [
+                m
+                for m in pool
+                if str(self.models_config["models"].get(m, {}).get("family", m)) not in run_families
+            ]
+            fallback = [m for m in pool if m not in preferred]
+            ordered = preferred + fallback
+        else:
+            ordered = pool
+
+        if len(ordered) < panel_size:
+            raise ValueError(
+                f"Not enough judges after exclusions: need {panel_size}, have {len(ordered)} (run models={agent_models})"
+            )
+        return ordered[:panel_size]
 
     def _get_client(self, model_alias: str) -> BaseModelClient:
         if model_alias in self._client_cache:

@@ -1,27 +1,27 @@
-﻿version: 1
+version: 2
 seed: 42
 
 disagreement_levels:
   1:
-    label: none
+    label: baseline_same_prompt_low_temp
     temperature: 0.3
     prompt_strategy: identical
   2:
-    label: low
-    temperature: 0.5
-    prompt_strategy: slight_variation
-  3:
-    label: moderate
+    label: temperature_only_same_prompt
     temperature: 0.7
+    prompt_strategy: identical
+  3:
+    label: prompt_only_perspectives_low_temp
+    temperature: 0.3
     prompt_strategy: perspective_diversity
   4:
-    label: high
+    label: prompt_plus_temperature
+    temperature: 0.7
+    prompt_strategy: perspective_diversity
+  5:
+    label: max_disagreement_prompt_plus_model_mix
     temperature: 0.9
     prompt_strategy: perspective_plus_model_mix
-  5:
-    label: very_high
-    temperature: 1.2
-    prompt_strategy: adversarial_perspectives
 
 agent_group_templates:
   homogeneous_opus:
@@ -47,7 +47,7 @@ blocks:
     repetitions: 4
 
   - id: block1_disagreement_dividend
-    description: Sweep disagreement level to identify quality sweet spot d*.
+    description: Sweep disagreement level to identify quality sweet spot d* with multi-agent orchestration.
     task_types: [analytical, creative]
     agent_counts: [2, 3, 5]
     topologies: [flat]
@@ -56,43 +56,63 @@ blocks:
     models: [heterogeneous_strong_mix]
     repetitions: 2
 
+  - id: block1_best_of_n_baseline
+    description: Cost-matched best-of-N single-agent baseline for Block 1.
+    task_types: [analytical, creative]
+    agent_counts: [2, 3, 5]
+    topologies: [best_of_n]
+    consensus: [judge_based]
+    disagreement_levels: [1, 2, 3, 4, 5]
+    models: [homogeneous_opus]
+    repetitions: 2
+
   - id: block2_topology_comparison
-    description: Compare topologies and consensus mechanisms at moderate disagreement.
+    description: Compare topologies and consensus mechanisms at controlled prompt-only disagreement.
     task_types: [analytical, creative]
     agent_counts: [2, 5]
-    topologies: [flat, hierarchical, quorum]
+    topologies: [flat, hierarchical, quorum, pipeline]
     consensus: [simple_vote, debate_then_vote, judge_based]
     disagreement_levels: [3]
     models: [heterogeneous_strong_mix]
-    repetitions: 1
+    repetitions: 2
 
   - id: block3_mvq_curves
-    description: Agent-count quality curves for threshold analysis.
+    description: Agent-count quality curves for threshold analysis (thresholds computed post-hoc).
     task_types: [analytical, creative]
     agent_counts: [1, 2, 3, 5]
     topologies: [quorum]
     consensus: [judge_based]
     disagreement_levels: [3]
     models: [heterogeneous_strong_mix]
-    repetitions: 1
-    quality_thresholds: [0.60, 0.70, 0.80, 0.90]
+    repetitions: 3
+    posthoc_quality_thresholds: [0.60, 0.70, 0.80, 0.90]
 
   - id: block4_quorum_paradox
-    description: Asymmetric strong+weak mixtures to detect n=3 dip.
+    description: Asymmetric strong+weak mixtures plus homogeneous-strong controls.
     task_types: [analytical, creative]
     agent_counts: [2, 3, 5]
     topologies: [quorum]
     consensus: [debate_then_vote]
     disagreement_levels: [4]
-    models: [paradox_strong_weak]
+    models: [paradox_strong_weak, homogeneous_opus]
+    repetitions: 4
+
+  - id: block4_best_of_n_baseline
+    description: Cost-matched best-of-N single-agent baseline for Block 4 paradox probes.
+    task_types: [analytical, creative]
+    agent_counts: [2, 3, 5]
+    topologies: [best_of_n]
+    consensus: [judge_based]
+    disagreement_levels: [4]
+    models: [homogeneous_opus]
     repetitions: 4
 
   - id: block5_interaction_probe
-    description: Full factorial interaction test for topology x consensus x task.
+    description: Full factorial interaction test for topology x consensus x task with added replication.
     task_types: [analytical, creative]
     agent_counts: [3, 5]
-    topologies: [flat, hierarchical, quorum]
+    topologies: [flat, hierarchical, quorum, pipeline]
     consensus: [simple_vote, debate_then_vote, judge_based]
     disagreement_levels: [2]
     models: [heterogeneous_strong_mix]
-    repetitions: 1
+    repetitions: 2
