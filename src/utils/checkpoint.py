@@ -23,6 +23,9 @@ class ProgressSnapshot:
     eta_seconds: float | None
     estimated_total_cost_usd: float
     estimated_cost_by_model: dict[str, float]
+    status: str = "running"
+    warning: str | None = None
+    max_cost_usd: float | None = None
 
 
 class CheckpointManager:
@@ -52,8 +55,7 @@ class CheckpointManager:
 
     def update_progress(self, snapshot: ProgressSnapshot) -> Path:
         """Atomically update progress.json."""
-        path = self.results_dir / "progress.json"
-        self._atomic_write_json(path, {
+        payload = {
             "timestamp_utc": snapshot.timestamp_utc,
             "completed_runs": snapshot.completed_runs,
             "pending_runs": snapshot.pending_runs,
@@ -61,7 +63,12 @@ class CheckpointManager:
             "eta_seconds": snapshot.eta_seconds,
             "estimated_total_cost_usd": snapshot.estimated_total_cost_usd,
             "estimated_cost_by_model": snapshot.estimated_cost_by_model,
-        })
+            "status": snapshot.status,
+            "warning": snapshot.warning,
+            "max_cost_usd": snapshot.max_cost_usd,
+        }
+        path = self.results_dir / "progress.json"
+        self._atomic_write_json(path, payload)
         return path
 
     def load_progress(self) -> dict[str, Any]:
@@ -78,7 +85,7 @@ class CheckpointManager:
             return completed
 
         for path in self.results_dir.rglob("*.json"):
-            if path.name in {"progress.json", "manifest_snapshot.json"}:
+            if path.name in {"progress.json", "manifest_snapshot.json", "pilot_report.json", "pilot_manifest.json", "manifest_full.json", "manifest_pilot.json", "manifest_all.json"}:
                 continue
             completed.add(path.stem)
         return completed

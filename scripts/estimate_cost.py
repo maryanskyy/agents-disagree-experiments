@@ -12,10 +12,11 @@ if str(ROOT) not in sys.path:
 import argparse
 from collections import defaultdict
 from math import comb
+import random
 
 import yaml
 
-from src.manifest import ExperimentManifest, generate_manifest
+from src.manifest import ExperimentManifest, RunSpec, generate_manifest
 
 
 DEFAULT_AGENT_INPUT_TOKENS = 1200
@@ -31,6 +32,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--models", type=Path, default=Path("config/models.yaml"))
     parser.add_argument("--matrix", type=Path, default=Path("config/experiment_matrix.yaml"))
     parser.add_argument("--tasks-dir", type=Path, default=Path("config/tasks"))
+    parser.add_argument("--phase", choices=["pilot", "full", "all"], default="all")
+    parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
 
 
@@ -92,6 +95,69 @@ def _select_judges(models_cfg: dict, assignment: list[str]) -> list[str]:
     return ordered[:panel_size]
 
 
+def _sample_runs(runs: list[RunSpec], count: int, *, seed: int) -> list[RunSpec]:
+    if count >= len(runs):
+        return list(runs)
+    rng = random.Random(seed)
+    copy = list(runs)
+    rng.shuffle(copy)
+    return copy[:count]
+
+
+def _sample_stratified(runs: list[RunSpec], *, group_fn, per_group: int, seed: int) -> list[RunSpec]:
+    grouped: dict[int, list[RunSpec]] = defaultdict(list)
+    for run in runs:
+        grouped[group_fn(run)].append(run)
+
+    selected: list[RunSpec] = []
+    for idx, key in enumerate(sorted(grouped)):
+        selected.extend(_sample_runs(grouped[key], per_group, seed=seed + idx * 17))
+    return selected
+
+
+def _pilot_manifest(base_manifest: ExperimentManifest, seed: int) -> ExperimentManifest:
+    by_block: dict[str, list[RunSpec]] = defaultdict(list)
+    for run in base_manifest.runs:
+        by_block[run.block_id].append(run)
+
+    block0 = list(by_block.get("block0_calibration", []))
+    block1 = list(by_block.get("block1_disagreement_dividend", []))
+    block4 = list(by_block.get("block4_quorum_paradox", []))
+
+    block1_selected = _sample_stratified(
+        block1,
+        group_fn=lambda r: r.disagreement_level,
+        per_group=4,
+        seed=seed + 100,
+    )
+    block4_selected = [
+        *_sample_runs([r for r in block4 if r.agent_count == 2], 10, seed=seed + 200),
+        *_sample_runs([r for r in block4 if r.agent_count == 3], 10, seed=seed + 300),
+    ]
+
+    return ExperimentManifest(
+        generated_at=base_manifest.generated_at,
+        seed=base_manifest.seed,
+        runs=[*block0, *block1_selected, *block4_selected],
+    )
+
+
+def _phase_manifest(base_manifest: ExperimentManifest, phase: str, seed: int) -> ExperimentManifest:
+    if phase == "all":
+        return base_manifest
+
+    pilot = _pilot_manifest(base_manifest=base_manifest, seed=seed)
+    if phase == "pilot":
+        return pilot
+
+    pilot_ids = {run.id for run in pilot.runs}
+    return ExperimentManifest(
+        generated_at=base_manifest.generated_at,
+        seed=base_manifest.seed,
+        runs=[run for run in base_manifest.runs if run.id not in pilot_ids],
+    )
+
+
 def main() -> None:
     """Entry point."""
     args = parse_args()
@@ -102,8 +168,10 @@ def main() -> None:
             matrix_path=args.matrix,
             analytical_tasks_path=args.tasks_dir / "analytical.yaml",
             creative_tasks_path=args.tasks_dir / "creative.yaml",
-            seed=42,
+            seed=args.seed,
         )
+
+    manifest = _phase_manifest(base_manifest=manifest, phase=args.phase, seed=args.seed)
 
     models_cfg = yaml.safe_load(args.models.read_text(encoding="utf-8"))
     model_table = models_cfg["models"]
@@ -142,6 +210,7 @@ def main() -> None:
 
     total_cost = sum(by_block.values())
 
+    print(f"Phase: {args.phase}")
     print(f"Estimated runs: {len(manifest.runs)}")
     print(f"Estimated agent calls: {total_agent_calls}")
     print(f"Estimated judge calls: {total_judge_calls}")

@@ -1,4 +1,4 @@
-"""Asynchronous, resumable experiment runner."""
+﻿"""Asynchronous, resumable experiment runner."""
 
 from __future__ import annotations
 
@@ -50,6 +50,7 @@ class RunnerConfig:
     dry_run: bool = False
     resume: bool = True
     seed: int = 42
+    max_cost_usd: float = 1500.0
 
 
 class ExperimentRunner:
@@ -87,6 +88,12 @@ class ExperimentRunner:
             "best_of_n": BestOfNTopology(),
         }
 
+        self._pause_requested = False
+        self._pause_reason: str | None = None
+        self._runtime_state: dict[str, int] | None = None
+        self._runtime_total = 0
+        self._runtime_started = 0.0
+
     async def run_manifest(self, manifest: ExperimentManifest) -> dict[str, Any]:
         """Execute all pending runs and return summary."""
         started = time.perf_counter()
@@ -113,22 +120,41 @@ class ExperimentRunner:
         semaphore = asyncio.Semaphore(self.config.max_concurrent)
         state = {"completed": len(completed_ids), "failed": 0, "started": len(completed_ids)}
 
+        self._pause_requested = False
+        self._pause_reason = None
+        self._runtime_state = state
+        self._runtime_total = len(manifest.runs)
+        self._runtime_started = started
+
         async def _run_with_semaphore(run_spec: RunSpec) -> None:
             async with semaphore:
+                if self._pause_requested:
+                    return
                 await self._execute_one(run_spec, state=state, total=len(manifest.runs), start_time=started)
 
         await asyncio.gather(*[_run_with_semaphore(run) for run in pending])
 
         elapsed = time.perf_counter() - started
+        remaining = max(0, len(manifest.runs) - state["completed"])
         summary = {
-            "status": "done",
+            "status": "paused_max_cost" if self._pause_requested else "done",
             "total_runs": len(manifest.runs),
             "completed_runs": state["completed"],
             "failed_runs": state["failed"],
+            "pending_runs": remaining,
             "elapsed_seconds": elapsed,
             "cost": self.cost_tracker.snapshot(),
         }
-        self.logger.info("Finished all runs in %.1fs (failed=%d)", elapsed, state["failed"])
+        if self._pause_reason:
+            summary["pause_reason"] = self._pause_reason
+
+        self.logger.info(
+            "Finished run loop in %.1fs (failed=%d, pending=%d, paused=%s)",
+            elapsed,
+            state["failed"],
+            remaining,
+            self._pause_requested,
+        )
         return summary
 
     async def _execute_one(self, run_spec: RunSpec, *, state: dict[str, int], total: int, start_time: float) -> None:
@@ -165,32 +191,59 @@ class ExperimentRunner:
 
             done = state["completed"]
             if done % self.config.progress_every == 0 or done == total:
-                elapsed = max(0.001, time.perf_counter() - start_time)
-                rate = done / elapsed
-                remaining = max(0, total - done)
-                eta = remaining / max(rate, 1e-6)
-                cost_snapshot = self.cost_tracker.snapshot()
-                progress = ProgressSnapshot(
-                    timestamp_utc=datetime.now(tz=timezone.utc).isoformat(),
-                    completed_runs=done,
-                    pending_runs=remaining,
-                    failed_runs=state["failed"],
-                    eta_seconds=eta,
-                    estimated_total_cost_usd=float(cost_snapshot["total_cost_usd"]),
-                    estimated_cost_by_model={
-                        model: float(values["cost_usd"])
-                        for model, values in cost_snapshot["by_model"].items()
-                    },
-                )
+                progress = self._build_progress_snapshot(done=done, total=total, failed=state["failed"], start_time=start_time)
                 self.checkpoint.update_progress(progress)
                 self.logger.info(
                     "Progress: %d/%d complete | failed=%d | eta=%.1fs | cost=$%.4f",
                     done,
                     total,
                     state["failed"],
-                    eta,
-                    cost_snapshot["total_cost_usd"],
+                    progress.eta_seconds or 0.0,
+                    progress.estimated_total_cost_usd,
                 )
+
+    def _build_progress_snapshot(self, *, done: int, total: int, failed: int, start_time: float) -> ProgressSnapshot:
+        elapsed = max(0.001, time.perf_counter() - start_time)
+        rate = done / elapsed
+        remaining = max(0, total - done)
+        eta = remaining / max(rate, 1e-6)
+        cost_snapshot = self.cost_tracker.snapshot()
+        return ProgressSnapshot(
+            timestamp_utc=datetime.now(tz=timezone.utc).isoformat(),
+            completed_runs=done,
+            pending_runs=remaining,
+            failed_runs=failed,
+            eta_seconds=eta,
+            estimated_total_cost_usd=float(cost_snapshot["total_cost_usd"]),
+            estimated_cost_by_model={
+                model: float(values["cost_usd"])
+                for model, values in cost_snapshot["by_model"].items()
+            },
+            status="paused_max_cost" if self._pause_requested else "running",
+            warning=self._pause_reason,
+            max_cost_usd=float(self.config.max_cost_usd),
+        )
+
+    def _check_cost_guardrail(self) -> None:
+        if self._pause_requested:
+            return
+        total_cost = float(self.cost_tracker.snapshot().get("total_cost_usd", 0.0))
+        if total_cost >= float(self.config.max_cost_usd):
+            self._pause_requested = True
+            self._pause_reason = (
+                f"Max cost guardrail triggered at ${total_cost:.2f} "
+                f"(limit=${self.config.max_cost_usd:.2f}). Execution paused."
+            )
+            self.logger.warning(self._pause_reason)
+
+            if self._runtime_state is not None:
+                progress = self._build_progress_snapshot(
+                    done=int(self._runtime_state.get("completed", 0)),
+                    total=self._runtime_total,
+                    failed=int(self._runtime_state.get("failed", 0)),
+                    start_time=self._runtime_started,
+                )
+                self.checkpoint.update_progress(progress)
 
     async def _execute_run(self, run_spec: RunSpec) -> dict[str, Any]:
         task = self._get_task(run_spec.task_type, run_spec.task_id)
@@ -231,6 +284,7 @@ class ExperimentRunner:
                 latency_ms=response.latency_ms,
                 tag=str(context.get("phase", "response")),
             )
+            self._check_cost_guardrail()
 
             return AgentOutput(
                 agent_id=f"agent_{agent_idx}",
@@ -505,6 +559,7 @@ class ExperimentRunner:
                     latency_ms=response.latency_ms,
                     tag=tag,
                 )
+                self._check_cost_guardrail()
 
             judges.append(
                 PairwiseJudge(

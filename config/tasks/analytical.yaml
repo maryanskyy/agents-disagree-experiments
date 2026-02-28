@@ -1,18 +1,33 @@
 ﻿task_type: analytical
 version: 1
 instances:
-  - id: analytical_01_logicians_bar
-    title: Common-Knowledge Logic Puzzle (Three Logicians)
+  - id: analytical_01_signal_triage_deduction
+    title: Multi-Constraint Incident Triage Deduction Puzzle
     prompt: |
-      Three logicians walk into a bar. The bartender asks, "Do all three of you want tea?" The first logician says, "I don't know." The second says, "I don't know." The third says, "Yes." Your task is to provide a rigorous explanation of why the third logician can answer with certainty. Use explicit reasoning about private knowledge versus common knowledge. Then generalize the puzzle to N logicians where each person can hear previous answers, and derive the rule for when the final speaker can confidently answer "Yes." Finally, explain one real-world decision setting where this pattern matters (for example, incident response, legal sign-off, or distributed systems acknowledgement).
+      A security operations team receives four overnight alerts, each tied to one system: Atlas, Beacon, Cipher, and Drift. Exactly one alert is a true critical incident that must be escalated before business hours.
 
-      Respond in three sections: (1) formal reasoning steps, (2) generalized rule for N participants, and (3) practical implication. Do not skip intermediate inferences.
+      Facts collected by the morning lead:
+      1) Exactly one system has all three indicators: anomalous login location, privileged token use, and abnormal data transfer volume.
+      2) Atlas and Drift are in the same network zone. If one of them has abnormal data transfer volume, then the other does not.
+      3) Beacon has anomalous login location if and only if Cipher does not have privileged token use.
+      4) Any system in the critical incident state must have privileged token use.
+      5) Cipher has abnormal data transfer volume.
+      6) Drift does not have anomalous login location.
+      7) Atlas has privileged token use only if Beacon has anomalous login location.
+      8) Exactly two systems have privileged token use.
+
+      Your tasks:
+      (1) Determine which system is the true critical incident.
+      (2) Provide a step-by-step deduction chain showing why alternatives fail.
+      (3) Generalize a reusable reasoning procedure for similar triage puzzles where signals are partially dependent.
+      (4) Give one real-world operations lesson about avoiding premature escalation.
+
+      Respond in four labeled sections and do not skip intermediate inferences.
     rubric:
-      - Correctly explains why "I don't know" from earlier speakers implies they personally want tea.
-      - Uses common-knowledge reasoning rather than intuition-only narration.
-      - Provides a valid generalized condition for N participants.
+      - Correctly identifies the unique critical system implied by all constraints.
+      - Uses explicit multi-step deduction rather than intuition-only narration.
+      - Provides a valid generalized method for solving similar dependency puzzles.
       - Gives a coherent real-world mapping with accurate analogy limits.
-
   - id: analytical_02_fallacy_audit
     title: Logical Fallacy Audit of a Policy Argument
     prompt: |

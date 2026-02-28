@@ -1,4 +1,4 @@
-version: 2
+﻿version: 2
 providers:
   anthropic:
     default_timeout_seconds: 60
@@ -42,10 +42,11 @@ models:
     max_output_tokens: 2048
     quality_tier: fast
 
+  # CRITICAL: Pinned versions prevent mid-experiment drift
   gemini-2.5-pro:
     provider: google
     family: gemini_pro
-    api_model: gemini-2.5-pro
+    api_model: gemini-2.5-pro-preview-05-06
     rpm: 60
     tpm: 300000
     pricing_per_1m_tokens:
@@ -57,7 +58,7 @@ models:
   gemini-1.5-pro:
     provider: google
     family: gemini_1_5_pro
-    api_model: gemini-1.5-pro
+    api_model: gemini-1.5-pro-001
     rpm: 80
     tpm: 400000
     pricing_per_1m_tokens:
@@ -69,7 +70,7 @@ models:
   gemini-2.0-flash:
     provider: google
     family: gemini_flash
-    api_model: gemini-2.0-flash
+    api_model: gemini-2.0-flash-001
     rpm: 200
     tpm: 1000000
     pricing_per_1m_tokens:
@@ -102,3 +103,5 @@ defaults:
   base_seed: 42
   max_retries: 5
   retry_backoff_seconds: 1.0
+
+

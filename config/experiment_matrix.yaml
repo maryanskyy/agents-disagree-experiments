@@ -1,4 +1,4 @@
-version: 2
+﻿version: 2
 seed: 42
 
 disagreement_levels:
@@ -95,7 +95,7 @@ blocks:
     consensus: [debate_then_vote]
     disagreement_levels: [4]
     models: [paradox_strong_weak, homogeneous_opus]
-    repetitions: 4
+    repetitions: 6
 
   - id: block4_best_of_n_baseline
     description: Cost-matched best-of-N single-agent baseline for Block 4 paradox probes.
@@ -106,13 +106,3 @@ blocks:
     disagreement_levels: [4]
     models: [homogeneous_opus]
     repetitions: 4
-
-  - id: block5_interaction_probe
-    description: Full factorial interaction test for topology x consensus x task with added replication.
-    task_types: [analytical, creative]
-    agent_counts: [3, 5]
-    topologies: [flat, hierarchical, quorum, pipeline]
-    consensus: [simple_vote, debate_then_vote, judge_based]
-    disagreement_levels: [2]
-    models: [heterogeneous_strong_mix]
-    repetitions: 2

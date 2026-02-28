@@ -113,14 +113,16 @@ instances:
       - Seeds mystery clues without overexplaining.
       - Follow-up chapter directions are compelling and consistent.
 
-  - id: creative_08_entanglement_for_child
-    title: Metaphor-Rich Entanglement Explanation for a Child
+  - id: creative_08_lighthouse_memory_protocol
+    title: Story-Driven Science Explanation with an Unusual Constraint
     prompt: |
-      Explain quantum entanglement to a curious 10-year-old using metaphor-rich language that is vivid but not misleading. Aim for 250-350 words. The explanation should be playful and comprehensible while carefully avoiding false claims such as "messages travel faster than light."
+      Imagine a child asks: "Why do some materials glow for a while after the light is turned off?"
+
+      Write a 250-350 word explanation for a curious 10-year-old using a mini story set inside an old lighthouse museum at closing time. Your explanation should focus on phosphorescence (not fluorescence), stay scientifically accurate, and avoid misleading claims.
 
       Requirements:
       - Use at least two different metaphors and briefly compare their strengths/limits.
-      - Include one short interactive thought experiment the child can do at home with simple objects.
+      - Include one short interactive thought experiment the child can do at home using safe, common objects.
       - Include a "what scientists still don't fully know" section in age-appropriate language.
       - End with one question that invites further curiosity.
 

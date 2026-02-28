@@ -1,0 +1,195 @@
+﻿# HANDOVER.md
+
+This guide is for the operator running the final experiment on a **MacBook Air M4**.
+
+---
+
+## 1) Prerequisites
+
+- macOS with terminal access
+- Python **3.11+**
+- `pip`
+- Git
+- API keys:
+  - `ANTHROPIC_API_KEY`
+  - `GOOGLE_API_KEY`
+
+Optional but recommended:
+- `tmux` (to protect long runs from terminal disconnects)
+- charger connected + sleep disabled while running
+
+---
+
+## 2) Step-by-Step Setup
+
+```bash
+git clone <repo-url>
+cd agents-disagree-experiments
+
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+cp .env.example .env
+# edit .env and set ANTHROPIC_API_KEY + GOOGLE_API_KEY
+```
+
+---
+
+## 3) Pre-flight Validation (Mandatory)
+
+```bash
+python scripts/validate_setup.py --dry-run
+```
+
+Expected:
+- validation completes without exceptions
+- dry-run summary printed
+
+If this fails, do **not** start paid runs.
+
+---
+
+## 4) Phase A (Pilot)
+
+Run:
+
+```bash
+python scripts/run_experiments.py --phase pilot --resume --max-cost 1500
+```
+
+Pilot executes:
+- full Block 0
+- 20 sampled runs from Block 1
+- 20 sampled runs from Block 4
+
+Check after completion:
+- `results/pilot_report.json`
+
+GO/NO-GO criteria:
+- GO if:
+  - mean inter-judge kappa > 0.4
+  - disagreement levels are separable
+- NO-GO otherwise (revisit judge rubric/task setup before full run)
+
+---
+
+## 5) Phase B (Full)
+
+Run remaining experiment (excluding pilot-completed runs):
+
+```bash
+python scripts/run_experiments.py --phase full --resume --max-cost 1500
+```
+
+Expected runtime:
+- depends on API throughput and retries; typically many hours.
+
+Monitoring:
+- `tail -f results/run_experiments.log`
+- inspect `results/progress.json` for completed/pending/ETA/cost
+- inspect `results/cost_log.jsonl` for per-call spend
+
+---
+
+## 6) During the Run
+
+## Check progress
+- `results/progress.json` is the primary live status file.
+- `status` field may switch to `paused_max_cost` if guardrail is hit.
+
+## If errors occur
+1. Read latest stack trace in `results/run_experiments.log`.
+2. Fix issue (API key, network, dependency).
+3. Resume safely:
+   ```bash
+   python scripts/run_experiments.py --phase full --resume --max-cost 1500
+   ```
+
+## If laptop sleeps/crashes
+- Resume with same command + `--resume`.
+- Completed run files are checkpointed on disk.
+
+---
+
+## 7) After Completion
+
+1. Run analysis:
+   ```bash
+   python scripts/analyze_results.py --results-dir results --out-dir results/analysis
+   ```
+
+2. Verify outputs:
+   - `results/analysis/run_metrics.csv`
+   - `results/analysis/summary_table.csv`
+   - `results/analysis/*.pdf`
+   - `results/analysis/*.png`
+
+3. Review pilot + final summaries:
+   - `results/pilot_report.json`
+   - `results/progress.json`
+
+---
+
+## 8) Troubleshooting
+
+### A) API key errors
+- Symptom: authentication/permission exceptions.
+- Fix: verify `.env` keys and active shell environment.
+
+### B) Rate limits / quota spikes
+- Symptom: repeated retry/backoff messages.
+- Fix:
+  - wait and resume later
+  - reduce concurrency:
+    ```bash
+    python scripts/run_experiments.py --phase full --resume --max-concurrent 6
+    ```
+
+### C) Network instability
+- Symptom: timeout/connection errors.
+- Fix: stable network, then rerun with `--resume`.
+
+### D) Dependency issues
+- Symptom: import/module errors.
+- Fix:
+  ```bash
+  source .venv/bin/activate
+  pip install -r requirements.txt
+  ```
+
+---
+
+## 9) Budget Guardrails
+
+Default hard limit:
+- `--max-cost 1500`
+
+Behavior:
+- when cumulative cost reaches limit, runner pauses and writes warning to `results/progress.json`.
+
+Recommended practice:
+- start with a tighter cap for pilot if desired (example: `--max-cost 300`)
+- monitor `results/cost_log.jsonl` and `results/progress.json`
+
+Cost estimation commands (pre-run):
+```bash
+python scripts/estimate_cost.py --phase pilot
+python scripts/estimate_cost.py --phase full
+python scripts/estimate_cost.py --phase all
+```
+
+---
+
+## 10) What Success Looks Like
+
+Minimum viable successful run includes:
+
+1. Pilot completed + `results/pilot_report.json` generated.
+2. Full phase completed (or intentionally paused by guardrail).
+3. `results/progress.json` shows near-zero pending runs (unless paused intentionally).
+4. Run JSON outputs exist under each block directory.
+5. Analysis artifacts generated under `results/analysis/`.
+
+If all above are present, repository is in clone-and-run operational state.

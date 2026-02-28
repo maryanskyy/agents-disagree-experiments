@@ -37,7 +37,11 @@ class GoogleModelClient(BaseModelClient):
 
             genai.configure(api_key=self.api_key)
             self._module = genai
-            self._model = genai.GenerativeModel(self.api_model)
+
+            # IMPORTANT: Pass the model name exactly as configured in config/models.yaml.
+            # We intentionally avoid alias remapping here to prevent mid-experiment drift.
+            configured_model = str(self.api_model)
+            self._model = genai.GenerativeModel(configured_model)
 
     async def generate(
         self,
@@ -81,7 +85,11 @@ class GoogleModelClient(BaseModelClient):
             input_tokens=input_tokens,
             output_tokens=output_tokens,
             latency_ms=elapsed_ms,
-            raw={"metadata": metadata or {}},
+            raw={
+                "metadata": metadata or {},
+                "configured_api_model": self.api_model,
+                "response_model": getattr(response, "model_version", None),
+            },
         )
 
     def _mock_response(self, *, user_prompt: str) -> ModelResponse:
@@ -95,7 +103,7 @@ class GoogleModelClient(BaseModelClient):
             input_tokens=max(28, len(user_prompt) // 4),
             output_tokens=max(56, len(text) // 3 + rnd.randint(0, 12)),
             latency_ms=1.0,
-            raw={"dry_run": True},
+            raw={"dry_run": True, "configured_api_model": self.api_model},
         )
 
     async def close(self) -> None:
