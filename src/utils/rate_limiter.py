@@ -1,4 +1,4 @@
-﻿"""Async per-provider rate limiting and retry helpers."""
+"""Async per-provider rate limiting and retry helpers."""
 
 from __future__ import annotations
 
@@ -12,6 +12,9 @@ from typing import Awaitable, Callable, TypeVar
 
 T = TypeVar("T")
 
+GLOBAL_RPM_KEY = "__global__"
+DEFAULT_GLOBAL_RPM = 150
+
 
 @dataclass(slots=True)
 class RateLimitConfig:
@@ -21,14 +24,18 @@ class RateLimitConfig:
 
 
 class AsyncRateLimiter:
-    """Token bucket style limiter using a 60-second rolling window."""
+    """Token bucket style limiter using a 60-second rolling window.
 
-    def __init__(self) -> None:
+    Enforces both per-key RPM limits and a global RPM cap across all keys.
+    """
+
+    def __init__(self, global_rpm: int = DEFAULT_GLOBAL_RPM) -> None:
         self._queues: dict[str, deque[float]] = {}
         self._locks: dict[str, asyncio.Lock] = {}
+        self._global_rpm = global_rpm
 
-    async def acquire(self, key: str, rpm: int) -> None:
-        """Wait until a call token is available for key."""
+    async def _acquire_one(self, key: str, rpm: int) -> None:
+        """Wait until a call token is available for a single key."""
         if rpm <= 0:
             return
 
@@ -47,6 +54,11 @@ class AsyncRateLimiter:
 
                 wait_seconds = max(0.01, 60.0 - (now - queue[0]))
                 await asyncio.sleep(wait_seconds)
+
+    async def acquire(self, key: str, rpm: int) -> None:
+        """Wait until both the per-key and global rate limits allow a call."""
+        await self._acquire_one(GLOBAL_RPM_KEY, self._global_rpm)
+        await self._acquire_one(key, rpm)
 
 
 async def retry_with_backoff(

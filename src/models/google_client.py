@@ -1,9 +1,12 @@
-﻿"""Google Gemini model client adapter."""
+"""Google Gemini model client adapter — routed through GenAI Gateway.
+
+Uses the OpenAI-compatible Chat Completions API exposed by the gateway
+instead of the google-generativeai SDK.
+"""
 
 from __future__ import annotations
 
 import asyncio
-import os
 import random
 import time
 from typing import Any
@@ -12,7 +15,7 @@ from .base import BaseModelClient, ModelResponse
 
 
 class GoogleModelClient(BaseModelClient):
-    """Async wrapper around official google-generativeai SDK."""
+    """Async Gemini client using OpenAI-compatible gateway endpoint."""
 
     def __init__(
         self,
@@ -20,28 +23,37 @@ class GoogleModelClient(BaseModelClient):
         api_model: str,
         api_key: str | None = None,
         *,
+        base_url: str | None = None,
+        extra_headers: dict[str, str] | None = None,
         dry_run: bool = False,
     ) -> None:
         super().__init__(model_alias=model_alias, api_model=api_model, dry_run=dry_run)
-        self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
-        self._module: Any | None = None
-        self._model: Any | None = None
+        self.api_key = api_key
+        self.base_url = base_url
+        self.extra_headers = extra_headers or {}
 
+        self._client: Any | None = None
         if not self.dry_run:
             if not self.api_key:
-                raise ValueError("Missing GOOGLE_API_KEY for non-dry run")
-            try:
-                import google.generativeai as genai
-            except ImportError as exc:
-                raise RuntimeError("google-generativeai package is not installed") from exc
+                raise ValueError("Missing API key for Google/Gemini client")
+            self._init_client()
 
-            genai.configure(api_key=self.api_key)
-            self._module = genai
+    def _init_client(self) -> None:
+        try:
+            from openai import AsyncOpenAI
+        except ImportError as exc:
+            raise RuntimeError("openai package is not installed") from exc
 
-            # IMPORTANT: Pass the model name exactly as configured in config/models.yaml.
-            # We intentionally avoid alias remapping here to prevent mid-experiment drift.
-            configured_model = str(self.api_model)
-            self._model = genai.GenerativeModel(configured_model)
+        kwargs: dict[str, Any] = {
+            "api_key": self.api_key,
+            "timeout": 120,
+        }
+        if self.base_url:
+            kwargs["base_url"] = self.base_url
+        if self.extra_headers:
+            kwargs["default_headers"] = self.extra_headers
+
+        self._client = AsyncOpenAI(**kwargs)
 
     async def generate(
         self,
@@ -55,29 +67,25 @@ class GoogleModelClient(BaseModelClient):
         if self.dry_run:
             return self._mock_response(user_prompt=user_prompt)
 
-        if self._model is None:
-            raise RuntimeError("Google model not initialized")
+        if self._client is None:
+            raise RuntimeError("Google/Gemini client not initialized")
 
         started = time.perf_counter()
-
-        def _call() -> Any:
-            return self._model.generate_content(
-                contents=[
-                    {"role": "user", "parts": [{"text": f"{system_prompt}\n\n{user_prompt}"}]}
-                ],
-                generation_config=self._module.GenerationConfig(
-                    temperature=temperature,
-                    max_output_tokens=max_tokens,
-                ),
-            )
-
-        response = await asyncio.to_thread(_call)
+        response = await self._client.chat.completions.create(
+            model=self.api_model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
         elapsed_ms = (time.perf_counter() - started) * 1000
 
-        text = getattr(response, "text", "") or ""
-        usage = getattr(response, "usage_metadata", None)
-        input_tokens = int(getattr(usage, "prompt_token_count", 0) or 0)
-        output_tokens = int(getattr(usage, "candidates_token_count", 0) or 0)
+        text = response.choices[0].message.content or "" if response.choices else ""
+        usage = response.usage
+        input_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+        output_tokens = int(getattr(usage, "completion_tokens", 0) or 0)
 
         return ModelResponse(
             text=text.strip(),
@@ -86,9 +94,7 @@ class GoogleModelClient(BaseModelClient):
             output_tokens=output_tokens,
             latency_ms=elapsed_ms,
             raw={
-                "metadata": metadata or {},
                 "configured_api_model": self.api_model,
-                "response_model": getattr(response, "model_version", None),
             },
         )
 
@@ -107,4 +113,15 @@ class GoogleModelClient(BaseModelClient):
         )
 
     async def close(self) -> None:
+        if self._client is None:
+            await asyncio.sleep(0)
+            return
+
+        close_fn = getattr(self._client, "close", None)
+        if close_fn is not None:
+            maybe_coro = close_fn()
+            if asyncio.iscoroutine(maybe_coro):
+                await maybe_coro
+            return
+
         await asyncio.sleep(0)

@@ -327,7 +327,7 @@
     "delta_n3_minus_n2": -0.08524397713654233,
     "observed_dip": true
   },
-  "cost_so_far_usd": 48.498597,
+  "cost_so_far_usd": 0.0,
   "go_no_go": {
     "go_recommended": true,
     "rule": "GO if mean kappa > 0.4 AND disagreement levels are separable",

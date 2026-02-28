@@ -1,4 +1,4 @@
-﻿version: 3
+version: 3
 
 # Agent Pool — models used in multi-agent pipelines
 agent_pool:
@@ -6,45 +6,50 @@ agent_pool:
     provider: anthropic
     model_id: claude-opus-4-6
     tier: strong
+    max_output_tokens: 4096
     input_cost_per_1m: 15.0
     output_cost_per_1m: 75.0
-    rpm_limit: 50
+    rpm_limit: 30
     tpm_limit: 80000
 
   gpt-5.2:
     provider: openai
     model_id: gpt-5.2
     tier: strong
+    max_output_tokens: 4096
     input_cost_per_1m: 10.0
     output_cost_per_1m: 60.0
-    rpm_limit: 60
+    rpm_limit: 35
     tpm_limit: 150000
 
   gemini-2.5-pro:
     provider: google
-    model_id: gemini-2.5-pro-preview-05-06 # PINNED
+    model_id: gemini-2.5-pro
     tier: strong
+    max_output_tokens: 4096
     input_cost_per_1m: 1.25
     output_cost_per_1m: 10.0
-    rpm_limit: 60
+    rpm_limit: 35
     tpm_limit: 200000
 
   claude-haiku-4-5:
     provider: anthropic
     model_id: claude-haiku-4-5
     tier: weak
+    max_output_tokens: 2048
     input_cost_per_1m: 0.80
     output_cost_per_1m: 4.0
-    rpm_limit: 100
+    rpm_limit: 50
     tpm_limit: 100000
 
   gemini-2.5-flash:
     provider: google
     model_id: gemini-2.5-flash # PINNED when stable version available
     tier: weak
+    max_output_tokens: 2048
     input_cost_per_1m: 0.075
     output_cost_per_1m: 0.30
-    rpm_limit: 200
+    rpm_limit: 80
     tpm_limit: 500000
 
 # Judge Pool — models used ONLY for evaluation (no overlap with agents)
@@ -54,18 +59,18 @@ judge_pool:
     model_id: claude-sonnet-4-6
     input_cost_per_1m: 3.0
     output_cost_per_1m: 15.0
-    rpm_limit: 60
+    rpm_limit: 35
 
   gpt-4o:
     provider: openai
     model_id: gpt-4o
     input_cost_per_1m: 2.50
     output_cost_per_1m: 10.0
-    rpm_limit: 60
+    rpm_limit: 35
 
-  gemini-3.1-pro-preview:
+  gemini-3-pro-preview:
     provider: google
-    model_id: gemini-3.1-pro-preview
+    model_id: gemini-3-pro-preview
     input_cost_per_1m: 1.25
     output_cost_per_1m: 10.0
-    rpm_limit: 60
+    rpm_limit: 35

@@ -1,4 +1,4 @@
-﻿"""Asynchronous, resumable experiment runner."""
+"""Asynchronous, resumable experiment runner."""
 
 from __future__ import annotations
 
@@ -30,6 +30,7 @@ from .models import (
     OpenAIModelClient,
     load_model_catalog,
 )
+from .models.base import ModelResponse
 from .tasks.loader import TaskInstance, load_all_tasks
 from .topologies import (
     BestOfNTopology,
@@ -41,6 +42,7 @@ from .topologies import (
 from .utils.checkpoint import CheckpointManager, ProgressSnapshot, utc_now_iso
 from .utils.cost_tracker import CostTracker, PriceConfig
 from .utils.rate_limiter import AsyncRateLimiter, retry_with_backoff
+from .utils.token_manager import GATEWAY_BASE_URL, GATEWAY_ORG_ID, TokenManager
 
 
 @dataclass(slots=True)
@@ -74,6 +76,9 @@ class ExperimentRunner:
         self.rate_limiter = AsyncRateLimiter()
         self._random = random.Random(config.seed)
         self._state_lock = asyncio.Lock()
+
+        self._token_manager = TokenManager()
+        self._last_token_version: int = -1
 
         pricing: dict[str, PriceConfig] = {}
         for model_name, entry in self.model_catalog.models.items():
@@ -284,13 +289,41 @@ class ExperimentRunner:
 
             await self.rate_limiter.acquire(key=f"{provider}:{model_alias}", rpm=rpm)
             client = self._get_client(model_alias)
-            response = await client.generate(
+            gen_kwargs = dict(
                 system_prompt=system_prompt,
                 user_prompt=user_prompt,
                 temperature=temperature,
                 max_tokens=max_tokens,
                 metadata={"run_id": run_spec.id, "agent_idx": agent_idx, **context},
             )
+            response = await client.generate(**gen_kwargs)
+
+            _EMPTY_RETRIES = 3
+            for _retry in range(_EMPTY_RETRIES):
+                if response.text and response.text.strip():
+                    break
+                self.logger.warning(
+                    "Empty output from %s on attempt %d/%d, run=%s",
+                    model_alias, _retry + 1, _EMPTY_RETRIES, run_spec.id,
+                )
+                await asyncio.sleep(2)
+                await self.rate_limiter.acquire(key=f"{provider}:{model_alias}", rpm=rpm)
+                response = await client.generate(**gen_kwargs)
+
+            if not response.text or not response.text.strip():
+                self.logger.error(
+                    "Empty output after %d retries: %s, run=%s",
+                    _EMPTY_RETRIES, model_alias, run_spec.id,
+                )
+                response = ModelResponse(
+                    text="[EMPTY_OUTPUT_AFTER_RETRIES]",
+                    model_name=response.model_name,
+                    input_tokens=response.input_tokens,
+                    output_tokens=response.output_tokens,
+                    latency_ms=response.latency_ms,
+                    raw=response.raw,
+                )
+
             self.cost_tracker.record_call(
                 block_id=run_spec.block_id,
                 run_id=run_spec.id,
@@ -613,21 +646,33 @@ class ExperimentRunner:
             )
         return pool[:panel_size]
 
-    def _create_client(self, *, provider: str, model_alias: str, api_model: str) -> BaseModelClient:
+    def _create_client(self, *, provider: str, model_alias: str, api_model: str, token: str) -> BaseModelClient:
+        gateway_headers = {"OpenAI-Organization": GATEWAY_ORG_ID}
+        openai_base = f"{GATEWAY_BASE_URL}/v1"
+
         factories: dict[str, Any] = {
             "anthropic": lambda: AnthropicModelClient(
                 model_alias=model_alias,
                 api_model=api_model,
+                api_key=token,
+                base_url=openai_base,
+                extra_headers=gateway_headers,
                 dry_run=self.config.dry_run,
             ),
             "google": lambda: GoogleModelClient(
                 model_alias=model_alias,
                 api_model=api_model,
+                api_key=token,
+                base_url=openai_base,
+                extra_headers=gateway_headers,
                 dry_run=self.config.dry_run,
             ),
             "openai": lambda: OpenAIModelClient(
                 model_alias=model_alias,
                 api_model=api_model,
+                api_key=token,
+                base_url=openai_base,
+                extra_headers=gateway_headers,
                 dry_run=self.config.dry_run,
             ),
         }
@@ -637,14 +682,24 @@ class ExperimentRunner:
         return factories[provider]()
 
     def _get_client(self, model_alias: str) -> BaseModelClient:
+        current_version = self._token_manager.token_version
+        if current_version != self._last_token_version:
+            for client in self._client_cache.values():
+                asyncio.ensure_future(client.close())
+            self._client_cache.clear()
+            self._last_token_version = current_version
+
         if model_alias in self._client_cache:
             return self._client_cache[model_alias]
+
+        token = self._token_manager.get_token()
+        self._last_token_version = self._token_manager.token_version
 
         model_cfg = self.models_config["models"][model_alias]
         provider = str(model_cfg["provider"])
         api_model = str(model_cfg["api_model"])
 
-        client = self._create_client(provider=provider, model_alias=model_alias, api_model=api_model)
+        client = self._create_client(provider=provider, model_alias=model_alias, api_model=api_model, token=token)
         self._client_cache[model_alias] = client
         return client
 

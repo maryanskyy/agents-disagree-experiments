@@ -1,4 +1,4 @@
-﻿"""Pairwise LLM-as-judge with multi-judge panel aggregation.
+"""Pairwise LLM-as-judge with multi-judge panel aggregation.
 
 This module implements the production evaluation protocol required for the
 experiment:
@@ -217,12 +217,14 @@ class PairwiseJudge:
         )
         response = await self.judge_client.generate(
             system_prompt=(
-                "You are a strict blind evaluator. Compare Response A vs Response B only. "
-                "Return JSON only with keys winner, confidence, rationale."
+                "You are a decisive blind evaluator. You MUST pick a winner. "
+                "Compare Response A vs Response B on the rubric criteria and decide which is better. "
+                "Do NOT say tie. One response is always at least slightly better. Find the difference. "
+                "Return JSON only with keys: winner (must be \"A\" or \"B\"), confidence (0-1), rationale."
             ),
             user_prompt=prompt,
-            temperature=0.0,
-            max_tokens=512,
+            temperature=0.1,
+            max_tokens=1024,
             metadata={"role": "pairwise_judge", "ordering": ordering},
         )
         if self.call_recorder is not None:
@@ -252,16 +254,18 @@ class PairwiseJudge:
             f"Task type: {task_type}\n"
             f"Task prompt:\n{task_prompt}\n\n"
             "Evaluation rules:\n"
+            "- You MUST choose either A or B as the winner. Do NOT choose tie.\n"
+            "- Even if both responses seem similar, one is always at least slightly better.\n"
+            "  Examine the rubric criteria carefully and find the differentiating factor.\n"
             "- Judge only quality relative to the task and rubric.\n"
             "- Ignore response length unless it harms substance.\n"
             "- Ignore formatting polish and stylistic familiarity biases.\n"
-            "- You are blind to model, topology, consensus method, and agent count.\n"
-            "- Choose exactly one: A, B, or tie.\n\n"
+            "- You are blind to model, topology, consensus method, and agent count.\n\n"
             f"Rubric:\n{rubric_text}\n\n"
             f"Response A:\n{output_a}\n\n"
             f"Response B:\n{output_b}\n\n"
-            "Return strict JSON only:\n"
-            '{"winner":"A|B|tie","confidence":0.0,"rationale":"..."}'
+            "Return strict JSON only (winner MUST be \"A\" or \"B\", NOT \"tie\"):\n"
+            '{"winner":"A or B","confidence":0.0,"rationale":"..."}'
         )
 
     def _task_specific_rubric(self, task_type: str) -> list[str]:
@@ -277,22 +281,51 @@ class PairwiseJudge:
             "Craft: fluency, imagery, and stylistic control",
         ]
 
+    @staticmethod
+    def _strip_markdown_fences(text: str) -> str:
+        """Remove markdown code fences that some models wrap around JSON."""
+        stripped = text.strip()
+        if stripped.startswith("```"):
+            first_newline = stripped.find("\n")
+            if first_newline != -1:
+                stripped = stripped[first_newline + 1:]
+            if stripped.endswith("```"):
+                stripped = stripped[:-3]
+        return stripped.strip()
+
     def _parse_ballot_json(self, text: str) -> tuple[str, float, str]:
+        cleaned = self._strip_markdown_fences(text)
         try:
-            payload = json.loads(text)
-            raw_winner = str(payload.get("winner", "tie")).strip().lower()
-            if raw_winner in {"a", "response a", "candidate a"}:
-                winner = "A"
-            elif raw_winner in {"b", "response b", "candidate b"}:
-                winner = "B"
-            else:
-                winner = "tie"
-            confidence = float(payload.get("confidence", 0.5))
-            confidence = max(0.0, min(1.0, confidence))
-            rationale = str(payload.get("rationale", ""))
-            return winner, confidence, rationale
-        except Exception:
-            return "tie", 0.5, "malformed_judge_output"
+            payload = json.loads(cleaned)
+        except json.JSONDecodeError:
+            payload = self._extract_partial_json(cleaned)
+
+        raw_winner = str(payload.get("winner", "tie")).strip().lower()
+        if raw_winner in {"a", "response a", "candidate a"}:
+            winner = "A"
+        elif raw_winner in {"b", "response b", "candidate b"}:
+            winner = "B"
+        else:
+            winner = "tie"
+        confidence = float(payload.get("confidence", 0.5))
+        confidence = max(0.0, min(1.0, confidence))
+        rationale = str(payload.get("rationale", ""))
+        return winner, confidence, rationale
+
+    @staticmethod
+    def _extract_partial_json(text: str) -> dict:
+        """Best-effort extraction from truncated or malformed JSON."""
+        import re
+        winner_match = re.search(r'"winner"\s*:\s*"([^"]*)"', text)
+        conf_match = re.search(r'"confidence"\s*:\s*([\d.]+)', text)
+        rat_match = re.search(r'"rationale"\s*:\s*"((?:[^"\\]|\\.)*)', text)
+        if winner_match:
+            return {
+                "winner": winner_match.group(1),
+                "confidence": float(conf_match.group(1)) if conf_match else 0.5,
+                "rationale": rat_match.group(1) if rat_match else "partial_parse",
+            }
+        return {}
 
     def _canonical_winner(self, ballot: PairwiseBallot) -> int | None:
         """Map ballot winner label to canonical left/right pair index.

@@ -1,4 +1,4 @@
-﻿"""Pre-flight validation for environment, configs, and provider connectivity."""
+"""Pre-flight validation for environment, configs, and provider connectivity."""
 
 from __future__ import annotations
 
@@ -41,14 +41,25 @@ def check_python() -> str:
 
 
 def check_env(dry_run: bool) -> dict[str, bool]:
-    """Check API key presence for all providers."""
+    """Check gateway token availability."""
+    from src.utils.token_manager import TokenManager
+
+    try:
+        tm = TokenManager()
+        token = tm.get_token()
+        token_ok = bool(token)
+    except Exception:
+        token_ok = False
+
     env_status = {
-        "anthropic_key_present": bool(os.getenv("ANTHROPIC_API_KEY")),
-        "openai_key_present": bool(os.getenv("OPENAI_API_KEY")),
-        "google_key_present": bool(os.getenv("GOOGLE_API_KEY")),
+        "gateway_token_available": token_ok,
+        "gateway_auth": "token" if token_ok else "missing",
     }
-    if not dry_run and not all(env_status.values()):
-        raise RuntimeError("Missing API keys. Set ANTHROPIC_API_KEY, OPENAI_API_KEY, and GOOGLE_API_KEY.")
+    if not dry_run and not token_ok:
+        raise RuntimeError(
+            "Cannot acquire gateway token. Set GENAI_TOKEN_CMD env var "
+            "to a command that prints a bearer token."
+        )
     return env_status
 
 

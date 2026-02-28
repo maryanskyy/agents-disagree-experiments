@@ -1,10 +1,9 @@
-﻿"""OpenAI model client adapter."""
+"""OpenAI model client adapter — routed through GenAI Gateway."""
 
 from __future__ import annotations
 
 import asyncio
 from dataclasses import dataclass
-import os
 import random
 import time
 from typing import Any
@@ -18,12 +17,12 @@ from .base import BaseModelClient, ModelResponse
 class OpenAIClientConfig:
     """Configuration for OpenAI API calls."""
 
-    timeout_seconds: int = 60
+    timeout_seconds: int = 120
     rpm_limit: int = 60
 
 
 class OpenAIModelClient(BaseModelClient):
-    """Async wrapper around official OpenAI Python SDK."""
+    """Async wrapper around OpenAI Python SDK using Chat Completions API."""
 
     _rate_limiter = AsyncRateLimiter()
 
@@ -33,23 +32,39 @@ class OpenAIModelClient(BaseModelClient):
         api_model: str,
         api_key: str | None = None,
         *,
+        base_url: str | None = None,
+        extra_headers: dict[str, str] | None = None,
         dry_run: bool = False,
         config: OpenAIClientConfig | None = None,
     ) -> None:
         super().__init__(model_alias=model_alias, api_model=api_model, dry_run=dry_run)
-        self.api_key = api_key or os.getenv("OPENAI_API_KEY")
+        self.api_key = api_key
+        self.base_url = base_url
+        self.extra_headers = extra_headers or {}
         self.config = config or OpenAIClientConfig()
 
         self._client: Any | None = None
         if not self.dry_run:
             if not self.api_key:
-                raise ValueError("Missing OPENAI_API_KEY for non-dry run")
-            try:
-                from openai import AsyncOpenAI
-            except ImportError as exc:
-                raise RuntimeError("openai package is not installed") from exc
+                raise ValueError("Missing API key for OpenAI client")
+            self._init_client()
 
-            self._client = AsyncOpenAI(api_key=self.api_key, timeout=self.config.timeout_seconds)
+    def _init_client(self) -> None:
+        try:
+            from openai import AsyncOpenAI
+        except ImportError as exc:
+            raise RuntimeError("openai package is not installed") from exc
+
+        kwargs: dict[str, Any] = {
+            "api_key": self.api_key,
+            "timeout": self.config.timeout_seconds,
+        }
+        if self.base_url:
+            kwargs["base_url"] = self.base_url
+        if self.extra_headers:
+            kwargs["default_headers"] = self.extra_headers
+
+        self._client = AsyncOpenAI(**kwargs)
 
     async def generate(
         self,
@@ -69,49 +84,30 @@ class OpenAIModelClient(BaseModelClient):
         await self._rate_limiter.acquire(key=f"openai:{self.model_alias}", rpm=self.config.rpm_limit)
 
         started = time.perf_counter()
-        response = await self._client.responses.create(
+        response = await self._client.chat.completions.create(
             model=self.api_model,
-            input=[
-                {
-                    "role": "system",
-                    "content": [{"type": "input_text", "text": system_prompt}],
-                },
-                {
-                    "role": "user",
-                    "content": [{"type": "input_text", "text": user_prompt}],
-                },
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
             ],
             temperature=temperature,
-            max_output_tokens=max_tokens,
-            metadata=metadata or {},
+            max_tokens=max_tokens,
         )
         elapsed_ms = (time.perf_counter() - started) * 1000
 
-        usage = getattr(response, "usage", None)
-        input_tokens = int(getattr(usage, "input_tokens", 0) or 0)
-        output_tokens = int(getattr(usage, "output_tokens", 0) or 0)
+        text = response.choices[0].message.content or "" if response.choices else ""
+        usage = response.usage
+        input_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+        output_tokens = int(getattr(usage, "completion_tokens", 0) or 0)
 
         return ModelResponse(
-            text=self._extract_text(response).strip(),
+            text=text.strip(),
             model_name=self.model_alias,
             input_tokens=input_tokens,
             output_tokens=output_tokens,
             latency_ms=elapsed_ms,
             raw={"id": getattr(response, "id", None)},
         )
-
-    def _extract_text(self, response: Any) -> str:
-        output_text = getattr(response, "output_text", None)
-        if isinstance(output_text, str) and output_text.strip():
-            return output_text
-
-        chunks: list[str] = []
-        for item in getattr(response, "output", []) or []:
-            for content in getattr(item, "content", []) or []:
-                text = getattr(content, "text", None)
-                if isinstance(text, str):
-                    chunks.append(text)
-        return "\n".join(chunks)
 
     def _mock_response(self, *, user_prompt: str) -> ModelResponse:
         started = time.perf_counter()
@@ -142,4 +138,3 @@ class OpenAIModelClient(BaseModelClient):
             return
 
         await asyncio.sleep(0)
-

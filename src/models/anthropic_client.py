@@ -1,10 +1,12 @@
-﻿"""Anthropic model client adapter."""
+"""Anthropic model client adapter — routed through GenAI Gateway.
+
+Uses the OpenAI-compatible Chat Completions API exposed by the gateway
+since the native Anthropic Messages endpoint is restricted.
+"""
 
 from __future__ import annotations
 
 import asyncio
-from dataclasses import dataclass
-import os
 import random
 import time
 from typing import Any
@@ -12,15 +14,8 @@ from typing import Any
 from .base import BaseModelClient, ModelResponse
 
 
-@dataclass(slots=True)
-class AnthropicClientConfig:
-    """Configuration for Anthropic API calls."""
-
-    timeout_seconds: int = 60
-
-
 class AnthropicModelClient(BaseModelClient):
-    """Async wrapper around official anthropic SDK."""
+    """Async Claude client using OpenAI-compatible gateway endpoint."""
 
     def __init__(
         self,
@@ -28,22 +23,38 @@ class AnthropicModelClient(BaseModelClient):
         api_model: str,
         api_key: str | None = None,
         *,
+        base_url: str | None = None,
+        extra_headers: dict[str, str] | None = None,
         dry_run: bool = False,
-        config: AnthropicClientConfig | None = None,
+        config: Any | None = None,
     ) -> None:
         super().__init__(model_alias=model_alias, api_model=api_model, dry_run=dry_run)
-        self.api_key = api_key or os.getenv("ANTHROPIC_API_KEY")
-        self.config = config or AnthropicClientConfig()
+        self.api_key = api_key
+        self.base_url = base_url
+        self.extra_headers = extra_headers or {}
 
         self._client: Any | None = None
         if not self.dry_run:
             if not self.api_key:
-                raise ValueError("Missing ANTHROPIC_API_KEY for non-dry run")
-            try:
-                from anthropic import AsyncAnthropic
-            except ImportError as exc:
-                raise RuntimeError("anthropic package is not installed") from exc
-            self._client = AsyncAnthropic(api_key=self.api_key, timeout=self.config.timeout_seconds)
+                raise ValueError("Missing API key for Anthropic client")
+            self._init_client()
+
+    def _init_client(self) -> None:
+        try:
+            from openai import AsyncOpenAI
+        except ImportError as exc:
+            raise RuntimeError("openai package is not installed") from exc
+
+        kwargs: dict[str, Any] = {
+            "api_key": self.api_key,
+            "timeout": 120,
+        }
+        if self.base_url:
+            kwargs["base_url"] = self.base_url
+        if self.extra_headers:
+            kwargs["default_headers"] = self.extra_headers
+
+        self._client = AsyncOpenAI(**kwargs)
 
     async def generate(
         self,
@@ -61,27 +72,27 @@ class AnthropicModelClient(BaseModelClient):
             raise RuntimeError("Anthropic client not initialized")
 
         started = time.perf_counter()
-        response = await self._client.messages.create(
+        response = await self._client.chat.completions.create(
             model=self.api_model,
-            max_tokens=max_tokens,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
             temperature=temperature,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_prompt}],
-            metadata=metadata or {},
+            max_tokens=max_tokens,
         )
         elapsed_ms = (time.perf_counter() - started) * 1000
 
-        text_chunks = []
-        for chunk in response.content:
-            if getattr(chunk, "type", None) == "text":
-                text_chunks.append(chunk.text)
+        text = response.choices[0].message.content or "" if response.choices else ""
+        usage = response.usage
+        input_tokens = int(getattr(usage, "prompt_tokens", 0) or 0)
+        output_tokens = int(getattr(usage, "completion_tokens", 0) or 0)
 
-        usage = getattr(response, "usage", None)
         return ModelResponse(
-            text="\n".join(text_chunks).strip(),
+            text=text.strip(),
             model_name=self.model_alias,
-            input_tokens=int(getattr(usage, "input_tokens", 0) or 0),
-            output_tokens=int(getattr(usage, "output_tokens", 0) or 0),
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
             latency_ms=elapsed_ms,
             raw={"id": getattr(response, "id", None)},
         )
@@ -103,5 +114,15 @@ class AnthropicModelClient(BaseModelClient):
         )
 
     async def close(self) -> None:
-        # Official SDK currently does not require explicit closure.
+        if self._client is None:
+            await asyncio.sleep(0)
+            return
+
+        close_fn = getattr(self._client, "close", None)
+        if close_fn is not None:
+            maybe_coro = close_fn()
+            if asyncio.iscoroutine(maybe_coro):
+                await maybe_coro
+            return
+
         await asyncio.sleep(0)
