@@ -1,6 +1,6 @@
-version: 3
+﻿version: 3
 
-# Agent Pool — models used in multi-agent pipelines
+# Agent Pool - models used in multi-agent pipelines
 agent_pool:
   claude-opus-4-6:
     provider: anthropic
@@ -52,7 +52,7 @@ agent_pool:
     rpm_limit: 80
     tpm_limit: 500000
 
-# Judge Pool — models used ONLY for evaluation (no overlap with agents)
+# Judge Pool - models used ONLY for evaluation (no overlap with agents)
 judge_pool:
   claude-sonnet-4-6:
     provider: anthropic
@@ -68,9 +68,10 @@ judge_pool:
     output_cost_per_1m: 10.0
     rpm_limit: 35
 
-  gemini-3-pro-preview:
-    provider: google
-    model_id: gemini-3-pro-preview
-    input_cost_per_1m: 1.25
-    output_cost_per_1m: 10.0
-    rpm_limit: 35
+  # REPLACED: gemini-3-pro-preview had 84.5% tie rate in pilot
+  deepseek-v3p2:
+    provider: openai  # DeepSeek uses OpenAI-compatible API
+    model_id: deepseek-v3p2
+    input_cost_per_1m: 0.27
+    output_cost_per_1m: 1.10
+    rpm_limit: 30

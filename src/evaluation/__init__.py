@@ -1,4 +1,4 @@
-"""Evaluation and judging modules."""
+﻿"""Evaluation and judging modules."""
 
 from .disagreement import disagreement_summary
 from .human_eval import HumanEvalDecision, HumanEvalManager
@@ -9,6 +9,7 @@ from .metrics import (
     evaluate_analytical,
     evaluate_creative,
 )
+from .structural_quality import StructuralMetrics, compute_composite_score, compute_structural_metrics
 
 __all__ = [
     "disagreement_summary",
@@ -24,4 +25,7 @@ __all__ = [
     "dev_heuristic_creative",
     "evaluate_analytical",
     "evaluate_creative",
+    "StructuralMetrics",
+    "compute_structural_metrics",
+    "compute_composite_score",
 ]

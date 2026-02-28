@@ -169,3 +169,21 @@ After completion:
 
 - Statistical preregistration details: **`ANALYSIS_PLAN.md`**
 - Operator execution SOP: **`HANDOVER.md`**
+## Structural Quality Validation Layer
+
+In addition to LLM-as-judge evaluation, we compute 7 structural quality metrics
+on every output text, using only local computation (no API calls):
+
+1. MTLD (lexical diversity) — validated correlation with human quality ratings
+2. Flesch-Kincaid readability grade
+3. Adjacent-sentence coherence (embedding cosine similarity)
+4. Prompt relevance (embedding similarity to task prompt)
+5. Logical connective density (causal/contrastive/additive)
+6. Word count
+7. Repetition rate (duplicate 4-gram fraction)
+
+These metrics serve as an independent validation of LLM judge decisions.
+Spearman correlation between the structural composite and LLM judge BT scores
+is reported alongside primary results. Runs where structural and LLM assessments
+strongly disagree are flagged for manual review.
+

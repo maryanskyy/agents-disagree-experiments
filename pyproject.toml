@@ -24,7 +24,9 @@ dependencies = [
   "scipy>=1.14.0",
   "sentence-transformers>=3.0.0",
   "python-dotenv>=1.0.1",
-  "tenacity>=9.0.0"
+  "tenacity>=9.0.0",
+  "textstat>=0.7.0",
+  "lexical-diversity>=0.1.1"
 ]
 
 [project.optional-dependencies]

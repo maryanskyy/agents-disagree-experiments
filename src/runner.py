@@ -1,9 +1,9 @@
-"""Asynchronous, resumable experiment runner."""
+﻿"""Asynchronous, resumable experiment runner."""
 
 from __future__ import annotations
 
 import asyncio
-from dataclasses import dataclass
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 import logging
 from pathlib import Path
@@ -22,6 +22,7 @@ from .evaluation.corrected_metrics import compute_corrected_metrics
 from .evaluation.disagreement import disagreement_summary
 from .evaluation.human_eval import HumanEvalManager
 from .evaluation.llm_judge import JudgePanel, PairwiseJudge
+from .evaluation.structural_quality import compute_structural_metrics
 from .manifest import ExperimentManifest, RunSpec
 from .models import (
     AnthropicModelClient,
@@ -388,6 +389,20 @@ class ExperimentRunner:
             topology_result=topology_result,
         )
 
+        embedding_model_name = "__disabled__" if self.config.dry_run else "all-MiniLM-L6-v2"
+
+        outputs_payload = [
+            {
+                "agent_id": out.agent_id,
+                "model_name": out.model_name,
+                "text": out.text,
+                "input_tokens": out.input_tokens,
+                "output_tokens": out.output_tokens,
+                "latency_ms": out.latency_ms,
+            }
+            for out in topology_result.outputs
+        ]
+
         result_payload = {
             "run_id": run_spec.id,
             "block_id": run_spec.block_id,
@@ -412,17 +427,7 @@ class ExperimentRunner:
                 "prompt": task.prompt,
                 "rubric": task.rubric,
             },
-            "outputs": [
-                {
-                    "agent_id": out.agent_id,
-                    "model_name": out.model_name,
-                    "text": out.text,
-                    "input_tokens": out.input_tokens,
-                    "output_tokens": out.output_tokens,
-                    "latency_ms": out.latency_ms,
-                }
-                for out in topology_result.outputs
-            ],
+            "outputs": outputs_payload,
             "consensus": {
                 "method": topology_result.consensus.method,
                 "selected_agent_id": topology_result.consensus.selected_agent_id,
@@ -447,6 +452,25 @@ class ExperimentRunner:
                 "disagreement": disagreement,
             },
         }
+
+        try:
+            structural = compute_structural_metrics(
+                text=final_text,
+                prompt=task.prompt,
+                model_name=embedding_model_name,
+            )
+            result_payload["evaluation"]["structural_metrics"] = asdict(structural)
+
+            for idx, agent_output in enumerate(topology_result.outputs):
+                agent_structural = compute_structural_metrics(
+                    text=agent_output.text,
+                    prompt=task.prompt,
+                    model_name=embedding_model_name,
+                )
+                result_payload["outputs"][idx]["structural_metrics"] = asdict(agent_structural)
+        except Exception as exc:  # pragma: no cover - defensive path
+            self.logger.exception("Structural metric computation failed for run %s", run_spec.id)
+            result_payload["evaluation"]["structural_metrics_error"] = repr(exc)
 
         human_decision = self.human_eval.decide(result_payload)
         if human_decision.should_flag:
@@ -706,5 +730,7 @@ class ExperimentRunner:
     async def close(self) -> None:
         """Close all clients."""
         await asyncio.gather(*[client.close() for client in self._client_cache.values()])
+
+
 
 
