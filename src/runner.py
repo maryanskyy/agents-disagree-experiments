@@ -18,6 +18,7 @@ from .consensus import (
     JudgeBasedConsensus,
     SimpleVoteConsensus,
 )
+from .evaluation.corrected_metrics import compute_corrected_metrics
 from .evaluation.disagreement import disagreement_summary
 from .evaluation.human_eval import HumanEvalManager
 from .evaluation.llm_judge import JudgePanel, PairwiseJudge
@@ -328,7 +329,7 @@ class ExperimentRunner:
         disagreement = disagreement_summary(output_texts)
         final_text = topology_result.consensus.selected_text
 
-        panel_payload, quality_score, selected_per_judge_scores = await self._evaluate_final_quality(
+        panel_payload, quality_score, selected_per_judge_scores, corrected_metrics = await self._evaluate_final_quality(
             run_spec=run_spec,
             task=task,
             output_texts=output_texts,
@@ -405,6 +406,7 @@ class ExperimentRunner:
             "debate_rounds": debate_rounds,
             "evaluation": {
                 "quality_score": quality_score,
+                "corrected_metrics": corrected_metrics,
                 "threshold_met": threshold_met,
                 "thresholds": thresholds,
                 "selected_per_judge_scores": selected_per_judge_scores,
@@ -441,7 +443,7 @@ class ExperimentRunner:
         selected_agent_id: str | None,
         consensus_metadata: dict[str, Any],
         judge_panel: JudgePanel,
-    ) -> tuple[dict[str, Any], float, dict[str, float]]:
+    ) -> tuple[dict[str, Any], float, dict[str, float], dict[str, Any]]:
         # Reuse panel evaluation from judge-based consensus when possible.
         panel_payload = consensus_metadata.get("judge_panel") if run_spec.consensus == "judge_based" else None
 
@@ -460,7 +462,12 @@ class ExperimentRunner:
                     judge: float(scores.get(selected_id, 0.0))
                     for judge, scores in panel_payload.get("per_judge_bt_scores", {}).items()
                 }
-                return panel_payload, quality, per_judge
+                corrected_metrics = compute_corrected_metrics(
+                    panel_payload=panel_payload,
+                    quality_score=quality,
+                    consensus_candidate_id=selected_id,
+                )
+                return panel_payload, quality, per_judge, corrected_metrics
 
         # Otherwise score final output against candidate pool explicitly.
         candidate_texts = [final_text, *output_texts]
@@ -478,7 +485,12 @@ class ExperimentRunner:
             judge: float(scores.get("final_consensus", 0.0))
             for judge, scores in payload.get("per_judge_bt_scores", {}).items()
         }
-        return payload, quality, per_judge
+        corrected_metrics = compute_corrected_metrics(
+            panel_payload=payload,
+            quality_score=quality,
+            consensus_candidate_id="final_consensus",
+        )
+        return payload, quality, per_judge, corrected_metrics
 
     def _extract_debate_rounds(self, *, run_spec: RunSpec, topology_result) -> list[dict[str, Any]]:
         metadata_rounds = topology_result.metadata.get("debate_rounds") if topology_result.metadata else None

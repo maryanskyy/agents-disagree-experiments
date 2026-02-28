@@ -1,32 +1,49 @@
 ﻿# ANALYSIS_PLAN.md
 
-**Status:** Pre-registered analysis plan (must be fixed before running full experiment).
+**Status:** Pre-registered analysis plan (updated for BT normalization artifact correction).
+
+## Metric Policy (Critical Update)
+
+### Primary quality metric for cross-condition comparisons
+- **`consensus_win_rate`** = fraction of pairwise comparisons where the consensus output beats individual-agent outputs (ties count as 0.5).
+
+### Secondary diagnostic metric
+- **`normalized_bt_score`** = `quality_score × num_bt_candidates`.
+
+### Why this correction is required
+Raw `quality_score` is a Bradley-Terry (BT) share over all candidates in each run, and BT shares sum to 1.0. As candidate count increases, the raw value is mechanically deflated (e.g., baseline ~0.50 for 2 candidates, ~0.25 for 4 candidates). Therefore, raw BT scores are **not comparable across different agent counts** and are not used as the primary metric for H1-H4.
+
+---
 
 ## 1) Confirmatory Primary Hypotheses (H1-H4) and Exact Tests
 
 ### H1 (RQ1: Disagreement Dividend)
-- **Claim:** Quality as a function of disagreement level is inverted-U shaped.
+- **Claim:** Consensus quality as a function of disagreement level is inverted-U shaped.
+- **Outcome:** `consensus_win_rate`.
 - **Model:** Quadratic regression
-  - `Q = beta0 + beta1*d + beta2*d^2 + u_task + e`
+  - `CWR = beta0 + beta1*d + beta2*d^2 + u_task + e`
   - where `d` is disagreement level proxy; `u_task` is task random effect (mixed-effects specification where available).
 - **Primary test:** one-sided test `beta2 < 0`.
 
 ### H2 (RQ2: MVQ / threshold attainment)
 - **Claim:** Probability of meeting quality threshold increases with n and yields an interpretable `n*`.
+- **Outcome:** threshold events based on `consensus_win_rate`.
 - **Model:** Logistic regression
-  - `logit(P(Q >= theta)) = gamma0 + gamma1*n + gamma2*condition + gamma3*n:condition + u_task`
+  - `logit(P(CWR >= theta)) = gamma0 + gamma1*n + gamma2*condition + gamma3*n:condition + u_task`
 - **Primary test:** `gamma1 > 0` in each task type; extract `n*` (minimum n where predicted probability crosses target).
 
 ### H3 (RQ3: Quorum Paradox)
-- **Claim:** In paradox-relevant settings, quality at n=3 is lower than at n=2.
-- **Test:** Within-task paired comparison of `Q(n=3)` vs `Q(n=2)`.
+- **Claim:** In paradox-relevant settings, consensus quality at n=3 is lower than at n=2.
+- **Outcome:** `consensus_win_rate`.
+- **Test:** Within-task paired comparison of `CWR(n=3)` vs `CWR(n=2)`.
   - Use paired t-test if normality of paired differences is adequate.
   - Otherwise use Wilcoxon signed-rank.
-- **Direction:** one-sided (`Q(n=3) < Q(n=2)`).
+- **Direction:** one-sided (`CWR(n=3) < CWR(n=2)`).
 
 ### H4 (RQ4: Topology x Consensus interaction)
 - **Claim:** Topology and consensus interact significantly.
-- **Test:** Two-way ANOVA interaction F-test on quality.
+- **Outcome:** `consensus_win_rate`.
+- **Test:** Two-way ANOVA interaction F-test on consensus quality.
   - Factors: topology, consensus.
   - Conducted separately by task type for confirmatory family.
 
@@ -71,15 +88,16 @@ Soft warning (requires review before proceeding):
 ## 5) Confirmatory vs Exploratory Labeling
 
 ## Confirmatory (pre-registered)
-- H1-H4 tests exactly as specified above.
+- H1-H4 tests exactly as specified above, using `consensus_win_rate` as primary quality metric.
 - Primary corrected inference set (Holm-Bonferroni family).
 - Core effect sizes and confidence intervals for primary outcomes.
 
 ## Exploratory (post-hoc)
 - Per-task deep dives not pre-specified.
 - Mediation/mechanism analyses using debate-round traces.
-- Additional subgroup analyses by model family combinations.\n- Provider-factor sensitivity analysis (Anthropic/OpenAI/Google composition terms in ANOVA/GLM) to test whether outcomes are robust to provider identity.
+- Provider-factor sensitivity analysis (Anthropic/OpenAI/Google composition terms in ANOVA/GLM) to test robustness to provider identity.
 - Alternative thresholds/theta sweeps beyond primary definitions.
+- Secondary checks with `normalized_bt_score`.
 
 Exploratory findings are clearly labeled "exploratory" and not used as sole support for headline claims.
 
@@ -87,10 +105,10 @@ Exploratory findings are clearly labeled "exploratory" and not used as sole supp
 
 ## 6) Exact Test Mapping by RQ (Required)
 
-- **RQ1:** Quadratic regression of `Q` on `d`; test `beta2 < 0`.
-- **RQ2:** Logistic regression of `P(Q >= theta)` on `n`; extract `n*` per condition.
-- **RQ3:** Paired t-test or Wilcoxon signed-rank on within-task `Q(n=3) < Q(n=2)`.
-- **RQ4:** Two-way ANOVA interaction test `topology x consensus` (F-test).
+- **RQ1:** Quadratic regression of `consensus_win_rate` on `d`; test `beta2 < 0`.
+- **RQ2:** Logistic regression of `P(consensus_win_rate >= theta)` on `n`; extract `n*` per condition.
+- **RQ3:** Paired t-test or Wilcoxon signed-rank on within-task `consensus_win_rate(n=3) < consensus_win_rate(n=2)`.
+- **RQ4:** Two-way ANOVA interaction test `topology x consensus` (F-test) on `consensus_win_rate`.
 
 ---
 
@@ -117,4 +135,4 @@ For all primary analyses:
 - report test statistic, raw p, Holm-adjusted decision, effect size, and CI.
 - include sample size per condition and any exclusion criteria.
 - include sensitivity note if normality assumptions trigger non-parametric fallback.
-
+- include a BT-artifact note clarifying that raw BT shares are reported descriptively only, not used for cross-agent-count inference.

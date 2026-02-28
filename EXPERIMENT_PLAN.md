@@ -1,10 +1,10 @@
-﻿# Experiment Plan (Final, T-026)
+﻿# Experiment Plan (Final, T-026 + T-028 Metric Fix)
 
 ## Study
 
 **When Agents Disagree: Quorum-Based Consensus and Adaptive Orchestration Topology for Multi-Agent LLM Pipelines**
 
-This revision upgrades the experiment to a **3-provider setup** and removes the prior 2-provider limitation.
+This revision upgrades the experiment to a **3-provider setup** and applies the **BT normalization metric correction** required for valid cross-condition analysis.
 
 ---
 
@@ -14,29 +14,48 @@ This revision upgrades the experiment to a **3-provider setup** and removes the 
 **Question:** Does moderate disagreement outperform near-homogeneous agreement?
 
 - **H1:** Quality vs disagreement follows an inverted-U.
-- **Primary test:** Quadratic regression `Q ~ beta0 + beta1*d + beta2*d^2`; test `beta2 < 0`.
+- **Primary test:** Quadratic regression on `consensus_win_rate`; test `beta2 < 0`.
 
 ### RQ2 — Minimum Viable Quorum (MVQ)
 **Question:** How does threshold-attainment change with agent count?
 
 - **H2:** Threshold attainment rises from n=1 to n=3 and saturates by n=5.
-- **Primary test:** Logistic regression on `P(Q >= theta)` with `n` and condition terms.
+- **Primary test:** Logistic regression on `P(consensus_win_rate >= theta)` with `n` and condition terms.
 
 ### RQ3 — Quorum Paradox
 **Question:** Can adding an agent reduce quality in asymmetric compositions?
 
-- **H3:** In paradox settings, quality at n=3 can dip below n=2.
-- **Primary test:** Paired t-test (or Wilcoxon fallback) on within-task deltas.
+- **H3:** In paradox settings, consensus quality at n=3 can dip below n=2.
+- **Primary test:** Paired t-test (or Wilcoxon fallback) on within-task `consensus_win_rate` deltas.
 
 ### RQ4 — Topology x Consensus Interaction
 **Question:** Do topology and consensus interact non-additively?
 
-- **H4:** Topology x consensus interaction is significant for quality.
-- **Primary test:** Two-way ANOVA interaction F-test.
+- **H4:** Topology x consensus interaction is significant for consensus quality.
+- **Primary test:** Two-way ANOVA interaction F-test on `consensus_win_rate`.
 
 ---
 
-## 2) Model Configuration (Updated)
+## 2) Metric Correction (T-028)
+
+### Problem: BT normalization artifact
+Raw `quality_score` is the Bradley-Terry score over all candidates in a run. Because BT scores sum to 1.0, raw scores decrease mechanically as candidate count increases (consensus + N agents), making raw BT values **incomparable across different agent counts**.
+
+### Corrected metrics
+1. **Primary:** `consensus_win_rate`
+   - Fraction of pairwise comparisons where consensus beats an individual agent.
+   - Ties count as 0.5.
+2. **Secondary:** `normalized_bt_score`
+   - `quality_score × num_bt_candidates`.
+   - Removes candidate-count deflation in raw BT shares.
+
+### Operational consequence
+- Existing data is fully reprocessable from stored pairwise judge records.
+- **No experiment re-run required** to apply this correction.
+
+---
+
+## 3) Model Configuration (Updated)
 
 ### Agent Pool (5 models, 3 providers)
 - `claude-opus-4-6` (Anthropic, strong)
@@ -58,7 +77,7 @@ Properties now satisfied:
 
 ---
 
-## 3) Matrix Changes Implemented
+## 4) Matrix Changes Implemented
 
 1. **Block 0 calibration expanded:** all 5 agent models solo on all 16 tasks, 3 reps.
 2. **Block 1 disagreement dividend expanded:**
@@ -77,7 +96,7 @@ Properties now satisfied:
 
 ---
 
-## 4) Block Summary (Current)
+## 5) Block Summary (Current)
 
 | Block | Purpose | Runs |
 |---|---|---:|
@@ -92,7 +111,7 @@ Properties now satisfied:
 
 ---
 
-## 5) Cost Estimate Snapshot
+## 6) Cost Estimate Snapshot
 
 Generated with:
 ```bash
@@ -119,7 +138,7 @@ Estimated total cost (USD): $3,553.25
 
 ---
 
-## 6) Output & Monitoring
+## 7) Output & Monitoring
 
 During runs:
 - `results/progress.json`
@@ -134,10 +153,11 @@ After completion:
 - `results/analysis/run_metrics.csv`
 - `results/analysis/summary_table.csv`
 - `results/analysis/*.pdf` and `*.png`
+- `results/corrected_metrics_summary.csv`
 
 ---
 
-## 7) Known Limitations
+## 8) Known Limitations
 
 1. **Only 2 task types (analytical + creative):** findings may not transfer to broader task classes.
 2. **LLM-as-judge is still imperfect:** mitigated by a 3-provider judge panel, pairwise bidirectional checks, and aggregation, but residual bias may remain.
@@ -145,8 +165,7 @@ After completion:
 
 ---
 
-## 8) Pre-registered Analysis and Handover
+## 9) Pre-registered Analysis and Handover
 
 - Statistical preregistration details: **`ANALYSIS_PLAN.md`**
 - Operator execution SOP: **`HANDOVER.md`**
-
