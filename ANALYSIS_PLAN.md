@@ -78,7 +78,7 @@ Soft warning (requires review before proceeding):
 ## Exploratory (post-hoc)
 - Per-task deep dives not pre-specified.
 - Mediation/mechanism analyses using debate-round traces.
-- Additional subgroup analyses by model family combinations.
+- Additional subgroup analyses by model family combinations.\n- Provider-factor sensitivity analysis (Anthropic/OpenAI/Google composition terms in ANOVA/GLM) to test whether outcomes are robust to provider identity.
 - Alternative thresholds/theta sweeps beyond primary definitions.
 
 Exploratory findings are clearly labeled "exploratory" and not used as sole support for headline claims.
@@ -117,3 +117,4 @@ For all primary analyses:
 - report test statistic, raw p, Holm-adjusted decision, effect size, and CI.
 - include sample size per condition and any exclusion criteria.
 - include sensitivity note if normality assumptions trigger non-parametric fallback.
+

@@ -1,107 +1,71 @@
-﻿version: 2
-providers:
-  anthropic:
-    default_timeout_seconds: 60
-  google:
-    default_timeout_seconds: 60
+﻿version: 3
 
-models:
+# Agent Pool — models used in multi-agent pipelines
+agent_pool:
   claude-opus-4-6:
     provider: anthropic
-    family: claude_opus
-    api_model: claude-opus-4-1-20250805
-    rpm: 50
-    tpm: 200000
-    pricing_per_1m_tokens:
-      input: 15.00
-      output: 75.00
-    max_output_tokens: 2048
-    quality_tier: strong
+    model_id: claude-opus-4-6
+    tier: strong
+    input_cost_per_1m: 15.0
+    output_cost_per_1m: 75.0
+    rpm_limit: 50
+    tpm_limit: 80000
 
-  claude-sonnet-4-5:
-    provider: anthropic
-    family: claude_sonnet
-    api_model: claude-sonnet-4-5-20250929
-    rpm: 80
-    tpm: 300000
-    pricing_per_1m_tokens:
-      input: 3.00
-      output: 15.00
-    max_output_tokens: 2048
-    quality_tier: strong
+  gpt-5.2:
+    provider: openai
+    model_id: gpt-5.2
+    tier: strong
+    input_cost_per_1m: 10.0
+    output_cost_per_1m: 60.0
+    rpm_limit: 60
+    tpm_limit: 150000
 
-  claude-haiku-4:
-    provider: anthropic
-    family: claude_haiku
-    api_model: claude-haiku-4-5-20251001
-    rpm: 120
-    tpm: 500000
-    pricing_per_1m_tokens:
-      input: 0.80
-      output: 4.00
-    max_output_tokens: 2048
-    quality_tier: fast
-
-  # CRITICAL: Pinned versions prevent mid-experiment drift
   gemini-2.5-pro:
     provider: google
-    family: gemini_pro
-    api_model: gemini-2.5-pro-preview-05-06
-    rpm: 60
-    tpm: 300000
-    pricing_per_1m_tokens:
-      input: 1.25
-      output: 5.00
-    max_output_tokens: 2048
-    quality_tier: strong
+    model_id: gemini-2.5-pro-preview-05-06 # PINNED
+    tier: strong
+    input_cost_per_1m: 1.25
+    output_cost_per_1m: 10.0
+    rpm_limit: 60
+    tpm_limit: 200000
 
-  gemini-1.5-pro:
+  claude-haiku-4-5:
+    provider: anthropic
+    model_id: claude-haiku-4-5
+    tier: weak
+    input_cost_per_1m: 0.80
+    output_cost_per_1m: 4.0
+    rpm_limit: 100
+    tpm_limit: 100000
+
+  gemini-2.5-flash:
     provider: google
-    family: gemini_1_5_pro
-    api_model: gemini-1.5-pro-001
-    rpm: 80
-    tpm: 400000
-    pricing_per_1m_tokens:
-      input: 1.00
-      output: 4.00
-    max_output_tokens: 2048
-    quality_tier: strong
+    model_id: gemini-2.5-flash # PINNED when stable version available
+    tier: weak
+    input_cost_per_1m: 0.075
+    output_cost_per_1m: 0.30
+    rpm_limit: 200
+    tpm_limit: 500000
 
-  gemini-2.0-flash:
-    provider: google
-    family: gemini_flash
-    api_model: gemini-2.0-flash-001
-    rpm: 200
-    tpm: 1000000
-    pricing_per_1m_tokens:
-      input: 0.10
-      output: 0.40
-    max_output_tokens: 2048
-    quality_tier: fast
-
-agent_pool:
-  models:
-    - claude-opus-4-6
-    - gemini-2.5-pro
-    - gemini-2.0-flash
-
+# Judge Pool — models used ONLY for evaluation (no overlap with agents)
 judge_pool:
-  panel_size: 3
-  primary_models:
-    - gemini-2.5-pro
-    - claude-opus-4-6
-    - claude-sonnet-4-5
-  reserve_models:
-    - claude-haiku-4
-    - gemini-1.5-pro
-  exclude_agent_models: true
-  prefer_different_families: true
-  max_retries: 4
+  claude-sonnet-4-6:
+    provider: anthropic
+    model_id: claude-sonnet-4-6
+    input_cost_per_1m: 3.0
+    output_cost_per_1m: 15.0
+    rpm_limit: 60
 
-defaults:
-  max_concurrent: 10
-  base_seed: 42
-  max_retries: 5
-  retry_backoff_seconds: 1.0
+  gpt-4o:
+    provider: openai
+    model_id: gpt-4o
+    input_cost_per_1m: 2.50
+    output_cost_per_1m: 10.0
+    rpm_limit: 60
 
-
+  gemini-3.1-pro-preview:
+    provider: google
+    model_id: gemini-3.1-pro-preview
+    input_cost_per_1m: 1.25
+    output_cost_per_1m: 10.0
+    rpm_limit: 60

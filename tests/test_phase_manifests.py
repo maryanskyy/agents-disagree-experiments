@@ -17,13 +17,13 @@ def test_pilot_manifest_shape() -> None:
     )
 
     pilot = _pilot_manifest(base_manifest=base_manifest, seed=42)
-    assert len(pilot.runs) == 232
+    assert len(pilot.runs) == 280
 
     block0 = [run for run in pilot.runs if run.block_id == "block0_calibration"]
     block1 = [run for run in pilot.runs if run.block_id == "block1_disagreement_dividend"]
     block4 = [run for run in pilot.runs if run.block_id == "block4_quorum_paradox"]
 
-    assert len(block0) == 192
+    assert len(block0) == 240
     assert len(block1) == 20
     assert len(block4) == 20
 
@@ -45,3 +45,4 @@ def test_full_phase_excludes_pilot_runs(tmp_path: Path) -> None:
 
     assert pilot_ids.isdisjoint(full_ids)
     assert len(full.runs) + len(pilot.runs) == len(base_manifest.runs)
+

@@ -12,10 +12,11 @@ This guide is for the operator running the final experiment on a **MacBook Air M
 - Git
 - API keys:
   - `ANTHROPIC_API_KEY`
+  - `OPENAI_API_KEY`
   - `GOOGLE_API_KEY`
 
 Optional but recommended:
-- `tmux` (to protect long runs from terminal disconnects)
+- `tmux` (protect long runs from terminal disconnects)
 - charger connected + sleep disabled while running
 
 ---
@@ -32,7 +33,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 cp .env.example .env
-# edit .env and set ANTHROPIC_API_KEY + GOOGLE_API_KEY
+# edit .env and set ANTHROPIC_API_KEY + OPENAI_API_KEY + GOOGLE_API_KEY
 ```
 
 ---
@@ -43,20 +44,39 @@ cp .env.example .env
 python scripts/validate_setup.py --dry-run
 ```
 
-Expected:
-- validation completes without exceptions
-- dry-run summary printed
+This validates:
+- Python/runtime compatibility
+- task catalog integrity
+- environment key checks
+- model connectivity wiring (mocked in dry-run)
+- tiny end-to-end dry-run execution
 
 If this fails, do **not** start paid runs.
 
 ---
 
-## 4) Phase A (Pilot)
+## 4) Model Configuration Snapshot
+
+### Agent pool (5)
+- `claude-opus-4-6` (Anthropic, strong)
+- `gpt-5.2` (OpenAI, strong)
+- `gemini-2.5-pro` (Google, strong)
+- `claude-haiku-4-5` (Anthropic, weak/fast)
+- `gemini-2.5-flash` (Google, weak/fast)
+
+### Judge pool (3; no overlap with agents)
+- `claude-sonnet-4-6` (Anthropic)
+- `gpt-4o` (OpenAI)
+- `gemini-3.1-pro-preview` (Google)
+
+---
+
+## 5) Phase A (Pilot)
 
 Run:
 
 ```bash
-python scripts/run_experiments.py --phase pilot --resume --max-cost 1500
+python scripts/run_experiments.py --phase pilot --resume --max-cost 4000
 ```
 
 Pilot executes:
@@ -75,12 +95,12 @@ GO/NO-GO criteria:
 
 ---
 
-## 5) Phase B (Full)
+## 6) Phase B (Full)
 
 Run remaining experiment (excluding pilot-completed runs):
 
 ```bash
-python scripts/run_experiments.py --phase full --resume --max-cost 1500
+python scripts/run_experiments.py --phase full --resume --max-cost 4000
 ```
 
 Expected runtime:
@@ -93,27 +113,27 @@ Monitoring:
 
 ---
 
-## 6) During the Run
+## 7) During the Run
 
-## Check progress
+### Check progress
 - `results/progress.json` is the primary live status file.
-- `status` field may switch to `paused_max_cost` if guardrail is hit.
+- `status` may switch to `paused_max_cost` if guardrail is hit.
 
-## If errors occur
+### If errors occur
 1. Read latest stack trace in `results/run_experiments.log`.
 2. Fix issue (API key, network, dependency).
 3. Resume safely:
    ```bash
-   python scripts/run_experiments.py --phase full --resume --max-cost 1500
+   python scripts/run_experiments.py --phase full --resume --max-cost 4000
    ```
 
-## If laptop sleeps/crashes
+### If laptop sleeps/crashes
 - Resume with same command + `--resume`.
 - Completed run files are checkpointed on disk.
 
 ---
 
-## 7) After Completion
+## 8) After Completion
 
 1. Run analysis:
    ```bash
@@ -132,9 +152,9 @@ Monitoring:
 
 ---
 
-## 8) Troubleshooting
+## 9) Troubleshooting
 
-### A) API key errors
+### A) API key/auth errors
 - Symptom: authentication/permission exceptions.
 - Fix: verify `.env` keys and active shell environment.
 
@@ -149,7 +169,7 @@ Monitoring:
 
 ### C) Network instability
 - Symptom: timeout/connection errors.
-- Fix: stable network, then rerun with `--resume`.
+- Fix: stabilize network, then rerun with `--resume`.
 
 ### D) Dependency issues
 - Symptom: import/module errors.
@@ -161,19 +181,19 @@ Monitoring:
 
 ---
 
-## 9) Budget Guardrails
+## 10) Budget Guardrails
 
 Default hard limit:
-- `--max-cost 1500`
+- `--max-cost 4000`
 
 Behavior:
 - when cumulative cost reaches limit, runner pauses and writes warning to `results/progress.json`.
 
 Recommended practice:
-- start with a tighter cap for pilot if desired (example: `--max-cost 300`)
+- start with tighter cap for pilot if desired (example: `--max-cost 500`)
 - monitor `results/cost_log.jsonl` and `results/progress.json`
 
-Cost estimation commands (pre-run):
+Cost estimation commands:
 ```bash
 python scripts/estimate_cost.py --phase pilot
 python scripts/estimate_cost.py --phase full
@@ -182,7 +202,7 @@ python scripts/estimate_cost.py --phase all
 
 ---
 
-## 10) What Success Looks Like
+## 11) What Success Looks Like
 
 Minimum viable successful run includes:
 
@@ -193,3 +213,4 @@ Minimum viable successful run includes:
 5. Analysis artifacts generated under `results/analysis/`.
 
 If all above are present, repository is in clone-and-run operational state.
+

@@ -14,9 +14,8 @@ from collections import defaultdict
 from math import comb
 import random
 
-import yaml
-
 from src.manifest import ExperimentManifest, RunSpec, generate_manifest
+from src.models.catalog import ModelCatalog, load_model_catalog
 
 
 DEFAULT_AGENT_INPUT_TOKENS = 1200
@@ -64,35 +63,15 @@ def _model_cost(model_cfg: dict, input_tokens: int, output_tokens: int) -> float
     )
 
 
-def _select_judges(models_cfg: dict, assignment: list[str]) -> list[str]:
-    judge_cfg = models_cfg.get("judge_pool", {})
-    panel_size = int(judge_cfg.get("panel_size", 3))
-    primary = [str(m) for m in judge_cfg.get("primary_models", [])]
-    reserve = [str(m) for m in judge_cfg.get("reserve_models", [])]
+def _select_judges(catalog: ModelCatalog, assignment: list[str]) -> list[str]:
+    panel_size = int(catalog.judge_panel_size)
+    pool = [model for model in catalog.judge_pool if model not in set(assignment)]
 
-    pool: list[str] = []
-    for model in [*primary, *reserve]:
-        if model not in pool:
-            pool.append(model)
-
-    agent_set = set(assignment)
-    if bool(judge_cfg.get("exclude_agent_models", True)):
-        pool = [m for m in pool if m not in agent_set]
-
-    if bool(judge_cfg.get("prefer_different_families", True)):
-        model_table = models_cfg["models"]
-        families = {str(model_table[m].get("family", m)) for m in assignment if m in model_table}
-        preferred = [m for m in pool if str(model_table[m].get("family", m)) not in families]
-        fallback = [m for m in pool if m not in preferred]
-        ordered = preferred + fallback
-    else:
-        ordered = pool
-
-    if len(ordered) < panel_size:
+    if len(pool) < panel_size:
         raise ValueError(
-            f"Insufficient judge models for assignment={assignment}: need {panel_size}, have {len(ordered)}"
+            f"Insufficient judge models for assignment={assignment}: need {panel_size}, have {len(pool)}"
         )
-    return ordered[:panel_size]
+    return pool[:panel_size]
 
 
 def _sample_runs(runs: list[RunSpec], count: int, *, seed: int) -> list[RunSpec]:
@@ -161,6 +140,8 @@ def _phase_manifest(base_manifest: ExperimentManifest, phase: str, seed: int) ->
 def main() -> None:
     """Entry point."""
     args = parse_args()
+    catalog = load_model_catalog(config_path=args.models)
+
     if args.manifest.exists():
         manifest = ExperimentManifest.load(args.manifest)
     else:
@@ -171,11 +152,20 @@ def main() -> None:
             seed=args.seed,
         )
 
+    configured_models = set(catalog.models.keys())
+    referenced_models = {model for run in manifest.runs for model in run.model_assignment}
+    if not referenced_models.issubset(configured_models):
+        manifest = generate_manifest(
+            matrix_path=args.matrix,
+            analytical_tasks_path=args.tasks_dir / "analytical.yaml",
+            creative_tasks_path=args.tasks_dir / "creative.yaml",
+            seed=args.seed,
+        )
+
     manifest = _phase_manifest(base_manifest=manifest, phase=args.phase, seed=args.seed)
 
-    models_cfg = yaml.safe_load(args.models.read_text(encoding="utf-8"))
-    model_table = models_cfg["models"]
-    panel_size = int(models_cfg.get("judge_pool", {}).get("panel_size", 3))
+    model_table = catalog.models
+    panel_size = int(catalog.judge_panel_size)
 
     by_block = defaultdict(float)
     by_model = defaultdict(float)
@@ -198,7 +188,7 @@ def main() -> None:
         judge_calls = consensus_calls + eval_calls
         total_judge_calls += judge_calls
         if judge_calls:
-            judges = _select_judges(models_cfg, run.model_assignment)
+            judges = _select_judges(catalog, run.model_assignment)
             calls_per_judge = judge_calls // len(judges)
             remainder = judge_calls % len(judges)
             for idx, judge_model in enumerate(judges):

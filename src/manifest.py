@@ -1,4 +1,4 @@
-"""Manifest generation and serialization utilities for experiment runs."""
+﻿"""Manifest generation and serialization utilities for experiment runs."""
 
 from __future__ import annotations
 
@@ -86,20 +86,27 @@ def _expand_assignment(template_name: str, agent_count: int, templates: dict[str
     if template_name not in templates:
         return [template_name] * agent_count
 
-    base_assignment = templates[template_name].get("assignment", [])
+    template_cfg = templates[template_name]
+    base_assignment = template_cfg.get("assignment", [])
     if not base_assignment:
         raise ValueError(f"Template '{template_name}' has empty assignment.")
 
+    composition = str(template_cfg.get("composition", ""))
+    if composition == "lead_plus_rest":
+        lead = str(base_assignment[0])
+        follower = str(base_assignment[-1])
+        return [lead] + [follower] * max(0, agent_count - 1)
+
     if template_name == "paradox_strong_weak":
-        strong = base_assignment[0]
-        weak = base_assignment[-1]
+        # Backward-compatible behavior for older matrix files.
+        strong = str(base_assignment[0])
+        weak = str(base_assignment[-1])
         return [strong] + [weak] * max(0, agent_count - 1)
 
     if len(base_assignment) == 1:
-        return [base_assignment[0]] * agent_count
+        return [str(base_assignment[0])] * agent_count
 
-    return [base_assignment[idx % len(base_assignment)] for idx in range(agent_count)]
-
+    return [str(base_assignment[idx % len(base_assignment)]) for idx in range(agent_count)]
 
 def generate_manifest(
     matrix_path: Path,
@@ -148,6 +155,7 @@ def generate_manifest(
                                             consensus,
                                             str(agent_count),
                                             str(disagreement_level),
+                                            str(model_spec),
                                             ",".join(assignment),
                                             str(rep),
                                         ]
@@ -178,3 +186,4 @@ def generate_manifest(
     rng.shuffle(runs)
     generated_at = datetime.now(tz=timezone.utc).isoformat()
     return ExperimentManifest(generated_at=generated_at, seed=seed_value, runs=runs)
+

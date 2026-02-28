@@ -11,7 +11,6 @@ import random
 import time
 from typing import Any
 
-import yaml
 
 from .consensus import (
     AgentOutput,
@@ -23,7 +22,13 @@ from .evaluation.disagreement import disagreement_summary
 from .evaluation.human_eval import HumanEvalManager
 from .evaluation.llm_judge import JudgePanel, PairwiseJudge
 from .manifest import ExperimentManifest, RunSpec
-from .models import AnthropicModelClient, BaseModelClient, GoogleModelClient
+from .models import (
+    AnthropicModelClient,
+    BaseModelClient,
+    GoogleModelClient,
+    OpenAIModelClient,
+    load_model_catalog,
+)
 from .tasks.loader import TaskInstance, load_all_tasks
 from .topologies import (
     BestOfNTopology,
@@ -50,7 +55,7 @@ class RunnerConfig:
     dry_run: bool = False
     resume: bool = True
     seed: int = 42
-    max_cost_usd: float = 1500.0
+    max_cost_usd: float = 4000.0
 
 
 class ExperimentRunner:
@@ -60,8 +65,8 @@ class ExperimentRunner:
         self.config = config
         self.logger = logger
 
-        models_config = yaml.safe_load(config.models_config_path.read_text(encoding="utf-8"))
-        self.models_config = models_config
+        self.model_catalog = load_model_catalog(config_path=config.models_config_path)
+        self.models_config = {"models": self.model_catalog.models}
 
         self.task_catalog = load_all_tasks(config.task_dir)
         self.checkpoint = CheckpointManager(config.results_dir)
@@ -70,7 +75,7 @@ class ExperimentRunner:
         self._state_lock = asyncio.Lock()
 
         pricing: dict[str, PriceConfig] = {}
-        for model_name, entry in models_config["models"].items():
+        for model_name, entry in self.model_catalog.models.items():
             pricing[model_name] = PriceConfig(
                 input_per_million=float(entry["pricing_per_1m_tokens"]["input"]),
                 output_per_million=float(entry["pricing_per_1m_tokens"]["output"]),
@@ -246,6 +251,16 @@ class ExperimentRunner:
                 self.checkpoint.update_progress(progress)
 
     async def _execute_run(self, run_spec: RunSpec) -> dict[str, Any]:
+        invalid_agent_models = [
+            model_name
+            for model_name in run_spec.model_assignment
+            if model_name not in set(self.model_catalog.agent_pool)
+        ]
+        if invalid_agent_models:
+            raise ValueError(
+                f"Run {run_spec.id} references non-agent models in assignment: {invalid_agent_models}"
+            )
+
         task = self._get_task(run_spec.task_type, run_spec.task_id)
         system_prompts = self._build_system_prompts(run_spec)
         topology = self.topologies[run_spec.topology]
@@ -572,63 +587,57 @@ class ExperimentRunner:
         return JudgePanel(judges=judges)
 
     def _select_judge_models(self, agent_models: list[str]) -> list[str]:
-        judge_cfg = self.models_config.get("judge_pool", {})
-        panel_size = int(judge_cfg.get("panel_size", 3))
-        primary = [str(m) for m in judge_cfg.get("primary_models", [])]
-        reserve = [str(m) for m in judge_cfg.get("reserve_models", [])]
+        panel_size = int(self.model_catalog.judge_panel_size)
+        pool = [
+            model_name
+            for model_name in self.model_catalog.judge_pool
+            if model_name not in set(agent_models)
+        ]
 
-        pool = []
-        for model in [*primary, *reserve]:
-            if model not in pool:
-                pool.append(model)
-
-        if not pool:
-            raise ValueError("judge_pool is empty in models config")
-
-        agent_set = set(agent_models)
-        if bool(judge_cfg.get("exclude_agent_models", True)):
-            pool = [m for m in pool if m not in agent_set]
-
-        if bool(judge_cfg.get("prefer_different_families", True)):
-            run_families = {
-                str(self.models_config["models"][model].get("family", model))
-                for model in agent_models
-                if model in self.models_config["models"]
-            }
-            preferred = [
-                m
-                for m in pool
-                if str(self.models_config["models"].get(m, {}).get("family", m)) not in run_families
-            ]
-            fallback = [m for m in pool if m not in preferred]
-            ordered = preferred + fallback
-        else:
-            ordered = pool
-
-        if len(ordered) < panel_size:
+        if len(pool) < panel_size:
             raise ValueError(
-                f"Not enough judges after exclusions: need {panel_size}, have {len(ordered)} (run models={agent_models})"
+                f"Not enough judge models available: need {panel_size}, have {len(pool)} "
+                f"(agent models={agent_models}, judge pool={self.model_catalog.judge_pool})"
             )
-        return ordered[:panel_size]
+        return pool[:panel_size]
+
+    def _create_client(self, *, provider: str, model_alias: str, api_model: str) -> BaseModelClient:
+        factories: dict[str, Any] = {
+            "anthropic": lambda: AnthropicModelClient(
+                model_alias=model_alias,
+                api_model=api_model,
+                dry_run=self.config.dry_run,
+            ),
+            "google": lambda: GoogleModelClient(
+                model_alias=model_alias,
+                api_model=api_model,
+                dry_run=self.config.dry_run,
+            ),
+            "openai": lambda: OpenAIModelClient(
+                model_alias=model_alias,
+                api_model=api_model,
+                dry_run=self.config.dry_run,
+            ),
+        }
+
+        if provider not in factories:
+            raise ValueError(f"Unknown provider '{provider}' for model '{model_alias}'")
+        return factories[provider]()
 
     def _get_client(self, model_alias: str) -> BaseModelClient:
         if model_alias in self._client_cache:
             return self._client_cache[model_alias]
 
         model_cfg = self.models_config["models"][model_alias]
-        provider = model_cfg["provider"]
-        api_model = model_cfg["api_model"]
+        provider = str(model_cfg["provider"])
+        api_model = str(model_cfg["api_model"])
 
-        if provider == "anthropic":
-            client = AnthropicModelClient(model_alias=model_alias, api_model=api_model, dry_run=self.config.dry_run)
-        elif provider == "google":
-            client = GoogleModelClient(model_alias=model_alias, api_model=api_model, dry_run=self.config.dry_run)
-        else:
-            raise ValueError(f"Unknown provider '{provider}' for model '{model_alias}'")
-
+        client = self._create_client(provider=provider, model_alias=model_alias, api_model=api_model)
         self._client_cache[model_alias] = client
         return client
 
     async def close(self) -> None:
         """Close all clients."""
         await asyncio.gather(*[client.close() for client in self._client_cache.values()])
+
+

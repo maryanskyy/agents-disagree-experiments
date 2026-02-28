@@ -38,7 +38,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--phase", choices=["pilot", "full", "all"], default="all")
-    parser.add_argument("--max-cost", type=float, default=1500.0)
+    parser.add_argument("--max-cost", type=float, default=4000.0)
     return parser.parse_args()
 
 
@@ -337,3 +337,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
