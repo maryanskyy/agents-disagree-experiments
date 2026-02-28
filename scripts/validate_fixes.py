@@ -131,12 +131,12 @@ def main():
     # Check 1: Tie rates
     passed = True
     print("=" * 60)
-    print("CHECK 1: Judge Tie Rates (target: < 40%)")
+    print("CHECK 1: Judge Tie Rates (target: < 30%, genuine ties allowed)")
     print("=" * 60)
     tie_rates = check_tie_rates(runs)
     for judge, rate in sorted(tie_rates.items()):
-        status = "PASS" if rate < 0.40 else "FAIL"
-        if rate >= 0.40:
+        status = "PASS" if rate < 0.30 else "FAIL"
+        if rate >= 0.30:
             passed = False
         print(f"  {judge}: {rate*100:.1f}% tie rate [{status}]")
     print()

@@ -1,4 +1,4 @@
-"""Pairwise LLM-as-judge with multi-judge panel aggregation.
+﻿"""Pairwise LLM-as-judge with multi-judge panel aggregation.
 
 This module implements the production evaluation protocol required for the
 experiment:
@@ -217,10 +217,14 @@ class PairwiseJudge:
         )
         response = await self.judge_client.generate(
             system_prompt=(
-                "You are a decisive blind evaluator. You MUST pick a winner. "
-                "Compare Response A vs Response B on the rubric criteria and decide which is better. "
-                "Do NOT say tie. One response is always at least slightly better. Find the difference. "
-                "Return JSON only with keys: winner (must be \"A\" or \"B\"), confidence (0-1), rationale."
+                "You are a rigorous blind evaluator. Compare Response A vs Response B "
+                "on the provided rubric criteria. You must commit to a judgment. "
+                "Choose A or B whenever you can identify ANY meaningful quality "
+                "difference, even a small one. Reserve tie ONLY for cases where "
+                "the responses are genuinely indistinguishable after careful rubric "
+                "analysis. Ties should be rare, under 20 percent of your judgments. "
+                "Return JSON with keys: winner (A, B, or tie), "
+                "confidence (0.0-1.0), rationale (explain your reasoning)."
             ),
             user_prompt=prompt,
             temperature=0.1,
@@ -254,9 +258,9 @@ class PairwiseJudge:
             f"Task type: {task_type}\n"
             f"Task prompt:\n{task_prompt}\n\n"
             "Evaluation rules:\n"
-            "- You MUST choose either A or B as the winner. Do NOT choose tie.\n"
-            "- Even if both responses seem similar, one is always at least slightly better.\n"
-            "  Examine the rubric criteria carefully and find the differentiating factor.\n"
+            "- Choose A or B whenever you can find ANY quality difference on the rubric.\n"
+            "- You may choose tie ONLY when responses are genuinely indistinguishable\n"
+            "  after careful rubric analysis. Ties should be rare (under 20 percent).\n"
             "- Judge only quality relative to the task and rubric.\n"
             "- Ignore response length unless it harms substance.\n"
             "- Ignore formatting polish and stylistic familiarity biases.\n"
@@ -264,8 +268,8 @@ class PairwiseJudge:
             f"Rubric:\n{rubric_text}\n\n"
             f"Response A:\n{output_a}\n\n"
             f"Response B:\n{output_b}\n\n"
-            "Return strict JSON only (winner MUST be \"A\" or \"B\", NOT \"tie\"):\n"
-            '{"winner":"A or B","confidence":0.0,"rationale":"..."}'
+            "Return strict JSON only:\n"
+            '{"winner":"A or B or tie","confidence":0.0,"rationale":"..."}'
         )
 
     def _task_specific_rubric(self, task_type: str) -> list[str]:
