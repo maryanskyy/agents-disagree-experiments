@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agents-disagree-experiments"
+version = "0.1.0"
+description = "Experiment framework for quorum-based consensus in multi-agent LLM pipelines"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Artem" }
+]
+dependencies = [
+  "aiohttp>=3.11.0",
+  "anthropic>=0.64.0",
+  "google-generativeai>=0.8.0",
+  "PyYAML>=6.0.1",
+  "numpy>=2.1.0",
+  "pandas>=2.2.0",
+  "matplotlib>=3.9.0",
+  "scipy>=1.14.0",
+  "python-dotenv>=1.0.1",
+  "tenacity>=9.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0"
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

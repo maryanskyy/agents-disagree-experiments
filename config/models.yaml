@@ -1,0 +1,50 @@
+﻿version: 1
+providers:
+  anthropic:
+    default_timeout_seconds: 60
+  google:
+    default_timeout_seconds: 60
+
+models:
+  claude-opus-4-6:
+    provider: anthropic
+    api_model: claude-opus-4-1-20250805
+    rpm: 50
+    tpm: 200000
+    pricing_per_1m_tokens:
+      input: 15.00
+      output: 75.00
+    max_output_tokens: 2048
+    quality_tier: strong
+
+  gemini-2.5-pro:
+    provider: google
+    api_model: gemini-2.5-pro
+    rpm: 60
+    tpm: 300000
+    pricing_per_1m_tokens:
+      input: 1.25
+      output: 5.00
+    max_output_tokens: 2048
+    quality_tier: strong
+
+  gemini-2.0-flash:
+    provider: google
+    api_model: gemini-2.0-flash
+    rpm: 200
+    tpm: 1000000
+    pricing_per_1m_tokens:
+      input: 0.10
+      output: 0.40
+    max_output_tokens: 2048
+    quality_tier: fast
+
+judge:
+  model: gemini-2.0-flash
+  max_retries: 4
+
+defaults:
+  max_concurrent: 10
+  base_seed: 42
+  max_retries: 5
+  retry_backoff_seconds: 1.0

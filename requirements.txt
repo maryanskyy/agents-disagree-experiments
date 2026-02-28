@@ -1,0 +1,11 @@
+﻿aiohttp>=3.11.0
+anthropic>=0.64.0
+google-generativeai>=0.8.0
+PyYAML>=6.0.1
+numpy>=2.1.0
+pandas>=2.2.0
+matplotlib>=3.9.0
+scipy>=1.14.0
+python-dotenv>=1.0.1
+tenacity>=9.0.0
+pytest>=8.3.0

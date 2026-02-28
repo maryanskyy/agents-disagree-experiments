@@ -1,0 +1,119 @@
+﻿task_type: analytical
+version: 1
+instances:
+  - id: analytical_01_logicians_bar
+    title: Common-Knowledge Logic Puzzle (Three Logicians)
+    prompt: |
+      Three logicians walk into a bar. The bartender asks, "Do all three of you want tea?" The first logician says, "I don't know." The second says, "I don't know." The third says, "Yes." Your task is to provide a rigorous explanation of why the third logician can answer with certainty. Use explicit reasoning about private knowledge versus common knowledge. Then generalize the puzzle to N logicians where each person can hear previous answers, and derive the rule for when the final speaker can confidently answer "Yes." Finally, explain one real-world decision setting where this pattern matters (for example, incident response, legal sign-off, or distributed systems acknowledgement).
+
+      Respond in three sections: (1) formal reasoning steps, (2) generalized rule for N participants, and (3) practical implication. Do not skip intermediate inferences.
+    rubric:
+      - Correctly explains why "I don't know" from earlier speakers implies they personally want tea.
+      - Uses common-knowledge reasoning rather than intuition-only narration.
+      - Provides a valid generalized condition for N participants.
+      - Gives a coherent real-world mapping with accurate analogy limits.
+
+  - id: analytical_02_fallacy_audit
+    title: Logical Fallacy Audit of a Policy Argument
+    prompt: |
+      Evaluate the following policy argument for reasoning quality: "Our city's pilot bike lane reduced downtown car speed by 7%, and during that month retail revenue dipped by 3%. Therefore bike lanes harm local businesses. Since one district suffered, we should ban all future bike lanes citywide. Experts who disagree are biased activists, not objective analysts."
+
+      Produce a structured critical analysis that identifies at least five distinct issues, including causal inference errors, generalization problems, and rhetorical manipulation. For each issue, quote the relevant claim, name the error class (or describe it if naming is uncertain), and explain exactly why it weakens the argument. Then rewrite the argument into a stronger evidence-seeking version that would be suitable for a city council briefing.
+
+      Keep the tone analytical and precise. The output should help a reviewer distinguish valid concerns from invalid reasoning.
+    rubric:
+      - Identifies at least five concrete reasoning flaws with claim-level grounding.
+      - Distinguishes correlation from causation and addresses confounders/time horizon.
+      - Detects overgeneralization and ad hominem style moves.
+      - Provides a materially improved, testable reformulation.
+
+  - id: analytical_03_premise_consequence
+    title: Deductive Consequence Extraction from Formal Premises
+    prompt: |
+      Consider the premises:
+      (P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit.
+      (P2) If content cannot be inspected in transit, then real-time keyword filtering is impossible.
+      (P3) Any platform where real-time keyword filtering is impossible must rely on endpoint moderation or metadata signals.
+      (P4) This platform uses end-to-end encryption.
+      (P5) If endpoint moderation is weak and abuse volume is high, enforcement lag increases.
+      (P6) This platform currently has weak endpoint moderation and high abuse volume.
+
+      Derive all non-trivial conclusions that logically follow, classify each as direct (single chain) or composite (multiple premise interaction), and explicitly mark which tempting conclusions do NOT follow. Conclude with one recommendation that is logically consistent with the premises without adding unstated assumptions.
+    rubric:
+      - Correctly derives transitive implications from P1-P4 and P5-P6.
+      - Separates valid deductions from unsupported speculation.
+      - Labels direct vs composite conclusions appropriately.
+      - Recommendation is premise-consistent and non-contradictory.
+
+  - id: analytical_04_policy_tradeoffs
+    title: Policy Tradeoff Analysis Under Explicit Constraints
+    prompt: |
+      Compare two urban heat mitigation proposals for a city with limited budget:
+
+      Proposal A: Subsidize cool roofs for private buildings. Estimated cost: $40M over 4 years. Projected average summer indoor temperature reduction: 1.8°C for participating buildings. Uneven uptake expected.
+      Proposal B: Expand tree canopy in heat-vulnerable districts. Estimated cost: $40M over 4 years. Projected district-level surface temperature reduction: 1.1°C, plus long-term air-quality co-benefits. Slower initial impact and maintenance uncertainty.
+
+      Provide a decision memo that identifies tradeoffs across equity, time-to-impact, durability, measurement uncertainty, and political feasibility. Include a recommendation with a risk-mitigation plan and at least three measurable indicators the city should track for adaptive policy revision. Do not assume both can be funded.
+    rubric:
+      - Compares both options across all requested dimensions, not only temperature effects.
+      - Addresses distributional equity and implementation risk explicitly.
+      - Recommendation includes clear rationale and contingency plan.
+      - Proposes measurable indicators suitable for monitoring.
+
+  - id: analytical_05_statistical_claim_flaw
+    title: Diagnose Flaws in a Statistical Performance Claim
+    prompt: |
+      A startup claims: "Our AI tutor improves exam scores by 25%." Their evidence: 40 volunteer students used the tutor for two weeks and their average score rose from 64 to 80. There was no control group. Students self-selected into the trial. Exams before and after were not equated for difficulty. The company highlights p < 0.05 from a paired t-test and concludes broad effectiveness.
+
+      Critically evaluate this claim. Identify methodological threats to validity, explain why the statistical significance result is insufficient for the causal claim, and propose a minimally credible redesign that could be executed within one school term. Include sampling, randomization (or quasi-experimental fallback), outcome measurement, and pre-registration elements. End by stating what claim is actually justified from current evidence.
+    rubric:
+      - Flags core validity issues (selection bias, no control, test non-equivalence, regression effects).
+      - Explains mismatch between p-value and causal inference.
+      - Proposes feasible improved study design with concrete safeguards.
+      - Final justified claim is appropriately modest and evidence-aligned.
+
+  - id: analytical_06_constraint_satisfaction
+    title: Constraint Satisfaction Scheduling Problem
+    prompt: |
+      You must schedule five reviewers (R1-R5) across three proposal panels (A, B, C). Constraints:
+      1) Each panel needs exactly two reviewers.
+      2) No reviewer can serve on more than one panel.
+      3) R1 cannot review panel A.
+      4) R2 must be assigned if and only if R4 is assigned.
+      5) Panel C must include at least one of {R3, R5}.
+      6) If R5 is assigned, panel B cannot include R2.
+
+      Determine whether a valid assignment exists. If yes, provide one valid schedule and explain each constraint check. If multiple solutions exist, provide a second distinct solution and compare robustness (which is less brittle if one reviewer drops out). If no solution exists, prove infeasibility with minimal contradiction set.
+    rubric:
+      - Produces a schedule (or infeasibility proof) consistent with all constraints.
+      - Verifies each constraint explicitly.
+      - Demonstrates search reasoning, not random guessing.
+      - Robustness comparison (if feasible) is logically grounded.
+
+  - id: analytical_07_assumption_mapping
+    title: Hidden Assumption Mapping for Business Case
+    prompt: |
+      A SaaS company proposes entering a new region with this plan: cut prices 30%, spend heavily on influencer marketing, and promise profitability in 12 months. Their slide deck assumes rapid user growth will offset lower margins and that customer support costs will remain stable due to automation.
+
+      Identify the implicit assumptions behind this plan and categorize them as market, operational, financial, regulatory, or behavioral assumptions. For each assumption, state what evidence would validate or falsify it within the first two quarters. Then rank the top five risk assumptions by expected downside and propose targeted experiments or safeguards to reduce decision risk before full rollout.
+
+      Output format: assumption table + prioritized risk narrative + next-step validation roadmap.
+    rubric:
+      - Surfaces implicit assumptions across multiple categories, not only financial.
+      - Provides concrete validation/falsification signals and timelines.
+      - Risk ranking is coherent and tied to downside impact.
+      - Recommended safeguards are actionable and staged.
+
+  - id: analytical_08_counterfactual_chain
+    title: Counterfactual Reasoning on Infrastructure Failure
+    prompt: |
+      Analyze this counterfactual: A regional hospital network experienced a 9-hour outage after a ransomware attack disabled centralized scheduling. Suppose the network had adopted a segmented architecture six months earlier, with offline fallback booking in each hospital and weekly incident drills.
+
+      Build a counterfactual causal chain describing what likely would have changed in (a) outage propagation, (b) recovery time, (c) patient triage quality, and (d) communication errors. Distinguish high-confidence effects from speculative ones. Include at least three possible unintended consequences of segmentation (for example, synchronization lag or inconsistent policy enforcement).
+
+      End with a concise decision recommendation on whether the segmented architecture is justified under uncertainty, and what additional evidence should be collected in future drills.
+    rubric:
+      - Provides structured causal reasoning across all requested outcome dimensions.
+      - Separates confident inferences from speculative claims.
+      - Includes plausible unintended consequences, not one-sided advocacy.
+      - Recommendation reflects uncertainty and evidence gaps.

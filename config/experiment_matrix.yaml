@@ -1,0 +1,98 @@
+﻿version: 1
+seed: 42
+
+disagreement_levels:
+  1:
+    label: none
+    temperature: 0.3
+    prompt_strategy: identical
+  2:
+    label: low
+    temperature: 0.5
+    prompt_strategy: slight_variation
+  3:
+    label: moderate
+    temperature: 0.7
+    prompt_strategy: perspective_diversity
+  4:
+    label: high
+    temperature: 0.9
+    prompt_strategy: perspective_plus_model_mix
+  5:
+    label: very_high
+    temperature: 1.2
+    prompt_strategy: adversarial_perspectives
+
+agent_group_templates:
+  homogeneous_opus:
+    assignment: [claude-opus-4-6]
+  homogeneous_pro:
+    assignment: [gemini-2.5-pro]
+  homogeneous_flash:
+    assignment: [gemini-2.0-flash]
+  heterogeneous_strong_mix:
+    assignment: [claude-opus-4-6, gemini-2.5-pro, gemini-2.0-flash]
+  paradox_strong_weak:
+    assignment: [claude-opus-4-6, gemini-2.0-flash]
+
+blocks:
+  - id: block0_calibration
+    description: Baseline solo performance per model for capability and correlation estimates.
+    task_types: [analytical, creative]
+    agent_counts: [1]
+    topologies: [flat]
+    consensus: [simple_vote]
+    disagreement_levels: [1]
+    models: [claude-opus-4-6, gemini-2.5-pro, gemini-2.0-flash]
+    repetitions: 4
+
+  - id: block1_disagreement_dividend
+    description: Sweep disagreement level to identify quality sweet spot d*.
+    task_types: [analytical, creative]
+    agent_counts: [2, 3, 5]
+    topologies: [flat]
+    consensus: [debate_then_vote]
+    disagreement_levels: [1, 2, 3, 4, 5]
+    models: [heterogeneous_strong_mix]
+    repetitions: 2
+
+  - id: block2_topology_comparison
+    description: Compare topologies and consensus mechanisms at moderate disagreement.
+    task_types: [analytical, creative]
+    agent_counts: [2, 5]
+    topologies: [flat, hierarchical, quorum]
+    consensus: [simple_vote, debate_then_vote, judge_based]
+    disagreement_levels: [3]
+    models: [heterogeneous_strong_mix]
+    repetitions: 1
+
+  - id: block3_mvq_curves
+    description: Agent-count quality curves for threshold analysis.
+    task_types: [analytical, creative]
+    agent_counts: [1, 2, 3, 5]
+    topologies: [quorum]
+    consensus: [judge_based]
+    disagreement_levels: [3]
+    models: [heterogeneous_strong_mix]
+    repetitions: 1
+    quality_thresholds: [0.60, 0.70, 0.80, 0.90]
+
+  - id: block4_quorum_paradox
+    description: Asymmetric strong+weak mixtures to detect n=3 dip.
+    task_types: [analytical, creative]
+    agent_counts: [2, 3, 5]
+    topologies: [quorum]
+    consensus: [debate_then_vote]
+    disagreement_levels: [4]
+    models: [paradox_strong_weak]
+    repetitions: 4
+
+  - id: block5_interaction_probe
+    description: Full factorial interaction test for topology x consensus x task.
+    task_types: [analytical, creative]
+    agent_counts: [3, 5]
+    topologies: [flat, hierarchical, quorum]
+    consensus: [simple_vote, debate_then_vote, judge_based]
+    disagreement_levels: [2]
+    models: [heterogeneous_strong_mix]
+    repetitions: 1

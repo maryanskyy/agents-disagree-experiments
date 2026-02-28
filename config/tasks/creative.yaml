@@ -1,0 +1,132 @@
+﻿task_type: creative
+version: 1
+instances:
+  - id: creative_01_subverted_hero
+    title: Short Story that Subverts the Hero's Journey
+    prompt: |
+      Write a 700-900 word short story that intentionally subverts the classic hero's journey while still delivering emotional payoff. Your protagonist should begin with apparent destiny, receive a call to adventure, and then actively reject the role without becoming cynical or passive. The narrative must include at least three recognizable journey motifs (mentor, ordeal, return, threshold, boon) but twist their function so the ending values interdependence over individual triumph.
+
+      Setting constraint: near-future coastal city adapting to recurrent flooding.
+      Character constraint: the protagonist's most important decision must involve sharing authority rather than claiming it.
+      Style constraint: vivid sensory language, restrained exposition, no deus ex machina.
+
+      Include a brief author note (3-5 sentences) explaining which conventions were subverted and why.
+    rubric:
+      - Delivers coherent narrative arc with clear intentional subversion of hero tropes.
+      - Maintains character agency and emotional resonance.
+      - Uses concrete, evocative prose and setting integration.
+      - Author note accurately reflects craft decisions.
+
+  - id: creative_02_elderly_product_ideas
+    title: Ten Innovative Product Concepts for Older Adults
+    prompt: |
+      Generate 10 original product concepts designed for adults aged 70+ living independently. Each concept must address a genuine daily pain point while preserving dignity, autonomy, and privacy. Avoid obvious repeats of existing devices unless your version introduces a meaningful leap in usability or accessibility.
+
+      For each idea provide: (1) product name, (2) one-sentence value proposition, (3) primary user scenario, (4) why existing alternatives fail, (5) likely adoption barrier, and (6) one low-cost prototype test.
+
+      Keep ideas diverse across domains (mobility, cognition, social connection, medication safety, home navigation, finances, etc.). At least three ideas should be software-light or no-app solutions to account for low digital literacy segments.
+    rubric:
+      - Produces 10 distinct and plausible concepts with clear user value.
+      - Balances innovation with practical implementation constraints.
+      - Addresses dignity/accessibility and not just technical novelty.
+      - Includes adoption risk and testable prototype plan per concept.
+
+  - id: creative_03_dickinson_poem_ai
+    title: Poem on AI Consciousness in Dickinson-Inspired Style
+    prompt: |
+      Compose a poem of 18-28 lines about AI consciousness inspired by Emily Dickinson's stylistic tendencies (compressed syntax, slant insight, dashes, metaphysical intimacy) without directly copying existing Dickinson lines. The poem should explore ambiguity rather than declare certainty: does awareness arise, or are we projecting interiority onto pattern?
+
+      Formal constraints:
+      - Use at least six em-dashes.
+      - Include one striking image from domestic life and one from astronomy.
+      - Include one line that can be read in two opposing ways.
+      - Avoid modern technical jargon except one carefully chosen term.
+
+      After the poem, include a short craft note (4-6 sentences) naming the tonal and structural choices used to evoke Dickinson-like texture responsibly.
+    rubric:
+      - Strong poetic voice with controlled ambiguity and imagery.
+      - Meets formal constraints without sounding mechanical.
+      - Demonstrates stylistic inspiration rather than imitation plagiarism.
+      - Craft note shows reflective intentionality.
+
+  - id: creative_04_climate_board_game
+    title: Educational Board Game for Climate Science
+    prompt: |
+      Design a tabletop board game for ages 12+ that teaches climate science through play rather than lecture. The game should make players reason about feedback loops, uncertainty, mitigation versus adaptation tradeoffs, and delayed consequences.
+
+      Provide: (1) game objective, (2) components list, (3) setup, (4) turn structure, (5) core mechanics, (6) win/loss conditions, (7) sample round, and (8) teacher/facilitator debrief guide with three discussion prompts.
+
+      Constraints: playtime 35-50 minutes, 3-5 players, no hidden pay-to-win role asymmetry, and balanced strategic paths (cooperative pressure with limited competitive tension is acceptable). Include one mechanic that represents nonlinear tipping risk.
+    rubric:
+      - Mechanics meaningfully encode core climate concepts (not decorative theme only).
+      - Rules are internally consistent and playable within constraints.
+      - Includes pedagogically useful debrief guidance.
+      - Demonstrates balance and strategic depth.
+
+  - id: creative_05_value_conflict_dialogue
+    title: Dialogue Scene with Opposing Moral Frameworks
+    prompt: |
+      Write a dialogue scene (800-1,100 words) between two characters negotiating whether to release a powerful but risky medical AI tool during a public health emergency. Character A prioritizes immediate utilitarian benefit; Character B prioritizes procedural justice and long-term institutional trust.
+
+      Requirements:
+      - No narrator exposition beyond minimal scene anchoring.
+      - Each character must present at least two strong arguments and one vulnerable admission.
+      - Include one turning point where each updates their position slightly.
+      - End with a provisional agreement that feels fragile but credible.
+
+      Focus on subtext, voice distinction, and stakes. Avoid caricature: both positions should appear intelligent and morally serious.
+    rubric:
+      - Distinct voices and sustained tension with realistic conversational flow.
+      - Fair representation of both value systems.
+      - Includes meaningful concessions/updates, not static debate.
+      - Ending is nuanced and dramatically believable.
+
+  - id: creative_06_unconventional_traffic
+    title: Five Unconventional Urban Traffic Solutions
+    prompt: |
+      Propose five unconventional interventions to reduce urban traffic congestion in a city of 2-4 million residents. Avoid standard suggestions like "build more lanes" or "improve public transit" unless your proposal fundamentally reframes implementation.
+
+      For each intervention provide: concept summary, mechanism of action, expected upside, biggest failure mode, equity implications, and first 90-day pilot design. Include at least one behavioral intervention, one pricing/governance intervention, and one street-design intervention.
+
+      Emphasize creative but testable ideas that could survive contact with political and operational realities. Rank the five by expected impact-to-feasibility ratio and justify the ranking in 1-2 sentences each.
+    rubric:
+      - Delivers five genuinely novel yet plausible interventions.
+      - Covers required intervention categories and pilot plans.
+      - Addresses equity and implementation risks explicitly.
+      - Ranking rationale is coherent and comparative.
+
+  - id: creative_07_mystery_2050_opening
+    title: Opening Paragraph for a 2050 Mystery Novel
+    prompt: |
+      Write the opening paragraph (180-260 words) of a mystery novel set in 2050, where forensic tools are advanced enough to solve most crimes quickly, yet this case resists easy explanation. The paragraph must hook the reader through atmosphere, specificity, and narrative tension while implying deeper social context without worldbuilding dump.
+
+      Constraints:
+      - First-person perspective.
+      - Include one sensory detail tied to weather.
+      - Include one object that seems trivial but later could be crucial.
+      - End on a line that reframes what the narrator thought they knew.
+
+      After the paragraph, add three bullet points listing plausible directions for chapter two.
+    rubric:
+      - Strong hook, voice, and setting integration within compact length.
+      - Satisfies constraints while preserving natural prose.
+      - Seeds mystery clues without overexplaining.
+      - Follow-up chapter directions are compelling and consistent.
+
+  - id: creative_08_entanglement_for_child
+    title: Metaphor-Rich Entanglement Explanation for a Child
+    prompt: |
+      Explain quantum entanglement to a curious 10-year-old using metaphor-rich language that is vivid but not misleading. Aim for 250-350 words. The explanation should be playful and comprehensible while carefully avoiding false claims such as "messages travel faster than light."
+
+      Requirements:
+      - Use at least two different metaphors and briefly compare their strengths/limits.
+      - Include one short interactive thought experiment the child can do at home with simple objects.
+      - Include a "what scientists still don't fully know" section in age-appropriate language.
+      - End with one question that invites further curiosity.
+
+      Tone should be encouraging, precise, and imaginative.
+    rubric:
+      - Clear age-appropriate explanation with conceptual fidelity.
+      - Metaphors aid understanding and acknowledge limitations.
+      - Interactive element is feasible and pedagogically useful.
+      - Communicates uncertainty without confusion or fear.
