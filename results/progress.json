@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-02-28T22:03:58.295287+00:00",
+  "completed_runs": 400,
+  "pending_runs": 8008,
+  "failed_runs": 0,
+  "eta_seconds": 35036.28540956573,
+  "estimated_total_cost_usd": 80.322599,
+  "estimated_cost_by_model": {
+    "gemini-2.5-pro": 2.31447125,
+    "gpt-5.2": 19.649329999999978,
+    "claude-opus-4-6": 21.263790000000004,
+    "claude-haiku-4-5": 0.2609479999999999,
+    "gemini-3.1-pro-preview": 11.32807250000005,
+    "claude-sonnet-4-6": 15.672317999999994,
+    "gpt-4o": 9.800715000000011,
+    "gemini-2.5-flash": 0.032953874999999994
+  },
+  "status": "running",
+  "warning": null,
+  "max_cost_usd": 4000.0
+}
