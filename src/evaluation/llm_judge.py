@@ -232,7 +232,7 @@ class PairwiseJudge:
             ),
             user_prompt=prompt,
             temperature=0.1,
-            max_tokens=1024,
+            max_tokens=2048,
             metadata={"role": "pairwise_judge", "ordering": ordering},
         )
         if self.call_recorder is not None:
