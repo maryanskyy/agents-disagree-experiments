@@ -217,10 +217,18 @@ class PairwiseJudge:
         )
         response = await self.judge_client.generate(
             system_prompt=(
-                "You are a decisive blind evaluator. You MUST pick a winner. "
-                "Compare Response A vs Response B on the rubric criteria and decide which is better. "
-                "Do NOT say tie. One response is always at least slightly better. Find the difference. "
-                'Return JSON only with keys: winner (must be "A" or "B"), confidence (0-1), rationale.'
+                "You are a rigorous blind evaluator. Your job: score each response "
+                "independently on the rubric criteria, then compare scores to pick "
+                "the winner. Follow this process exactly:\n"
+                "1. Read both responses carefully.\n"
+                "2. Score Response A on EACH rubric criterion (1 to 5 scale).\n"
+                "3. Score Response B on EACH rubric criterion (1 to 5 scale).\n"
+                "4. Sum the scores. Higher total wins.\n"
+                "5. If totals are exactly equal, call it a tie.\n"
+                "Return JSON with keys: scores_a (object of criterion to score), "
+                "scores_b (object of criterion to score), total_a (number), "
+                "total_b (number), winner (A or B or tie), confidence (0.0 to 1.0), "
+                "rationale (string)."
             ),
             user_prompt=prompt,
             temperature=0.1,
@@ -253,10 +261,11 @@ class PairwiseJudge:
         return (
             f"Task type: {task_type}\n"
             f"Task prompt:\n{task_prompt}\n\n"
-            "Evaluation rules:\n"
-            "- You MUST choose either A or B as the winner. Do NOT choose tie.\n"
-            "- Even if both responses seem similar, one is always at least slightly better.\n"
-            "  Examine the rubric criteria carefully and find the differentiating factor.\n"
+            "Evaluation process:\n"
+            "1. Score Response A on each rubric criterion below (1=poor, 5=excellent).\n"
+            "2. Score Response B on each rubric criterion below (1=poor, 5=excellent).\n"
+            "3. Sum scores for each. The higher total wins.\n"
+            "4. Only mark tie if totals are exactly equal.\n"
             "- Judge only quality relative to the task and rubric.\n"
             "- Ignore response length unless it harms substance.\n"
             "- Ignore formatting polish and stylistic familiarity biases.\n"
@@ -265,7 +274,7 @@ class PairwiseJudge:
             f"Response A:\n{output_a}\n\n"
             f"Response B:\n{output_b}\n\n"
             "Return strict JSON only:\n"
-            '{"winner":"A or B","confidence":0.0,"rationale":"..."}'
+            '{"scores_a":{"c1":4,"c2":3,"c3":5},"scores_b":{"c1":3,"c2":4,"c3":4},"total_a":12,"total_b":11,"winner":"A","confidence":0.7,"rationale":"..."}'
         )
 
     def _task_specific_rubric(self, task_type: str) -> list[str]:
@@ -300,6 +309,28 @@ class PairwiseJudge:
         except json.JSONDecodeError:
             payload = self._extract_partial_json(cleaned)
 
+        # If judge provided per-criterion scores, compute winner from totals
+        total_a = payload.get("total_a")
+        total_b = payload.get("total_b")
+        if total_a is not None and total_b is not None:
+            try:
+                total_a = float(total_a)
+                total_b = float(total_b)
+                if total_a > total_b:
+                    winner = "A"
+                elif total_b > total_a:
+                    winner = "B"
+                else:
+                    winner = "tie"
+                gap = abs(total_a - total_b)
+                max_possible = max(total_a, total_b, 1.0)
+                confidence = max(0.5, min(0.99, 0.5 + gap / max_possible))
+                rationale = str(payload.get("rationale", ""))
+                return winner, confidence, rationale
+            except (ValueError, TypeError):
+                pass
+
+        # Fallback: use explicit winner field
         raw_winner = str(payload.get("winner", "tie")).strip().lower()
         if raw_winner in {"a", "response a", "candidate a"}:
             winner = "A"

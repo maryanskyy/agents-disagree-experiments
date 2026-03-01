@@ -1,6 +1,5 @@
-﻿version: 3
+version: 3
 seed: 42
-
 disagreement_levels:
   1:
     label: baseline_same_prompt_low_temp
@@ -22,116 +21,168 @@ disagreement_levels:
     label: max_disagreement_prompt_plus_model_mix
     temperature: 0.9
     prompt_strategy: perspective_plus_model_mix
-
 agent_group_templates:
   homogeneous_opus:
-    assignment: [claude-opus-4-6]
+    assignment:
+    - claude-opus-4-6
   homogeneous_gpt52:
-    assignment: [gpt-5.2]
+    assignment:
+    - gpt-5.2
   homogeneous_gemini_pro:
-    assignment: [gemini-2.5-pro]
+    assignment:
+    - gemini-2.5-pro
   homogeneous_haiku:
-    assignment: [claude-haiku-4-5]
+    assignment:
+    - claude-haiku-4-5
   homogeneous_gemini_flash:
-    assignment: [gemini-2.5-flash]
-
+    assignment:
+    - gemini-2.5-flash
   heterogeneous_strong_cross_provider:
-    assignment: [claude-opus-4-6, gpt-5.2, gemini-2.5-pro]
+    assignment:
+    - claude-opus-4-6
+    - gpt-5.2
+    - gemini-2.5-pro
   heterogeneous_high_disagreement:
-    assignment: [claude-opus-4-6, gpt-5.2, gemini-2.5-pro, claude-haiku-4-5, gemini-2.5-flash]
-
+    assignment:
+    - claude-opus-4-6
+    - gpt-5.2
+    - gemini-2.5-pro
+    - claude-haiku-4-5
+    - gemini-2.5-flash
   paradox_strong_weak:
-    assignment: [claude-opus-4-6, claude-haiku-4-5]
+    assignment:
+    - claude-opus-4-6
+    - claude-haiku-4-5
     composition: lead_plus_rest
   paradox_cross_provider:
-    assignment: [gpt-5.2, gemini-2.5-flash]
+    assignment:
+    - gpt-5.2
+    - gemini-2.5-flash
     composition: lead_plus_rest
   paradox_homogeneous_strong:
-    assignment: [claude-opus-4-6]
+    assignment:
+    - claude-opus-4-6
   paradox_homogeneous_cross:
-    assignment: [gpt-5.2]
-
+    assignment:
+    - gpt-5.2
   mvq_full_pool:
-    assignment: [claude-opus-4-6, gpt-5.2, gemini-2.5-pro, claude-haiku-4-5, gemini-2.5-flash]
-
+    assignment:
+    - claude-opus-4-6
+    - gpt-5.2
+    - gemini-2.5-pro
+    - claude-haiku-4-5
+    - gemini-2.5-flash
   best_of_n_strong_budget:
-    assignment: [gemini-2.5-pro]
-
+    assignment:
+    - gemini-2.5-pro
 blocks:
-  - id: block0_calibration
-    description: Baseline solo performance for all five agent models across all tasks.
-    task_types: [analytical, creative]
-    agent_counts: [1]
-    topologies: [flat]
-    consensus: [simple_vote]
-    disagreement_levels: [1]
-    models: [claude-opus-4-6, gpt-5.2, gemini-2.5-pro, claude-haiku-4-5, gemini-2.5-flash]
-    repetitions: 3
-
-  - id: block1_disagreement_dividend
-    description: Sweep disagreement level and composition to identify quality sweet spot d*.
-    task_types: [analytical, creative]
-    agent_counts: [2, 3, 5]
-    topologies: [flat]
-    consensus: [debate_then_vote]
-    disagreement_levels: [1, 2, 3, 4, 5]
-    models:
-      [
-        homogeneous_opus,
-        homogeneous_gpt52,
-        homogeneous_gemini_pro,
-        heterogeneous_strong_cross_provider,
-        heterogeneous_high_disagreement,
-      ]
-    repetitions: 2
-
-  - id: block1_best_of_n_baseline
-    description: Cost-matched best-of-N single-agent baseline for Block 1 using cheapest strong model.
-    task_types: [analytical, creative]
-    agent_counts: [2, 3, 5]
-    topologies: [best_of_n]
-    consensus: [judge_based]
-    disagreement_levels: [1, 2, 3, 4, 5]
-    models: [best_of_n_strong_budget]
-    repetitions: 2
-
-  - id: block2_topology_comparison
-    description: Compare topology and consensus with cross-provider and homogeneous strong groups.
-    task_types: [analytical, creative]
-    agent_counts: [2, 5]
-    topologies: [flat, hierarchical, quorum, pipeline]
-    consensus: [simple_vote, debate_then_vote, judge_based]
-    disagreement_levels: [3]
-    models: [heterogeneous_strong_cross_provider, homogeneous_opus, homogeneous_gpt52, homogeneous_gemini_pro]
-    repetitions: 2
-
-  - id: block3_mvq_curves
-    description: Agent-count quality curves for threshold analysis with full five-model pool coverage.
-    task_types: [analytical, creative]
-    agent_counts: [1, 2, 3, 5]
-    topologies: [quorum]
-    consensus: [judge_based]
-    disagreement_levels: [3]
-    models: [mvq_full_pool, homogeneous_opus, homogeneous_gpt52, homogeneous_gemini_pro, homogeneous_haiku, homogeneous_gemini_flash]
-    repetitions: 3
-    posthoc_quality_thresholds: [0.60, 0.70, 0.80, 0.90]
-
-  - id: block4_quorum_paradox
-    description: Asymmetric strong+weak and homogeneous controls for quorum paradox tests.
-    task_types: [analytical, creative]
-    agent_counts: [2, 3, 5]
-    topologies: [quorum]
-    consensus: [debate_then_vote]
-    disagreement_levels: [4]
-    models: [paradox_strong_weak, paradox_cross_provider, paradox_homogeneous_strong, paradox_homogeneous_cross]
-    repetitions: 6
-
-  - id: block4_best_of_n_baseline
-    description: Cost-matched best-of-N single-agent baseline for Block 4 paradox probes.
-    task_types: [analytical, creative]
-    agent_counts: [2, 3, 5]
-    topologies: [best_of_n]
-    consensus: [judge_based]
-    disagreement_levels: [4]
-    models: [best_of_n_strong_budget]
-    repetitions: 4
+- id: block0_calibration
+  description: Baseline solo performance for all five agent models across all tasks.
+  task_types:
+  - analytical
+  - creative
+  agent_counts:
+  - 1
+  topologies:
+  - flat
+  consensus:
+  - simple_vote
+  disagreement_levels:
+  - 1
+  models:
+  - claude-opus-4-6
+  - gpt-5.2
+  - gemini-2.5-pro
+  - claude-haiku-4-5
+  - gemini-2.5-flash
+  repetitions: 3
+- id: block1_disagreement_dividend
+  description: Sweep disagreement level and composition to identify quality sweet
+    spot d*.
+  task_types:
+  - analytical
+  - creative
+  agent_counts:
+  - 2
+  - 3
+  - 5
+  topologies:
+  - flat
+  consensus:
+  - debate_then_vote
+  disagreement_levels:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  models:
+  - homogeneous_opus
+  - homogeneous_gpt52
+  - homogeneous_gemini_pro
+  - heterogeneous_strong_cross_provider
+  - heterogeneous_high_disagreement
+  repetitions: 2
+- id: block1_best_of_n_baseline
+  description: Cost-matched best-of-N single-agent baseline for Block 1 using cheapest
+    strong model.
+  task_types:
+  - analytical
+  - creative
+  agent_counts:
+  - 2
+  - 3
+  - 5
+  topologies:
+  - best_of_n
+  consensus:
+  - judge_based
+  disagreement_levels:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  models:
+  - best_of_n_strong_budget
+  repetitions: 2
+- id: block4_quorum_paradox
+  description: Asymmetric strong+weak and homogeneous controls for quorum paradox
+    tests.
+  task_types:
+  - analytical
+  - creative
+  agent_counts:
+  - 2
+  - 3
+  - 5
+  topologies:
+  - quorum
+  consensus:
+  - debate_then_vote
+  disagreement_levels:
+  - 4
+  models:
+  - paradox_strong_weak
+  - paradox_cross_provider
+  - paradox_homogeneous_strong
+  - paradox_homogeneous_cross
+  repetitions: 3
+- id: block4_best_of_n_baseline
+  description: Cost-matched best-of-N single-agent baseline for Block 4 paradox probes.
+  task_types:
+  - analytical
+  - creative
+  agent_counts:
+  - 2
+  - 3
+  - 5
+  topologies:
+  - best_of_n
+  consensus:
+  - judge_based
+  disagreement_levels:
+  - 4
+  models:
+  - best_of_n_strong_budget
+  repetitions: 2
