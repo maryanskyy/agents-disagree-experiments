@@ -1,21 +1,21 @@
 {
-  "timestamp_utc": "2026-02-28T22:40:23.359844+00:00",
-  "completed_runs": 421,
-  "pending_runs": 7987,
+  "timestamp_utc": "2026-03-01T00:43:11.927047+00:00",
+  "completed_runs": 160,
+  "pending_runs": 120,
   "failed_runs": 0,
-  "eta_seconds": 8206.800715337908,
-  "estimated_total_cost_usd": 30.020757,
+  "eta_seconds": 332.4748122795427,
+  "estimated_total_cost_usd": 19.766881,
   "estimated_cost_by_model": {
-    "claude-haiku-4-5": 0.063512,
-    "gemini-2.5-flash": 0.010670324999999998,
-    "gpt-5.2": 7.408990000000001,
-    "gemini-2.5-pro": 2.0850949999999995,
-    "claude-opus-4-6": 7.063110000000002,
-    "gpt-4o": 3.7478400000000005,
-    "claude-sonnet-4-6": 6.153635999999998,
-    "gemini-3.1-pro-preview": 3.487903750000003
+    "gemini-2.5-pro": 1.071885,
+    "gemini-2.5-flash": 0.019202624999999997,
+    "claude-haiku-4-5": 0.19987199999999994,
+    "claude-opus-4-6": 6.197279999999999,
+    "gpt-5.2": 3.8151500000000005,
+    "gpt-4o": 3.2485050000000015,
+    "claude-sonnet-4-6": 4.6959839999999975,
+    "deepseek-v3p2": 0.5190020400000003
   },
-  "status": "paused_max_cost",
-  "warning": "Max cost guardrail triggered at $30.02 (limit=$30.00). Execution paused.",
+  "status": "running",
+  "warning": null,
   "max_cost_usd": 30.0
 }
