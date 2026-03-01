@@ -2,7 +2,7 @@
   "run_id": "run_81e951fdaa83",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:58:34.868189+00:00",
+  "timestamp_utc": "2026-03-01T03:48:48.256801+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_06_constraint_satisfaction",
@@ -36,7 +36,7 @@
       "text": "No valid assignment exists.\n\n### Proof of infeasibility (minimal contradiction set)\n\nFrom constraints (1) and (2):\n\n- Each of the 3 panels (A, B, C) needs exactly 2 reviewers \u21d2 total reviewer \u201cslots\u201d = \\(3 \\times 2 = 6\\).\n- No reviewer can serve on more than one panel \u21d2 each reviewer can fill at most 1 slot.\n- There are only 5 reviewers total (R1\u2013R5) \u21d2 at most 5 slots can be filled.\n\nSo we must have:\n\\[\n6 \\text{ required slots} \\le 5 \\text{ available slots}\n\\]\nwhich is false.\n\nTherefore, the problem is infeasible regardless of constraints (3)\u2013(6).\n\n### Minimal contradiction set\nThe infeasibility follows from **only** constraints:\n- **(1)** each panel needs exactly two reviewers, and  \n- **(2)** no reviewer can serve on more than one panel,  \ntogether with the given fact that there are only **five** reviewers and **three** panels.\n\nAll other constraints are irrelevant because feasibility already fails on simple counting.\n\n---\n\nIf you want, I can propose the *closest* feasible variants (e.g., allow one reviewer to serve on two panels, or add one more reviewer R6) and then produce valid schedules satisfying the remaining constraints.",
       "input_tokens": 185,
       "output_tokens": 282,
-      "latency_ms": 3985.490489983931,
+      "latency_ms": 4330.24313300848,
       "structural_metrics": {
         "mtld": 101.65057174731558,
         "readability_fk_grade": 10.312999999999999,

@@ -2,7 +2,7 @@
   "run_id": "run_55446db34718",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:57:26.949996+00:00",
+  "timestamp_utc": "2026-03-01T03:47:39.714445+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_07_mystery_2050_opening",
@@ -36,7 +36,7 @@
       "text": "The rain, a ceaseless, metallic drumming against the precinct\u2019s reinforced plasteel, usually meant a quiet night in Neo-London. Not tonight. The flickering holographic crime scene projection in my office, a stark contrast to the city\u2019s muted glow outside, showed a body splayed across a pristine, minimalist apartment floor. Our advanced forensic scanners, typically capable of reconstructing a crime from a single epidermal cell in under an hour, were spitting out an anomaly: \"Insufficient Data \u2013 Unidentified Interference.\" It was a phrase I hadn't seen since my academy days, back when the 'golden age of forensics' was still a distant dream. Detective Anya Sharma, her face a mask of professional frustration, gestured to a small, intricately carved wooden bird clutched in the victim's hand. \"No prints, no DNA, no traceable origin. Just\u2026 this.\" My comm-link buzzed, displaying a priority alert from Central Command. The victim, a prominent bio-engineer, had been working on something classified. Something that, according to the encrypted message now scrolling across my screen, was supposed to be impossible to steal. The rain outside seemed to intensify, mirroring the sudden chill that snaked down my spine. This wasn't just a murder; it was a hole in the fabric of everything we thought we understood about crime, and about ourselves.\n\n*   **The investigation shifts focus to the wooden bird:** Chapter two could delve into the origins and significance of the wooden bird, revealing it to be a rare artifact, a coded message, or even a device itself, leading the protagonist down an unexpected path.\n*   **The \"Insufficient Data\" anomaly is explored:** The narrative could focus on the technological implications of the forensic system's failure, introducing a new, sophisticated form of crime or a deliberate act of sabotage against the advanced tools, forcing the protagonist to rely on older, more intuitive methods.\n*   **The victim's classified work becomes central:** Chapter two could immediately dive into the nature of the bio-engineer's \"impossible to steal\" project, revealing it to be a dangerous technology or a revolutionary discovery that provides a motive for the murder and explains the extraordinary measures taken to conceal the crime.",
       "input_tokens": 152,
       "output_tokens": 454,
-      "latency_ms": 4309.242259012535,
+      "latency_ms": 3841.627939022146,
       "structural_metrics": {
         "mtld": 130.3105692683398,
         "readability_fk_grade": 14.88795594895019,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.33333344444437035,
+    "quality_score": 0.6666665555556297,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 0.6666668888887407,
+      "normalized_bt_score": 1.3333331111112594,
       "num_bt_candidates": 2,
-      "consensus_vs_best_agent": false,
+      "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.0,
+        "deepseek-v3p2": 1.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 9.99998000004e-07
+      "deepseek-v3p2": 0.999999000002
     },
     "judge_panel": {
       "judges": [
@@ -97,12 +97,12 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.33333344444437035,
-        "agent_0": 0.6666665555556297
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
       },
       "ranking": [
-        "agent_0",
-        "final_consensus"
+        "final_consensus",
+        "agent_0"
       ],
       "per_judge_bt_scores": {
         "claude-sonnet-4-6": {
@@ -114,8 +114,8 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 9.99998000004e-07,
-          "agent_0": 0.999999000002
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
         }
       },
       "inter_rater_reliability": {
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "right"
+            "deepseek-v3p2": "left"
           },
           "majority_winner": null
         }

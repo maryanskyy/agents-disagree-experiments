@@ -2,7 +2,7 @@
   "run_id": "run_658eef870ab2",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:57:33.551302+00:00",
+  "timestamp_utc": "2026-03-01T03:48:06.127354+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_02_fallacy_audit",
@@ -36,11 +36,11 @@
       "text": "# Structured Critical Analysis of Bike Lane Policy Argument\n\n## Issue 1: Temporal Correlation Mistaken for Causation\n\n**Quoted claim:** \"bike lane reduced downtown car speed by 7%, and during that month retail revenue dipped by 3%. Therefore bike lanes harm local businesses.\"\n\n**Error class:** Post hoc ergo propter hoc (false cause); confounding variable problem\n\n**Explanation:** The argument observes two events in temporal proximity and assumes one caused the other. However, a single month's revenue fluctuation has numerous potential causes unrelated to bike lanes:\n- Seasonal retail patterns (which month was this?)\n- Weather conditions affecting foot traffic\n- Competing retail events or promotions elsewhere\n- Economic cycles or consumer confidence shifts\n- Construction disruptions during lane installation\n- Reduced visibility/access during transition period\n\nThe argument provides no evidence that the speed reduction *mechanistically* caused revenue loss, nor does it rule out confounding factors. A 3% dip could easily fall within normal monthly variance.\n\n---\n\n## Issue 2: Hasty Generalization from Single Case\n\n**Quoted claim:** \"Since one district suffered, we should ban all future bike lanes citywide.\"\n\n**Error class:** Hasty generalization; insufficient sample size\n\n**Explanation:** The argument draws a citywide policy conclusion from:\n- One pilot program\n- One month of data\n- One district's experience\n\nThis violates basic statistical reasoning. A single case cannot establish a pattern. Relevant questions not addressed:\n- Did other districts in the pilot show different results?\n- What happened in months 2-3 of the pilot?\n- How do results compare to other cities' bike lane implementations?\n- Were there confounding factors specific to this district (e.g., construction, local events)?\n\nA responsible generalization would require multiple sites, longer observation periods, and comparative analysis.\n\n---\n\n## Issue 3: Selective Outcome Reporting (Cherry-Picking)\n\n**Quoted claim:** The argument emphasizes the 3% revenue dip but ignores other potential outcomes.\n\n**Error class:** Selective evidence presentation; incomplete accounting\n\n**Explanation:** The argument reports only negative metrics while omitting:\n- Changes in foot traffic or pedestrian retail visits\n- Bike commuter spending at local businesses\n- Property values or long-term business interest\n- Safety metrics (accidents, injuries)\n- Environmental or public health benefits\n- Equity impacts (who benefits from reduced car speeds?)\n\nA complete analysis would weigh all effects. The 7% speed reduction itself might be a *benefit* (safety improvement), not a harm. By presenting it as merely a precursor to revenue loss, the argument obscures this value judgment.\n\n---\n\n## Issue 4: Ad Hominem Dismissal of Disagreement\n\n**Quoted claim:** \"Experts who disagree are biased activists, not objective analysts.\"\n\n**Error class:** Ad hominem (attacking the person rather than the argument); false dichotomy\n\n**Explanation:** This statement:\n- Attacks the character/motivation of disagreeing experts rather than addressing their evidence\n- Creates a false binary (either \"biased activist\" or \"objective analyst\") with no middle ground\n- Provides no mechanism for distinguishing actual bias from legitimate disagreement\n- Preemptively delegitimizes contrary evidence without engaging it\n\nThis rhetorical move prevents genuine deliberation. A stronger approach would acknowledge that *all* stakeholders (business owners, cyclists, city planners) have interests, then evaluate arguments on evidence rather than assumed bias.\n\n---\n\n## Issue 5: Undefined Scope and Vague Outcome Metrics\n\n**Quoted claim:** \"bike lanes harm local businesses\" and \"ban all future bike lanes\"\n\n**Error class:** Vague predication; scope creep; unmeasured variables\n\n**Explanation:** The argument uses imprecise language that obscures what's actually being claimed:\n- \"Local businesses\" \u2014 which ones? All retail? Services? Food? The data shows only aggregate revenue.\n- \"Harm\" \u2014 is a 3% dip significant? For how long? Compared to what baseline?\n- \"All future bike lanes\" \u2014 does this apply to residential areas, highways, low-traffic streets? Context matters enormously.\n\nWithout defining these terms operationally, the argument cannot be properly tested. A 3% revenue dip in one district might be acceptable if it produces safety gains, but we cannot evaluate this trade-off without clarity on what we're measuring and why.\n\n---\n\n## Issue 6: Absence of Counterfactual Reasoning\n\n**Quoted claim:** The entire argument structure\n\n**Error class:** Missing counterfactual; no control group\n\n**Explanation:** The argument observes what happened *with* the bike lane but provides no evidence about what would have happened *without* it. Key missing information:\n- Did comparable districts without bike lanes see revenue changes?\n- What was the pre-pilot trend in this district?\n- Are there natural comparison cities?\n\nWithout a counterfactual, we cannot isolate the bike lane's effect. The 3% dip might have occurred anyway due to broader economic conditions.\n\n---\n\n# Rewritten Argument: Evidence-Seeking Version for City Council\n\n## Proposed Briefing Format\n\n**Title:** Preliminary Findings from Downtown Bike Lane Pilot: Data Review and Next Steps\n\n**Executive Summary:**\nThe pilot bike lane program produced measurable changes in traffic patterns and preliminary revenue data. Before making citywide decisions, we recommend completing the analysis with additional data and comparison cases.\n\n**Findings to Date:**\n1. **Traffic Safety:** The bike lane reduced average downtown vehicle speeds by 7%, which aligns with traffic calming objectives and may reduce accident severity (pending safety data review).\n\n2. **Preliminary Revenue Impact:** Downtown retail revenue declined 3% during the pilot month. However, this single data point requires context:\n   - Historical variance: How does this compare to typical monthly fluctuations?\n   - Confounding factors: What else changed (weather, competing events, construction)?\n   - Duration: Is this a temporary adjustment or sustained trend?\n   - Composition: Which business types were affected differently?\n\n**Recommended Next Steps:**\n- **Extend observation period:** Collect 6-12 months of data to distinguish temporary disruption from sustained impact\n- **Establish comparison cases:** Monitor revenue in similar districts without bike lanes\n- **Segment analysis:** Measure impacts separately for different business types (retail, food service, services)\n- **Measure offsetting benefits:** Track foot traffic, bike commuter spending, property values, and safety metrics\n- **Stakeholder input:** Conduct surveys of business owners, cyclists, and residents to understand experience beyond revenue metrics\n\n**Decision Framework:**\nRather than banning or expanding bike lanes citywide based on preliminary data, recommend:\n- Completing the pilot with full data collection\n- Evaluating trade-offs explicitly (e.g., \"Is a 3% revenue dip acceptable for a 7% speed reduction and improved safety?\")\n- Tailoring future implementation to district characteristics (high-traffic vs. residential areas may show different effects)\n- Establishing success metrics *before* implementation (not after)\n\n---\n\n## Summary Table: Error Types\n\n| Error | Location | Severity | Fix |\n|-------|----------|----------|-----|\n| Causal inference | Core claim | Critical | Add confounding variable analysis; establish mechanism |\n| Hasty generalization | Policy conclusion | Critical | Require multiple sites, longer timeframe |\n| Cherry-picking | Outcome selection | High | Report all relevant metrics; weight trade-offs |\n| Ad hominem | Expert dismissal | High | Engage arguments directly; acknowledge all stakeholders have interests |\n| Vague metrics | Throughout | Medium | Define operational measures; specify scope |\n| Missing counterfactual | Entire structure | Critical | Establish comparison groups; use control districts |\n\n---\n\n## Conclusion\n\nThe original argument commits multiple reasoning errors that prevent sound policy-making. The rewritten version maintains the legitimate concern (potential business impacts) while creating space for evidence-gathering and explicit value trade-offs. This approach is more likely to produce decisions that actually serve the city's interests.",
       "input_tokens": 203,
       "output_tokens": 1812,
-      "latency_ms": 3979.297688929364,
+      "latency_ms": 4112.258567009121,
       "structural_metrics": {
         "mtld": 235.47010756334322,
         "readability_fk_grade": 16.25989253334267,
-        "coherence_mean": 0.2315239430031895,
+        "coherence_mean": 0.23152394420290603,
         "prompt_relevance": 0.6428652944777891,
         "connective_density": 0.20833333333333334,
         "word_count": 1097,
@@ -69,25 +69,25 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.6666665555556297,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 1.3333331111112594,
       "num_bt_candidates": 2,
       "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
         "deepseek-v3p2": 0.5,
-        "gpt-4o": 0.5
+        "gpt-4o": 1.0
       }
     },
     "threshold_met": null,
     "thresholds": {},
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
-      "gpt-4o": 0.5,
+      "gpt-4o": 0.999999000002,
       "deepseek-v3p2": 0.5
     },
     "judge_panel": {
@@ -97,8 +97,8 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
       },
       "ranking": [
         "final_consensus",
@@ -110,8 +110,8 @@
           "agent_0": 0.5
         },
         "gpt-4o": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
         },
         "deepseek-v3p2": {
           "final_consensus": 0.5,
@@ -119,11 +119,11 @@
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
           "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
-          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "claude-sonnet-4-6__vs__gpt-4o": 0.0,
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -132,7 +132,7 @@
           "candidate_j": "agent_0",
           "per_judge": {
             "claude-sonnet-4-6": "tie",
-            "gpt-4o": "tie",
+            "gpt-4o": "left",
             "deepseek-v3p2": "tie"
           },
           "majority_winner": null
@@ -149,7 +149,7 @@
     "structural_metrics": {
       "mtld": 235.47010756334322,
       "readability_fk_grade": 16.25989253334267,
-      "coherence_mean": 0.2315239430031895,
+      "coherence_mean": 0.23152394420290603,
       "prompt_relevance": 0.6428652944777891,
       "connective_density": 0.20833333333333334,
       "word_count": 1097,
@@ -158,6 +158,7 @@
     "human_review": {
       "flagged": true,
       "reasons": [
+        "judge_disagreement",
         "random_sample_15pct"
       ],
       "sheet_path": "results/human_eval/run_658eef870ab2.json"

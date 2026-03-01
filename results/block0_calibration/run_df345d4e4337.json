@@ -2,7 +2,7 @@
   "run_id": "run_df345d4e4337",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T01:01:34.931002+00:00",
+  "timestamp_utc": "2026-03-01T03:51:49.058239+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_07_mystery_2050_opening",
@@ -36,7 +36,7 @@
       "text": "# Opening Paragraph\n\nThe rain tasted like copper\u2014actual copper, not metaphor, the atmospheric processors having failed again in Sector Seven\u2014when Detective Sarah Chen pulled the victim's neural backup from evidence lock. Twenty-three years old, Keisha Okonkwo, found in her apartment with a bullet wound that ballistics had matched to a weapon registered to her mother, who'd been dead for six months. The case should have closed by lunch. Our forensic AI could reconstruct a suspect's movements from skin cells and ambient dust; we could pull memories directly from neural implants, watch the crime unfold like security footage from inside someone's skull. But Keisha's implant had been wiped\u2014not corrupted, not degraded, but surgically excised with precision that suggested medical training. The backup showed nothing after 11 PM the night before. Her mother's gun had been fired exactly once, ballistics confirmed, but the weapon had been locked in a climate-controlled vault downtown, untouched for 180 days according to the access logs. I was holding the backup drive, feeling its weight in my palm like a stone, when the lab director called with the result that made me understand we weren't looking for a killer at all. We were looking for someone who'd learned to erase themselves from a world where erasure was supposed to be impossible.\n\n---\n\n## Three Directions for Chapter Two\n\n\u2022 **The Institutional Angle**: Sarah discovers that Keisha worked for NeuroState, the corporation that manufactures neural implants and maintains the backup infrastructure\u2014raising questions about whether this is corporate sabotage, a whistleblower situation, or something worse involving the company's own security apparatus.\n\n\u2022 **The Temporal Impossibility**: Forensic reconstruction of the crime scene reveals evidence suggesting the murder occurred at a time when multiple independent systems confirm Keisha was alive and elsewhere, forcing Sarah to confront whether the timeline itself has been compromised or whether someone has found a way to manipulate the supposedly immutable digital record.\n\n\u2022 **The Personal Connection**: Sarah's own neural implant begins showing anomalies\u2014small gaps in her memories, timestamps that don't align\u2014suggesting she may have been at or near the crime scene without remembering it, making her both investigator and suspect in a case that might implicate her own department.",
       "input_tokens": 163,
       "output_tokens": 501,
-      "latency_ms": 4088.4579230332747,
+      "latency_ms": 4140.056460979395,
       "structural_metrics": {
         "mtld": 189.0853039499351,
         "readability_fk_grade": 16.141911764705885,

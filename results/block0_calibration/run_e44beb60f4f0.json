@@ -2,7 +2,7 @@
   "run_id": "run_e44beb60f4f0",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T01:01:42.897455+00:00",
+  "timestamp_utc": "2026-03-01T03:51:56.562949+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_07_mystery_2050_opening",
@@ -36,7 +36,7 @@
       "text": "# The Harrow Case\n\nThe rain that morning tasted of copper and salt, the way it always did when the atmospheric scrubbers over District Nine fell behind on their cycling \u2014 a taste most people had learned to ignore, but that I, out of professional habit, still catalogued. I stood at the edge of the apartment where Lena Moss had, according to every forensic metric available to us, simply stopped being alive. No trauma. No toxin. No pathogen. The BioScan suite had mapped her body down to the protein level in eleven minutes flat and returned a result I'd never seen in fourteen years of homicide work: *cause of death \u2014 indeterminate*. That word sat in my chest like a stone. Around me, the scene was almost aggressively ordinary \u2014 her coffee cold on the counter, a library copy of a poetry anthology played open on the couch, a single house key on a frayed blue lanyard hanging from the doorknob, as if she'd just come home. The uniforms were already losing interest; no crime, no case, they figured. But the city's Civic Algorithm had flagged her death and routed it to me specifically, which meant someone, or something, in the system thought this mattered more than it appeared. I picked up the lanyard, turned the key over in my fingers. It didn't belong to this apartment. It didn't belong to any lock in the building. I'd been told Lena Moss had no enemies, no secrets, no reason to die \u2014 and standing there, tasting the failing sky, I realized that was exactly the kind of life someone builds when they have every reason to disappear.\n\n---\n\n**Plausible directions for Chapter Two:**\n\n- **The key leads to a decommissioned public storage facility** in a district that was rezoned and supposedly emptied years ago, suggesting Lena maintained a hidden life tied to a community the city tried to erase.\n- **The Civic Algorithm's routing is investigated** \u2014 the narrator discovers that Lena's file was manually flagged by a human operator who has since gone on unexplained leave, raising questions about institutional complicity.\n- **The poetry anthology contains marginalia** \u2014 handwritten annotations in a cipher that, once partially decoded, appear to reference future dates, including one that hasn't arrived yet.",
       "input_tokens": 164,
       "output_tokens": 506,
-      "latency_ms": 4356.446850928478,
+      "latency_ms": 3913.7733159586787,
       "structural_metrics": {
         "mtld": 164.60353133119526,
         "readability_fk_grade": 13.442835733748542,

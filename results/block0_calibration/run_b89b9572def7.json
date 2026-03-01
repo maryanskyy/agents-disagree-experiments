@@ -2,7 +2,7 @@
   "run_id": "run_b89b9572def7",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T01:00:20.189222+00:00",
+  "timestamp_utc": "2026-03-01T03:50:38.340061+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_07_mystery_2050_opening",
@@ -36,7 +36,7 @@
       "text": "The rain in New Glasgow fell sideways, needle-fine and metallic, hissing against my visor like static while the streetlights turned it into a slanted curtain of copper. I stood in the dead center of Suite 41B, where the air scrubbers had already pulled the usual signatures apart\u2014skin cells catalogued, breath chemistry timestamped, microfibers mapped into a neat little timeline that would have wrapped this up before my coffee cooled. The wall display kept insisting on closure: no forced entry, no struggle, no unknown DNA, no unregistered implants in range, no anomalous heat traces beyond the window\u2019s draft. And yet the body on the floor looked like a sentence without a verb. His face was calm, almost arranged, eyelids lowered as if he\u2019d agreed to stop living at exactly 02:17:33. The neighbors\u2019 door cams had gaps where there shouldn\u2019t be gaps; the building\u2019s mesh logs showed polite, perfect continuity; even the victim\u2019s own lifelog\u2014mandatory in this district, \u201cfor public safety\u201d\u2014ended with a clean sign-off and a cheery wellness ping. On the kitchen counter sat a plastic paperclip, translucent green, holding nothing at all. I told myself it was just clutter, the kind you stop seeing once the algorithms start talking\u2014but as the rain kept ticking on my visor, I realized the tools weren\u2019t failing to find the truth; they were faithfully confirming a lie.\n\n- The narrator canvasses the building\u2019s \u201ctrusted\u201d network and discovers a pattern of micro-edits in residents\u2019 lifelogs tied to a private security contractor.  \n- A lab follow-up on the green paperclip reveals an unusual manufacturing fingerprint or embedded tag, pointing to an unexpected supply chain or person.  \n- The narrator interviews a neighbor whose memory of the night contradicts their own recorded door-cam footage, raising questions about consent, coercion, or altered perception.",
       "input_tokens": 148,
       "output_tokens": 390,
-      "latency_ms": 4617.486868053675,
+      "latency_ms": 3967.516868025996,
       "structural_metrics": {
         "mtld": 311.4418604651163,
         "readability_fk_grade": 13.715466998754675,

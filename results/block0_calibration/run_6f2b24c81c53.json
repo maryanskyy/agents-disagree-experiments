@@ -2,7 +2,7 @@
   "run_id": "run_6f2b24c81c53",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:57:57.548612+00:00",
+  "timestamp_utc": "2026-03-01T03:48:14.737839+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_06_constraint_satisfaction",
@@ -36,11 +36,11 @@
       "text": "# Scheduling Analysis: Five Reviewers Across Three Panels\n\n## Problem Setup\n- **Panels**: A, B, C (each needs exactly 2 reviewers)\n- **Reviewers**: R1, R2, R3, R4, R5 (5 reviewers for 6 slots)\n- **Total assignments**: 6 reviewer-slots across 3 panels\n\n## Constraint Analysis\n\nLet me systematically explore the solution space.\n\n### Key Constraint Implications\n\n**Constraint 4** (R2 \u2194 R4): Either both assigned or both unassigned.\n- **Case 1**: Both R2 and R4 assigned \u2192 4 reviewers used, 1 unused\n- **Case 2**: Both R2 and R4 unassigned \u2192 3 reviewers (R1, R3, R5) for 6 slots \u2192 **IMPOSSIBLE**\n\nTherefore: **R2 and R4 must both be assigned.**\n\nThis means: **R1, R2, R3, R4 are assigned; R5 is unassigned** OR **R2, R4, R5 and two of {R1, R3}**\n\nLet me reconsider: We have 5 reviewers and 6 slots. We must use exactly 4 reviewers (one reviewer appears twice? No\u2014constraint 2 forbids this).\n\n**Correction**: We need exactly 6 assignments from 5 reviewers with each reviewer on at most 1 panel. This is impossible unless... let me reread.\n\nActually, with 5 reviewers and 6 slots needed, we cannot satisfy the constraints if each reviewer serves on at most one panel. **We need 6 assignments but only 5 reviewers.**\n\nWait\u2014let me reconsider the problem. Perhaps one reviewer serves on two panels? No, constraint 2 explicitly forbids this.\n\n**This appears infeasible.** Let me verify by checking if we can assign 4 reviewers to 6 slots:\n- 4 reviewers \u00d7 1 panel each = 4 slots filled\n- We need 6 slots\n- **Deficit: 2 slots cannot be filled**\n\n## Feasibility Proof\n\n**Claim**: No valid assignment exists.\n\n**Proof by contradiction**:\n\n1. From Constraint 4: R2 and R4 must have the same assignment status (both in or both out).\n\n2. **Case A**: R2 and R4 both assigned\n   - Reviewers assigned: R2, R4, plus 2 others from {R1, R3, R5}\n   - Total: 4 reviewers for 6 slots\n   - **Impossible** (each reviewer on \u22641 panel)\n\n3. **Case B**: R2 and R4 both unassigned\n   - Available reviewers: {R1, R3, R5} = 3 reviewers\n   - Needed: 6 slots\n   - **Impossible** (3 reviewers \u00d7 1 panel max = 3 slots)\n\n**Conclusion**: No valid assignment exists.\n\n## Minimal Contradiction Set\n\nThe infeasibility is caused by:\n- **Structural constraint**: 5 reviewers, 6 required slots, max 1 panel per reviewer\n- **Constraint 4** forces either 4 or 3 reviewers to be assigned\n- Neither 4 nor 3 reviewers can fill 6 slots\n\n**Minimal contradiction**: {Constraint 2 (no reviewer on >1 panel), Constraint 4 (R2\u2194R4), Panel structure (3 panels \u00d7 2 reviewers)}\n\n## Recommendation\n\nTo make this problem feasible, consider:\n1. **Reduce panels to 2** (4 slots for 5 reviewers) \u2192 feasible\n2. **Allow one reviewer on 2 panels** (relax Constraint 2)\n3. **Increase reviewer pool to 6+** reviewers\n4. **Modify Constraint 4** to be less restrictive\n\n---\n\n**Final Answer**: **No valid assignment exists.** The problem is structurally infeasible due to insufficient reviewers (5) for required slots (6) given the constraint that each reviewer serves on at most one panel.",
       "input_tokens": 202,
       "output_tokens": 997,
-      "latency_ms": 3825.975243933499,
+      "latency_ms": 4441.196575993672,
       "structural_metrics": {
         "mtld": 54.19062174201497,
         "readability_fk_grade": 10.541965811965813,
-        "coherence_mean": 0.3926822150062423,
+        "coherence_mean": 0.39268221808826326,
         "prompt_relevance": 0.7900771563109268,
         "connective_density": 0.17391304347826086,
         "word_count": 472,
@@ -149,7 +149,7 @@
     "structural_metrics": {
       "mtld": 54.19062174201497,
       "readability_fk_grade": 10.541965811965813,
-      "coherence_mean": 0.3926822150062423,
+      "coherence_mean": 0.39268221808826326,
       "prompt_relevance": 0.7900771563109268,
       "connective_density": 0.17391304347826086,
       "word_count": 472,

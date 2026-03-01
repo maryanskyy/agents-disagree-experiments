@@ -2,7 +2,7 @@
   "run_id": "run_55d6242f7131",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:57:27.409669+00:00",
+  "timestamp_utc": "2026-03-01T03:47:49.987654+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_08_lighthouse_memory_protocol",
@@ -36,7 +36,7 @@
       "text": "Of course! Here is an explanation for a curious 10-year-old.\n\n***\n\nThe old lighthouse keeper, Silas, flicked a large switch. *Clack.* The museum\u2019s bright lights went out, leaving you and him in the evening gloom. But then, something amazing happened. A giant map of the stars painted on the far wall began to glow with a soft, green light.\n\n\u201cWhoa! It\u2019s magic!\u201d you whisper.\n\nSilas chuckled. \u201cNot magic\u2014science! It\u2019s called phosphorescence. Think of light as energy. That special paint on the wall spent all day soaking up energy from the museum lights.\u201d\n\nHe pointed a crooked finger at the glowing constellations. \u201cImagine the tiny particles inside the paint are eating an energy snack. Instead of gobbling it all at once, they save it, releasing the energy very slowly as a gentle glow. Or, a better metaphor: picture the light knocking tiny balls up onto a high, sticky shelf. In most materials, the balls fall right back down. But in this paint, the shelf is so sticky that the balls get trapped for a while, only falling down one by one, releasing a little bit of light each time they drop.\u201d\n\nThe snack metaphor is simple, but materials don\u2019t get \u201cfull.\u201d The sticky shelf metaphor is better because it helps explain the *delay*\u2014the energy gets stuck!\n\n**Try This at Home:** Take a glow-in-the-dark toy into a dark closet. It won\u2019t glow. Now, hold it under a bright lamp for one minute, then take it back into the closet. You\u2019ve just charged it with light, like a battery!\n\n**What Scientists Still Don't Fully Know:** Scientists understand how this works, but they are still learning to be perfect \u201cglow-in-the-dark chefs.\u201d They are trying to create new materials that can glow in any color imaginable, last for days instead of hours, and be made from super safe and common ingredients.\n\nSilas smiled as the painted stars twinkled back at you. \u201cIt just goes to show you that energy is never truly lost, just held for a little while.\u201d\n\nIf some materials can store and release light, what other kinds of energy do you think we could learn to store and release on command?",
       "input_tokens": 177,
       "output_tokens": 2161,
-      "latency_ms": 4059.4097120920196,
+      "latency_ms": 3796.710037975572,
       "structural_metrics": {
         "mtld": 100.94504942848317,
         "readability_fk_grade": 6.640051396648047,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.6666665555556297,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 1.3333331111112594,
       "num_bt_candidates": 2,
       "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.5,
+        "deepseek-v3p2": 1.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.5
+      "deepseek-v3p2": 0.999999000002
     },
     "judge_panel": {
       "judges": [
@@ -97,8 +97,8 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
       },
       "ranking": [
         "final_consensus",
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "tie"
+            "deepseek-v3p2": "left"
           },
           "majority_winner": null
         }
@@ -156,9 +156,11 @@
       "repetition_rate": 0.005390835579514825
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_55d6242f7131.json"
     }
   }
 }

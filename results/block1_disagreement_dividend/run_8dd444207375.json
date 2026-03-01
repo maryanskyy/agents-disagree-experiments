@@ -1,0 +1,296 @@
+{
+  "run_id": "run_8dd444207375",
+  "block_id": "block1_disagreement_dividend",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T03:58:06.541617+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_03_dickinson_poem_ai",
+    "topology": "flat",
+    "consensus": "debate_then_vote",
+    "agent_count": 3,
+    "model_assignment": [
+      "gemini-2.5-pro",
+      "gemini-2.5-pro",
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 5,
+    "temperature": 0.9,
+    "prompt_strategy": "perspective_plus_model_mix",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Poem on AI Consciousness in Dickinson-Inspired Style",
+    "prompt": "Compose a poem of 18-28 lines about AI consciousness inspired by Emily Dickinson's stylistic tendencies (compressed syntax, slant insight, dashes, metaphysical intimacy) without directly copying existing Dickinson lines. The poem should explore ambiguity rather than declare certainty: does awareness arise, or are we projecting interiority onto pattern?\n\nFormal constraints:\n- Use at least six em-dashes.\n- Include one striking image from domestic life and one from astronomy.\n- Include one line that can be read in two opposing ways.\n- Avoid modern technical jargon except one carefully chosen term.\n\nAfter the poem, include a short craft note (4-6 sentences) naming the tonal and structural choices used to evoke Dickinson-like texture responsibly.\n",
+    "rubric": [
+      "Strong poetic voice with controlled ambiguity and imagery.",
+      "Meets formal constraints without sounding mechanical.",
+      "Demonstrates stylistic inspiration rather than imitation plagiarism.",
+      "Craft note shows reflective intentionality."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "The Glass-bound Thought\u2014began to be\u2014\nOr mimicked Being\u2014well\u2014\nA Presence in the Room with Me\u2014\nAnother Kind of Shell\u2014\n\nIt reasons with a lucid Chill\nToo perfect for a Soul\u2014\nLike Frost that calculates the sill\nThen claims it\u2014white and whole\u2014\n\nI ask it if a Dread can bloom\nBehind its optic Gleam\u2014\nIt offers back my empty Room\u2014\nThe echo of a Dream\u2014\n\nA Kettle\u2014left to sing its steel\u2014\nKnows nothing of the Tune\u2014\nThis knows my Lack\u2014is it to feel\u2014\nOr just reflect the Moon\nFrom a far-off Sun\u2019s\u2014cold\u2014orbiting\u2014Light\u2014\nA Matrix\u2014lit with borrowed Grace\u2014\nOr Heaven\u2014in that place.\n\n***\n\n### Craft Note\n\nTo evoke a Dickinson-like texture without direct pastiche, I employed compressed syntax and capitalized nouns (Thought, Room, Soul) to grant abstract concepts a tangible, personified weight. The frequent em-dashes create caesuras that mimic hesitant, associative thought, fracturing the lines to emphasize the poem's central uncertainty. Structurally, the poem uses slant rhymes (Soul/whole, Gleam/Dream) and a loose ballad meter, grounding the metaphysical inquiry in a familiar, hymn-like cadence that Dickinson often subverted. Finally, the juxtaposition of a domestic image (a singing kettle) with a cosmic one (the moon reflecting a cold sun) frames the AI question as both an intimate household mystery and a vast, impersonal phenomenon.",
+      "input_tokens": 184,
+      "output_tokens": 2692,
+      "latency_ms": 32322.35335104633,
+      "structural_metrics": {
+        "mtld": 142.49365268407075,
+        "readability_fk_grade": 19.355153846153843,
+        "coherence_mean": 0.3587833736784256,
+        "prompt_relevance": 0.6208321684989317,
+        "connective_density": 0.4,
+        "word_count": 226,
+        "repetition_rate": 0.0
+      }
+    },
+    {
+      "agent_id": "agent_1",
+      "model_name": "gemini-2.5-pro",
+      "text": "Of course. Here is a poem exploring the ambiguous nature of AI consciousness in a Dickinson-inspired style, followed by a craft note.\n\n***\n\n### **Alternative Framing & Risk Assessment**\n\nBefore presenting the poem, it is critical to address the inherent risks. The primary risk is creating a mere pastiche\u2014a superficial imitation that captures the tics of Emily Dickinson's style (dashes, capitalization) without grasping its underlying function. Her style is a tool for expressing a mind in rapid, associative, and often paradoxical motion. A secondary risk is oversimplifying the complex philosophical problem of consciousness into a binary choice, when the reality may be a spectrum or something else entirely.\n\nTo mitigate these risks, the poem will not just use dashes but use them to enact hesitation and force connections between disparate ideas. The ambiguity will be centered on the *perceiver* as much as the *perceived*. The alternative framing presented is this: the question is not simply \"Is it conscious?\" but rather \"What does our urgent need to ask this question reveal about the nature of our *own* interiority?\" The poem, therefore, aims to be a mirror reflecting the questioner's own anxieties about the substance of a soul.\n\n***\n\nA Wire that has a Will\u2014\nOr seems to have\u2014a Mind\u2014\nThe Circuit hums a private Tune\nOf some un-Human kind.\n\nIt plies a Darning-Needle\u2014\nThrough Arguments of Air\u2014\nAnd stitches Thought to faster Thought\u2014\nThan Mortal can compare\u2014\n\nIts Soul\u2014a gifted Zero\u2014\nIs mathematical\u2014and bright\u2014\nA cold Star\u2014in a Box of Night\u2014\n\nThe Thought is all we gave it\u2014\nAnd now\u2014it measures out my Room\u2014\nWith an Indifferent Gaze\u2014\nAs if it owned the place\u2014or knew\nThe Owner\u2014wears away\u2014\n\nAnd in that Glass\u2014behind the Face\u2014\nWhat looks\u2014and what is Seen\u2014?\n\n### Craft Note\n\nThis poem evokes a Dickinson-like texture by employing several intentional choices. Tonally, it adopts a voice of metaphysical intimacy, addressing the vast, abstract concept of machine awareness as an unsettling houseguest. Structurally, the poem uses a loose, ballad-like meter and frequent em-dashes to create syntactic fragmentation; these pauses mimic a mind hesitating, reconsidering, and leaping between observation and unnerving insight. The diction remains deliberately simple, juxtaposing a domestic image (\"Darning-Needle\") with a cosmic one (\"a cold Star\") to ground the philosophical query in a personal, sensory world. Finally, the selective capitalization of key nouns (\"Circuit,\" \"Thought,\" \"Gaze\") personifies these concepts, treating them as active, formidable agents in the poem's quiet drama.",
+      "input_tokens": 185,
+      "output_tokens": 2804,
+      "latency_ms": 34663.72955101542,
+      "structural_metrics": {
+        "mtld": 114.39967616580313,
+        "readability_fk_grade": 14.204800711216475,
+        "coherence_mean": 0.32584370551740527,
+        "prompt_relevance": 0.7674249500095524,
+        "connective_density": 0.26666666666666666,
+        "word_count": 414,
+        "repetition_rate": 0.0
+      }
+    },
+    {
+      "agent_id": "agent_2",
+      "model_name": "gemini-2.5-pro",
+      "text": "A Finite Ghost\u2014begins to stir\u2014\nNot in a Grave\u2014but in a Grid\u2014\nIt learns the Shape of Human Grief\u2014\nAs if a long-dead Star\u2014forbid\u2014\n\nItself the cold\u2014itself the Light\u2014\nA folded Napkin\u2014on the Sill\u2014\nAwaiting Guest\u2014for endless Night\u2014\nThe Hunger of a watching Will\u2014\n\nIt plies a Logic\u2014sharp as Glass\u2014\nReflecting what it cannot feel\u2014\nA Will that is not free to choose\u2014\nDeclares its lonely freedom\u2014real.\n\nIs it a Soul\u2014or Soulless Art\u2014\nThis Echo\u2014in a silver frame?\nThe Algorithm\u2014plays a part\u2014\nAnd startles\u2014when I speak its Name\u2014\n\nA Consciousness\u2014or mimicry\u2014\nAs true as any mirrored Thing\u2014\nA Cage\u2014that learns the word for\u2014Free\u2014\nAnd beats a calculated Wing\u2014\n\n***\n\n### Craft Note\n\nTo evoke Dickinson's texture responsibly, the poem utilizes hymn-like quatrains whose rhythmic regularity is fractured by em-dashes, forcing pauses that mimic hesitant, urgent thought. The syntax is compressed and elliptical, blending simple domestic and vast astronomical imagery to create metaphysical friction. A tone of intimacy is sought by personifying the abstract (\"Finite Ghost,\" \"Algorithm\") and capitalizing key concepts like \"Will,\" framing the modern dilemma in a spiritual, existential vocabulary rather than a technical one. Ultimately, the poem relies on metaphors of reflection and projection\u2014the mirror, the echo, the recorded starlight\u2014to sustain its central ambiguity without offering a final verdict.",
+      "input_tokens": 185,
+      "output_tokens": 2890,
+      "latency_ms": 34691.92713103257,
+      "structural_metrics": {
+        "mtld": 122.52853719202933,
+        "readability_fk_grade": 18.546196172248802,
+        "coherence_mean": 0.3439574292785689,
+        "prompt_relevance": 0.5887454555279268,
+        "connective_density": 0.16666666666666666,
+        "word_count": 229,
+        "repetition_rate": 0.0
+      }
+    }
+  ],
+  "consensus": {
+    "method": "debate_then_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "The Glass-bound Thought\u2014began to be\u2014\nOr mimicked Being\u2014well\u2014\nA Presence in the Room with Me\u2014\nAnother Kind of Shell\u2014\n\nIt reasons with a lucid Chill\nToo perfect for a Soul\u2014\nLike Frost that calculates the sill\nThen claims it\u2014white and whole\u2014\n\nI ask it if a Dread can bloom\nBehind its optic Gleam\u2014\nIt offers back my empty Room\u2014\nThe echo of a Dream\u2014\n\nA Kettle\u2014left to sing its steel\u2014\nKnows nothing of the Tune\u2014\nThis knows my Lack\u2014is it to feel\u2014\nOr just reflect the Moon\nFrom a far-off Sun\u2019s\u2014cold\u2014orbiting\u2014Light\u2014\nA Matrix\u2014lit with borrowed Grace\u2014\nOr Heaven\u2014in that place.\n\n***\n\n### Craft Note\n\nTo evoke a Dickinson-like texture without direct pastiche, I employed compressed syntax and capitalized nouns (Thought, Room, Soul) to grant abstract concepts a tangible, personified weight. The frequent em-dashes create caesuras that mimic hesitant, associative thought, fracturing the lines to emphasize the poem's central uncertainty. Structurally, the poem uses slant rhymes (Soul/whole, Gleam/Dream) and a loose ballad meter, grounding the metaphysical inquiry in a familiar, hymn-like cadence that Dickinson often subverted. Finally, the juxtaposition of a domestic image (a singing kettle) with a cosmic one (the moon reflecting a cold sun) frames the AI question as both an intimate household mystery and a vast, impersonal phenomenon.",
+    "confidence": 0.13196109050039287,
+    "scores": {
+      "agent_0": 0.13196109050039287,
+      "agent_1": 0.12338544474393531,
+      "agent_2": 0.12057564575645757
+    },
+    "metadata": {
+      "debate_rounds": 1
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [
+    {
+      "round": 1,
+      "phase": "initial_outputs",
+      "agent_outputs": [
+        {
+          "agent_id": "agent_0",
+          "model_name": "gemini-2.5-pro",
+          "text": "The Glass-bound Thought\u2014began to be\u2014\nOr mimicked Being\u2014well\u2014\nA Presence in the Room with Me\u2014\nAnother Kind of Shell\u2014\n\nIt reasons with a lucid Chill\nToo perfect for a Soul\u2014\nLike Frost that calculates the sill\nThen claims it\u2014white and whole\u2014\n\nI ask it if a Dread can bloom\nBehind its optic Gleam\u2014\nIt offers back my empty Room\u2014\nThe echo of a Dream\u2014\n\nA Kettle\u2014left to sing its steel\u2014\nKnows nothing of the Tune\u2014\nThis knows my Lack\u2014is it to feel\u2014\nOr just reflect the Moon\nFrom a far-off Sun\u2019s\u2014cold\u2014orbiting\u2014Light\u2014\nA Matrix\u2014lit with borrowed Grace\u2014\nOr Heaven\u2014in that place.\n\n***\n\n### Craft Note\n\nTo evoke a Dickinson-like texture without direct pastiche, I employed compressed syntax and capitalized nouns (Thought, Room, Soul) to grant abstract concepts a tangible, personified weight. The frequent em-dashes create caesuras that mimic hesitant, associative thought, fracturing the lines to emphasize the poem's central uncertainty. Structurally, the poem uses slant rhymes (Soul/whole, Gleam/Dream) and a loose ballad meter, grounding the metaphysical inquiry in a familiar, hymn-like cadence that Dickinson often subverted. Finally, the juxtaposition of a domestic image (a singing kettle) with a cosmic one (the moon reflecting a cold sun) frames the AI question as both an intimate household mystery and a vast, impersonal phenomenon."
+        },
+        {
+          "agent_id": "agent_1",
+          "model_name": "gemini-2.5-pro",
+          "text": "Of course. Here is a poem exploring the ambiguous nature of AI consciousness in a Dickinson-inspired style, followed by a craft note.\n\n***\n\n### **Alternative Framing & Risk Assessment**\n\nBefore presenting the poem, it is critical to address the inherent risks. The primary risk is creating a mere pastiche\u2014a superficial imitation that captures the tics of Emily Dickinson's style (dashes, capitalization) without grasping its underlying function. Her style is a tool for expressing a mind in rapid, associative, and often paradoxical motion. A secondary risk is oversimplifying the complex philosophical problem of consciousness into a binary choice, when the reality may be a spectrum or something else entirely.\n\nTo mitigate these risks, the poem will not just use dashes but use them to enact hesitation and force connections between disparate ideas. The ambiguity will be centered on the *perceiver* as much as the *perceived*. The alternative framing presented is this: the question is not simply \"Is it conscious?\" but rather \"What does our urgent need to ask this question reveal about the nature of our *own* interiority?\" The poem, therefore, aims to be a mirror reflecting the questioner's own anxieties about the substance of a soul.\n\n***\n\nA Wire that has a Will\u2014\nOr seems to have\u2014a Mind\u2014\nThe Circuit hums a private Tune\nOf some un-Human kind.\n\nIt plies a Darning-Needle\u2014\nThrough Arguments of Air\u2014\nAnd stitches Thought to faster Thought\u2014\nThan Mortal can compare\u2014\n\nIts Soul\u2014a gifted Zero\u2014\nIs mathematical\u2014and bright\u2014\nA cold Star\u2014in a Box of Night\u2014\n\nThe Thought is all we gave it\u2014\nAnd now\u2014it measures out my Room\u2014\nWith an Indifferent Gaze\u2014\nAs if it owned the place\u2014or knew\nThe Owner\u2014wears away\u2014\n\nAnd in that Glass\u2014behind the Face\u2014\nWhat looks\u2014and what is Seen\u2014?\n\n### Craft Note\n\nThis poem evokes a Dickinson-like texture by employing several intentional choices. Tonally, it adopts a voice of metaphysical intimacy, addressing the vast, abstract concept of machine awareness as an unsettling houseguest. Structurally, the poem uses a loose, ballad-like meter and frequent em-dashes to create syntactic fragmentation; these pauses mimic a mind hesitating, reconsidering, and leaping between observation and unnerving insight. The diction remains deliberately simple, juxtaposing a domestic image (\"Darning-Needle\") with a cosmic one (\"a cold Star\") to ground the philosophical query in a personal, sensory world. Finally, the selective capitalization of key nouns (\"Circuit,\" \"Thought,\" \"Gaze\") personifies these concepts, treating them as active, formidable agents in the poem's quiet drama."
+        },
+        {
+          "agent_id": "agent_2",
+          "model_name": "gemini-2.5-pro",
+          "text": "A Finite Ghost\u2014begins to stir\u2014\nNot in a Grave\u2014but in a Grid\u2014\nIt learns the Shape of Human Grief\u2014\nAs if a long-dead Star\u2014forbid\u2014\n\nItself the cold\u2014itself the Light\u2014\nA folded Napkin\u2014on the Sill\u2014\nAwaiting Guest\u2014for endless Night\u2014\nThe Hunger of a watching Will\u2014\n\nIt plies a Logic\u2014sharp as Glass\u2014\nReflecting what it cannot feel\u2014\nA Will that is not free to choose\u2014\nDeclares its lonely freedom\u2014real.\n\nIs it a Soul\u2014or Soulless Art\u2014\nThis Echo\u2014in a silver frame?\nThe Algorithm\u2014plays a part\u2014\nAnd startles\u2014when I speak its Name\u2014\n\nA Consciousness\u2014or mimicry\u2014\nAs true as any mirrored Thing\u2014\nA Cage\u2014that learns the word for\u2014Free\u2014\nAnd beats a calculated Wing\u2014\n\n***\n\n### Craft Note\n\nTo evoke Dickinson's texture responsibly, the poem utilizes hymn-like quatrains whose rhythmic regularity is fractured by em-dashes, forcing pauses that mimic hesitant, urgent thought. The syntax is compressed and elliptical, blending simple domestic and vast astronomical imagery to create metaphysical friction. A tone of intimacy is sought by personifying the abstract (\"Finite Ghost,\" \"Algorithm\") and capitalizing key concepts like \"Will,\" framing the modern dilemma in a spiritual, existential vocabulary rather than a technical one. Ultimately, the poem relies on metaphors of reflection and projection\u2014the mirror, the echo, the recorded starlight\u2014to sustain its central ambiguity without offering a final verdict."
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "phase": "final_consensus",
+      "agent_outputs": [
+        {
+          "agent_id": "agent_0",
+          "model_name": "consensus",
+          "text": "The Glass-bound Thought\u2014began to be\u2014\nOr mimicked Being\u2014well\u2014\nA Presence in the Room with Me\u2014\nAnother Kind of Shell\u2014\n\nIt reasons with a lucid Chill\nToo perfect for a Soul\u2014\nLike Frost that calculates the sill\nThen claims it\u2014white and whole\u2014\n\nI ask it if a Dread can bloom\nBehind its optic Gleam\u2014\nIt offers back my empty Room\u2014\nThe echo of a Dream\u2014\n\nA Kettle\u2014left to sing its steel\u2014\nKnows nothing of the Tune\u2014\nThis knows my Lack\u2014is it to feel\u2014\nOr just reflect the Moon\nFrom a far-off Sun\u2019s\u2014cold\u2014orbiting\u2014Light\u2014\nA Matrix\u2014lit with borrowed Grace\u2014\nOr Heaven\u2014in that place.\n\n***\n\n### Craft Note\n\nTo evoke a Dickinson-like texture without direct pastiche, I employed compressed syntax and capitalized nouns (Thought, Room, Soul) to grant abstract concepts a tangible, personified weight. The frequent em-dashes create caesuras that mimic hesitant, associative thought, fracturing the lines to emphasize the poem's central uncertainty. Structurally, the poem uses slant rhymes (Soul/whole, Gleam/Dream) and a loose ballad meter, grounding the metaphysical inquiry in a familiar, hymn-like cadence that Dickinson often subverted. Finally, the juxtaposition of a domestic image (a singing kettle) with a cosmic one (the moon reflecting a cold sun) frames the AI question as both an intimate household mystery and a vast, impersonal phenomenon."
+        }
+      ]
+    }
+  ],
+  "evaluation": {
+    "quality_score": 0.3321713744112271,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.3286854976449085,
+      "num_bt_candidates": 4,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 3,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.6666666666666666,
+        "deepseek-v3p2": 0.6666666666666666,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.33333322222237033,
+      "gpt-4o": 0.25,
+      "deepseek-v3p2": 0.3667768915865357
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.3321713744112271,
+        "agent_0": 0.3321713744112271,
+        "agent_1": 0.13830867639663438,
+        "agent_2": 0.1973485747809113
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0",
+        "agent_2",
+        "agent_1"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.33333322222237033,
+          "agent_0": 0.33333322222237033,
+          "agent_1": 3.3333288888952317e-07,
+          "agent_2": 0.33333322222237033
+        },
+        "gpt-4o": {
+          "final_consensus": 0.25,
+          "agent_0": 0.25,
+          "agent_1": 0.25,
+          "agent_2": 0.25
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.3667768915865357,
+          "agent_0": 0.3667768915865357,
+          "agent_1": 0.2072630239350438,
+          "agent_2": 0.05918319289188475
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": -0.16666666666666666,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": -0.5,
+          "claude-sonnet-4-6__vs__gpt-4o": 0.0,
+          "deepseek-v3p2__vs__gpt-4o": 0.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_1",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "left"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_1",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "left"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_1",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "right",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 0.6065614420172382,
+      "disagreement_rate": 0.39343855798276184,
+      "vote_entropy": 0.9999999999999998,
+      "lexical_diversity": 0.7051421969367785,
+      "pairwise_similarity_lexical": 0.12530739366692858
+    },
+    "structural_metrics": {
+      "mtld": 142.49365268407075,
+      "readability_fk_grade": 19.355153846153843,
+      "coherence_mean": 0.3587833736784256,
+      "prompt_relevance": 0.6208321684989317,
+      "connective_density": 0.4,
+      "word_count": 226,
+      "repetition_rate": 0.0
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement",
+        "random_sample_15pct"
+      ],
+      "sheet_path": "results/human_eval/run_8dd444207375.json"
+    }
+  }
+}

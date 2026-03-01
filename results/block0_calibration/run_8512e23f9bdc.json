@@ -2,7 +2,7 @@
   "run_id": "run_8512e23f9bdc",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:58:53.591784+00:00",
+  "timestamp_utc": "2026-03-01T03:49:22.783478+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_07_assumption_mapping",
@@ -36,7 +36,7 @@
       "text": "## Assumption table (implicit assumptions + category + Q1\u2013Q2 validation/falsification evidence)\n\n| # | Implicit assumption | Category | Validated in first 2 quarters if\u2026 | Falsified / red flags in first 2 quarters if\u2026 |\n|---|---|---|---|---|\n| 1 | The new region has sufficient unmet demand for your category at your feature level | Market | High intent signals: strong landing-page conversion, demo requests, trial starts; search volume and competitor comparisons support demand | Low top-of-funnel despite spend; high bounce; few qualified leads; demand concentrated only in niche segments |\n| 2 | Price elasticity is high: a 30% cut produces >30% unit/segment volume lift (or materially improves win rate) | Market / Financial | Win rate improves materially vs control; CAC stays acceptable; net revenue (or contribution) per cohort improves | Growth lift is modest; CAC rises; revenue per cohort drops; discount attracts low-quality, low-retention customers |\n| 3 | Competitors won\u2019t immediately match price cuts or intensify promotions | Market | Competitive pricing remains stable; your win rate improves without a \u201crace to the bottom\u201d | Competitors match/undercut within weeks; bidding wars in ads; increased churn due to switching |\n| 4 | Influencer marketing is an efficient acquisition channel for this region and category | Market / Behavioral | Attribution shows influencer-sourced CAC \u2264 target; conversion rates comparable to other channels; quality metrics (activation, retention) strong | High traffic with poor activation; CAC inflated after including fees; heavy \u201cvanity metrics\u201d with low downstream conversion |\n| 5 | Influencer audiences overlap with your ICP (industry, company size, use case) | Behavioral / Market | Leads match ICP in CRM; high demo-to-close for influencer cohorts | Leads skew SMB/consumer/irrelevant roles; low qualification rate; high support usage without corresponding revenue |\n| 6 | Brand trust transfers: influencers can credibly endorse B2B SaaS and reduce trust barriers | Behavioral | Shorter sales cycle; higher trial-to-paid; fewer security/procurement objections | Prospects still require heavy proof/security review; influencer mentions don\u2019t move decision makers |\n| 7 | Localized product-market fit exists without major product changes (language, integrations, workflows) | Market / Operational | Activation funnel similar to existing regions; limited localization requests; NPS/CSAT acceptable | Drop-off at onboarding; repeated requests for local integrations, language, invoicing, tax docs; negative reviews |\n| 8 | Sales motion will work similarly (self-serve vs sales-led expectations, procurement norms) | Market / Operational | Comparable trial-to-paid and sales cycle length; procurement steps manageable | Sales cycle materially longer; self-serve underperforms; procurement/security blocks deals |\n| 9 | The 30% discount won\u2019t anchor customers to a permanently lower willingness-to-pay (i.e., you can raise later) | Behavioral / Financial | Cohorts accept planned renewals/step-ups; low price objections at renewal | Renewal churn spikes when price increases; expansion revenue weak; customers treat discount as \u201ctrue price\u201d |\n|10| Lower price won\u2019t materially increase churn (customers who buy cheap leave easily) | Behavioral / Financial | Retention equal or better than baseline; engagement and product value metrics high | Early churn in first 30\u201390 days; low usage; high \u201cdeal-seeking\u201d behavior |\n|11| Support costs stay stable because automation/AI can absorb increased ticket volume | Operational / Financial | Tickets per active customer flat or down; containment rate high; CSAT stable; low escalation | Ticket volume scales faster than users; escalations rise; CSAT drops; more refunds/chargebacks |\n|12| New-region users won\u2019t generate disproportionately complex support (language/time zone/compliance) | Operational | Similar handle time; similar topic mix; staffing coverage works | Longer handle time; higher severity/security tickets; staffing gaps cause backlog |\n|13| Infrastructure and performance (latency, uptime) will be adequate without major capex | Operational | Performance SLOs met; no churn complaints tied to latency | Elevated error rates/latency; churn or poor conversion tied to speed; emergency infra spend |\n|14| Billing, payments, taxes, and invoicing can be handled smoothly (local payment rails, FX, VAT/GST) | Operational / Regulatory | Low payment failure; compliant invoices; minimal manual finance work | High payment failure/chargebacks; tax invoice issues; manual work balloons; delayed collections |\n|15| Data privacy/security requirements are met with current controls (e.g., GDPR, data residency, DPAs) | Regulatory | Enterprise prospects pass security reviews; no legal blockers; required agreements in place | Deals stall on data residency/DPA; legal findings require re-architecture; regulator/customer complaints |\n|16| Employment/contractor rules allow planned influencer arrangements and marketing disclosures | Regulatory | Contracts executed; required disclosures followed; no platform/legal escalations | Violations of disclosure rules; influencer content removed; fines/PR issues |\n|17| Unit economics still work despite 30% price cut (gross margin, contribution margin, payback) | Financial | Cohort contribution margin positive on target timeline; CAC payback within acceptable bounds | Contribution margin negative; payback drifts beyond tolerance; requires perpetual growth to sustain |\n|18| \u201cProfitability in 12 months\u201d is achievable given ramp curves and fixed costs (local team, support, compliance) | Financial | Run-rate operating profit trend aligns by end of Q2; hiring and spend match plan | Burn materially above plan; revenue ramp slow; fixed costs underestimated |\n|19| CAC will not spike due to increased competition or influencer saturation | Financial / Market | CAC stable or improving; CPM/CPC stable; influencer rates reasonable | CAC up materially; diminishing returns; influencers demand higher fees after initial tests |\n|20| Attribution and measurement are accurate enough to manage influencer ROI and cohort economics | Operational / Financial | Clean tracking (UTMs, promo codes, holdouts); consistent channel-level ROI | Ambiguous attribution; last-click overcredits; cannot reconcile spend to customers |\n|21| FX and macro volatility won\u2019t erode margins or demand | Financial | FX within expected band; pricing and costs stable | FX swings reduce realized revenue; customers delay purchases |\n|22| No unexpected regulatory approvals/registrations needed to sell in-region | Regulatory | Ability to contract and invoice quickly; no licensing blockers | Requirement for local entity, registrations, or sector-specific approvals slows launch |\n|23| Customer behavior: rapid referral/word-of-mouth will amplify early growth (implicit in \u201crapid user growth\u201d) | Behavioral / Market | Organic share of signups increases; referral rate and virality measurable | Organic remains flat; growth entirely paid; retention not strong enough for WOM |\n|24| Organizational focus: existing team can execute expansion without harming core-region performance | Operational | Core metrics stable while expansion runs; clear ownership | Core churn rises; roadmap slips; support backlog across all regions |\n\n---\n\n## Prioritized risk narrative (top 5 by expected downside)\n\n### 1) Unit economics break under a 30% price cut (Assumptions #2, #17, #18, #9)\n**Why downside is large:** If the discount doesn\u2019t create enough incremental *profitable* demand, you lock in lower ARPA/ARPU, weaken expansion potential, and make the \u201cprofit in 12 months\u201d target structurally unattainable. This is often irreversible due to price anchoring and competitive response.  \n**Targeted experiment/safeguard (pre-rollout):**\n- **Price A/B (or geo-split) test**: Offer 0%, 10\u201315%, and 30% discounts to matched segments; measure win rate, ARPA, retention intent, and contribution margin.\n- **Guardrail:** launch with **time-bound/conditional discount** (e.g., 3\u20136 months, or first-year only with renewal uplift baked into contract).\n- **Decision gate:** proceed only if **cohort contribution margin** and **payback** meet thresholds under conservative growth.\n\n### 2) Influencer marketing fails to acquire *ICP-quality* customers efficiently (Assumptions #4, #5, #6, #20)\n**Why downside is large:** Heavy spend with weak attribution can burn cash quickly while creating misleading \u201ctopline growth\u201d (traffic/signups) without activation, retention, or revenue.  \n**Targeted experiment/safeguard:**\n- Run **small-batch influencer pilots** (5\u201310 creators) with strict tracking (unique links/codes + post-purchase survey + holdout region/segment).\n- Pay on a **hybrid model** (fixed + performance bonus tied to qualified leads or activated accounts, not just clicks).\n- **Kill criteria** after 4\u20136 weeks: CAC, activation rate, and ICP match below targets.\n\n### 3) Support and operational costs scale non-linearly; automation doesn\u2019t hold (Assumptions #11, #12)\n**Why downside is large:** Support costs can silently destroy margins and brand in a new market. If CSAT drops, churn rises, and refunds increase\u2014making both growth and profitability worse.  \n**Targeted experiment/safeguard:**\n- Before scaling spend, run a **support load test**: onboard a controlled cohort and measure tickets per active customer, containment rate, handle time, and escalation rate.\n- Localize **knowledge base + in-product guidance** for top 20 issues; add **time-zone coverage** plan.\n- **Safeguard:** set a **support SLO gate** (e.g., first response time, CSAT) that must be met before increasing acquisition spend.\n\n### 4) Competitive response triggers a price war or negates growth advantage (Assumptions #3)\n**Why downside is large:** If competitors match pricing, you lose differentiation while keeping lower margins\u2014worst of both worlds.  \n**Targeted experiment/safeguard:**\n- Conduct **competitive monitoring** (weekly price tracking, promo tracking, ad library monitoring).\n- Start with **segmented discounting** (only for specific verticals/annual plans) rather than blanket 30%.\n- Prepare a **non-price differentiation package** (bundles, premium support tiers, integrations) to avoid pure price competition.\n\n### 5) Regulatory / compliance friction slows sales or forces rework (Assumptions #14, #15, #22, #16)\n**Why downside is large:** Regulatory blockers can freeze pipeline, require costly re-architecture (data residency), or create legal exposure. These delays directly contradict a 12\u2011month profitability promise.  \n**Targeted experiment/safeguard:**\n- Run **pre-sales security/compliance discovery** with 10\u201315 target accounts and a formal checklist (DPA, SOC2/ISO expectations, data location, retention policies).\n- Validate **payments + tax invoicing** with real transactions early (including refunds/chargebacks).\n- **Safeguard:** \u201cno heavy spend\u201d until **legal/compliance go/no-go** milestones are met.\n\n---\n\n## Next-step validation roadmap (decision-risk reduction before full rollout)\n\n### Phase 0 (Weeks 0\u20132): Instrumentation + baseline gates\n- Implement attribution: UTMs, promo codes, post-signup \u201cHow did you hear about us?\u201d, CRM source-of-truth, cohort dashboards.\n- Define go/no-go thresholds for: CAC, payback, activation, retention proxy (e.g., week-4 active), support SLOs, gross margin.\n- Competitive baseline: current competitor pricing/promos, share of voice, and positioning notes.\n\n### Phase 1 (Weeks 2\u20136): Controlled market entry pilots (small spend)\n1) **Pricing/packaging test (highest priority)**\n   - Geo-split or segment split: 0% vs 15% vs 30% discount; keep everything else constant.\n   - Measure: lead\u2192trial, trial\u2192paid, ARPA, discount dependency, early churn (30-day), contribution margin.\n\n2) **Influencer pilot with hard measurement**\n   - 5\u201310 influencers across 2\u20133 audience types.\n   - Measure: ICP match rate, activation, CAC, payback proxy, sales cycle impact.\n   - Include a **holdout** audience/region when possible to estimate incrementality.\n\n3) **Support automation reality check**\n   - Onboard a capped cohort; intentionally test peak hours.\n   - Measure: ticket rate per active customer, containment, handle time, CSAT, refund rate.\n\n### Phase 2 (Weeks 6\u201312): Expand only what passes thresholds\n- Scale the *winning* price point only to the best-performing segment(s).\n- Double down on the top-performing influencer archetype; renegotiate contracts to include performance components.\n- Ship the smallest localization/integration items proven to unblock activation (based on funnel drop-offs and support topics).\n\n### Phase 3 (Quarter 2): Proof of scalable unit economics + compliance clearance\n- **Cohort economics review**: contribution margin by channel and segment; updated payback forecast using actual retention/usage.\n- **Compliance sign-off**: documented outcomes of security reviews, DPAs, data handling, invoicing/tax workflows.\n- **Scale decision gate** (end of Q2): proceed to full rollout only if:\n  - Contribution margin positive (or on a credible path with validated levers),\n  - CAC and payback within thresholds,\n  - Support SLOs stable at higher user volume,\n  - No critical regulatory blockers.\n\nIf you share their target ICP, ACV range, and whether this is self-serve or sales-led, I can tighten the specific Q1\u2013Q2 metrics and thresholds (e.g., acceptable CAC payback, minimum activation benchmarks, and the right holdout design).",
       "input_tokens": 161,
       "output_tokens": 2856,
-      "latency_ms": 4059.3491320032626,
+      "latency_ms": 3926.960036973469,
       "structural_metrics": {
         "mtld": 268.3837871612092,
         "readability_fk_grade": 22.102740224690894,
@@ -69,26 +69,26 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.33333344444437035,
+    "quality_score": 0.6666665555556297,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 0.6666668888887407,
+      "normalized_bt_score": 1.3333331111112594,
       "num_bt_candidates": 2,
-      "consensus_vs_best_agent": false,
+      "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.0,
-        "gpt-4o": 0.5
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 1.0
       }
     },
     "threshold_met": null,
     "thresholds": {},
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
-      "gpt-4o": 0.5,
-      "deepseek-v3p2": 9.99998000004e-07
+      "gpt-4o": 0.999999000002,
+      "deepseek-v3p2": 0.5
     },
     "judge_panel": {
       "judges": [
@@ -97,12 +97,12 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.33333344444437035,
-        "agent_0": 0.6666665555556297
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
       },
       "ranking": [
-        "agent_0",
-        "final_consensus"
+        "final_consensus",
+        "agent_0"
       ],
       "per_judge_bt_scores": {
         "claude-sonnet-4-6": {
@@ -110,19 +110,19 @@
           "agent_0": 0.5
         },
         "gpt-4o": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
         },
         "deepseek-v3p2": {
-          "final_consensus": 9.99998000004e-07,
-          "agent_0": 0.999999000002
+          "final_consensus": 0.5,
+          "agent_0": 0.5
         }
       },
       "inter_rater_reliability": {
         "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
-          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 0.0,
           "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
@@ -132,8 +132,8 @@
           "candidate_j": "agent_0",
           "per_judge": {
             "claude-sonnet-4-6": "tie",
-            "gpt-4o": "tie",
-            "deepseek-v3p2": "right"
+            "gpt-4o": "left",
+            "deepseek-v3p2": "tie"
           },
           "majority_winner": null
         }

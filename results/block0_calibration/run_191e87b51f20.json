@@ -2,7 +2,7 @@
   "run_id": "run_191e87b51f20",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:55:45.482062+00:00",
+  "timestamp_utc": "2026-03-01T03:44:55.082480+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_08_counterfactual_chain",
@@ -36,11 +36,11 @@
       "text": "# Counterfactual Analysis: Segmented Architecture with Offline Fallback and Incident Drills\n\n---\n\n## 1. Baseline (Actual Event)\n\n| Dimension | Observed outcome |\n|---|---|\n| **Outage duration** | 9 hours, network-wide |\n| **Root cause of spread** | Flat/centralized scheduling system; single point of failure |\n| **Patient triage** | Degraded \u2014 clinicians lost real-time visibility into appointments, bed status, and patient history |\n| **Communication** | Ad-hoc phone trees, conflicting information across sites |\n\n---\n\n## 2. Counterfactual Scenario\n\nThe network adopts, six months prior:\n\n- **Segmented network architecture**: each hospital's scheduling subsystem is logically and, where feasible, physically isolated, with controlled inter-segment data exchange.\n- **Offline fallback booking**: each site maintains a local, non-network-dependent booking capability (e.g., local server with periodic sync, or paper-based protocol with pre-printed templates).\n- **Weekly incident drills**: staff at every site rehearse switching to fallback mode, communicating status, and triaging under degraded IT conditions.\n\n---\n\n## 3. Counterfactual Causal Chain\n\n### (a) Outage Propagation\n\n| Effect | Confidence | Reasoning |\n|---|---|---|\n| Ransomware is **contained to the initially compromised segment** rather than propagating network-wide | **High** | Segmentation is the primary technical control against lateral movement; this is well-evidenced in NIST, MITRE ATT&CK, and post-incident analyses of healthcare ransomware (e.g., WannaCry/NHS). |\n| Unaffected hospitals **continue operating on their local scheduling systems** with little or no disruption | **High** | By design, local systems are decoupled from the compromised segment. |\n| The compromised segment itself still experiences a **local outage**, possibly of similar severity to the original 9-hour event | **Medium-High** | Segmentation limits blast radius but does not inherently speed recovery *within* the affected segment. |\n| Some cross-site workflows (e.g., inter-hospital referrals, shared specialist calendars) are **disrupted even at unaffected sites** because the sync channel to the compromised segment is severed | **Medium** | This is a predictable side-effect of segmentation; severity depends on how tightly coupled cross-site workflows are. |\n\n**Net assessment**: Instead of a 9-hour network-wide outage, the most likely outcome is a 9-hour (or somewhat shorter) outage at 1\u20132 sites, with partial degradation of cross-site functions at remaining sites.\n\n---\n\n### (b) Recovery Time\n\n| Effect | Confidence | Reasoning |\n|---|---|---|\n| **Overall network recovery time drops substantially** (estimated 1\u20133 hours for unaffected sites to reach full function, vs. 9 hours) | **High** | Unaffected segments need only re-establish sync channels, not rebuild from scratch. |\n| Recovery of the **compromised segment** is modestly faster (perhaps 5\u20137 hours instead of 9) because IT staff can focus resources on one segment rather than firefighting everywhere | **Medium** | Depends on IT staffing model and whether the segmented architecture also includes better backup/restore per segment. |\n| Weekly drills mean **staff switch to offline fallback within minutes**, not hours | **High** | Drill frequency is the strongest predictor of time-to-workaround in human-factors literature. Six months of weekly drills (~24 rehearsals) is sufficient to build procedural fluency. |\n| Drill-trained staff **reduce the \"confusion gap\"** \u2014 the period between outage onset and organized response \u2014 from potentially 1\u20132 hours to ~15\u201330 minutes | **Medium-High** | Supported by emergency-management research (e.g., FEMA after-action reviews), though exact magnitude is context-dependent. |\n\n---\n\n### (c) Patient Triage Quality\n\n| Effect | Confidence | Reasoning |\n|---|---|---|\n| At unaffected sites, triage quality is **essentially unchanged** from normal operations | **High** | Local scheduling and patient data remain available. |\n| At the compromised site, triage quality is **significantly better than in the actual event** because staff execute a rehearsed offline protocol rather than improvising | **High** | Drills create cognitive scripts; improvisation under stress is the primary source of triage errors in IT-outage scenarios. |\n| **Risk of duplicate bookings or missed appointments** at the compromised site is present but lower than in the actual event | **Medium** | Offline fallback is imperfect, but pre-printed templates and rehearsed procedures reduce error rates compared to pure ad-hoc response. |\n| Patients requiring **cross-site coordination** (transfers, shared diagnostics) experience degraded triage quality even at unaffected sites | **Medium** | This is the residual risk: segmentation protects local function but can impair network-level clinical workflows. |\n\n---\n\n### (d) Communication Errors\n\n| Effect | Confidence | Reasoning |\n|---|---|---|\n| **Intra-site communication errors drop markedly** | **High** | Drills establish clear roles, escalation paths, and communication templates. The most common communication failures in the actual event (conflicting information, unclear authority) are precisely what drills address. |\n| **Inter-site communication errors are reduced but not eliminated** | **Medium** | Drills can rehearse cross-site notification, but real incidents always introduce novel elements. The severed sync channel may create ambiguity about which data is current. |\n| **External communication** (to patients, families, regulators) improves because a rehearsed communication plan exists | **Medium-High** | Assumes the drill program includes external-communication components, which is standard best practice but not guaranteed. |\n| Risk of **\"false all-clear\"** \u2014 unaffected sites assuming the incident is fully contained when residual malware may exist in shared infrastructure | **Low-Medium (speculative)** | Segmentation can create overconfidence; this is a known failure mode in segmented-network incident response. |\n\n---\n\n## 4. Unintended Consequences of Segmentation\n\n### 4.1 Synchronization Lag and Data Inconsistency\n- **Mechanism**: Segmented systems exchange data periodically rather than in real time. After an outage, re-synchronization may surface conflicts (e.g., two sites booked the same specialist for the same slot during the offline period).\n- **Severity**: Medium. Can cause patient-facing errors (double bookings, lost appointments) in the hours after reconnection.\n- **Mitigation**: Conflict-resolution protocols (last-writer-wins with manual review queue) and post-reconnection audit.\n\n### 4.2 Inconsistent Policy Enforcement and Configuration Drift\n- **Mechanism**: Each segment may evolve its own local configurations, patch levels, and access-control policies over time. Central governance is harder to enforce when systems are decoupled.\n- **Severity**: Medium-High over time. A segment that falls behind on patching could become the *next* entry point for ransomware, ironically undermining the very protection segmentation provides.\n- **Mitigation**: Centralized configuration management (e.g., policy-as-code pushed to segments), automated compliance scanning, and periodic architecture audits.\n\n### 4.3 Increased Operational Complexity and Cost\n- **Mechanism**: Maintaining N independent scheduling subsystems, each with its own backup, failover, and offline capability, requires more IT staff, more hardware/licensing, and more complex change-management processes.\n- **Severity**: Medium. Capital and operating costs may increase 20\u201340% for the scheduling infrastructure (rough estimate based on analogous segmentation projects in healthcare IT).\n- **Mitigation**: Shared-services model for non-critical IT functions; cost-benefit analysis anchored to the expected loss from a repeat ransomware event.\n\n### 4.4 (Bonus) Drill Fatigue and Complacency\n- **Mechanism**: Weekly drills, if poorly designed, become rote. Staff may \"go through the motions\" without genuine cognitive engagement, reducing the drills' protective value over time.\n- **Severity**: Low-Medium. Well-documented in military and aviation drill programs.\n- **Mitigation**: Vary drill scenarios, inject novel complications, measure performance metrics (time-to-fallback, error rate), and debrief meaningfully. Consider shifting to biweekly drills after the first 3 months once baseline competency is established.\n\n### 4.5 (Bonus) Fragmented Incident Visibility\n- **Mechanism**: With segmented architecture, a centralized Security Operations Center (SOC) may have delayed or incomplete visibility into what is happening inside each segment, potentially slowing detection of sophisticated, multi-segment attacks.\n- **Severity**: Low-Medium. Depends on whether segmentation is accompanied by centralized logging and monitoring (it should be, but often isn't in practice).\n- **Mitigation**: Centralized SIEM with read-only log feeds from all segments; network detection and response (NDR) sensors at segment boundaries.\n\n---\n\n## 5. Summary Confidence Map\n\n| Dimension | Counterfactual improvement vs. actual | Confidence |\n|---|---|---|\n| Outage propagation | Network-wide \u2192 localized (1\u20132 sites) | \u2605\u2605\u2605\u2605\u2605 High |\n| Recovery time (unaffected sites) | 9 hrs \u2192 <1 hr | \u2605\u2605\u2605\u2605\u2605 High |\n| Recovery time (affected site) | 9 hrs \u2192 5\u20137 hrs | \u2605\u2605\u2605\u2606\u2606 Medium |\n| Patient triage (unaffected sites) | Near-normal | \u2605\u2605\u2605\u2605\u2605 High |\n| Patient triage (affected site) | Substantially better | \u2605\u2605\u2605\u2605\u2606 Medium-High |\n| Intra-site communication errors | Major reduction | \u2605\u2605\u2605\u2605\u2606 Medium-High |\n| Inter-site communication errors | Moderate reduction | \u2605\u2605\u2605\u2606\u2606 Medium |\n| Cross-site clinical workflows | Partially degraded | \u2605\u2605\u2605\u2606\u2606 Medium |\n\n---\n\n## 6. Decision Recommendation\n\n### Is segmented architecture justified under uncertainty?\n\n**Yes, with conditions.**\n\nThe expected-value calculation strongly favors segmentation:\n\n- **Downside of segmentation**: Increased cost (~20\u201340% for scheduling infrastructure), operational complexity, synchronization challenges, and risk of configuration drift \u2014 all of which are *manageable* with known mitigations.\n- **Downside of the status quo**: A single ransomware event produced a 9-hour network-wide outage with direct patient-safety implications. The probability of recurrence is non-trivial (healthcare is the most-targeted sector for ransomware), and the next event could be longer or more destructive.\n- **Asymmetry**: The worst-case cost of segmentation is ongoing operational overhead. The worst-case cost of *not* segmenting is patient harm or death during a prolonged, network-wide outage. Under any reasonable risk-aversion posture, the segmented architecture is justified.\n\n**Conditions for implementation:**\n1. Pair segmentation with **centralized monitoring** (SIEM, NDR) to avoid fragmented incident visibility.\n2. Enforce **automated configuration compliance** across segments to prevent drift.\n3. Design offline fallback with **explicit conflict-resolution rules** for post-reconnection sync.\n4. Shift from weekly to **biweekly drills after 3 months**, with increasing scenario complexity.\n\n### Evidence to Collect in Future Drills\n\n| Evidence target | Why it matters | How to measure |\n|---|---|---|\n| **Time-to-fallback** (minutes from outage detection to functional offline booking) | Primary metric of drill effectiveness | Stopwatch measurement per site per drill |\n| **Triage error rate under fallback** (duplicate bookings, missed critical patients) | Directly measures patient-safety risk | Post-drill audit of fallback records vs. ground truth |\n| **Cross-site communication latency and accuracy** | Tests the weakest link in the segmented model | Inject a cross-site referral scenario; measure time and error rate |\n| **Sync conflict volume after reconnection** | Quantifies the synchronization-lag risk | Count and categorize conflicts in post-drill reconciliation |\n| **Staff confidence and fatigue surveys** | Detects drill fatigue before it degrades performance | Anonymous Likert-scale survey after each drill |\n| **Detection-to-containment time for simulated lateral movement** | Tests whether segmentation + monitoring actually stops propagation | Red-team exercise at least quarterly |\n\nCollecting this evidence over 6\u201312 months will convert several \"medium-confidence\" estimates in this analysis into empirically grounded parameters, enabling a rigorous cost-benefit reassessment.",
       "input_tokens": 196,
       "output_tokens": 3006,
-      "latency_ms": 3934.6856590127572,
+      "latency_ms": 3982.6860340544954,
       "structural_metrics": {
         "mtld": 189.26480659645588,
         "readability_fk_grade": 17.646503343358543,
-        "coherence_mean": 0.29197006473715476,
+        "coherence_mean": 0.29197006530196307,
         "prompt_relevance": 0.81599187127587,
         "connective_density": 0.22058823529411764,
         "word_count": 1612,
@@ -79,16 +79,16 @@
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 1.0,
-        "gpt-4o": 0.5
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 1.0
       }
     },
     "threshold_met": null,
     "thresholds": {},
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
-      "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.999999000002
+      "gpt-4o": 0.999999000002,
+      "deepseek-v3p2": 0.5
     },
     "judge_panel": {
       "judges": [
@@ -110,19 +110,19 @@
           "agent_0": 0.5
         },
         "gpt-4o": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
-        },
-        "deepseek-v3p2": {
           "final_consensus": 0.999999000002,
           "agent_0": 9.99998000004e-07
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
         }
       },
       "inter_rater_reliability": {
         "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
-          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 0.0,
           "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
@@ -132,8 +132,8 @@
           "candidate_j": "agent_0",
           "per_judge": {
             "claude-sonnet-4-6": "tie",
-            "gpt-4o": "tie",
-            "deepseek-v3p2": "left"
+            "gpt-4o": "left",
+            "deepseek-v3p2": "tie"
           },
           "majority_winner": null
         }
@@ -149,7 +149,7 @@
     "structural_metrics": {
       "mtld": 189.26480659645588,
       "readability_fk_grade": 17.646503343358543,
-      "coherence_mean": 0.29197006473715476,
+      "coherence_mean": 0.29197006530196307,
       "prompt_relevance": 0.81599187127587,
       "connective_density": 0.22058823529411764,
       "word_count": 1612,

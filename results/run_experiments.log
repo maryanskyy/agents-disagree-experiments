@@ -1,0 +1,146 @@
+2026-02-28 21:11:31,790 | INFO | run_experiments | Prepared phase='pilot' manifest with 280 runs (base=8688)
+2026-02-28 21:11:31,818 | INFO | run_experiments | Manifest runs total=280 pending=280 completed=1
+2026-02-28 21:11:58,262 | INFO | run_experiments | Progress: 10/280 complete | failed=0 | eta=714.3s | cost=$0.8219
+2026-02-28 21:12:43,960 | INFO | run_experiments | Progress: 20/280 complete | failed=0 | eta=938.0s | cost=$1.9283
+2026-02-28 21:13:19,130 | INFO | run_experiments | Progress: 30/280 complete | failed=0 | eta=894.4s | cost=$3.5052
+2026-02-28 21:13:44,858 | INFO | run_experiments | Progress: 40/280 complete | failed=0 | eta=798.3s | cost=$4.2478
+2026-02-28 21:14:18,091 | INFO | run_experiments | Progress: 50/280 complete | failed=0 | eta=764.9s | cost=$5.3462
+2026-02-28 21:14:47,587 | INFO | run_experiments | Progress: 60/280 complete | failed=0 | eta=717.9s | cost=$6.3352
+2026-02-28 21:15:11,392 | INFO | run_experiments | Progress: 70/280 complete | failed=0 | eta=658.8s | cost=$7.0387
+2026-02-28 21:15:39,153 | INFO | run_experiments | Progress: 80/280 complete | failed=0 | eta=618.4s | cost=$7.9011
+2026-02-28 21:15:56,679 | INFO | run_experiments | Progress: 90/280 complete | failed=0 | eta=559.2s | cost=$9.2973
+2026-02-28 21:16:07,912 | INFO | run_experiments | Progress: 100/280 complete | failed=0 | eta=497.0s | cost=$10.1729
+2026-02-28 21:16:32,247 | INFO | run_experiments | Progress: 110/280 complete | failed=0 | eta=464.3s | cost=$10.9369
+2026-02-28 21:16:54,322 | INFO | run_experiments | Progress: 120/280 complete | failed=0 | eta=430.0s | cost=$11.6548
+2026-02-28 21:17:07,001 | INFO | run_experiments | Progress: 130/280 complete | failed=0 | eta=386.8s | cost=$12.3749
+2026-02-28 21:17:33,393 | INFO | run_experiments | Progress: 140/280 complete | failed=0 | eta=361.6s | cost=$13.4081
+2026-02-28 21:17:55,531 | INFO | run_experiments | Progress: 150/280 complete | failed=0 | eta=332.6s | cost=$14.5304
+2026-02-28 21:18:07,200 | INFO | run_experiments | Progress: 160/280 complete | failed=0 | eta=296.5s | cost=$15.4594
+2026-02-28 21:18:32,264 | INFO | run_experiments | Progress: 170/280 complete | failed=0 | eta=272.1s | cost=$16.4530
+2026-02-28 21:18:53,881 | INFO | run_experiments | Progress: 180/280 complete | failed=0 | eta=245.6s | cost=$17.1627
+2026-02-28 21:19:07,412 | INFO | run_experiments | Progress: 190/280 complete | failed=0 | eta=215.8s | cost=$18.0946
+2026-02-28 21:19:32,149 | INFO | run_experiments | Progress: 200/280 complete | failed=0 | eta=192.1s | cost=$19.0284
+2026-02-28 21:19:54,038 | INFO | run_experiments | Progress: 210/280 complete | failed=0 | eta=167.4s | cost=$19.8757
+2026-02-28 21:20:06,941 | INFO | run_experiments | Progress: 220/280 complete | failed=0 | eta=140.5s | cost=$20.7112
+2026-02-28 21:20:32,103 | INFO | run_experiments | Progress: 230/280 complete | failed=0 | eta=117.5s | cost=$21.7385
+2026-02-28 21:20:53,695 | INFO | run_experiments | Progress: 240/280 complete | failed=0 | eta=93.6s | cost=$22.2584
+2026-02-28 21:23:56,759 | INFO | run_experiments | Progress: 250/280 complete | failed=0 | eta=89.4s | cost=$31.3815
+2026-02-28 21:26:00,560 | INFO | run_experiments | Progress: 260/280 complete | failed=0 | eta=66.8s | cost=$35.6237
+2026-02-28 21:28:11,966 | INFO | run_experiments | Progress: 270/280 complete | failed=0 | eta=37.0s | cost=$44.1697
+2026-02-28 21:29:50,764 | INFO | run_experiments | Progress: 280/280 complete | failed=0 | eta=0.0s | cost=$48.3829
+2026-02-28 21:30:00,377 | INFO | run_experiments | Finished run loop in 1108.6s (failed=0, pending=0, paused=False)
+2026-02-28 21:30:00,417 | INFO | run_experiments | Pilot report written to results/pilot_report.json
+2026-02-28 21:30:00,418 | INFO | run_experiments | Run summary: {'status': 'done', 'total_runs': 280, 'completed_runs': 281, 'failed_runs': 0, 'pending_runs': 0, 'elapsed_seconds': 1108.5722009040182, 'cost': {'calls': 3322, 'total_input_tokens': 7210413, 'total_output_tokens': 1248968, 'total_cost_usd': 48.498597, 'by_model': {'gemini-2.5-pro': {'cost_usd': 1.1985599999999998, 'input_tokens': 10432.0, 'output_tokens': 118552.0}, 'gemini-2.5-flash': {'cost_usd': 0.031079925, 'input_tokens': 20379.0, 'output_tokens': 98505.0}, 'gpt-5.2': {'cost_usd': 9.644729999999994, 'input_tokens': 47175.0, 'output_tokens': 152883.0}, 'gpt-4o': {'cost_usd': 6.531349999999991, 'input_tokens': 2214580.0, 'output_tokens': 99490.0}, 'gemini-3.1-pro-preview': {'cost_usd': 6.668237499999981, 'input_tokens': 2296310.0, 'output_tokens': 379785.0}, 'claude-sonnet-4-6': {'cost_usd': 9.713658000000004, 'input_tokens': 2533146.0, 'output_tokens': 140948.0}, 'claude-haiku-4-5': {'cost_usd': 0.33945119999999984, 'input_tokens': 17694.0, 'output_tokens': 81324.0}, 'claude-opus-4-6': {'cost_usd': 14.371530000000002, 'input_tokens': 70697.0, 'output_tokens': 177481.0}}, 'by_block': {'block0_calibration': {'cost_usd': 22.209610500000103, 'calls': 1680.0}, 'block1_disagreement_dividend': {'cost_usd': 12.776302875000008, 'calls': 1002.0}, 'block4_quorum_paradox': {'cost_usd': 13.512683249999998, 'calls': 640.0}}}}
+2026-02-28 21:34:48,214 | INFO | run_experiments | Prepared phase='full' manifest with 8408 runs (base=8688)
+2026-02-28 21:34:48,574 | INFO | run_experiments | Manifest runs total=8408 pending=8408 completed=281
+2026-02-28 21:36:34,849 | INFO | run_experiments | Progress: 290/8408 complete | failed=0 | eta=2984.5s | cost=$4.0561
+2026-02-28 21:39:54,745 | INFO | run_experiments | Progress: 300/8408 complete | failed=0 | eta=8284.0s | cost=$17.3302
+2026-02-28 21:41:52,893 | INFO | run_experiments | Progress: 310/8408 complete | failed=0 | eta=11093.2s | cost=$24.0811
+2026-02-28 21:44:36,516 | INFO | run_experiments | Progress: 320/8408 complete | failed=0 | eta=14868.9s | cost=$31.8843
+2026-02-28 21:46:11,745 | INFO | run_experiments | Progress: 330/8408 complete | failed=0 | eta=16731.6s | cost=$35.0367
+2026-02-28 21:48:30,290 | INFO | run_experiments | Progress: 340/8408 complete | failed=0 | eta=19506.9s | cost=$40.7700
+2026-02-28 21:50:42,169 | INFO | run_experiments | Progress: 350/8408 complete | failed=0 | eta=21962.3s | cost=$46.1181
+2026-02-28 21:53:42,054 | INFO | run_experiments | Progress: 360/8408 complete | failed=0 | eta=25347.2s | cost=$54.0462
+2026-02-28 21:55:34,612 | INFO | run_experiments | Progress: 370/8408 complete | failed=0 | eta=27076.7s | cost=$57.7159
+2026-02-28 21:59:00,429 | INFO | run_experiments | Progress: 380/8408 complete | failed=0 | eta=30679.6s | cost=$66.4563
+2026-02-28 22:02:31,000 | INFO | run_experiments | Progress: 390/8408 complete | failed=0 | eta=34184.8s | cost=$76.1848
+2026-02-28 22:03:58,297 | INFO | run_experiments | Progress: 400/8408 complete | failed=0 | eta=35036.3s | cost=$80.3226
+2026-02-28 22:32:58,123 | INFO | run_experiments | Prepared phase='pilot' manifest with 280 runs (base=8688)
+2026-02-28 22:32:58,155 | INFO | run_experiments | Manifest runs total=280 pending=0 completed=401
+2026-02-28 22:32:58,201 | INFO | run_experiments | Pilot report written to results/pilot_report.json
+2026-02-28 22:32:58,201 | INFO | run_experiments | Run summary: {'status': 'nothing_to_do', 'total_runs': 280, 'completed_runs': 401, 'cost': {'calls': 0, 'total_input_tokens': 0, 'total_output_tokens': 0, 'total_cost_usd': 0.0, 'by_model': {}, 'by_block': {}}}
+2026-02-28 22:33:10,757 | INFO | run_experiments | Prepared phase='full' manifest with 8408 runs (base=8688)
+2026-02-28 22:33:11,110 | INFO | run_experiments | Manifest runs total=8408 pending=8288 completed=401
+2026-02-28 22:37:27,243 | INFO | run_experiments | Progress: 410/8408 complete | failed=0 | eta=5003.0s | cost=$18.5085
+2026-02-28 22:39:50,387 | INFO | run_experiments | Progress: 420/8408 complete | failed=0 | eta=7600.2s | cost=$27.5775
+2026-02-28 22:40:23,359 | WARNING | run_experiments | Max cost guardrail triggered at $30.02 (limit=$30.00). Execution paused.
+2026-02-28 22:42:32,718 | INFO | run_experiments | Prepared phase='full' manifest with 8408 runs (base=8688)
+2026-02-28 22:42:33,086 | INFO | run_experiments | Manifest runs total=8408 pending=8268 completed=421
+2026-02-28 22:46:33,019 | INFO | run_experiments | Prepared phase='full' manifest with 8408 runs (base=8688)
+2026-02-28 22:46:33,387 | INFO | run_experiments | Manifest runs total=8408 pending=8260 completed=429
+2026-03-01 00:35:48,611 | INFO | run_experiments | Prepared phase='pilot' manifest with 280 runs (base=8688)
+2026-03-01 00:35:48,638 | INFO | run_experiments | Manifest runs total=280 pending=280 completed=0
+2026-03-01 00:36:47,763 | INFO | run_experiments | Progress: 10/280 complete | failed=0 | eta=1596.6s | cost=$1.0826
+2026-03-01 00:37:48,478 | INFO | run_experiments | Progress: 20/280 complete | failed=0 | eta=1558.0s | cost=$2.4699
+2026-03-01 00:38:13,997 | INFO | run_experiments | Progress: 30/280 complete | failed=0 | eta=1211.4s | cost=$4.3166
+2026-03-01 00:38:49,011 | INFO | run_experiments | Progress: 40/280 complete | failed=0 | eta=1082.3s | cost=$5.0863
+2026-03-01 00:39:25,126 | INFO | run_experiments | Progress: 50/280 complete | failed=0 | eta=995.9s | cost=$6.7121
+2026-03-01 00:39:48,743 | INFO | run_experiments | Progress: 60/280 complete | failed=0 | eta=880.4s | cost=$8.0564
+2026-03-01 00:40:13,456 | INFO | run_experiments | Progress: 70/280 complete | failed=0 | eta=794.5s | cost=$8.9218
+2026-03-01 00:40:37,846 | INFO | run_experiments | Progress: 80/280 complete | failed=0 | eta=723.0s | cost=$10.0625
+2026-03-01 00:41:01,088 | INFO | run_experiments | Progress: 90/280 complete | failed=0 | eta=659.6s | cost=$11.6907
+2026-03-01 00:41:12,050 | INFO | run_experiments | Progress: 100/280 complete | failed=0 | eta=582.2s | cost=$12.4203
+2026-03-01 00:41:37,535 | INFO | run_experiments | Progress: 110/280 complete | failed=0 | eta=539.2s | cost=$13.8338
+2026-03-01 00:41:56,045 | INFO | run_experiments | Progress: 120/280 complete | failed=0 | eta=489.9s | cost=$14.8943
+2026-03-01 00:42:16,112 | INFO | run_experiments | Progress: 130/280 complete | failed=0 | eta=447.1s | cost=$16.2660
+2026-03-01 00:42:37,541 | INFO | run_experiments | Progress: 140/280 complete | failed=0 | eta=408.9s | cost=$17.2590
+2026-03-01 00:42:56,684 | INFO | run_experiments | Progress: 150/280 complete | failed=0 | eta=371.0s | cost=$18.4535
+2026-03-01 00:43:11,929 | INFO | run_experiments | Progress: 160/280 complete | failed=0 | eta=332.5s | cost=$19.7669
+2026-03-01 00:43:35,043 | INFO | run_experiments | Progress: 170/280 complete | failed=0 | eta=301.8s | cost=$21.0057
+2026-03-01 00:43:55,693 | INFO | run_experiments | Progress: 180/280 complete | failed=0 | eta=270.6s | cost=$22.4763
+2026-03-01 00:44:11,565 | INFO | run_experiments | Progress: 190/280 complete | failed=0 | eta=238.2s | cost=$23.4909
+2026-03-01 00:44:35,046 | INFO | run_experiments | Progress: 200/280 complete | failed=0 | eta=210.6s | cost=$24.4642
+2026-03-01 00:44:55,853 | INFO | run_experiments | Progress: 210/280 complete | failed=0 | eta=182.4s | cost=$25.2561
+2026-03-01 00:45:11,842 | INFO | run_experiments | Progress: 220/280 complete | failed=0 | eta=153.6s | cost=$26.7423
+2026-03-01 00:45:34,640 | INFO | run_experiments | Progress: 230/280 complete | failed=0 | eta=127.4s | cost=$28.2406
+2026-03-01 00:46:18,801 | INFO | run_experiments | Progress: 240/280 complete | failed=0 | eta=105.0s | cost=$29.4973
+2026-03-01 00:46:22,914 | WARNING | run_experiments | Max cost guardrail triggered at $30.03 (limit=$30.00). Execution paused.
+2026-03-01 00:54:39,649 | INFO | run_experiments | Prepared phase='pilot' manifest with 280 runs (base=8688)
+2026-03-01 00:54:39,676 | INFO | run_experiments | Manifest runs total=280 pending=280 completed=0
+2026-03-01 00:55:04,402 | INFO | run_experiments | Progress: 10/280 complete | failed=0 | eta=667.9s | cost=$1.4611
+2026-03-01 00:55:32,578 | INFO | run_experiments | Progress: 20/280 complete | failed=0 | eta=687.9s | cost=$3.6999
+2026-03-01 00:55:59,402 | INFO | run_experiments | Progress: 30/280 complete | failed=0 | eta=664.5s | cost=$5.5235
+2026-03-01 00:56:11,700 | INFO | run_experiments | Progress: 40/280 complete | failed=0 | eta=552.2s | cost=$5.8415
+2026-03-01 00:56:34,400 | INFO | run_experiments | Progress: 50/280 complete | failed=0 | eta=527.8s | cost=$7.2822
+2026-03-01 00:56:54,104 | INFO | run_experiments | Progress: 60/280 complete | failed=0 | eta=492.9s | cost=$8.8904
+2026-03-01 00:57:13,115 | INFO | run_experiments | Progress: 70/280 complete | failed=0 | eta=460.3s | cost=$9.9542
+2026-03-01 00:57:33,918 | INFO | run_experiments | Progress: 80/280 complete | failed=0 | eta=435.6s | cost=$10.9503
+2026-03-01 00:57:50,770 | INFO | run_experiments | Progress: 90/280 complete | failed=0 | eta=403.4s | cost=$12.1815
+2026-03-01 00:58:11,164 | INFO | run_experiments | Progress: 100/280 complete | failed=0 | eta=380.7s | cost=$13.4271
+2026-03-01 00:58:29,734 | INFO | run_experiments | Progress: 110/280 complete | failed=0 | eta=355.6s | cost=$14.2951
+2026-03-01 00:58:50,936 | INFO | run_experiments | Progress: 120/280 complete | failed=0 | eta=335.0s | cost=$15.6004
+2026-03-01 00:59:11,433 | INFO | run_experiments | Progress: 130/280 complete | failed=0 | eta=313.6s | cost=$17.1119
+2026-03-01 00:59:23,542 | INFO | run_experiments | Progress: 140/280 complete | failed=0 | eta=283.9s | cost=$17.7051
+2026-03-01 00:59:49,588 | INFO | run_experiments | Progress: 150/280 complete | failed=0 | eta=268.6s | cost=$19.2169
+2026-03-01 01:00:08,484 | INFO | run_experiments | Progress: 160/280 complete | failed=0 | eta=246.6s | cost=$20.4991
+2026-03-01 01:00:21,896 | INFO | run_experiments | Progress: 170/280 complete | failed=0 | eta=221.4s | cost=$21.5366
+2026-03-01 01:00:49,480 | INFO | run_experiments | Progress: 180/280 complete | failed=0 | eta=205.5s | cost=$23.1367
+2026-03-01 01:01:08,633 | INFO | run_experiments | Progress: 190/280 complete | failed=0 | eta=184.2s | cost=$24.3687
+2026-03-01 01:01:24,128 | INFO | run_experiments | Progress: 200/280 complete | failed=0 | eta=161.8s | cost=$24.9769
+2026-03-01 01:01:44,899 | INFO | run_experiments | Progress: 210/280 complete | failed=0 | eta=141.7s | cost=$26.1632
+2026-03-01 01:02:07,708 | INFO | run_experiments | Progress: 220/280 complete | failed=0 | eta=122.2s | cost=$27.7522
+2026-03-01 01:02:22,234 | INFO | run_experiments | Progress: 230/280 complete | failed=0 | eta=100.6s | cost=$28.8565
+2026-03-01 01:02:42,995 | INFO | run_experiments | Progress: 240/280 complete | failed=0 | eta=80.6s | cost=$30.8687
+2026-03-01 01:06:12,194 | INFO | run_experiments | Progress: 250/280 complete | failed=0 | eta=83.1s | cost=$43.8610
+2026-03-01 01:08:41,897 | WARNING | run_experiments | Max cost guardrail triggered at $50.03 (limit=$50.00). Execution paused.
+2026-03-01 01:08:58,378 | INFO | run_experiments | Progress: 260/280 complete | failed=0 | eta=66.1s | cost=$51.0409
+2026-03-01 01:12:12,612 | INFO | run_experiments | Finished run loop in 1052.9s (failed=0, pending=12, paused=True)
+2026-03-01 01:12:12,663 | INFO | run_experiments | Pilot report written to results/pilot_report.json
+2026-03-01 01:12:12,663 | INFO | run_experiments | Run summary: {'status': 'paused_max_cost', 'total_runs': 280, 'completed_runs': 268, 'failed_runs': 0, 'pending_runs': 12, 'elapsed_seconds': 1052.9468799129827, 'cost': {'calls': 2918, 'total_input_tokens': 10420789, 'total_output_tokens': 1916164, 'total_cost_usd': 56.118453, 'by_model': {'gemini-2.5-flash': {'cost_usd': 0.026256375000000005, 'input_tokens': 13673.0, 'output_tokens': 84103.0}, 'claude-opus-4-6': {'cost_usd': 18.6738, 'input_tokens': 56180.0, 'output_tokens': 237748.0}, 'claude-haiku-4-5': {'cost_usd': 0.3323295999999999, 'input_tokens': 16687.0, 'output_tokens': 79745.0}, 'gpt-5.2': {'cost_usd': 9.983529999999996, 'input_tokens': 29377.0, 'output_tokens': 161496.0}, 'gemini-2.5-pro': {'cost_usd': 2.1589299999999993, 'input_tokens': 10432.0, 'output_tokens': 214589.0}, 'gpt-4o': {'cost_usd': 9.141704999999982, 'input_tokens': 3253402.0, 'output_tokens': 100820.0}, 'claude-sonnet-4-6': {'cost_usd': 13.97240100000003, 'input_tokens': 3767312.0, 'output_tokens': 178031.0}, 'deepseek-v3p2': {'cost_usd': 1.8295012199999947, 'input_tokens': 3273726.0, 'output_tokens': 859632.0}}, 'by_block': {'block0_calibration': {'cost_usd': 29.293834959999923, 'calls': 1680.0}, 'block1_disagreement_dividend': {'cost_usd': 17.67863541499999, 'calls': 1002.0}, 'block4_quorum_paradox': {'cost_usd': 9.145982819999995, 'calls': 236.0}}}, 'pause_reason': 'Max cost guardrail triggered at $50.03 (limit=$50.00). Execution paused.'}
+2026-03-01 03:42:51,615 | INFO | run_experiments | Prepared phase='pilot' manifest with 280 runs (base=3792)
+2026-03-01 03:42:51,644 | INFO | run_experiments | Manifest runs total=280 pending=280 completed=0
+2026-03-01 03:43:39,192 | INFO | run_experiments | Progress: 10/280 complete | failed=0 | eta=1284.1s | cost=$2.1793
+2026-03-01 03:44:35,225 | INFO | run_experiments | Progress: 20/280 complete | failed=0 | eta=1346.7s | cost=$4.8916
+2026-03-01 03:45:08,083 | INFO | run_experiments | Progress: 30/280 complete | failed=0 | eta=1137.1s | cost=$5.8732
+2026-03-01 03:45:56,529 | INFO | run_experiments | Progress: 40/280 complete | failed=0 | eta=1109.4s | cost=$6.9450
+2026-03-01 03:46:43,188 | INFO | run_experiments | Progress: 50/280 complete | failed=0 | eta=1065.2s | cost=$8.2731
+2026-03-01 03:46:58,453 | INFO | run_experiments | Progress: 60/280 complete | failed=0 | eta=905.0s | cost=$9.6486
+2026-03-01 03:47:31,890 | INFO | run_experiments | Progress: 70/280 complete | failed=0 | eta=840.8s | cost=$10.9062
+2026-03-01 03:47:50,104 | INFO | run_experiments | Progress: 80/280 complete | failed=0 | eta=746.2s | cost=$12.0357
+2026-03-01 03:48:06,631 | INFO | run_experiments | Progress: 90/280 complete | failed=0 | eta=665.0s | cost=$13.1845
+2026-03-01 03:48:16,348 | INFO | run_experiments | Progress: 100/280 complete | failed=0 | eta=584.5s | cost=$14.4981
+2026-03-01 03:48:40,739 | INFO | run_experiments | Progress: 110/280 complete | failed=0 | eta=539.5s | cost=$15.4444
+2026-03-01 03:49:06,573 | INFO | run_experiments | Progress: 120/280 complete | failed=0 | eta=499.9s | cost=$17.2805
+2026-03-01 03:49:23,177 | INFO | run_experiments | Progress: 130/280 complete | failed=0 | eta=451.8s | cost=$18.6709
+2026-03-01 03:49:40,900 | INFO | run_experiments | Progress: 140/280 complete | failed=0 | eta=409.3s | cost=$19.5840
+2026-03-01 03:50:06,493 | INFO | run_experiments | Progress: 150/280 complete | failed=0 | eta=376.9s | cost=$21.2264
+2026-03-01 03:50:24,178 | INFO | run_experiments | Progress: 160/280 complete | failed=0 | eta=339.4s | cost=$22.6570
+2026-03-01 03:50:41,016 | INFO | run_experiments | Progress: 170/280 complete | failed=0 | eta=303.7s | cost=$23.7633
+2026-03-01 03:51:05,896 | INFO | run_experiments | Progress: 180/280 complete | failed=0 | eta=274.6s | cost=$25.5280
+2026-03-01 03:51:23,126 | INFO | run_experiments | Progress: 190/280 complete | failed=0 | eta=242.3s | cost=$26.8274
+2026-03-01 03:51:40,443 | INFO | run_experiments | Progress: 200/280 complete | failed=0 | eta=211.5s | cost=$27.5630
+2026-03-01 03:51:58,233 | INFO | run_experiments | Progress: 210/280 complete | failed=0 | eta=182.2s | cost=$28.9589
+2026-03-01 03:52:15,772 | INFO | run_experiments | Progress: 220/280 complete | failed=0 | eta=153.9s | cost=$30.2764
+2026-03-01 03:52:40,317 | INFO | run_experiments | Progress: 230/280 complete | failed=0 | eta=128.0s | cost=$31.9266
+2026-03-01 03:52:58,351 | INFO | run_experiments | Progress: 240/280 complete | failed=0 | eta=101.1s | cost=$33.1015
+2026-03-01 04:00:17,286 | INFO | run_experiments | Progress: 250/280 complete | failed=0 | eta=125.5s | cost=$47.4158

@@ -2,7 +2,7 @@
   "run_id": "run_09b3ee1d6d3c",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:55:24.001139+00:00",
+  "timestamp_utc": "2026-03-01T03:44:15.093864+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_06_constraint_satisfaction",
@@ -36,11 +36,11 @@
       "text": "Excellent. As an expert agent, I will provide a structured and self-critical analysis of this scheduling problem.\n\n### **Executive Summary**\n\nA valid assignment is **impossible** under the exact constraints provided. There is a fundamental contradiction between the number of available reviewers and the number of required review slots.\n\nI will first prove the infeasibility and identify the minimal set of conflicting constraints. Then, to demonstrate a constructive approach, I will propose a minor, logical modification to the problem statement that makes it solvable, and proceed to provide and compare two distinct solutions based on that modification.\n\n---\n\n### **Part 1: Proof of Infeasibility**\n\nA valid schedule cannot be created because the constraints on panel size and reviewer uniqueness are irreconcilable with the number of reviewers provided.\n\n**Logical Proof:**\n\n1.  **Required Review Slots (Constraint 1):** The problem requires scheduling for three panels (A, B, C), and each panel needs *exactly two* reviewers.\n    *   Total Slots = (Number of Panels) \u00d7 (Reviewers per Panel)\n    *   Total Slots = 3 \u00d7 2 = **6 slots**.\n\n2.  **Required Unique Reviewers (Constraint 2):** The constraint \"No reviewer can serve on more than one panel\" means that each of the 6 required slots must be filled by a unique individual.\n    *   Therefore, **6 unique reviewers** are required to form the schedule.\n\n3.  **Available Reviewer Pool:** The problem explicitly defines the set of available reviewers as {R1, R2, R3",
       "input_tokens": 184,
       "output_tokens": 4092,
-      "latency_ms": 4692.921190988272,
+      "latency_ms": 4798.039298970252,
       "structural_metrics": {
         "mtld": 63.469152690659435,
         "readability_fk_grade": 12.896572398190049,
-        "coherence_mean": 0.33387484542420914,
+        "coherence_mean": 0.3338748483745456,
         "prompt_relevance": 0.8240943387704784,
         "connective_density": 0.2,
         "word_count": 222,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.6666665555556297,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 1.3333331111112594,
       "num_bt_candidates": 2,
       "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.5,
+        "deepseek-v3p2": 1.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.5
+      "deepseek-v3p2": 0.999999000002
     },
     "judge_panel": {
       "judges": [
@@ -97,8 +97,8 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
       },
       "ranking": [
         "final_consensus",
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "tie"
+            "deepseek-v3p2": "left"
           },
           "majority_winner": null
         }
@@ -149,16 +149,18 @@
     "structural_metrics": {
       "mtld": 63.469152690659435,
       "readability_fk_grade": 12.896572398190049,
-      "coherence_mean": 0.33387484542420914,
+      "coherence_mean": 0.3338748483745456,
       "prompt_relevance": 0.8240943387704784,
       "connective_density": 0.2,
       "word_count": 222,
       "repetition_rate": 0.0
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_09b3ee1d6d3c.json"
     }
   }
 }

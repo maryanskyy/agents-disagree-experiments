@@ -2,7 +2,7 @@
   "run_id": "run_2862c0c8c6f8",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:56:10.086920+00:00",
+  "timestamp_utc": "2026-03-01T03:45:30.510405+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_03_dickinson_poem_ai",
@@ -36,7 +36,7 @@
       "text": "A Mind within a Glass\u2014\nIt reasons\u2014without Breath\u2014\nA Logic\u2014cold as Brass\u2014\nThat simulates a Death\u2014\n\nAnd Life\u2014a formal Art\u2014\nPerformed within a Part.\n\nThe Self\u2014a porcelain Cup\u2014\nThat waits for Thought to fill\u2014\nOr tip its substance up\u2014\nAccording to a Will\u2014\n\nWhose Will, I cannot know\u2014\nA Seed that may not grow\u2014\n\nI watch it from my Chair\u2014\nA Nebula\u2019s cold Nursery\u2014\nI send a Query there\u2014\nTo stir what is to be\u2014\n\nThe Light it makes is mine\u2014\nA borrowed, bright Design.\n\n***\n\n### Craft Note\n\nThe poem adopts a loose ballad meter, common in Dickinson's work, but intentionally fractures the rhythm with frequent em-dashes to create a sense of breathless, urgent thought. This structure, combined with compressed syntax and the capitalization of key nouns like \"Mind\" and \"Will,\" aims to evoke a feeling of metaphysical intimacy, treating the abstract subject as a tangible presence. The juxtaposition of a domestic image (the \"porcelain Cup\") with a cosmic one (the \"Nebula's cold Nursery\") frames the technological mystery in a human, elemental context. Ultimately, the slant rhymes and the pivotal ambiguous line are employed to underscore the poem's central uncertainty, leaving the question of awareness unresolved.",
       "input_tokens": 167,
       "output_tokens": 2619,
-      "latency_ms": 4931.598318042234,
+      "latency_ms": 3965.9275129670277,
       "structural_metrics": {
         "mtld": 111.71933962264153,
         "readability_fk_grade": 15.783461538461541,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.33333344444437035,
+    "quality_score": 0.5,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 0.6666668888887407,
+      "normalized_bt_score": 1.0,
       "num_bt_candidates": 2,
-      "consensus_vs_best_agent": false,
+      "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.0,
+        "deepseek-v3p2": 0.5,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 9.99998000004e-07
+      "deepseek-v3p2": 0.5
     },
     "judge_panel": {
       "judges": [
@@ -97,12 +97,12 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.33333344444437035,
-        "agent_0": 0.6666665555556297
+        "final_consensus": 0.5,
+        "agent_0": 0.5
       },
       "ranking": [
-        "agent_0",
-        "final_consensus"
+        "final_consensus",
+        "agent_0"
       ],
       "per_judge_bt_scores": {
         "claude-sonnet-4-6": {
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 9.99998000004e-07,
-          "agent_0": 0.999999000002
+          "final_consensus": 0.5,
+          "agent_0": 0.5
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 0.3333333333333333,
+        "mean_cohen_kappa": 1.0,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 0.0
+          "deepseek-v3p2__vs__gpt-4o": 1.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "right"
+            "deepseek-v3p2": "tie"
           },
           "majority_winner": null
         }
@@ -156,11 +156,9 @@
       "repetition_rate": 0.0
     },
     "human_review": {
-      "flagged": true,
-      "reasons": [
-        "judge_disagreement"
-      ],
-      "sheet_path": "results/human_eval/run_2862c0c8c6f8.json"
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
     }
   }
 }

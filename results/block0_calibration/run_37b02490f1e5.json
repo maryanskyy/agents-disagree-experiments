@@ -2,7 +2,7 @@
   "run_id": "run_37b02490f1e5",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:56:34.033689+00:00",
+  "timestamp_utc": "2026-03-01T03:46:00.250446+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_04_climate_board_game",
@@ -36,11 +36,11 @@
       "text": "# THRESHOLD: A Climate Science Board Game\n\n## (1) GAME OBJECTIVE\n\nPlayers collectively manage a planetary system across 8 rounds, balancing economic growth, carbon emissions, and climate stability. The goal is to reach 2050 with a habitable planet (global temperature rise \u2264 2\u00b0C) while maintaining minimum economic prosperity (\u2265 $50B collective wealth). Success requires reasoning about cause-and-effect chains, not just following rules.\n\n**Core tension:** Short-term economic gains create long-term climate costs; mitigation investments reduce growth now but prevent catastrophic losses later.\n\n---\n\n## (2) COMPONENTS LIST\n\n### Physical Components\n- **1 Game Board** (modular, 3 sections: Economy, Atmosphere, Biosphere)\n- **8 Round Tokens** (labeled 2025\u20132050 in 5-year increments)\n- **1 Temperature Track** (0\u00b0C to 4\u00b0C, with visual danger zones at 1.5\u00b0C and 2\u00b0C)\n- **1 Carbon Budget Track** (cumulative CO\u2082 emissions, 0\u20131200 Gt)\n- **1 Economic Wealth Track** (per-player, $0\u2013$150B)\n- **5 Player Tokens** (distinct colors)\n- **60 Action Cards** (3 categories: Growth, Mitigation, Adaptation; see Appendix A)\n- **20 Event Cards** (feedback loops, tipping points, surprises)\n- **1 Feedback Loop Deck** (12 cards representing nonlinear amplification)\n- **40 Carbon Tokens** (physical cubes, 1 token = 10 Gt CO\u2082)\n- **20 Resilience Tokens** (represent adaptation infrastructure)\n- **1 Tipping Point Die** (d6, custom faces: see Mechanics section)\n- **Score Pad** (track wealth, emissions, temperature per round)\n- **1 Rulebook + Facilitator Guide**\n\n### Digital Optional\n- Simple spreadsheet or app to auto-calculate temperature rise (linear baseline + feedback multiplier)\n\n---\n\n## (3) SETUP\n\n1. **Place the board** in the center. All players can see all tracks.\n\n2. **Initialize tracks:**\n   - Temperature: 0\u00b0C\n   - Carbon Budget: 0 Gt (cumulative counter)\n   - Each player's Wealth: $100B\n   - Resilience Tokens: 0 (distributed during play)\n\n3. **Shuffle decks:**\n   - Action Cards (separate Growth, Mitigation, Adaptation piles)\n   - Event Cards\n   - Feedback Loop Deck\n\n4. **Deal 3 Action Cards** to each player (hand limit: 5).\n\n5. **Place Round Token** on 2025.\n\n6. **Explain the core rule:** \"Every action you take generates CO\u2082 or builds resilience. CO\u2082 accumulates and drives temperature rise. Temperature rise triggers feedback loops that accelerate warming. You win if you keep warming \u2264 2\u00b0C AND maintain collective wealth \u2265 $50B by 2050.\"\n\n---\n\n## (4) TURN STRUCTURE\n\n**Each round (representing 5 years) proceeds in 5 phases:**\n\n### Phase 1: Action Phase (3 minutes per player)\n- Players take turns in clockwise order.\n- On your turn, **play exactly 1 Action Card** from your hand (mandatory).\n- Immediately resolve the card's effects (gain/lose wealth, emit CO\u2082, gain resilience).\n- Draw 1 new card.\n- **Pass** if you have no cards (rare).\n\n### Phase 2: Collective Emissions Tally (1 minute)\n- Sum all CO\u2082 emitted this round.\n- Add to Carbon Budget Track.\n- **Record on score pad:** cumulative emissions.\n\n### Phase 3: Temperature Calculation (2 minutes)\n- **Baseline warming:** 0.1\u00b0C per 100 Gt cumulative CO\u2082 (simplified IPCC model).\n- **Feedback multiplier:** Draw 1 Feedback Loop card. Apply its multiplier (see Mechanics, below).\n- Update Temperature Track.\n- Example: 500 Gt cumulative \u2192 0.5\u00b0C baseline. Feedback card says \"\u00d71.3 (Arctic albedo loss)\" \u2192 0.65\u00b0C actual.\n\n### Phase 4: Event Resolution (2 minutes)\n- Draw 1 Event Card. Read aloud and resolve immediately.\n- Events can be:\n  - **Positive surprises** (e.g., \"Solar tech breakthrough: all players gain $10B\")\n  - **Negative surprises** (e.g., \"Permafrost thaw: +0.2\u00b0C unplanned\")\n  - **Conditional** (e.g., \"If temperature > 1.5\u00b0C, roll Tipping Point Die\")\n\n### Phase 5: End-of-Round Checks (1 minute)\n- **Wealth check:** If any player drops below $0, they lose $10B from collective pool (representing economic shock). If collective wealth < $0, game ends in loss.\n- **Temperature check:** If temperature > 2\u00b0C, move to Phase 5b (Tipping Point Risk).\n- **Advance Round Token** to next year.\n\n### Phase 5b: Tipping Point Risk (if temperature > 2\u00b0C)\n- Roll the Tipping Point Die.\n- **Faces:** 1\u20134 = safe; 5 = minor tipping (temperature +0.3\u00b0C, all players lose 1 Resilience Token); 6 = major tipping (temperature +0.5\u00b0C, all players lose $20B and 2 Resilience Tokens).\n- This represents nonlinear, irreversible climate change.\n\n---\n\n## (5) CORE MECHANICS\n\n### A. Action Cards (Three Types)\n\n**Growth Cards** (e.g., \"Coal Power Plant,\" \"Expand Agriculture\")\n- **Cost:** $0 (free or gain $5\u201315B)\n- **Emissions:** +30\u201350 Gt CO\u2082\n- **Resilience:** 0\n- **Rationale:** Tempting short-term wealth, but drives warming.\n\n**Mitigation Cards** (e.g., \"Renewable Energy Transition,\" \"Carbon Capture\")\n- **Cost:** $10\u201330B (wealth loss)\n- **Emissions:** \u221220\u201340 Gt CO\u2082 (or offset future emissions)\n- **Resilience:** +1\u20132\n- **Rationale:** Expensive now, prevents future catastrophe.\n\n**Adaptation Cards** (e.g., \"Flood Defenses,\" \"Drought-Resistant Crops\")\n- **Cost:** $5\u201320B\n- **Emissions:** 0\u20135 Gt CO\u2082 (small footprint)\n- **Resilience:** +2\u20133\n- **Rationale:** Prepares for warming that's already locked in; doesn't reduce emissions.\n\n**Card Example:**\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 SOLAR FARM EXPANSION (Mitigation)   \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 Cost: $15B                          \u2502\n\u2502 Emissions: \u221225 Gt CO\u2082               \u2502\n\u2502 Resilience: +1                      \u2502\n\u2502 Effect: Reduce your next Growth     \u2502\n\u2502 card's emissions by 10 Gt.          \u2502\n\u2502 Flavor: \"Harness the sun's power\"   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### B. Feedback Loop Deck (Nonlinear Tipping Mechanic)\n\nEach card represents a climate feedback and applies a **multiplier** to baseline warming:\n\n| Card | Feedback | Multiplier | Trigger |\n|------|----------|-----------|---------|\n| Arctic Albedo Loss | Less ice \u2192 less sunlight reflected | \u00d71.3 | Always active if temp > 0.5\u00b0C |\n| Methane Release | Thawing permafrost | \u00d71.5 | Triggered if temp > 1.5\u00b0C (roll die) |\n| Ocean Acidification | CO\u2082 absorption | \u00d71.2 | Always active |\n| Forest Dieback | Rainforest collapse | \u00d71.4 | Triggered if temp > 1.8\u00b0C (roll die) |\n| Reduced Cooling | Clouds change | \u00d71.1 | Always active |\n| **Runaway (Tipping)** | Multiple feedbacks | \u00d72.0 | Only if temp > 2.5\u00b0C (automatic)",
       "input_tokens": 193,
       "output_tokens": 2048,
-      "latency_ms": 4221.106267068535,
+      "latency_ms": 4265.751271974295,
       "structural_metrics": {
         "mtld": 106.26160296411857,
         "readability_fk_grade": 9.564598436389481,
-        "coherence_mean": 0.31354942445002365,
+        "coherence_mean": 0.31354942300071265,
         "prompt_relevance": 0.553714992957152,
         "connective_density": 0.0425531914893617,
         "word_count": 867,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.33333344444437035,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 0.6666668888887407,
       "num_bt_candidates": 2,
-      "consensus_vs_best_agent": true,
+      "consensus_vs_best_agent": false,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.5,
+        "deepseek-v3p2": 0.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.5
+      "deepseek-v3p2": 9.99998000004e-07
     },
     "judge_panel": {
       "judges": [
@@ -97,12 +97,12 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.33333344444437035,
+        "agent_0": 0.6666665555556297
       },
       "ranking": [
-        "final_consensus",
-        "agent_0"
+        "agent_0",
+        "final_consensus"
       ],
       "per_judge_bt_scores": {
         "claude-sonnet-4-6": {
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 9.99998000004e-07,
+          "agent_0": 0.999999000002
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "tie"
+            "deepseek-v3p2": "right"
           },
           "majority_winner": null
         }
@@ -149,16 +149,18 @@
     "structural_metrics": {
       "mtld": 106.26160296411857,
       "readability_fk_grade": 9.564598436389481,
-      "coherence_mean": 0.31354942445002365,
+      "coherence_mean": 0.31354942300071265,
       "prompt_relevance": 0.553714992957152,
       "connective_density": 0.0425531914893617,
       "word_count": 867,
       "repetition_rate": 0.013888888888888888
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_37b02490f1e5.json"
     }
   }
 }

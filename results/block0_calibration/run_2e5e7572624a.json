@@ -2,7 +2,7 @@
   "run_id": "run_2e5e7572624a",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:56:26.474671+00:00",
+  "timestamp_utc": "2026-03-01T03:45:56.467849+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_06_constraint_satisfaction",
@@ -36,7 +36,7 @@
       "text": "No valid assignment exists.\n\n### Proof of infeasibility (minimal contradiction set)\n\nFrom constraints (1) and (2):\n\n- Each of the 3 panels (A, B, C) needs exactly 2 reviewers \u21d2 total reviewer \u201cslots\u201d = \\(3 \\times 2 = 6\\).\n- No reviewer can serve on more than one panel \u21d2 each reviewer can fill at most 1 slot.\n- There are only 5 reviewers total (R1\u2013R5) \u21d2 at most 5 slots can be filled.\n\nSo we must have:\n\\[\n6 \\text{ required slots} \\le 5 \\text{ available slots}\n\\]\nwhich is false.\n\nTherefore, the problem is infeasible regardless of constraints (3)\u2013(6).\n\n### Minimal contradiction set\nThe infeasibility follows from **only** constraints:\n- **(1)** each panel needs exactly two reviewers, and  \n- **(2)** no reviewer can serve on more than one panel,  \ntogether with the given fact that there are only **five** reviewers and **three** panels.\n\nAll other constraints are irrelevant because feasibility already fails on simple counting.\n\n---\n\nIf you want, I can propose the *closest* feasible variants (e.g., allow one reviewer to serve on two panels, or add one more reviewer R6) and then produce valid schedules satisfying the remaining constraints.",
       "input_tokens": 185,
       "output_tokens": 282,
-      "latency_ms": 4082.132683019154,
+      "latency_ms": 3976.152493036352,
       "structural_metrics": {
         "mtld": 101.65057174731558,
         "readability_fk_grade": 10.312999999999999,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.6666665555556297,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 1.3333331111112594,
       "num_bt_candidates": 2,
       "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.5,
+        "deepseek-v3p2": 1.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.5
+      "deepseek-v3p2": 0.999999000002
     },
     "judge_panel": {
       "judges": [
@@ -97,8 +97,8 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
       },
       "ranking": [
         "final_consensus",
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "tie"
+            "deepseek-v3p2": "left"
           },
           "majority_winner": null
         }
@@ -156,9 +156,11 @@
       "repetition_rate": 0.06779661016949153
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_2e5e7572624a.json"
     }
   }
 }

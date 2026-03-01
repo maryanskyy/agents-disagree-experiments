@@ -1,0 +1,295 @@
+{
+  "run_id": "run_997764df0c4f",
+  "block_id": "block1_disagreement_dividend",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T03:57:41.239728+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_08_lighthouse_memory_protocol",
+    "topology": "flat",
+    "consensus": "debate_then_vote",
+    "agent_count": 3,
+    "model_assignment": [
+      "gpt-5.2",
+      "gpt-5.2",
+      "gpt-5.2"
+    ],
+    "disagreement_level": 2,
+    "temperature": 0.7,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Story-Driven Science Explanation with an Unusual Constraint",
+    "prompt": "Imagine a child asks: \"Why do some materials glow for a while after the light is turned off?\"\n\nWrite a 250-350 word explanation for a curious 10-year-old using a mini story set inside an old lighthouse museum at closing time. Your explanation should focus on phosphorescence (not fluorescence), stay scientifically accurate, and avoid misleading claims.\n\nRequirements:\n- Use at least two different metaphors and briefly compare their strengths/limits.\n- Include one short interactive thought experiment the child can do at home using safe, common objects.\n- Include a \"what scientists still don't fully know\" section in age-appropriate language.\n- End with one question that invites further curiosity.\n\nTone should be encouraging, precise, and imaginative.\n",
+    "rubric": [
+      "Clear age-appropriate explanation with conceptual fidelity.",
+      "Metaphors aid understanding and acknowledge limitations.",
+      "Interactive element is feasible and pedagogically useful.",
+      "Communicates uncertainty without confusion or fear."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gpt-5.2",
+      "text": "The lighthouse museum was closing. As the last lamp clicked off, Mia noticed a little star sticker on a display sign still shining softly. \u201cHow can it glow when the lights are off?\u201d she whispered.\n\nThe guide smiled. \u201cThat\u2019s **phosphorescence**. Some materials can *store* a bit of light energy and then release it **slowly**.\u201d\n\nInside the sticker are tiny building blocks called atoms. When bright light hits them, it gives some electrons (little energy-carrying parts) a boost. In phosphorescent materials, a few electrons get \u201cstuck\u201d in a special energy spot that\u2019s hard to leave. They don\u2019t fall back right away. When they *finally* drop back down, they send out the stored energy as new light\u2014so the glow lasts seconds, minutes, or even hours after darkness.\n\n**Metaphor 1: A playground slide with a sticky patch.**  \nLight pushes the \u201ckids\u201d (electrons) up the ladder. Normally they slide down fast. But the sticky patch holds some of them, so they trickle down later, one by one, making a long, fading glow.  \n*Strength:* Explains the \u201cgetting stuck.\u201d *Limit:* Real electrons aren\u2019t little kids and don\u2019t move on a literal slide.\n\n**Metaphor 2: A wind-up toy.**  \nLight \u201cwinds\u201d the material up, and it \u201cunwinds\u201d by glowing.  \n*Strength:* Explains stored energy and slow release. *Limit:* Doesn\u2019t show why some energy gets trapped longer than others.\n\n**Try it at home (safe thought experiment):**  \nIf you have a glow-in-the-dark sticker or toy, \u201ccharge\u201d it under a bright lamp for 30 seconds. Turn off the lights and watch. Now cover half with a book for 10 seconds, then uncover it. Which half is brighter? What does that tell you about storing and releasing light?\n\n**What scientists still don\u2019t fully know:**  \nScientists understand the basic trapping idea, but they\u2019re still studying exactly how tiny defects and impurities in different materials make some glows last longer, shine brighter, or fade in unusual steps.\n\nWhat other everyday objects do you think might be quietly \u201csaving\u201d light for later?",
+      "input_tokens": 171,
+      "output_tokens": 465,
+      "latency_ms": 12706.384027027525,
+      "structural_metrics": {
+        "mtld": 135.1411919293268,
+        "readability_fk_grade": 6.45692569870484,
+        "coherence_mean": 0.2984133757590218,
+        "prompt_relevance": 0.49129368231456266,
+        "connective_density": 0.47619047619047616,
+        "word_count": 340,
+        "repetition_rate": 0.0
+      }
+    },
+    {
+      "agent_id": "agent_1",
+      "model_name": "gpt-5.2",
+      "text": "The lighthouse museum was closing. The keeper clicked off the big lamp, and the room went dim\u2026 except for a tiny sticker on an old map that kept glowing green.\n\n\u201cThat\u2019s **phosphorescence**,\u201d the keeper whispered. \u201cSome materials can *store* a bit of light energy and then *release it slowly*, like a lantern that doesn\u2019t go out right away.\u201d\n\nHere\u2019s what\u2019s happening inside the material: light is made of tiny packets of energy. When the sticker was under the lamp, some of that energy bumped electrons (tiny parts of atoms) into a higher-energy \u201cexcited\u201d place. In phosphorescent materials, the electrons can get stuck in a kind of **energy waiting room** called a *trap*. They don\u2019t fall back immediately. Later, little by little, they escape the traps and return to their normal places, giving off light as they do.\n\nTwo metaphors:\n1) **A sponge for light**: the material \u201csoaks up\u201d light and \u201cdrips\u201d it out in the dark. *Strength:* helps you picture storing and releasing. *Limit:* real light isn\u2019t a liquid, and the \u201cdrips\u201d are actually electrons changing energy.\n2) **A playground slide with a sticky patch**: electrons slide down, but some hit a sticky spot and take longer to get unstuck. *Strength:* closer to the idea of traps and delays. *Limit:* electrons aren\u2019t little balls sliding in a tube.\n\nTry this at home (safe thought experiment):  \nFind a **glow-in-the-dark** sticker/toy and a **regular white paper**. Shine a bright lamp or phone flashlight on both for 30 seconds. Turn off the lights. The paper goes dark right away, but the glow item fades slowly\u2014because it has those \u201ctraps.\u201d\n\nWhat scientists still don\u2019t fully know (in simple terms):  \nThey understand the main idea of traps, but for many materials they\u2019re still figuring out **exactly what the traps look like**, why some traps hold electrons longer than others, and how to design materials that glow brighter or for days without being damaged.\n\nIf you could invent a new glow material, what would you want it to shine on in the dark, and for how long?",
+      "input_tokens": 171,
+      "output_tokens": 463,
+      "latency_ms": 12122.585017001256,
+      "structural_metrics": {
+        "mtld": 100.28151751033657,
+        "readability_fk_grade": 7.906493506493508,
+        "coherence_mean": 0.3489262717500828,
+        "prompt_relevance": 0.4817127383845258,
+        "connective_density": 0.3684210526315789,
+        "word_count": 356,
+        "repetition_rate": 0.0
+      }
+    },
+    {
+      "agent_id": "agent_2",
+      "model_name": "gpt-5.2",
+      "text": "The lighthouse museum was closing. The guide clicked off the big lamp, and the room went dark\u2014except for a little glow-in-the-dark compass rose on the wall that kept shining like a sleepy green moon.\n\n\u201cYou\u2019ve just met **phosphorescence**,\u201d the guide whispered. \u201cSome materials can **soak up light energy** and then **give it back slowly** after the lights go off.\u201d\n\nInside the glowing paint are tiny building blocks (atoms) with **electrons**, like little kids on a staircase. Bright light gives some electrons a \u201cboost\u201d up to a higher step. But here\u2019s the special part: in phosphorescent materials, some electrons get stuck on a **\u2018hidden step\u2019** (a trap) that\u2019s hard to leave right away. They escape bit by bit, and when they drop back down, the material releases the stored energy as **new light**\u2014a slow glow that can last minutes or hours.\n\n**Metaphor 1: A battery.** Light \u201ccharges\u201d the glow material, and darkness is when it \u201cdischarges.\u201d  \n- Strength: Helps you remember it stores energy and releases it later.  \n- Limit: It\u2019s not making electricity; it\u2019s storing energy in electron positions.\n\n**Metaphor 2: Marbles in sticky bowls.** Light pushes marbles (electrons) up, and some fall into sticky bowls (traps) and roll out slowly.  \n- Strength: Explains why the glow is delayed.  \n- Limit: Real electrons aren\u2019t marbles, and the \u201cstickiness\u201d is a quantum effect.\n\n**Try this at home (safe):** Put a glow-in-the-dark sticker under a bright lamp for 30 seconds. Turn off the lamp and time the fading glow. Repeat after charging it with sunlight and compare. What changes: brightness, time, or both?\n\n### What scientists still don\u2019t fully know\nScientists understand the big idea, but in many materials they\u2019re still figuring out **exactly which tiny \u201ctrap\u201d shapes** exist and why some traps release energy faster than others, especially when temperature changes.\n\nIf you could invent a glow material for the lighthouse, would you want it to glow brighter, longer, or a different color\u2014and why?",
+      "input_tokens": 171,
+      "output_tokens": 461,
+      "latency_ms": 12307.964249979705,
+      "structural_metrics": {
+        "mtld": 101.47810218978103,
+        "readability_fk_grade": 7.74727272727273,
+        "coherence_mean": 0.3516698128731563,
+        "prompt_relevance": 0.48086813064009337,
+        "connective_density": 0.2777777777777778,
+        "word_count": 335,
+        "repetition_rate": 0.006024096385542169
+      }
+    }
+  ],
+  "consensus": {
+    "method": "debate_then_vote",
+    "selected_agent_id": "agent_2",
+    "selected_text": "The lighthouse museum was closing. The guide clicked off the big lamp, and the room went dark\u2014except for a little glow-in-the-dark compass rose on the wall that kept shining like a sleepy green moon.\n\n\u201cYou\u2019ve just met **phosphorescence**,\u201d the guide whispered. \u201cSome materials can **soak up light energy** and then **give it back slowly** after the lights go off.\u201d\n\nInside the glowing paint are tiny building blocks (atoms) with **electrons**, like little kids on a staircase. Bright light gives some electrons a \u201cboost\u201d up to a higher step. But here\u2019s the special part: in phosphorescent materials, some electrons get stuck on a **\u2018hidden step\u2019** (a trap) that\u2019s hard to leave right away. They escape bit by bit, and when they drop back down, the material releases the stored energy as **new light**\u2014a slow glow that can last minutes or hours.\n\n**Metaphor 1: A battery.** Light \u201ccharges\u201d the glow material, and darkness is when it \u201cdischarges.\u201d  \n- Strength: Helps you remember it stores energy and releases it later.  \n- Limit: It\u2019s not making electricity; it\u2019s storing energy in electron positions.\n\n**Metaphor 2: Marbles in sticky bowls.** Light pushes marbles (electrons) up, and some fall into sticky bowls (traps) and roll out slowly.  \n- Strength: Explains why the glow is delayed.  \n- Limit: Real electrons aren\u2019t marbles, and the \u201cstickiness\u201d is a quantum effect.\n\n**Try this at home (safe):** Put a glow-in-the-dark sticker under a bright lamp for 30 seconds. Turn off the lamp and time the fading glow. Repeat after charging it with sunlight and compare. What changes: brightness, time, or both?\n\n### What scientists still don\u2019t fully know\nScientists understand the big idea, but in many materials they\u2019re still figuring out **exactly which tiny \u201ctrap\u201d shapes** exist and why some traps release energy faster than others, especially when temperature changes.\n\nIf you could invent a glow material for the lighthouse, would you want it to glow brighter, longer, or a different color\u2014and why?",
+    "confidence": 0.30377817576612753,
+    "scores": {
+      "agent_0": 0.28171207557502737,
+      "agent_1": 0.2692251911001911,
+      "agent_2": 0.30377817576612753
+    },
+    "metadata": {
+      "debate_rounds": 1
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [
+    {
+      "round": 1,
+      "phase": "initial_outputs",
+      "agent_outputs": [
+        {
+          "agent_id": "agent_0",
+          "model_name": "gpt-5.2",
+          "text": "The lighthouse museum was closing. As the last lamp clicked off, Mia noticed a little star sticker on a display sign still shining softly. \u201cHow can it glow when the lights are off?\u201d she whispered.\n\nThe guide smiled. \u201cThat\u2019s **phosphorescence**. Some materials can *store* a bit of light energy and then release it **slowly**.\u201d\n\nInside the sticker are tiny building blocks called atoms. When bright light hits them, it gives some electrons (little energy-carrying parts) a boost. In phosphorescent materials, a few electrons get \u201cstuck\u201d in a special energy spot that\u2019s hard to leave. They don\u2019t fall back right away. When they *finally* drop back down, they send out the stored energy as new light\u2014so the glow lasts seconds, minutes, or even hours after darkness.\n\n**Metaphor 1: A playground slide with a sticky patch.**  \nLight pushes the \u201ckids\u201d (electrons) up the ladder. Normally they slide down fast. But the sticky patch holds some of them, so they trickle down later, one by one, making a long, fading glow.  \n*Strength:* Explains the \u201cgetting stuck.\u201d *Limit:* Real electrons aren\u2019t little kids and don\u2019t move on a literal slide.\n\n**Metaphor 2: A wind-up toy.**  \nLight \u201cwinds\u201d the material up, and it \u201cunwinds\u201d by glowing.  \n*Strength:* Explains stored energy and slow release. *Limit:* Doesn\u2019t show why some energy gets trapped longer than others.\n\n**Try it at home (safe thought experiment):**  \nIf you have a glow-in-the-dark sticker or toy, \u201ccharge\u201d it under a bright lamp for 30 seconds. Turn off the lights and watch. Now cover half with a book for 10 seconds, then uncover it. Which half is brighter? What does that tell you about storing and releasing light?\n\n**What scientists still don\u2019t fully know:**  \nScientists understand the basic trapping idea, but they\u2019re still studying exactly how tiny defects and impurities in different materials make some glows last longer, shine brighter, or fade in unusual steps.\n\nWhat other everyday objects do you think might be quietly \u201csaving\u201d light for later?"
+        },
+        {
+          "agent_id": "agent_1",
+          "model_name": "gpt-5.2",
+          "text": "The lighthouse museum was closing. The keeper clicked off the big lamp, and the room went dim\u2026 except for a tiny sticker on an old map that kept glowing green.\n\n\u201cThat\u2019s **phosphorescence**,\u201d the keeper whispered. \u201cSome materials can *store* a bit of light energy and then *release it slowly*, like a lantern that doesn\u2019t go out right away.\u201d\n\nHere\u2019s what\u2019s happening inside the material: light is made of tiny packets of energy. When the sticker was under the lamp, some of that energy bumped electrons (tiny parts of atoms) into a higher-energy \u201cexcited\u201d place. In phosphorescent materials, the electrons can get stuck in a kind of **energy waiting room** called a *trap*. They don\u2019t fall back immediately. Later, little by little, they escape the traps and return to their normal places, giving off light as they do.\n\nTwo metaphors:\n1) **A sponge for light**: the material \u201csoaks up\u201d light and \u201cdrips\u201d it out in the dark. *Strength:* helps you picture storing and releasing. *Limit:* real light isn\u2019t a liquid, and the \u201cdrips\u201d are actually electrons changing energy.\n2) **A playground slide with a sticky patch**: electrons slide down, but some hit a sticky spot and take longer to get unstuck. *Strength:* closer to the idea of traps and delays. *Limit:* electrons aren\u2019t little balls sliding in a tube.\n\nTry this at home (safe thought experiment):  \nFind a **glow-in-the-dark** sticker/toy and a **regular white paper**. Shine a bright lamp or phone flashlight on both for 30 seconds. Turn off the lights. The paper goes dark right away, but the glow item fades slowly\u2014because it has those \u201ctraps.\u201d\n\nWhat scientists still don\u2019t fully know (in simple terms):  \nThey understand the main idea of traps, but for many materials they\u2019re still figuring out **exactly what the traps look like**, why some traps hold electrons longer than others, and how to design materials that glow brighter or for days without being damaged.\n\nIf you could invent a new glow material, what would you want it to shine on in the dark, and for how long?"
+        },
+        {
+          "agent_id": "agent_2",
+          "model_name": "gpt-5.2",
+          "text": "The lighthouse museum was closing. The guide clicked off the big lamp, and the room went dark\u2014except for a little glow-in-the-dark compass rose on the wall that kept shining like a sleepy green moon.\n\n\u201cYou\u2019ve just met **phosphorescence**,\u201d the guide whispered. \u201cSome materials can **soak up light energy** and then **give it back slowly** after the lights go off.\u201d\n\nInside the glowing paint are tiny building blocks (atoms) with **electrons**, like little kids on a staircase. Bright light gives some electrons a \u201cboost\u201d up to a higher step. But here\u2019s the special part: in phosphorescent materials, some electrons get stuck on a **\u2018hidden step\u2019** (a trap) that\u2019s hard to leave right away. They escape bit by bit, and when they drop back down, the material releases the stored energy as **new light**\u2014a slow glow that can last minutes or hours.\n\n**Metaphor 1: A battery.** Light \u201ccharges\u201d the glow material, and darkness is when it \u201cdischarges.\u201d  \n- Strength: Helps you remember it stores energy and releases it later.  \n- Limit: It\u2019s not making electricity; it\u2019s storing energy in electron positions.\n\n**Metaphor 2: Marbles in sticky bowls.** Light pushes marbles (electrons) up, and some fall into sticky bowls (traps) and roll out slowly.  \n- Strength: Explains why the glow is delayed.  \n- Limit: Real electrons aren\u2019t marbles, and the \u201cstickiness\u201d is a quantum effect.\n\n**Try this at home (safe):** Put a glow-in-the-dark sticker under a bright lamp for 30 seconds. Turn off the lamp and time the fading glow. Repeat after charging it with sunlight and compare. What changes: brightness, time, or both?\n\n### What scientists still don\u2019t fully know\nScientists understand the big idea, but in many materials they\u2019re still figuring out **exactly which tiny \u201ctrap\u201d shapes** exist and why some traps release energy faster than others, especially when temperature changes.\n\nIf you could invent a glow material for the lighthouse, would you want it to glow brighter, longer, or a different color\u2014and why?"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "phase": "final_consensus",
+      "agent_outputs": [
+        {
+          "agent_id": "agent_2",
+          "model_name": "consensus",
+          "text": "The lighthouse museum was closing. The guide clicked off the big lamp, and the room went dark\u2014except for a little glow-in-the-dark compass rose on the wall that kept shining like a sleepy green moon.\n\n\u201cYou\u2019ve just met **phosphorescence**,\u201d the guide whispered. \u201cSome materials can **soak up light energy** and then **give it back slowly** after the lights go off.\u201d\n\nInside the glowing paint are tiny building blocks (atoms) with **electrons**, like little kids on a staircase. Bright light gives some electrons a \u201cboost\u201d up to a higher step. But here\u2019s the special part: in phosphorescent materials, some electrons get stuck on a **\u2018hidden step\u2019** (a trap) that\u2019s hard to leave right away. They escape bit by bit, and when they drop back down, the material releases the stored energy as **new light**\u2014a slow glow that can last minutes or hours.\n\n**Metaphor 1: A battery.** Light \u201ccharges\u201d the glow material, and darkness is when it \u201cdischarges.\u201d  \n- Strength: Helps you remember it stores energy and releases it later.  \n- Limit: It\u2019s not making electricity; it\u2019s storing energy in electron positions.\n\n**Metaphor 2: Marbles in sticky bowls.** Light pushes marbles (electrons) up, and some fall into sticky bowls (traps) and roll out slowly.  \n- Strength: Explains why the glow is delayed.  \n- Limit: Real electrons aren\u2019t marbles, and the \u201cstickiness\u201d is a quantum effect.\n\n**Try this at home (safe):** Put a glow-in-the-dark sticker under a bright lamp for 30 seconds. Turn off the lamp and time the fading glow. Repeat after charging it with sunlight and compare. What changes: brightness, time, or both?\n\n### What scientists still don\u2019t fully know\nScientists understand the big idea, but in many materials they\u2019re still figuring out **exactly which tiny \u201ctrap\u201d shapes** exist and why some traps release energy faster than others, especially when temperature changes.\n\nIf you could invent a glow material for the lighthouse, would you want it to glow brighter, longer, or a different color\u2014and why?"
+        }
+      ]
+    }
+  ],
+  "evaluation": {
+    "quality_score": 0.2404081069703992,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 0.9616324278815968,
+      "num_bt_candidates": 4,
+      "consensus_vs_best_agent": false,
+      "consensus_comparisons": 3,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.6666666666666666
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.0014993523662964114,
+      "gpt-4o": 0.3956757983929575,
+      "deepseek-v3p2": 0.16882092302555632
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.2404081069703992,
+        "agent_0": 0.530652139618177,
+        "agent_1": 0.1144698767057119,
+        "agent_2": 0.11446987670571195
+      },
+      "ranking": [
+        "agent_0",
+        "final_consensus",
+        "agent_2",
+        "agent_1"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.0014993523662964114,
+          "agent_0": 0.997001293017821,
+          "agent_1": 2.2495861885882852e-09,
+          "agent_2": 0.0014993523662964114
+        },
+        "gpt-4o": {
+          "final_consensus": 0.3956757983929575,
+          "agent_0": 0.23335186281275472,
+          "agent_1": 0.23335186281275472,
+          "agent_2": 0.13762047598153307
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.16882092302555632,
+          "agent_0": 0.6160984992874036,
+          "agent_1": 0.16882092302555624,
+          "agent_2": 0.046259654661483865
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 0.04090225563909774,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.04000000000000002,
+          "claude-sonnet-4-6__vs__gpt-4o": -0.2857142857142857,
+          "deepseek-v3p2__vs__gpt-4o": 0.36842105263157887
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "right",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "right"
+          },
+          "majority_winner": "agent_0"
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_1",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "left",
+            "deepseek-v3p2": "left"
+          },
+          "majority_winner": "final_consensus"
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_1",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "left"
+          },
+          "majority_winner": "agent_0"
+        },
+        {
+          "candidate_i": "agent_1",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "right",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 0.901776548350982,
+      "disagreement_rate": 0.09822345164901802,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.6600062881629974,
+      "pairwise_similarity_lexical": 0.28490514748044865
+    },
+    "structural_metrics": {
+      "mtld": 101.47810218978103,
+      "readability_fk_grade": 7.74727272727273,
+      "coherence_mean": 0.3516698128731563,
+      "prompt_relevance": 0.48086813064009337,
+      "connective_density": 0.2777777777777778,
+      "word_count": 335,
+      "repetition_rate": 0.006024096385542169
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_997764df0c4f.json"
+    }
+  }
+}

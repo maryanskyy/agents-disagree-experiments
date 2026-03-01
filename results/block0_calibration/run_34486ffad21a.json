@@ -2,7 +2,7 @@
   "run_id": "run_34486ffad21a",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:56:25.839212+00:00",
+  "timestamp_utc": "2026-03-01T03:46:42.414035+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_08_counterfactual_chain",
@@ -36,11 +36,11 @@
       "text": "Of course. Here is a detailed analysis of the counterfactual scenario, structured as requested.\n\n### **Executive Summary**\n\nThe implementation of a segmented architecture with offline fallbacks and regular drills would have fundamentally altered the outcome of the ransomware attack. It would have transformed a catastrophic, network-wide operational failure into a contained, manageable incident. The primary benefit is a dramatic increase in operational resilience, ensuring continuity of patient care at the local level. However, this resilience introduces new complexities in data management and inter-hospital coordination. The following analysis breaks down the causal chain of these effects.\n\n---\n\n### **Counterfactual Causal Chain Analysis**\n\nThis analysis contrasts the actual event (9-hour network-wide outage) with the likely outcome under the counterfactual conditions.\n\n#### **(a) Outage Propagation**\n\n*   **Actual Event:** The ransomware attack on the centralized scheduling system created a single point of failure. Its incapacitation immediately propagated across the entire network, as all hospitals were dependent on it for core booking and scheduling functions.\n*   **Counterfactual Causal Chain:**\n    1.  The ransomware attack begins, targeting the central IT infrastructure housing the main scheduling application.\n    2.  The segmented architecture, by design, isolates the central network segment from the individual hospital network segments. Firewalls and access control lists prevent the malware from spreading laterally to the local hospital systems.\n    3.  The outage is therefore **contained** to the central scheduling system and any other services within that compromised segment. The individual hospital networks and their offline fallback systems remain unaffected and operational.\n\n*   **Effects:**\n    *   **High-Confidence:** The ransomware's blast radius would be strictly limited. The attack would cause an outage of the *centralized system*, but not a network-wide *functional outage*. This is the primary technical benefit of network segmentation.\n    *   **Speculative:** If the attacker used compromised credentials with privileges across multiple segments (e.g., a domain administrator account), they could potentially bypass the segmentation. However, a well-implemented \"least privilege\" principle, which often accompanies segmentation projects, would mitigate this risk.\n\n#### **(b) Recovery Time**\n\n*   **Actual Event:** Recovery time was 9 hours, representing the time required to contain the threat, restore the central system from backups, and validate its functionality for the entire network. During this entire period, essential services were critically degraded.\n*   **Counterfactual Causal Chain:**\n    1.  Upon detection of the central system failure, incident response protocols (honed by weekly drills) are activated at each hospital.\n    2.  Staff at each facility switch to their local, offline fallback booking systems. This process is rapid and familiar due to the drills.\n    3.  The \"Time to Recovery\" for essential patient booking functionality is reduced from 9 hours to the **minutes** it takes to activate the fallback procedures. The 9-hour clock now applies only to the background work of the IT security team restoring the central system, not to the hospital's operational uptime.\n\n*   **Effects:**\n    *   **High-Confidence:** The time to restore *core patient scheduling functions* at the local level would be drastically reduced, likely to under 30 minutes. Patient-facing services would continue with minimal interruption.\n    *   **Speculative:** The time to achieve *full system normalization* (restoring the central system and synchronizing all data from the offline fallbacks) might be longer and more complex than a simple central restore. This data reconciliation phase represents a new type of recovery work (see Unintended Consequences).\n\n#### **(c) Patient Triage Quality**\n\n*   **Actual Event:** The outage likely caused chaos. Staff could not see schedules, leading to cancelled appointments, patient anxiety, and an influx of unscheduled arrivals at emergency departments. Triage quality would degrade under the sheer volume and lack of information, increasing the risk of medical errors.\n*   **Counterfactual Causal Chain:**\n    1.  With local booking systems active, front-desk and clinical staff at each hospital can see the day's existing schedule and continue to book new appointments.\n    2.  The operational tempo remains stable. Staff can focus on their standard triage and patient care protocols because they are not fighting a technology-induced crisis.\n    3.  The weekly drills ensure that the fallback mode is a known state, not a panic-inducing anomaly, preserving staff's cognitive capacity for clinical tasks.\n\n*   **Effects:**\n    *   **High-Confidence:** Triage quality for patients *within a single hospital* would be maintained at a near-normal level. The risk of errors due to systemic chaos and information loss would be almost entirely eliminated.\n    *   **Speculative:** Triage quality for patients requiring **transfer between hospitals** would suffer significantly. Without the central system to provide a network-wide view of bed availability or specialist schedules, coordinating complex care pathways would revert to manual, error-prone phone calls, directly impacting this specific patient cohort.\n\n#### **(d) Communication Errors**\n\n*   **Actual Event:** A central failure creates an information vacuum. Patients calling a central hotline would get no answer. Staff at different hospitals might give conflicting advice. This leads to widespread confusion, patient frustration, and reputational damage.\n*   **Counterfactual Causal Chain:**\n    1.  The drilled communication plan is activated. Each hospital uses its local channels (website banners, social media, patient portals) to issue a clear, specific message: \"Our hospital is operational, and appointments are proceeding. We are currently unable to coordinate with other hospitals in the network.\"\n    2.  Internal communication is clear: staff know the fallback is active and understand its limitations.\n    3.  The message to the public is one of localized control rather than network-wide chaos.\n\n*   **Effects:**\n    *   **High-Confidence:** Communication errors regarding the status of appointments *at a specific hospital* would be dramatically reduced. Patients would receive clear, localized information, reducing anxiety and unnecessary ER visits.\n    *   **Speculative:** Communication regarding network-wide issues would remain poor or become more complex. A central PR team would struggle to craft a message that explains the nuance of \"the central system is down, but the local ones are up,\" potentially creating confusion for media and health authorities.\n\n---\n\n### **Possible Unintended Consequences of Segmentation**\n\nThe segmented architecture, while highly resilient, is not a panacea and introduces its own set of challenges:\n\n1.  **Data Reconciliation Debt:** Once the central system is restored, merging the data from multiple, disparate offline systems is a significant technical challenge. This process can introduce errors, create duplicate patient records, and overwrite critical information if not managed perfectly. The organization incurs a \"data debt\" during the outage that must be paid down with careful, time-consuming work.\n2.  **Inconsistent Policy Enforcement and Data Silos:** During an outage, each hospital operates as an island. Local staff might make decisions that deviate from network-wide policy (e.g., booking appointments further out than the fallback allows, using non-standard notation). Over time, this can lead to data standards diverging across hospitals, making future integration and network-level analytics more difficult.\n3.  **Increased Operational Complexity and Cost:** Maintaining a segmented architecture, robust offline systems, and weekly drills is expensive. It requires more hardware, more sophisticated network management, and significant staff time for training and participation. This \"cost of readiness\" can be substantial and may face budget pressure during periods of calm, leading to a potential degradation of the very systems designed for emergencies. There is also a risk of \"drill fatigue,\" where staff become complacent over time.\n\n---\n\n### **Decision Recommendation & Future Evidence Collection**\n\n#### **Decision Recommendation**\n\n**The segmented architecture is unequivocally justified despite the uncertainties and costs.** The core mission of a hospital network is patient safety and continuity of care. The actual event demonstrates that a centralized architecture represents an unacceptable single point of failure with catastrophic consequences. The segmented model, while introducing manageable complexities (data reconciliation, policy drift), successfully preserves core functionality at the point of care during a crisis. The cost of this resilience is a necessary operational expense, far outweighed by the clinical, financial, and reputational costs of a multi-hour, network-wide shutdown.\n\n#### **Additional Evidence to Collect in Future Drills**\n\nFuture drills should be designed to test the speculative effects and unintended consequences identified in this analysis. The goal is to turn speculation into high-confidence knowledge.\n\n1.  **Measure \"Time to Full Normalization\":** Do not just time how fast the fallback can be activated. Critically",
       "input_tokens": 163,
       "output_tokens": 4092,
-      "latency_ms": 3975.1467490568757,
+      "latency_ms": 3619.233521982096,
       "structural_metrics": {
         "mtld": 143.2583285741481,
         "readability_fk_grade": 14.102627646203029,
-        "coherence_mean": 0.25145299876119964,
+        "coherence_mean": 0.2514529995248837,
         "prompt_relevance": 0.7805958508164805,
         "connective_density": 0.13953488372093023,
         "word_count": 1308,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.33333344444437035,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 0.6666668888887407,
       "num_bt_candidates": 2,
-      "consensus_vs_best_agent": true,
+      "consensus_vs_best_agent": false,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.5,
+        "deepseek-v3p2": 0.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.5
+      "deepseek-v3p2": 9.99998000004e-07
     },
     "judge_panel": {
       "judges": [
@@ -97,12 +97,12 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.33333344444437035,
+        "agent_0": 0.6666665555556297
       },
       "ranking": [
-        "final_consensus",
-        "agent_0"
+        "agent_0",
+        "final_consensus"
       ],
       "per_judge_bt_scores": {
         "claude-sonnet-4-6": {
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 9.99998000004e-07,
+          "agent_0": 0.999999000002
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "tie"
+            "deepseek-v3p2": "right"
           },
           "majority_winner": null
         }
@@ -149,16 +149,18 @@
     "structural_metrics": {
       "mtld": 143.2583285741481,
       "readability_fk_grade": 14.102627646203029,
-      "coherence_mean": 0.25145299876119964,
+      "coherence_mean": 0.2514529995248837,
       "prompt_relevance": 0.7805958508164805,
       "connective_density": 0.13953488372093023,
       "word_count": 1308,
       "repetition_rate": 0.01532567049808429
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_34486ffad21a.json"
     }
   }
 }

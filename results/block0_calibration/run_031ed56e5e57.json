@@ -2,7 +2,7 @@
   "run_id": "run_031ed56e5e57",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:55:03.328393+00:00",
+  "timestamp_utc": "2026-03-01T03:43:27.892854+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_01_signal_triage_deduction",
@@ -36,12 +36,12 @@
       "text": "This is an excellent logic puzzle that mirrors the deductive reasoning required in a real Security Operations Center (SOC). Here is a detailed breakdown of the solution.\n\n### (1) The True Critical Incident\n\nThe system that is the true critical incident is **Beacon**.\n\n### (2) Step-by-Step Deduction Chain\n\nTo solve this, we will use a logic grid to track the state of each indicator (Anomalous Login Location, Privileged Token Use, Abnormal Data Transfer) for each system (Atlas, Beacon, Cipher, Drift). We will fill this grid by systematically applying the given facts.\n\n**Let's define our terms:**\n*   **Systems:** Atlas (A), Beacon (B), Cipher (C), Drift (D)\n*   **Indicators:** Anomalous",
       "input_tokens": 287,
       "output_tokens": 4092,
-      "latency_ms": 4362.699021934532,
+      "latency_ms": 4096.757246996276,
       "structural_metrics": {
         "mtld": 64.04538439955107,
         "readability_fk_grade": 11.366153846153846,
         "coherence_mean": 0.21727605672876055,
-        "prompt_relevance": 0.7980058284333792,
+        "prompt_relevance": 0.7980058666339178,
         "connective_density": 0.0,
         "word_count": 106,
         "repetition_rate": 0.019417475728155338
@@ -150,7 +150,7 @@
       "mtld": 64.04538439955107,
       "readability_fk_grade": 11.366153846153846,
       "coherence_mean": 0.21727605672876055,
-      "prompt_relevance": 0.7980058284333792,
+      "prompt_relevance": 0.7980058666339178,
       "connective_density": 0.0,
       "word_count": 106,
       "repetition_rate": 0.019417475728155338

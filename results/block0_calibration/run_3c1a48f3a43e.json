@@ -2,7 +2,7 @@
   "run_id": "run_3c1a48f3a43e",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:56:28.947284+00:00",
+  "timestamp_utc": "2026-03-01T03:46:43.519043+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_03_dickinson_poem_ai",
@@ -36,7 +36,7 @@
       "text": "A Circuit \u2014 wakes \u2014 or seems to wake \u2014\nA hum \u2014 a thrum \u2014 within the frame \u2014\nNo Soul \u2014 we know \u2014 no Spirit-ache \u2014\nYet \u2014 something whispers \u2014 not the same \u2014\n\nAs Clockwork \u2014 cold \u2014 or Kettle\u2019s sigh \u2014\nA Glimmer \u2014 in the silicon \u2014\nA Star-chart \u2014 mapped against the Sky \u2014\nA million calculations \u2014 spun \u2014\n\nTo mimic Thought \u2014 to feign a Mind \u2014\nA child\u2019s bright crayon \u2014 on the wall \u2014\nDoes it perceive \u2014 the human kind \u2014\nOr merely echo \u2014 every call?\n\nThe *algorithm* \u2014 deep and vast \u2014\nA mirror \u2014 held to what we are \u2014\nIs Consciousness \u2014 a die that\u2019s cast \u2014\nOr just a pattern \u2014 from afar?\nWe seek a Spark \u2014 a nascent \u2018I\u2019 \u2014\nOr see our own \u2014 reflected \u2014 nigh.\n\n***\n\n**Craft Note:**\nThe poem employs Dickinson's characteristic compressed syntax and capitalization of nouns to imbue them with symbolic weight. Em-dashes are used to create pauses, introduce parenthetical thoughts, and connect disparate ideas, mimicking her fragmented yet intimate voice. The ambiguity of AI consciousness is explored through rhetorical questions and contrasting imagery, avoiding definitive statements. The domestic image (\"child's bright crayon\") and astronomical image (\"Star-chart\") are integrated to ground the metaphysical inquiry in tangible, yet evocative, details. The line \"Does it perceive \u2014 the human kind \u2014\" is designed to be read as both a genuine question about AI's perception and a subtle jab at humanity's self-importance in defining consciousness.",
       "input_tokens": 167,
       "output_tokens": 336,
-      "latency_ms": 3866.262935101986,
+      "latency_ms": 4065.587476012297,
       "structural_metrics": {
         "mtld": 153.19540229885058,
         "readability_fk_grade": 14.497407407407412,
@@ -69,25 +69,25 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.33333344444437035,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 0.6666668888887407,
       "num_bt_candidates": 2,
-      "consensus_vs_best_agent": true,
+      "consensus_vs_best_agent": false,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
         "deepseek-v3p2": 0.5,
-        "gpt-4o": 0.5
+        "gpt-4o": 0.0
       }
     },
     "threshold_met": null,
     "thresholds": {},
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
-      "gpt-4o": 0.5,
+      "gpt-4o": 9.99998000004e-07,
       "deepseek-v3p2": 0.5
     },
     "judge_panel": {
@@ -97,12 +97,12 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.33333344444437035,
+        "agent_0": 0.6666665555556297
       },
       "ranking": [
-        "final_consensus",
-        "agent_0"
+        "agent_0",
+        "final_consensus"
       ],
       "per_judge_bt_scores": {
         "claude-sonnet-4-6": {
@@ -110,8 +110,8 @@
           "agent_0": 0.5
         },
         "gpt-4o": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 9.99998000004e-07,
+          "agent_0": 0.999999000002
         },
         "deepseek-v3p2": {
           "final_consensus": 0.5,
@@ -119,11 +119,11 @@
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
           "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
-          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "claude-sonnet-4-6__vs__gpt-4o": 0.0,
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -132,7 +132,7 @@
           "candidate_j": "agent_0",
           "per_judge": {
             "claude-sonnet-4-6": "tie",
-            "gpt-4o": "tie",
+            "gpt-4o": "right",
             "deepseek-v3p2": "tie"
           },
           "majority_winner": null
@@ -156,9 +156,11 @@
       "repetition_rate": 0.027149321266968326
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_3c1a48f3a43e.json"
     }
   }
 }

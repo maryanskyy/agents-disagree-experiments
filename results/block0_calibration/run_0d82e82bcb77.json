@@ -2,7 +2,7 @@
   "run_id": "run_0d82e82bcb77",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T00:55:32.509259+00:00",
+  "timestamp_utc": "2026-03-01T03:44:16.461450+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_07_mystery_2050_opening",
@@ -36,7 +36,7 @@
       "text": "# Opening Paragraph\n\nThe rain tasted like copper\u2014actual copper, not metaphor, the atmospheric processors having failed again in Sector Seven\u2014when Detective Sarah Chen pulled the victim's neural backup from evidence lock. Twenty-three years old, Keisha Okonkwo, found in her apartment with a bullet wound that ballistics had matched to a weapon registered to her mother, who'd been dead for six months. The case should have closed by lunch. Our forensic AI could reconstruct a suspect's movements from skin cells and ambient dust; we could pull memories directly from neural implants, watch the crime unfold like security footage from inside someone's skull. But Keisha's implant had been wiped\u2014not corrupted, not degraded, but surgically excised with precision that suggested medical training. The backup showed nothing after 11 PM the night before. Her mother's gun had been fired exactly once, ballistics confirmed, but the weapon had been locked in a climate-controlled vault downtown, untouched for 180 days according to the access logs. I was holding the backup drive, feeling its weight in my palm like a stone, when the lab director called with the result that made me understand we weren't looking for a killer at all. We were looking for someone who'd learned to erase themselves from a world where erasure was supposed to be impossible.\n\n---\n\n## Three Directions for Chapter Two\n\n\u2022 **The Institutional Angle**: Sarah discovers that Keisha worked for NeuroState, the corporation that manufactures neural implants and maintains the backup infrastructure\u2014raising questions about whether this is corporate sabotage, a whistleblower situation, or something worse involving the company's own security apparatus.\n\n\u2022 **The Temporal Impossibility**: Forensic reconstruction of the crime scene reveals evidence suggesting the murder occurred at a time when multiple independent systems confirm Keisha was alive and elsewhere, forcing Sarah to confront whether the timeline itself has been compromised or whether someone has found a way to manipulate the supposedly immutable digital record.\n\n\u2022 **The Personal Connection**: Sarah's own neural implant begins showing anomalies\u2014small gaps in her memories, timestamps that don't align\u2014suggesting she may have been at or near the crime scene without remembering it, making her both investigator and suspect in a case that might implicate her own department.",
       "input_tokens": 163,
       "output_tokens": 501,
-      "latency_ms": 4688.2657810347155,
+      "latency_ms": 4328.6513650091365,
       "structural_metrics": {
         "mtld": 189.0853039499351,
         "readability_fk_grade": 16.141911764705885,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.6666665555556297,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 1.3333331111112594,
       "num_bt_candidates": 2,
       "consensus_vs_best_agent": true,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.5,
+        "deepseek-v3p2": 1.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.5
+      "deepseek-v3p2": 0.999999000002
     },
     "judge_panel": {
       "judges": [
@@ -97,8 +97,8 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
       },
       "ranking": [
         "final_consensus",
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "tie"
+            "deepseek-v3p2": "left"
           },
           "majority_winner": null
         }
@@ -156,9 +156,11 @@
       "repetition_rate": 0.0
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_0d82e82bcb77.json"
     }
   }
 }

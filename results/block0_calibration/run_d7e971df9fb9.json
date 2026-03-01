@@ -2,7 +2,7 @@
   "run_id": "run_d7e971df9fb9",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T01:01:17.117691+00:00",
+  "timestamp_utc": "2026-03-01T03:51:31.164775+00:00",
   "config": {
     "task_type": "analytical",
     "task_id": "analytical_06_constraint_satisfaction",
@@ -36,11 +36,11 @@
       "text": "# Solving the Reviewer Assignment Problem\n\n## Problem Setup\n\n- 5 reviewers: R1, R2, R3, R4, R5\n- 3 panels: A, B, C (each needs exactly 2 reviewers)\n- Total slots: 3 \u00d7 2 = 6, but only 5 reviewers available\n\n**Key observation:** 6 slots but only 5 reviewers, and Constraint 2 says no reviewer can serve on more than one panel. This means at most 5 reviewers can be assigned, but we need 6 assignments. Let me re-read the constraints.\n\nWait \u2014 Constraint 2 says no reviewer on more than one panel, and Constraint 1 says each panel needs **exactly** two reviewers. That requires exactly 6 reviewer-slots filled by distinct reviewers, but we only have 5 reviewers.\n\n**This seems infeasible on its face.** Let me verify carefully.\n\n## Feasibility Analysis\n\n- Panel A: 2 distinct reviewers\n- Panel B: 2 distinct reviewers\n- Panel C: 2 distinct reviewers\n- No reviewer on more than one panel\n- Total distinct reviewers needed: 2 + 2 + 2 = 6\n\nWe only have 5 reviewers (R1\u2013R5).\n\n### Proof of Infeasibility\n\n**By the Pigeonhole Principle:**\n\n| Fact | Detail |\n|------|--------|\n| Constraint 1 | Each of 3 panels requires exactly 2 reviewers \u2192 6 total assignments |\n| Constraint 2 | Each reviewer can serve on at most 1 panel |\n| Available reviewers | 5 (R1, R2, R3, R4, R5) |\n\nSince we need 6 distinct reviewer-slot assignments and each reviewer can fill at most 1 slot, we need **at least 6 reviewers**. We have only 5.\n\n### Minimal Contradiction Set\n\nThe infeasibility arises from **Constraints 1 and 2 alone**, independent of Constraints 3\u20136:\n\n> **{Constraint 1, Constraint 2}** \u2014 requiring 6 unique reviewer assignments from a pool of 5 reviewers is a contradiction.\n\nNo amount of relaxing Constraints 3\u20136 can resolve this. The problem is **structurally infeasible**.\n\n## Conclusion\n\n$$\\boxed{\\text{No valid assignment exists.}}$$\n\n**Minimal infeasibility proof:**\n- Constraint 1 demands 3 panels \u00d7 2 reviewers = 6 assignments.\n- Constraint 2 demands all assignments be distinct reviewers.\n- Only 5 reviewers exist.\n- 5 < 6 \u2192 **Contradiction.**\n\n---\n\n### What Would Make It Feasible?\n\nAny **one** of these modifications would restore feasibility:\n1. **Add a 6th reviewer (R6)** \u2014 then solutions exist and we can check Constraints 3\u20136.\n2. **Relax Constraint 2** \u2014 allow one reviewer to serve on two panels.\n3. **Reduce one panel to 1 reviewer** \u2014 e.g., \"Panel C needs at least 1 reviewer\" instead of exactly 2.\n\nIf the problem intended any of these relaxations, I'm happy to re-solve with the corrected formulation.",
       "input_tokens": 203,
       "output_tokens": 786,
-      "latency_ms": 4089.3679730361328,
+      "latency_ms": 4069.9200900271535,
       "structural_metrics": {
         "mtld": 55.65825187078106,
         "readability_fk_grade": 10.429052631578951,
-        "coherence_mean": 0.37403271999816334,
+        "coherence_mean": 0.37403272410182486,
         "prompt_relevance": 0.7920865315576345,
         "connective_density": 0.2727272727272727,
         "word_count": 391,
@@ -149,7 +149,7 @@
     "structural_metrics": {
       "mtld": 55.65825187078106,
       "readability_fk_grade": 10.429052631578951,
-      "coherence_mean": 0.37403271999816334,
+      "coherence_mean": 0.37403272410182486,
       "prompt_relevance": 0.7920865315576345,
       "connective_density": 0.2727272727272727,
       "word_count": 391,

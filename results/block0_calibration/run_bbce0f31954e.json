@@ -2,7 +2,7 @@
   "run_id": "run_bbce0f31954e",
   "block_id": "block0_calibration",
   "status": "ok",
-  "timestamp_utc": "2026-03-01T01:00:48.342121+00:00",
+  "timestamp_utc": "2026-03-01T03:50:57.638493+00:00",
   "config": {
     "task_type": "creative",
     "task_id": "creative_08_lighthouse_memory_protocol",
@@ -36,7 +36,7 @@
       "text": "\"Come on, Leo, time to go!\" Mrs. Gable called, her voice echoing in the grand old lighthouse museum. But Leo was mesmerized by a dusty, old clock face, its numbers faintly glowing in the dimming light.\n\n\"Mrs. Gable, look! Why do these numbers still glow even though the big light is off?\" he asked, pointing.\n\nShe smiled. \"That's a fantastic question, Leo! Imagine those glowing numbers are like tiny, sleepy sponges. When the bright light was on, it was like a big, sunny shower, and these 'sponges' soaked up all that light energy. But they don't just let it go right away. They hold onto it for a little while, slowly letting it trickle out as a soft glow.\"\n\n\"So, they're like light batteries?\" Leo wondered.\n\n\"Exactly! That's a great way to think about it,\" Mrs. Gable affirmed. \"A battery stores energy and releases it slowly. The glowing material, called a 'phosphor,' stores light energy and releases it slowly as light. The 'sponge' metaphor is good because it shows how something soaks up and then releases, but a sponge releases water quickly. A battery is better because it emphasizes the *storage* and *slow release* of energy, just like these numbers.\"\n\n\"Can I make something glow at home?\" Leo asked, eyes wide.\n\n\"You bet! Find a glow-in-the-dark sticker or toy. Take it into a dark room, then shine a bright flashlight on it for about 30 seconds. Turn the flashlight off, and watch it glow! The brighter and longer you shine the light, the more 'energy' your toy 'sponge' will soak up, and the longer it will glow.\"\n\n\"That's so cool!\"\n\n\"It is! Now, here's something even scientists are still figuring out: we know *how* these materials store and release light, but exactly *why* some materials are so much better at it than others, or how to make them glow even brighter and longer, is still a big mystery. They're always experimenting with new 'recipes' for these glowing materials.\"\n\n\"So, there's still more to learn?\"\n\n\"Always, Leo! It makes you wonder, doesn't it? What amazing new glowing things might we discover in the future?\"",
       "input_tokens": 177,
       "output_tokens": 496,
-      "latency_ms": 4258.847598102875,
+      "latency_ms": 4095.316749997437,
       "structural_metrics": {
         "mtld": 89.25,
         "readability_fk_grade": 5.973811210036427,
@@ -69,17 +69,17 @@
   },
   "debate_rounds": [],
   "evaluation": {
-    "quality_score": 0.5,
+    "quality_score": 0.33333344444437035,
     "corrected_metrics": {
       "consensus_candidate_id": "final_consensus",
       "consensus_win_rate": 0.5,
-      "normalized_bt_score": 1.0,
+      "normalized_bt_score": 0.6666668888887407,
       "num_bt_candidates": 2,
-      "consensus_vs_best_agent": true,
+      "consensus_vs_best_agent": false,
       "consensus_comparisons": 1,
       "per_judge_consensus_win_rate": {
         "claude-sonnet-4-6": 0.5,
-        "deepseek-v3p2": 0.5,
+        "deepseek-v3p2": 0.0,
         "gpt-4o": 0.5
       }
     },
@@ -88,7 +88,7 @@
     "selected_per_judge_scores": {
       "claude-sonnet-4-6": 0.5,
       "gpt-4o": 0.5,
-      "deepseek-v3p2": 0.5
+      "deepseek-v3p2": 9.99998000004e-07
     },
     "judge_panel": {
       "judges": [
@@ -97,12 +97,12 @@
         "deepseek-v3p2"
       ],
       "bt_scores": {
-        "final_consensus": 0.5,
-        "agent_0": 0.5
+        "final_consensus": 0.33333344444437035,
+        "agent_0": 0.6666665555556297
       },
       "ranking": [
-        "final_consensus",
-        "agent_0"
+        "agent_0",
+        "final_consensus"
       ],
       "per_judge_bt_scores": {
         "claude-sonnet-4-6": {
@@ -114,16 +114,16 @@
           "agent_0": 0.5
         },
         "deepseek-v3p2": {
-          "final_consensus": 0.5,
-          "agent_0": 0.5
+          "final_consensus": 9.99998000004e-07,
+          "agent_0": 0.999999000002
         }
       },
       "inter_rater_reliability": {
-        "mean_cohen_kappa": 1.0,
+        "mean_cohen_kappa": 0.3333333333333333,
         "pairwise": {
-          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
           "claude-sonnet-4-6__vs__gpt-4o": 1.0,
-          "deepseek-v3p2__vs__gpt-4o": 1.0
+          "deepseek-v3p2__vs__gpt-4o": 0.0
         }
       },
       "pairwise_records": [
@@ -133,7 +133,7 @@
           "per_judge": {
             "claude-sonnet-4-6": "tie",
             "gpt-4o": "tie",
-            "deepseek-v3p2": "tie"
+            "deepseek-v3p2": "right"
           },
           "majority_winner": null
         }
@@ -156,9 +156,11 @@
       "repetition_rate": 0.011299435028248588
     },
     "human_review": {
-      "flagged": false,
-      "reasons": [],
-      "sheet_path": null
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_bbce0f31954e.json"
     }
   }
 }
