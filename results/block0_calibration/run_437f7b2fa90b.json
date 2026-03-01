@@ -1,0 +1,164 @@
+{
+  "run_id": "run_437f7b2fa90b",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:56:48.811771+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_06_constraint_satisfaction",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-opus-4-6"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Constraint Satisfaction Scheduling Problem",
+    "prompt": "You must schedule five reviewers (R1-R5) across three proposal panels (A, B, C). Constraints:\n1) Each panel needs exactly two reviewers.\n2) No reviewer can serve on more than one panel.\n3) R1 cannot review panel A.\n4) R2 must be assigned if and only if R4 is assigned.\n5) Panel C must include at least one of {R3, R5}.\n6) If R5 is assigned, panel B cannot include R2.\n\nDetermine whether a valid assignment exists. If yes, provide one valid schedule and explain each constraint check. If multiple solutions exist, provide a second distinct solution and compare robustness (which is less brittle if one reviewer drops out). If no solution exists, prove infeasibility with minimal contradiction set.\n",
+    "rubric": [
+      "Produces a schedule (or infeasibility proof) consistent with all constraints.",
+      "Verifies each constraint explicitly.",
+      "Demonstrates search reasoning, not random guessing.",
+      "Robustness comparison (if feasible) is logically grounded."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-opus-4-6",
+      "text": "# Solving the Reviewer Assignment Problem\n\n## Problem Setup\n\n- 5 reviewers: R1, R2, R3, R4, R5\n- 3 panels: A, B, C (each needs exactly 2 reviewers)\n- Total slots: 3 \u00d7 2 = 6, but only 5 reviewers available\n\n**Key observation:** 6 slots but only 5 reviewers, and Constraint 2 says no reviewer can serve on more than one panel. This means at most 5 reviewers can be assigned, but we need 6 assignments. Let me re-read the constraints.\n\nWait \u2014 Constraint 2 says no reviewer on more than one panel, and Constraint 1 says each panel needs **exactly** two reviewers. That requires exactly 6 reviewer-slots filled by distinct reviewers, but we only have 5 reviewers.\n\n**This seems infeasible on its face.** Let me verify carefully.\n\n## Feasibility Analysis\n\n- Panel A: 2 distinct reviewers\n- Panel B: 2 distinct reviewers\n- Panel C: 2 distinct reviewers\n- No reviewer on more than one panel\n- Total distinct reviewers needed: 2 + 2 + 2 = 6\n\nWe only have 5 reviewers (R1\u2013R5).\n\n### Proof of Infeasibility\n\n**By the Pigeonhole Principle:**\n\n| Fact | Detail |\n|------|--------|\n| Constraint 1 | Each of 3 panels requires exactly 2 reviewers \u2192 6 total assignments |\n| Constraint 2 | Each reviewer can serve on at most 1 panel |\n| Available reviewers | 5 (R1, R2, R3, R4, R5) |\n\nSince we need 6 distinct reviewer-slot assignments and each reviewer can fill at most 1 slot, we need **at least 6 reviewers**. We have only 5.\n\n### Minimal Contradiction Set\n\nThe infeasibility arises from **Constraints 1 and 2 alone**, independent of Constraints 3\u20136:\n\n> **{Constraint 1, Constraint 2}** \u2014 requiring 6 unique reviewer assignments from a pool of 5 reviewers is a contradiction.\n\nNo amount of relaxing Constraints 3\u20136 can resolve this. The problem is **structurally infeasible**.\n\n## Conclusion\n\n$$\\boxed{\\text{No valid assignment exists.}}$$\n\n**Minimal infeasibility proof:**\n- Constraint 1 demands 3 panels \u00d7 2 reviewers = 6 assignments.\n- Constraint 2 demands all assignments be distinct reviewers.\n- Only 5 reviewers exist.\n- 5 < 6 \u2192 **Contradiction.**\n\n---\n\n### What Would Make It Feasible?\n\nAny **one** of these modifications would restore feasibility:\n1. **Add a 6th reviewer (R6)** \u2014 then solutions exist and we can check Constraints 3\u20136.\n2. **Relax Constraint 2** \u2014 allow one reviewer to serve on two panels.\n3. **Reduce one panel to 1 reviewer** \u2014 e.g., \"Panel C needs at least 1 reviewer\" instead of exactly 2.\n\nIf the problem intended any of these relaxations, I'm happy to re-solve with the corrected formulation.",
+      "input_tokens": 203,
+      "output_tokens": 786,
+      "latency_ms": 4098.423431976698,
+      "structural_metrics": {
+        "mtld": 55.65825187078106,
+        "readability_fk_grade": 10.429052631578951,
+        "coherence_mean": 0.37403271999816334,
+        "prompt_relevance": 0.7920865315576345,
+        "connective_density": 0.2727272727272727,
+        "word_count": 391,
+        "repetition_rate": 0.07216494845360824
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# Solving the Reviewer Assignment Problem\n\n## Problem Setup\n\n- 5 reviewers: R1, R2, R3, R4, R5\n- 3 panels: A, B, C (each needs exactly 2 reviewers)\n- Total slots: 3 \u00d7 2 = 6, but only 5 reviewers available\n\n**Key observation:** 6 slots but only 5 reviewers, and Constraint 2 says no reviewer can serve on more than one panel. This means at most 5 reviewers can be assigned, but we need 6 assignments. Let me re-read the constraints.\n\nWait \u2014 Constraint 2 says no reviewer on more than one panel, and Constraint 1 says each panel needs **exactly** two reviewers. That requires exactly 6 reviewer-slots filled by distinct reviewers, but we only have 5 reviewers.\n\n**This seems infeasible on its face.** Let me verify carefully.\n\n## Feasibility Analysis\n\n- Panel A: 2 distinct reviewers\n- Panel B: 2 distinct reviewers\n- Panel C: 2 distinct reviewers\n- No reviewer on more than one panel\n- Total distinct reviewers needed: 2 + 2 + 2 = 6\n\nWe only have 5 reviewers (R1\u2013R5).\n\n### Proof of Infeasibility\n\n**By the Pigeonhole Principle:**\n\n| Fact | Detail |\n|------|--------|\n| Constraint 1 | Each of 3 panels requires exactly 2 reviewers \u2192 6 total assignments |\n| Constraint 2 | Each reviewer can serve on at most 1 panel |\n| Available reviewers | 5 (R1, R2, R3, R4, R5) |\n\nSince we need 6 distinct reviewer-slot assignments and each reviewer can fill at most 1 slot, we need **at least 6 reviewers**. We have only 5.\n\n### Minimal Contradiction Set\n\nThe infeasibility arises from **Constraints 1 and 2 alone**, independent of Constraints 3\u20136:\n\n> **{Constraint 1, Constraint 2}** \u2014 requiring 6 unique reviewer assignments from a pool of 5 reviewers is a contradiction.\n\nNo amount of relaxing Constraints 3\u20136 can resolve this. The problem is **structurally infeasible**.\n\n## Conclusion\n\n$$\\boxed{\\text{No valid assignment exists.}}$$\n\n**Minimal infeasibility proof:**\n- Constraint 1 demands 3 panels \u00d7 2 reviewers = 6 assignments.\n- Constraint 2 demands all assignments be distinct reviewers.\n- Only 5 reviewers exist.\n- 5 < 6 \u2192 **Contradiction.**\n\n---\n\n### What Would Make It Feasible?\n\nAny **one** of these modifications would restore feasibility:\n1. **Add a 6th reviewer (R6)** \u2014 then solutions exist and we can check Constraints 3\u20136.\n2. **Relax Constraint 2** \u2014 allow one reviewer to serve on two panels.\n3. **Reduce one panel to 1 reviewer** \u2014 e.g., \"Panel C needs at least 1 reviewer\" instead of exactly 2.\n\nIf the problem intended any of these relaxations, I'm happy to re-solve with the corrected formulation.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# solving the reviewer assignment problem ## problem setup - 5 reviewers: r1, r2, r3, r4, r5 - 3 panels: a, b, c (each needs exactly 2 reviewers) - total slots: 3 \u00d7 2 = 6, but only 5 reviewers available **key observation:** 6 slots but only 5 reviewers, and constraint 2 says no reviewer can serve on more than one panel. this means at most 5 reviewers can be assigned, but we need 6 assignments. let me re-read the constraints. wait \u2014 constraint 2 says no reviewer on more than one panel, and constraint 1 says each panel needs **exactly** two reviewers. that requires exactly 6 reviewer-slots filled by distinct reviewers, but we only have 5 reviewers. **this seems infeasible on its face.** let me verify carefully. ## feasibility analysis - panel a: 2 distinct reviewers - panel b: 2 distinct reviewers - panel c: 2 distinct reviewers - no reviewer on more than one panel - total distinct reviewers needed: 2 + 2 + 2 = 6 we only have 5 reviewers (r1\u2013r5). ### proof of infeasibility **by the pigeonhole principle:** | fact | detail | |------|--------| | constraint 1 | each of 3 panels requires exactly 2 reviewers \u2192 6 total assignments | | constraint 2 | each reviewer can serve on at most 1 panel | | available reviewers | 5 (r1, r2, r3, r4, r5) | since we need 6 distinct reviewer-slot assignments and each reviewer can fill at most 1 slot, we need **at least 6 reviewers**. we have only 5. ### minimal contradiction set the infeasibility arises from **constraints 1 and 2 alone**, independent of constraints 3\u20136: > **{constraint 1, constraint 2}** \u2014 requiring 6 unique reviewer assignments from a pool of 5 reviewers is a contradiction. no amount of relaxing constraints 3\u20136 can resolve this. the problem is **structurally infeasible**. ## conclusion $$\\boxed{\\text{no valid assignment exists.}}$$ **minimal infeasibility proof:** - constraint 1 demands 3 panels \u00d7 2 reviewers = 6 assignments. - constraint 2 demands all assignments be distinct reviewers. - only 5 reviewers exist. - 5 < 6 \u2192 **contradiction.** --- ### what would make it feasible? any **one** of these modifications would restore feasibility: 1. **add a 6th reviewer (r6)** \u2014 then solutions exist and we can check constraints 3\u20136. 2. **relax constraint 2** \u2014 allow one reviewer to serve on two panels. 3. **reduce one panel to 1 reviewer** \u2014 e.g., \"panel c needs at least 1 reviewer\" instead of exactly 2. if the problem intended any of these relaxations, i'm happy to re-solve with the corrected formulation.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.4662004662004662,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 55.65825187078106,
+      "readability_fk_grade": 10.429052631578951,
+      "coherence_mean": 0.37403271999816334,
+      "prompt_relevance": 0.7920865315576345,
+      "connective_density": 0.2727272727272727,
+      "word_count": 391,
+      "repetition_rate": 0.07216494845360824
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

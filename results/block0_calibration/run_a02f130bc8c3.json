@@ -1,0 +1,166 @@
+{
+  "run_id": "run_a02f130bc8c3",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:59:23.535330+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_07_mystery_2050_opening",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-opus-4-6"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 3,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Opening Paragraph for a 2050 Mystery Novel",
+    "prompt": "Write the opening paragraph (180-260 words) of a mystery novel set in 2050, where forensic tools are advanced enough to solve most crimes quickly, yet this case resists easy explanation. The paragraph must hook the reader through atmosphere, specificity, and narrative tension while implying deeper social context without worldbuilding dump.\n\nConstraints:\n- First-person perspective.\n- Include one sensory detail tied to weather.\n- Include one object that seems trivial but later could be crucial.\n- End on a line that reframes what the narrator thought they knew.\n\nAfter the paragraph, add three bullet points listing plausible directions for chapter two.\n",
+    "rubric": [
+      "Strong hook, voice, and setting integration within compact length.",
+      "Satisfies constraints while preserving natural prose.",
+      "Seeds mystery clues without overexplaining.",
+      "Follow-up chapter directions are compelling and consistent."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-opus-4-6",
+      "text": "# The Harrow Case\n\nThe rain that morning tasted of copper and salt, the way it always did when the atmospheric scrubbers over District Nine fell behind on their cycling \u2014 a taste most people had learned to ignore, but that I, out of professional habit, still catalogued. I stood at the edge of the apartment where Lena Moss had, according to every forensic metric available to us, simply stopped being alive. No trauma. No toxin. No pathogen. The BioScan suite had mapped her body down to the protein level in eleven minutes flat and returned a result I'd never seen in fourteen years of homicide work: *cause of death \u2014 indeterminate*. That word sat in my chest like a stone. Around me, the scene was almost aggressively ordinary \u2014 her coffee cold on the counter, a library copy of a poetry anthology played open on the couch, a single house key on a frayed blue lanyard hanging from the doorknob, as if she'd just come home. The uniforms were already losing interest; no crime, no case, they figured. But the city's Civic Algorithm had flagged her death and routed it to me specifically, which meant someone, or something, in the system thought this mattered more than it appeared. I picked up the lanyard, turned the key over in my fingers. It didn't belong to this apartment. It didn't belong to any lock in the building. I'd been told Lena Moss had no enemies, no secrets, no reason to die \u2014 and standing there, tasting the failing sky, I realized that was exactly the kind of life someone builds when they have every reason to disappear.\n\n---\n\n**Plausible directions for Chapter Two:**\n\n- **The key leads to a decommissioned public storage facility** in a district that was rezoned and supposedly emptied years ago, suggesting Lena maintained a hidden life tied to a community the city tried to erase.\n- **The Civic Algorithm's routing is investigated** \u2014 the narrator discovers that Lena's file was manually flagged by a human operator who has since gone on unexplained leave, raising questions about institutional complicity.\n- **The poetry anthology contains marginalia** \u2014 handwritten annotations in a cipher that, once partially decoded, appear to reference future dates, including one that hasn't arrived yet.",
+      "input_tokens": 164,
+      "output_tokens": 506,
+      "latency_ms": 4203.530585975386,
+      "structural_metrics": {
+        "mtld": 164.60353133119526,
+        "readability_fk_grade": 13.442835733748542,
+        "coherence_mean": 0.25985617939123506,
+        "prompt_relevance": 0.41328641855728804,
+        "connective_density": 0.29411764705882354,
+        "word_count": 367,
+        "repetition_rate": 0.005494505494505495
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# The Harrow Case\n\nThe rain that morning tasted of copper and salt, the way it always did when the atmospheric scrubbers over District Nine fell behind on their cycling \u2014 a taste most people had learned to ignore, but that I, out of professional habit, still catalogued. I stood at the edge of the apartment where Lena Moss had, according to every forensic metric available to us, simply stopped being alive. No trauma. No toxin. No pathogen. The BioScan suite had mapped her body down to the protein level in eleven minutes flat and returned a result I'd never seen in fourteen years of homicide work: *cause of death \u2014 indeterminate*. That word sat in my chest like a stone. Around me, the scene was almost aggressively ordinary \u2014 her coffee cold on the counter, a library copy of a poetry anthology played open on the couch, a single house key on a frayed blue lanyard hanging from the doorknob, as if she'd just come home. The uniforms were already losing interest; no crime, no case, they figured. But the city's Civic Algorithm had flagged her death and routed it to me specifically, which meant someone, or something, in the system thought this mattered more than it appeared. I picked up the lanyard, turned the key over in my fingers. It didn't belong to this apartment. It didn't belong to any lock in the building. I'd been told Lena Moss had no enemies, no secrets, no reason to die \u2014 and standing there, tasting the failing sky, I realized that was exactly the kind of life someone builds when they have every reason to disappear.\n\n---\n\n**Plausible directions for Chapter Two:**\n\n- **The key leads to a decommissioned public storage facility** in a district that was rezoned and supposedly emptied years ago, suggesting Lena maintained a hidden life tied to a community the city tried to erase.\n- **The Civic Algorithm's routing is investigated** \u2014 the narrator discovers that Lena's file was manually flagged by a human operator who has since gone on unexplained leave, raising questions about institutional complicity.\n- **The poetry anthology contains marginalia** \u2014 handwritten annotations in a cipher that, once partially decoded, appear to reference future dates, including one that hasn't arrived yet.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# the harrow case the rain that morning tasted of copper and salt, the way it always did when the atmospheric scrubbers over district nine fell behind on their cycling \u2014 a taste most people had learned to ignore, but that i, out of professional habit, still catalogued. i stood at the edge of the apartment where lena moss had, according to every forensic metric available to us, simply stopped being alive. no trauma. no toxin. no pathogen. the bioscan suite had mapped her body down to the protein level in eleven minutes flat and returned a result i'd never seen in fourteen years of homicide work: *cause of death \u2014 indeterminate*. that word sat in my chest like a stone. around me, the scene was almost aggressively ordinary \u2014 her coffee cold on the counter, a library copy of a poetry anthology played open on the couch, a single house key on a frayed blue lanyard hanging from the doorknob, as if she'd just come home. the uniforms were already losing interest; no crime, no case, they figured. but the city's civic algorithm had flagged her death and routed it to me specifically, which meant someone, or something, in the system thought this mattered more than it appeared. i picked up the lanyard, turned the key over in my fingers. it didn't belong to this apartment. it didn't belong to any lock in the building. i'd been told lena moss had no enemies, no secrets, no reason to die \u2014 and standing there, tasting the failing sky, i realized that was exactly the kind of life someone builds when they have every reason to disappear. --- **plausible directions for chapter two:** - **the key leads to a decommissioned public storage facility** in a district that was rezoned and supposedly emptied years ago, suggesting lena maintained a hidden life tied to a community the city tried to erase. - **the civic algorithm's routing is investigated** \u2014 the narrator discovers that lena's file was manually flagged by a human operator who has since gone on unexplained leave, raising questions about institutional complicity. - **the poetry anthology contains marginalia** \u2014 handwritten annotations in a cipher that, once partially decoded, appear to reference future dates, including one that hasn't arrived yet.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.6666666666666666,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 164.60353133119526,
+      "readability_fk_grade": 13.442835733748542,
+      "coherence_mean": 0.25985617939123506,
+      "prompt_relevance": 0.41328641855728804,
+      "connective_density": 0.29411764705882354,
+      "word_count": 367,
+      "repetition_rate": 0.005494505494505495
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "random_sample_15pct"
+      ],
+      "sheet_path": "results/human_eval/run_a02f130bc8c3.json"
+    }
+  }
+}

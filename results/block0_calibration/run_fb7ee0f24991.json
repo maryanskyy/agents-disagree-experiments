@@ -1,0 +1,164 @@
+{
+  "run_id": "run_fb7ee0f24991",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:02:39.732329+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_02_fallacy_audit",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gpt-5.2"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 3,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Logical Fallacy Audit of a Policy Argument",
+    "prompt": "Evaluate the following policy argument for reasoning quality: \"Our city's pilot bike lane reduced downtown car speed by 7%, and during that month retail revenue dipped by 3%. Therefore bike lanes harm local businesses. Since one district suffered, we should ban all future bike lanes citywide. Experts who disagree are biased activists, not objective analysts.\"\n\nProduce a structured critical analysis that identifies at least five distinct issues, including causal inference errors, generalization problems, and rhetorical manipulation. For each issue, quote the relevant claim, name the error class (or describe it if naming is uncertain), and explain exactly why it weakens the argument. Then rewrite the argument into a stronger evidence-seeking version that would be suitable for a city council briefing.\n\nKeep the tone analytical and precise. The output should help a reviewer distinguish valid concerns from invalid reasoning.\n",
+    "rubric": [
+      "Identifies at least five concrete reasoning flaws with claim-level grounding.",
+      "Distinguishes correlation from causation and addresses confounders/time horizon.",
+      "Detects overgeneralization and ad hominem style moves.",
+      "Provides a materially improved, testable reformulation."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gpt-5.2",
+      "text": "## Structured critical analysis of reasoning quality\n\n### Issue 1: Correlation treated as causation (post hoc / causal inference error)\n- **Quoted claim:** \u201c*\u2026retail revenue dipped by 3%. Therefore bike lanes harm local businesses.*\u201d\n- **Error class:** Correlation \u2192 causation (post hoc ergo propter hoc); causal attribution without identification strategy.\n- **Why it weakens the argument:** The argument assumes the revenue dip was *caused* by the bike lane because it occurred \u201cduring that month.\u201d But many other factors can drive a month-to-month change in retail revenue (seasonality, weather, construction, events, macroeconomic conditions, tourism patterns, a competitor opening/closing, pricing changes, measurement noise). Without a comparison group (e.g., similar areas without bike lanes) or a pre/post trend analysis, the inference is not justified.\n\n### Issue 2: Confounding and omitted variables (failure to control)\n- **Quoted claim:** \u201c*\u2026during that month retail revenue dipped by 3%.*\u201d\n- **Error class:** Omitted variable bias / confounding.\n- **Why it weakens the argument:** Even if the timing aligns, the argument provides no evidence that other contemporaneous changes weren\u2019t responsible. For example:\n  - Was there roadwork, reduced parking, or detours during installation?\n  - Did that month have fewer foot-traffic-generating events?\n  - Did public transit service change?\n  - Were there broader citywide retail declines?\n  Without controlling for confounders or at least checking plausible alternatives, the causal claim is fragile.\n\n### Issue 3: Single observation and short time window (insufficient evidence, noise sensitivity)\n- **Quoted claim:** \u201c*\u2026during that month retail revenue dipped by 3%.*\u201d\n- **Error class:** Small sample / anecdotal evidence; unreliable inference from a single month.\n- **Why it weakens the argument:** A one-month change is highly susceptible to random variation and seasonal effects. A 3% dip may be within normal month-to-month volatility, depending on the baseline variance. Strong policy conclusions require longer observation periods (multiple months/quarters) and, ideally, multiple sites.\n\n### Issue 4: Overgeneralization from one district to the entire city (hasty generalization / ecological fallacy risk)\n- **Quoted claim:** \u201c*Since one district suffered, we should ban all future bike lanes citywide.*\u201d\n- **Error class:** Hasty generalization; extrapolation beyond the evidence.\n- **Why it weakens the argument:** Even if the pilot did harm retail in that specific location, it does not follow that all bike lanes\u2014of different designs, in different commercial contexts, with different parking/loading solutions\u2014will have the same effect. Downtown districts vary in retail mix, customer travel mode, street network, transit access, and pedestrian volumes. Citywide prohibition is not proportionate to a single localized observation.\n\n### Issue 5: Non sequitur from speed reduction to economic harm (missing causal chain)\n- **Quoted claim:** \u201c*\u2026pilot bike lane reduced downtown car speed by 7%\u2026 Therefore bike lanes harm local businesses.*\u201d\n- **Error class:** Non sequitur / missing mechanism; incomplete causal pathway.\n- **Why it weakens the argument:** Slower car speeds do not inherently imply reduced retail revenue. In some contexts, traffic calming can increase safety and foot traffic, potentially benefiting retail. To connect speed changes to business outcomes, the argument needs evidence about access (parking turnover, loading zones), customer arrival mode share, travel time impacts, and whether shoppers avoided the area.\n\n### Issue 6: Ambiguous metrics and unclear baselines (measurement/definition problems)\n- **Quoted claim:** \u201c*reduced downtown car speed by 7%, and \u2026 retail revenue dipped by 3%*\u201d\n- **Error class:** Measurement ambiguity / lack of operationalization.\n- **Why it weakens the argument:** The claims omit critical details:\n  - 7% reduction relative to what baseline (average speed? peak-hour speed?) and measured how (sensors, spot checks, sample size)?\n  - \u201cRetail revenue\u201d from what source (sales tax receipts, credit card panel, self-reports), and which businesses were included/excluded?\n  - Was the 3% change adjusted for inflation, seasonality, or citywide trends?\n  Unclear metrics make it impossible to assess reliability or relevance.\n\n### Issue 7: Ad hominem and poisoning the well (rhetorical manipulation)\n- **Quoted claim:** \u201c*Experts who disagree are biased activists, not objective analysts.*\u201d\n- **Error class:** Ad hominem; poisoning the well; motive fallacy.\n- **Why it weakens the argument:** Dismissing disagreement by attacking motives sidesteps evidence. Expertise should be evaluated by data quality, methods, transparency, and replicability\u2014not presumed bias. This tactic reduces credibility and suggests the argument cannot defend itself on the merits.\n\n### Issue 8: Premature policy certainty and extreme remedy (policy overreach)\n- **Quoted claim:** \u201c*Therefore\u2026 we should ban all future bike lanes citywide.*\u201d\n- **Error class:** Overconfident conclusion; disproportionate policy response.\n- **Why it weakens the argument:** Even if there is risk of harm, \u201cban all future bike lanes\u201d is an extreme, irreversible policy that ignores alternative responses (redesign, targeted implementation, mitigation for loading/parking, time-of-day rules, phased rollouts, ongoing evaluation). Good policy reasoning matches uncertainty with reversible, testable actions.\n\n---\n\n## Rewritten argument (stronger, evidence-seeking, city council\u2013ready)\n\n**Subject:** Preliminary findings from the downtown bike lane pilot and recommended next steps\n\n1. **What we observed (descriptive, not yet causal):**\n   - During the pilot month, measured average vehicle speeds on the corridor decreased by approximately **7%** (relative to the pre-pilot baseline used by the transportation department).\n   - Over the same month, **reported retail revenue** in the pilot area was approximately **3% lower** than the comparison baseline (data source and coverage to be specified).\n\n2. **What we cannot conclude yet:**\n   - The simultaneous revenue decline does **not** by itself establish that the bike lane caused harm to local businesses. Month-to-month retail revenue can vary due to seasonality, weather, special events, construction disruptions, broader economic trends, or changes affecting adjacent streets.\n\n3. **Key questions to answer before making expansion or prohibition decisions:**\n   - **Comparative performance:** How did revenue change in similar nearby commercial areas **without** a bike lane over the same period (difference-in-differences comparison)?\n   - **Time horizon:** Do revenue patterns persist over **multiple months/quarters**, or do they rebound after drivers and customers adapt?\n   - **Mechanisms:** Did the pilot affect **parking availability/turnover**, **delivery/loading access**, **travel times**, and **foot/bike volumes**? What share of customers arrive by car vs. walking, biking, or transit?\n   - **Distributional impacts:** Were effects concentrated in specific business types (e.g., quick-service vs. destination retail) or specific blocks?\n\n4. **Recommended action (evidence-building approach):**\n   - Continue the pilot long enough to collect **multi-month** data and include an evaluation plan with:\n     - A defined set of **control corridors**,\n     - Transparent **data sources** (sales tax, anonymized payment data, foot/bike counts, parking occupancy, delivery metrics),\n     - Pre-specified **success metrics** and thresholds.\n   - In parallel, implement **mitigations** commonly used to protect business access (clearly marked loading zones, adjusted curb management, signage for parking and access routes).\n   - Reassess with a formal report before scaling up, modifying, or discontinuing the project.\n\n5. **How to use expert input:**\n   - Invite independent review focused on **methods and data**, not stakeholder labels. We should weigh expert conclusions by the transparency of assumptions, robustness checks, and alignment with observed local conditions.\n\nThis version preserves a valid concern\u2014\u201cthe pilot coincided with a retail dip and may have access impacts\u201d\u2014but reframes it as a hypothesis to test with appropriate comparisons and clearer measurement before making citywide decisions.",
+      "input_tokens": 191,
+      "output_tokens": 1702,
+      "latency_ms": 3985.036589903757,
+      "structural_metrics": {
+        "mtld": 190.7241050482507,
+        "readability_fk_grade": 14.489369606168136,
+        "coherence_mean": 0.300795978661031,
+        "prompt_relevance": 0.6565552265976667,
+        "connective_density": 0.19642857142857142,
+        "word_count": 1129,
+        "repetition_rate": 0.07282415630550622
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "## Structured critical analysis of reasoning quality\n\n### Issue 1: Correlation treated as causation (post hoc / causal inference error)\n- **Quoted claim:** \u201c*\u2026retail revenue dipped by 3%. Therefore bike lanes harm local businesses.*\u201d\n- **Error class:** Correlation \u2192 causation (post hoc ergo propter hoc); causal attribution without identification strategy.\n- **Why it weakens the argument:** The argument assumes the revenue dip was *caused* by the bike lane because it occurred \u201cduring that month.\u201d But many other factors can drive a month-to-month change in retail revenue (seasonality, weather, construction, events, macroeconomic conditions, tourism patterns, a competitor opening/closing, pricing changes, measurement noise). Without a comparison group (e.g., similar areas without bike lanes) or a pre/post trend analysis, the inference is not justified.\n\n### Issue 2: Confounding and omitted variables (failure to control)\n- **Quoted claim:** \u201c*\u2026during that month retail revenue dipped by 3%.*\u201d\n- **Error class:** Omitted variable bias / confounding.\n- **Why it weakens the argument:** Even if the timing aligns, the argument provides no evidence that other contemporaneous changes weren\u2019t responsible. For example:\n  - Was there roadwork, reduced parking, or detours during installation?\n  - Did that month have fewer foot-traffic-generating events?\n  - Did public transit service change?\n  - Were there broader citywide retail declines?\n  Without controlling for confounders or at least checking plausible alternatives, the causal claim is fragile.\n\n### Issue 3: Single observation and short time window (insufficient evidence, noise sensitivity)\n- **Quoted claim:** \u201c*\u2026during that month retail revenue dipped by 3%.*\u201d\n- **Error class:** Small sample / anecdotal evidence; unreliable inference from a single month.\n- **Why it weakens the argument:** A one-month change is highly susceptible to random variation and seasonal effects. A 3% dip may be within normal month-to-month volatility, depending on the baseline variance. Strong policy conclusions require longer observation periods (multiple months/quarters) and, ideally, multiple sites.\n\n### Issue 4: Overgeneralization from one district to the entire city (hasty generalization / ecological fallacy risk)\n- **Quoted claim:** \u201c*Since one district suffered, we should ban all future bike lanes citywide.*\u201d\n- **Error class:** Hasty generalization; extrapolation beyond the evidence.\n- **Why it weakens the argument:** Even if the pilot did harm retail in that specific location, it does not follow that all bike lanes\u2014of different designs, in different commercial contexts, with different parking/loading solutions\u2014will have the same effect. Downtown districts vary in retail mix, customer travel mode, street network, transit access, and pedestrian volumes. Citywide prohibition is not proportionate to a single localized observation.\n\n### Issue 5: Non sequitur from speed reduction to economic harm (missing causal chain)\n- **Quoted claim:** \u201c*\u2026pilot bike lane reduced downtown car speed by 7%\u2026 Therefore bike lanes harm local businesses.*\u201d\n- **Error class:** Non sequitur / missing mechanism; incomplete causal pathway.\n- **Why it weakens the argument:** Slower car speeds do not inherently imply reduced retail revenue. In some contexts, traffic calming can increase safety and foot traffic, potentially benefiting retail. To connect speed changes to business outcomes, the argument needs evidence about access (parking turnover, loading zones), customer arrival mode share, travel time impacts, and whether shoppers avoided the area.\n\n### Issue 6: Ambiguous metrics and unclear baselines (measurement/definition problems)\n- **Quoted claim:** \u201c*reduced downtown car speed by 7%, and \u2026 retail revenue dipped by 3%*\u201d\n- **Error class:** Measurement ambiguity / lack of operationalization.\n- **Why it weakens the argument:** The claims omit critical details:\n  - 7% reduction relative to what baseline (average speed? peak-hour speed?) and measured how (sensors, spot checks, sample size)?\n  - \u201cRetail revenue\u201d from what source (sales tax receipts, credit card panel, self-reports), and which businesses were included/excluded?\n  - Was the 3% change adjusted for inflation, seasonality, or citywide trends?\n  Unclear metrics make it impossible to assess reliability or relevance.\n\n### Issue 7: Ad hominem and poisoning the well (rhetorical manipulation)\n- **Quoted claim:** \u201c*Experts who disagree are biased activists, not objective analysts.*\u201d\n- **Error class:** Ad hominem; poisoning the well; motive fallacy.\n- **Why it weakens the argument:** Dismissing disagreement by attacking motives sidesteps evidence. Expertise should be evaluated by data quality, methods, transparency, and replicability\u2014not presumed bias. This tactic reduces credibility and suggests the argument cannot defend itself on the merits.\n\n### Issue 8: Premature policy certainty and extreme remedy (policy overreach)\n- **Quoted claim:** \u201c*Therefore\u2026 we should ban all future bike lanes citywide.*\u201d\n- **Error class:** Overconfident conclusion; disproportionate policy response.\n- **Why it weakens the argument:** Even if there is risk of harm, \u201cban all future bike lanes\u201d is an extreme, irreversible policy that ignores alternative responses (redesign, targeted implementation, mitigation for loading/parking, time-of-day rules, phased rollouts, ongoing evaluation). Good policy reasoning matches uncertainty with reversible, testable actions.\n\n---\n\n## Rewritten argument (stronger, evidence-seeking, city council\u2013ready)\n\n**Subject:** Preliminary findings from the downtown bike lane pilot and recommended next steps\n\n1. **What we observed (descriptive, not yet causal):**\n   - During the pilot month, measured average vehicle speeds on the corridor decreased by approximately **7%** (relative to the pre-pilot baseline used by the transportation department).\n   - Over the same month, **reported retail revenue** in the pilot area was approximately **3% lower** than the comparison baseline (data source and coverage to be specified).\n\n2. **What we cannot conclude yet:**\n   - The simultaneous revenue decline does **not** by itself establish that the bike lane caused harm to local businesses. Month-to-month retail revenue can vary due to seasonality, weather, special events, construction disruptions, broader economic trends, or changes affecting adjacent streets.\n\n3. **Key questions to answer before making expansion or prohibition decisions:**\n   - **Comparative performance:** How did revenue change in similar nearby commercial areas **without** a bike lane over the same period (difference-in-differences comparison)?\n   - **Time horizon:** Do revenue patterns persist over **multiple months/quarters**, or do they rebound after drivers and customers adapt?\n   - **Mechanisms:** Did the pilot affect **parking availability/turnover**, **delivery/loading access**, **travel times**, and **foot/bike volumes**? What share of customers arrive by car vs. walking, biking, or transit?\n   - **Distributional impacts:** Were effects concentrated in specific business types (e.g., quick-service vs. destination retail) or specific blocks?\n\n4. **Recommended action (evidence-building approach):**\n   - Continue the pilot long enough to collect **multi-month** data and include an evaluation plan with:\n     - A defined set of **control corridors**,\n     - Transparent **data sources** (sales tax, anonymized payment data, foot/bike counts, parking occupancy, delivery metrics),\n     - Pre-specified **success metrics** and thresholds.\n   - In parallel, implement **mitigations** commonly used to protect business access (clearly marked loading zones, adjusted curb management, signage for parking and access routes).\n   - Reassess with a formal report before scaling up, modifying, or discontinuing the project.\n\n5. **How to use expert input:**\n   - Invite independent review focused on **methods and data**, not stakeholder labels. We should weigh expert conclusions by the transparency of assumptions, robustness checks, and alignment with observed local conditions.\n\nThis version preserves a valid concern\u2014\u201cthe pilot coincided with a retail dip and may have access impacts\u201d\u2014but reframes it as a hypothesis to test with appropriate comparisons and clearer measurement before making citywide decisions.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "## structured critical analysis of reasoning quality ### issue 1: correlation treated as causation (post hoc / causal inference error) - **quoted claim:** \u201c*\u2026retail revenue dipped by 3%. therefore bike lanes harm local businesses.*\u201d - **error class:** correlation \u2192 causation (post hoc ergo propter hoc); causal attribution without identification strategy. - **why it weakens the argument:** the argument assumes the revenue dip was *caused* by the bike lane because it occurred \u201cduring that month.\u201d but many other factors can drive a month-to-month change in retail revenue (seasonality, weather, construction, events, macroeconomic conditions, tourism patterns, a competitor opening/closing, pricing changes, measurement noise). without a comparison group (e.g., similar areas without bike lanes) or a pre/post trend analysis, the inference is not justified. ### issue 2: confounding and omitted variables (failure to control) - **quoted claim:** \u201c*\u2026during that month retail revenue dipped by 3%.*\u201d - **error class:** omitted variable bias / confounding. - **why it weakens the argument:** even if the timing aligns, the argument provides no evidence that other contemporaneous changes weren\u2019t responsible. for example: - was there roadwork, reduced parking, or detours during installation? - did that month have fewer foot-traffic-generating events? - did public transit service change? - were there broader citywide retail declines? without controlling for confounders or at least checking plausible alternatives, the causal claim is fragile. ### issue 3: single observation and short time window (insufficient evidence, noise sensitivity) - **quoted claim:** \u201c*\u2026during that month retail revenue dipped by 3%.*\u201d - **error class:** small sample / anecdotal evidence; unreliable inference from a single month. - **why it weakens the argument:** a one-month change is highly susceptible to random variation and seasonal effects. a 3% dip may be within normal month-to-month volatility, depending on the baseline variance. strong policy conclusions require longer observation periods (multiple months/quarters) and, ideally, multiple sites. ### issue 4: overgeneralization from one district to the entire city (hasty generalization / ecological fallacy risk) - **quoted claim:** \u201c*since one district suffered, we should ban all future bike lanes citywide.*\u201d - **error class:** hasty generalization; extrapolation beyond the evidence. - **why it weakens the argument:** even if the pilot did harm retail in that specific location, it does not follow that all bike lanes\u2014of different designs, in different commercial contexts, with different parking/loading solutions\u2014will have the same effect. downtown districts vary in retail mix, customer travel mode, street network, transit access, and pedestrian volumes. citywide prohibition is not proportionate to a single localized observation. ### issue 5: non sequitur from speed reduction to economic harm (missing causal chain) - **quoted claim:** \u201c*\u2026pilot bike lane reduced downtown car speed by 7%\u2026 therefore bike lanes harm local businesses.*\u201d - **error class:** non sequitur / missing mechanism; incomplete causal pathway. - **why it weakens the argument:** slower car speeds do not inherently imply reduced retail revenue. in some contexts, traffic calming can increase safety and foot traffic, potentially benefiting retail. to connect speed changes to business outcomes, the argument needs evidence about access (parking turnover, loading zones), customer arrival mode share, travel time impacts, and whether shoppers avoided the area. ### issue 6: ambiguous metrics and unclear baselines (measurement/definition problems) - **quoted claim:** \u201c*reduced downtown car speed by 7%, and \u2026 retail revenue dipped by 3%*\u201d - **error class:** measurement ambiguity / lack of operationalization. - **why it weakens the argument:** the claims omit critical details: - 7% reduction relative to what baseline (average speed? peak-hour speed?) and measured how (sensors, spot checks, sample size)? - \u201cretail revenue\u201d from what source (sales tax receipts, credit card panel, self-reports), and which businesses were included/excluded? - was the 3% change adjusted for inflation, seasonality, or citywide trends? unclear metrics make it impossible to assess reliability or relevance. ### issue 7: ad hominem and poisoning the well (rhetorical manipulation) - **quoted claim:** \u201c*experts who disagree are biased activists, not objective analysts.*\u201d - **error class:** ad hominem; poisoning the well; motive fallacy. - **why it weakens the argument:** dismissing disagreement by attacking motives sidesteps evidence. expertise should be evaluated by data quality, methods, transparency, and replicability\u2014not presumed bias. this tactic reduces credibility and suggests the argument cannot defend itself on the merits. ### issue 8: premature policy certainty and extreme remedy (policy overreach) - **quoted claim:** \u201c*therefore\u2026 we should ban all future bike lanes citywide.*\u201d - **error class:** overconfident conclusion; disproportionate policy response. - **why it weakens the argument:** even if there is risk of harm, \u201cban all future bike lanes\u201d is an extreme, irreversible policy that ignores alternative responses (redesign, targeted implementation, mitigation for loading/parking, time-of-day rules, phased rollouts, ongoing evaluation). good policy reasoning matches uncertainty with reversible, testable actions. --- ## rewritten argument (stronger, evidence-seeking, city council\u2013ready) **subject:** preliminary findings from the downtown bike lane pilot and recommended next steps 1. **what we observed (descriptive, not yet causal):** - during the pilot month, measured average vehicle speeds on the corridor decreased by approximately **7%** (relative to the pre-pilot baseline used by the transportation department). - over the same month, **reported retail revenue** in the pilot area was approximately **3% lower** than the comparison baseline (data source and coverage to be specified). 2. **what we cannot conclude yet:** - the simultaneous revenue decline does **not** by itself establish that the bike lane caused harm to local businesses. month-to-month retail revenue can vary due to seasonality, weather, special events, construction disruptions, broader economic trends, or changes affecting adjacent streets. 3. **key questions to answer before making expansion or prohibition decisions:** - **comparative performance:** how did revenue change in similar nearby commercial areas **without** a bike lane over the same period (difference-in-differences comparison)? - **time horizon:** do revenue patterns persist over **multiple months/quarters**, or do they rebound after drivers and customers adapt? - **mechanisms:** did the pilot affect **parking availability/turnover**, **delivery/loading access**, **travel times**, and **foot/bike volumes**? what share of customers arrive by car vs. walking, biking, or transit? - **distributional impacts:** were effects concentrated in specific business types (e.g., quick-service vs. destination retail) or specific blocks? 4. **recommended action (evidence-building approach):** - continue the pilot long enough to collect **multi-month** data and include an evaluation plan with: - a defined set of **control corridors**, - transparent **data sources** (sales tax, anonymized payment data, foot/bike counts, parking occupancy, delivery metrics), - pre-specified **success metrics** and thresholds. - in parallel, implement **mitigations** commonly used to protect business access (clearly marked loading zones, adjusted curb management, signage for parking and access routes). - reassess with a formal report before scaling up, modifying, or discontinuing the project. 5. **how to use expert input:** - invite independent review focused on **methods and data**, not stakeholder labels. we should weigh expert conclusions by the transparency of assumptions, robustness checks, and alignment with observed local conditions. this version preserves a valid concern\u2014\u201cthe pilot coincided with a retail dip and may have access impacts\u201d\u2014but reframes it as a hypothesis to test with appropriate comparisons and clearer measurement before making citywide decisions.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5490877497827976,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 190.7241050482507,
+      "readability_fk_grade": 14.489369606168136,
+      "coherence_mean": 0.300795978661031,
+      "prompt_relevance": 0.6565552265976667,
+      "connective_density": 0.19642857142857142,
+      "word_count": 1129,
+      "repetition_rate": 0.07282415630550622
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

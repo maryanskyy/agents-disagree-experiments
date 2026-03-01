@@ -1,0 +1,164 @@
+{
+  "run_id": "run_7ed914872a7b",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:58:19.217372+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_04_climate_board_game",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Educational Board Game for Climate Science",
+    "prompt": "Design a tabletop board game for ages 12+ that teaches climate science through play rather than lecture. The game should make players reason about feedback loops, uncertainty, mitigation versus adaptation tradeoffs, and delayed consequences.\n\nProvide: (1) game objective, (2) components list, (3) setup, (4) turn structure, (5) core mechanics, (6) win/loss conditions, (7) sample round, and (8) teacher/facilitator debrief guide with three discussion prompts.\n\nConstraints: playtime 35-50 minutes, 3-5 players, no hidden pay-to-win role asymmetry, and balanced strategic paths (cooperative pressure with limited competitive tension is acceptable). Include one mechanic that represents nonlinear tipping risk.\n",
+    "rubric": [
+      "Mechanics meaningfully encode core climate concepts (not decorative theme only).",
+      "Rules are internally consistent and playable within constraints.",
+      "Includes pedagogically useful debrief guidance.",
+      "Demonstrates balance and strategic depth."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# THRESHOLD: A Climate Science Board Game\n\n## (1) GAME OBJECTIVE\n\nPlayers collectively manage a planetary system across 8 rounds, balancing economic growth, carbon emissions, and climate stability. The goal is to reach 2050 with a habitable planet (global temperature rise \u2264 2\u00b0C) while maintaining minimum economic prosperity (\u2265 $50B collective wealth). Success requires reasoning about cause-and-effect chains, not just following rules.\n\n**Core tension:** Short-term economic gains create long-term climate costs; mitigation investments reduce growth now but prevent catastrophic losses later.\n\n---\n\n## (2) COMPONENTS LIST\n\n### Physical Components\n- **1 Game Board** (modular, 3 sections: Economy, Atmosphere, Biosphere)\n- **8 Round Tokens** (labeled 2025\u20132050 in 5-year increments)\n- **1 Temperature Track** (0\u00b0C to 4\u00b0C, with visual danger zones at 1.5\u00b0C and 2\u00b0C)\n- **1 Carbon Budget Track** (cumulative CO\u2082 emissions, 0\u20131200 Gt)\n- **1 Economic Wealth Track** (per-player, $0\u2013$150B)\n- **5 Player Tokens** (distinct colors)\n- **60 Action Cards** (3 categories: Growth, Mitigation, Adaptation; see Appendix A)\n- **20 Event Cards** (feedback loops, tipping points, surprises)\n- **1 Feedback Loop Deck** (12 cards representing nonlinear amplification)\n- **40 Carbon Tokens** (physical cubes, 1 token = 10 Gt CO\u2082)\n- **20 Resilience Tokens** (represent adaptation infrastructure)\n- **1 Tipping Point Die** (d6, custom faces: see Mechanics section)\n- **Score Pad** (track wealth, emissions, temperature per round)\n- **1 Rulebook + Facilitator Guide**\n\n### Digital Optional\n- Simple spreadsheet or app to auto-calculate temperature rise (linear baseline + feedback multiplier)\n\n---\n\n## (3) SETUP\n\n1. **Place the board** in the center. All players can see all tracks.\n\n2. **Initialize tracks:**\n   - Temperature: 0\u00b0C\n   - Carbon Budget: 0 Gt (cumulative counter)\n   - Each player's Wealth: $100B\n   - Resilience Tokens: 0 (distributed during play)\n\n3. **Shuffle decks:**\n   - Action Cards (separate Growth, Mitigation, Adaptation piles)\n   - Event Cards\n   - Feedback Loop Deck\n\n4. **Deal 3 Action Cards** to each player (hand limit: 5).\n\n5. **Place Round Token** on 2025.\n\n6. **Explain the core rule:** \"Every action you take generates CO\u2082 or builds resilience. CO\u2082 accumulates and drives temperature rise. Temperature rise triggers feedback loops that accelerate warming. You win if you keep warming \u2264 2\u00b0C AND maintain collective wealth \u2265 $50B by 2050.\"\n\n---\n\n## (4) TURN STRUCTURE\n\n**Each round (representing 5 years) proceeds in 5 phases:**\n\n### Phase 1: Action Phase (3 minutes per player)\n- Players take turns in clockwise order.\n- On your turn, **play exactly 1 Action Card** from your hand (mandatory).\n- Immediately resolve the card's effects (gain/lose wealth, emit CO\u2082, gain resilience).\n- Draw 1 new card.\n- **Pass** if you have no cards (rare).\n\n### Phase 2: Collective Emissions Tally (1 minute)\n- Sum all CO\u2082 emitted this round.\n- Add to Carbon Budget Track.\n- **Record on score pad:** cumulative emissions.\n\n### Phase 3: Temperature Calculation (2 minutes)\n- **Baseline warming:** 0.1\u00b0C per 100 Gt cumulative CO\u2082 (simplified IPCC model).\n- **Feedback multiplier:** Draw 1 Feedback Loop card. Apply its multiplier (see Mechanics, below).\n- Update Temperature Track.\n- Example: 500 Gt cumulative \u2192 0.5\u00b0C baseline. Feedback card says \"\u00d71.3 (Arctic albedo loss)\" \u2192 0.65\u00b0C actual.\n\n### Phase 4: Event Resolution (2 minutes)\n- Draw 1 Event Card. Read aloud and resolve immediately.\n- Events can be:\n  - **Positive surprises** (e.g., \"Solar tech breakthrough: all players gain $10B\")\n  - **Negative surprises** (e.g., \"Permafrost thaw: +0.2\u00b0C unplanned\")\n  - **Conditional** (e.g., \"If temperature > 1.5\u00b0C, roll Tipping Point Die\")\n\n### Phase 5: End-of-Round Checks (1 minute)\n- **Wealth check:** If any player drops below $0, they lose $10B from collective pool (representing economic shock). If collective wealth < $0, game ends in loss.\n- **Temperature check:** If temperature > 2\u00b0C, move to Phase 5b (Tipping Point Risk).\n- **Advance Round Token** to next year.\n\n### Phase 5b: Tipping Point Risk (if temperature > 2\u00b0C)\n- Roll the Tipping Point Die.\n- **Faces:** 1\u20134 = safe; 5 = minor tipping (temperature +0.3\u00b0C, all players lose 1 Resilience Token); 6 = major tipping (temperature +0.5\u00b0C, all players lose $20B and 2 Resilience Tokens).\n- This represents nonlinear, irreversible climate change.\n\n---\n\n## (5) CORE MECHANICS\n\n### A. Action Cards (Three Types)\n\n**Growth Cards** (e.g., \"Coal Power Plant,\" \"Expand Agriculture\")\n- **Cost:** $0 (free or gain $5\u201315B)\n- **Emissions:** +30\u201350 Gt CO\u2082\n- **Resilience:** 0\n- **Rationale:** Tempting short-term wealth, but drives warming.\n\n**Mitigation Cards** (e.g., \"Renewable Energy Transition,\" \"Carbon Capture\")\n- **Cost:** $10\u201330B (wealth loss)\n- **Emissions:** \u221220\u201340 Gt CO\u2082 (or offset future emissions)\n- **Resilience:** +1\u20132\n- **Rationale:** Expensive now, prevents future catastrophe.\n\n**Adaptation Cards** (e.g., \"Flood Defenses,\" \"Drought-Resistant Crops\")\n- **Cost:** $5\u201320B\n- **Emissions:** 0\u20135 Gt CO\u2082 (small footprint)\n- **Resilience:** +2\u20133\n- **Rationale:** Prepares for warming that's already locked in; doesn't reduce emissions.\n\n**Card Example:**\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 SOLAR FARM EXPANSION (Mitigation)   \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 Cost: $15B                          \u2502\n\u2502 Emissions: \u221225 Gt CO\u2082               \u2502\n\u2502 Resilience: +1                      \u2502\n\u2502 Effect: Reduce your next Growth     \u2502\n\u2502 card's emissions by 10 Gt.          \u2502\n\u2502 Flavor: \"Harness the sun's power\"   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### B. Feedback Loop Deck (Nonlinear Tipping Mechanic)\n\nEach card represents a climate feedback and applies a **multiplier** to baseline warming:\n\n| Card | Feedback | Multiplier | Trigger |\n|------|----------|-----------|---------|\n| Arctic Albedo Loss | Less ice \u2192 less sunlight reflected | \u00d71.3 | Always active if temp > 0.5\u00b0C |\n| Methane Release | Thawing permafrost | \u00d71.5 | Triggered if temp > 1.5\u00b0C (roll die) |\n| Ocean Acidification | CO\u2082 absorption | \u00d71.2 | Always active |\n| Forest Dieback | Rainforest collapse | \u00d71.4 | Triggered if temp > 1.8\u00b0C (roll die) |\n| Reduced Cooling | Clouds change | \u00d71.1 | Always active |\n| **Runaway (Tipping)** | Multiple feedbacks | \u00d72.0 | Only if temp > 2.5\u00b0C (automatic)",
+      "input_tokens": 193,
+      "output_tokens": 2048,
+      "latency_ms": 4032.076020957902,
+      "structural_metrics": {
+        "mtld": 106.26160296411857,
+        "readability_fk_grade": 9.564598436389481,
+        "coherence_mean": 0.31354942445002365,
+        "prompt_relevance": 0.553714992957152,
+        "connective_density": 0.0425531914893617,
+        "word_count": 867,
+        "repetition_rate": 0.013888888888888888
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# THRESHOLD: A Climate Science Board Game\n\n## (1) GAME OBJECTIVE\n\nPlayers collectively manage a planetary system across 8 rounds, balancing economic growth, carbon emissions, and climate stability. The goal is to reach 2050 with a habitable planet (global temperature rise \u2264 2\u00b0C) while maintaining minimum economic prosperity (\u2265 $50B collective wealth). Success requires reasoning about cause-and-effect chains, not just following rules.\n\n**Core tension:** Short-term economic gains create long-term climate costs; mitigation investments reduce growth now but prevent catastrophic losses later.\n\n---\n\n## (2) COMPONENTS LIST\n\n### Physical Components\n- **1 Game Board** (modular, 3 sections: Economy, Atmosphere, Biosphere)\n- **8 Round Tokens** (labeled 2025\u20132050 in 5-year increments)\n- **1 Temperature Track** (0\u00b0C to 4\u00b0C, with visual danger zones at 1.5\u00b0C and 2\u00b0C)\n- **1 Carbon Budget Track** (cumulative CO\u2082 emissions, 0\u20131200 Gt)\n- **1 Economic Wealth Track** (per-player, $0\u2013$150B)\n- **5 Player Tokens** (distinct colors)\n- **60 Action Cards** (3 categories: Growth, Mitigation, Adaptation; see Appendix A)\n- **20 Event Cards** (feedback loops, tipping points, surprises)\n- **1 Feedback Loop Deck** (12 cards representing nonlinear amplification)\n- **40 Carbon Tokens** (physical cubes, 1 token = 10 Gt CO\u2082)\n- **20 Resilience Tokens** (represent adaptation infrastructure)\n- **1 Tipping Point Die** (d6, custom faces: see Mechanics section)\n- **Score Pad** (track wealth, emissions, temperature per round)\n- **1 Rulebook + Facilitator Guide**\n\n### Digital Optional\n- Simple spreadsheet or app to auto-calculate temperature rise (linear baseline + feedback multiplier)\n\n---\n\n## (3) SETUP\n\n1. **Place the board** in the center. All players can see all tracks.\n\n2. **Initialize tracks:**\n   - Temperature: 0\u00b0C\n   - Carbon Budget: 0 Gt (cumulative counter)\n   - Each player's Wealth: $100B\n   - Resilience Tokens: 0 (distributed during play)\n\n3. **Shuffle decks:**\n   - Action Cards (separate Growth, Mitigation, Adaptation piles)\n   - Event Cards\n   - Feedback Loop Deck\n\n4. **Deal 3 Action Cards** to each player (hand limit: 5).\n\n5. **Place Round Token** on 2025.\n\n6. **Explain the core rule:** \"Every action you take generates CO\u2082 or builds resilience. CO\u2082 accumulates and drives temperature rise. Temperature rise triggers feedback loops that accelerate warming. You win if you keep warming \u2264 2\u00b0C AND maintain collective wealth \u2265 $50B by 2050.\"\n\n---\n\n## (4) TURN STRUCTURE\n\n**Each round (representing 5 years) proceeds in 5 phases:**\n\n### Phase 1: Action Phase (3 minutes per player)\n- Players take turns in clockwise order.\n- On your turn, **play exactly 1 Action Card** from your hand (mandatory).\n- Immediately resolve the card's effects (gain/lose wealth, emit CO\u2082, gain resilience).\n- Draw 1 new card.\n- **Pass** if you have no cards (rare).\n\n### Phase 2: Collective Emissions Tally (1 minute)\n- Sum all CO\u2082 emitted this round.\n- Add to Carbon Budget Track.\n- **Record on score pad:** cumulative emissions.\n\n### Phase 3: Temperature Calculation (2 minutes)\n- **Baseline warming:** 0.1\u00b0C per 100 Gt cumulative CO\u2082 (simplified IPCC model).\n- **Feedback multiplier:** Draw 1 Feedback Loop card. Apply its multiplier (see Mechanics, below).\n- Update Temperature Track.\n- Example: 500 Gt cumulative \u2192 0.5\u00b0C baseline. Feedback card says \"\u00d71.3 (Arctic albedo loss)\" \u2192 0.65\u00b0C actual.\n\n### Phase 4: Event Resolution (2 minutes)\n- Draw 1 Event Card. Read aloud and resolve immediately.\n- Events can be:\n  - **Positive surprises** (e.g., \"Solar tech breakthrough: all players gain $10B\")\n  - **Negative surprises** (e.g., \"Permafrost thaw: +0.2\u00b0C unplanned\")\n  - **Conditional** (e.g., \"If temperature > 1.5\u00b0C, roll Tipping Point Die\")\n\n### Phase 5: End-of-Round Checks (1 minute)\n- **Wealth check:** If any player drops below $0, they lose $10B from collective pool (representing economic shock). If collective wealth < $0, game ends in loss.\n- **Temperature check:** If temperature > 2\u00b0C, move to Phase 5b (Tipping Point Risk).\n- **Advance Round Token** to next year.\n\n### Phase 5b: Tipping Point Risk (if temperature > 2\u00b0C)\n- Roll the Tipping Point Die.\n- **Faces:** 1\u20134 = safe; 5 = minor tipping (temperature +0.3\u00b0C, all players lose 1 Resilience Token); 6 = major tipping (temperature +0.5\u00b0C, all players lose $20B and 2 Resilience Tokens).\n- This represents nonlinear, irreversible climate change.\n\n---\n\n## (5) CORE MECHANICS\n\n### A. Action Cards (Three Types)\n\n**Growth Cards** (e.g., \"Coal Power Plant,\" \"Expand Agriculture\")\n- **Cost:** $0 (free or gain $5\u201315B)\n- **Emissions:** +30\u201350 Gt CO\u2082\n- **Resilience:** 0\n- **Rationale:** Tempting short-term wealth, but drives warming.\n\n**Mitigation Cards** (e.g., \"Renewable Energy Transition,\" \"Carbon Capture\")\n- **Cost:** $10\u201330B (wealth loss)\n- **Emissions:** \u221220\u201340 Gt CO\u2082 (or offset future emissions)\n- **Resilience:** +1\u20132\n- **Rationale:** Expensive now, prevents future catastrophe.\n\n**Adaptation Cards** (e.g., \"Flood Defenses,\" \"Drought-Resistant Crops\")\n- **Cost:** $5\u201320B\n- **Emissions:** 0\u20135 Gt CO\u2082 (small footprint)\n- **Resilience:** +2\u20133\n- **Rationale:** Prepares for warming that's already locked in; doesn't reduce emissions.\n\n**Card Example:**\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 SOLAR FARM EXPANSION (Mitigation)   \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 Cost: $15B                          \u2502\n\u2502 Emissions: \u221225 Gt CO\u2082               \u2502\n\u2502 Resilience: +1                      \u2502\n\u2502 Effect: Reduce your next Growth     \u2502\n\u2502 card's emissions by 10 Gt.          \u2502\n\u2502 Flavor: \"Harness the sun's power\"   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### B. Feedback Loop Deck (Nonlinear Tipping Mechanic)\n\nEach card represents a climate feedback and applies a **multiplier** to baseline warming:\n\n| Card | Feedback | Multiplier | Trigger |\n|------|----------|-----------|---------|\n| Arctic Albedo Loss | Less ice \u2192 less sunlight reflected | \u00d71.3 | Always active if temp > 0.5\u00b0C |\n| Methane Release | Thawing permafrost | \u00d71.5 | Triggered if temp > 1.5\u00b0C (roll die) |\n| Ocean Acidification | CO\u2082 absorption | \u00d71.2 | Always active |\n| Forest Dieback | Rainforest collapse | \u00d71.4 | Triggered if temp > 1.8\u00b0C (roll die) |\n| Reduced Cooling | Clouds change | \u00d71.1 | Always active |\n| **Runaway (Tipping)** | Multiple feedbacks | \u00d72.0 | Only if temp > 2.5\u00b0C (automatic)",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# threshold: a climate science board game ## (1) game objective players collectively manage a planetary system across 8 rounds, balancing economic growth, carbon emissions, and climate stability. the goal is to reach 2050 with a habitable planet (global temperature rise \u2264 2\u00b0c) while maintaining minimum economic prosperity (\u2265 $50b collective wealth). success requires reasoning about cause-and-effect chains, not just following rules. **core tension:** short-term economic gains create long-term climate costs; mitigation investments reduce growth now but prevent catastrophic losses later. --- ## (2) components list ### physical components - **1 game board** (modular, 3 sections: economy, atmosphere, biosphere) - **8 round tokens** (labeled 2025\u20132050 in 5-year increments) - **1 temperature track** (0\u00b0c to 4\u00b0c, with visual danger zones at 1.5\u00b0c and 2\u00b0c) - **1 carbon budget track** (cumulative co\u2082 emissions, 0\u20131200 gt) - **1 economic wealth track** (per-player, $0\u2013$150b) - **5 player tokens** (distinct colors) - **60 action cards** (3 categories: growth, mitigation, adaptation; see appendix a) - **20 event cards** (feedback loops, tipping points, surprises) - **1 feedback loop deck** (12 cards representing nonlinear amplification) - **40 carbon tokens** (physical cubes, 1 token = 10 gt co\u2082) - **20 resilience tokens** (represent adaptation infrastructure) - **1 tipping point die** (d6, custom faces: see mechanics section) - **score pad** (track wealth, emissions, temperature per round) - **1 rulebook + facilitator guide** ### digital optional - simple spreadsheet or app to auto-calculate temperature rise (linear baseline + feedback multiplier) --- ## (3) setup 1. **place the board** in the center. all players can see all tracks. 2. **initialize tracks:** - temperature: 0\u00b0c - carbon budget: 0 gt (cumulative counter) - each player's wealth: $100b - resilience tokens: 0 (distributed during play) 3. **shuffle decks:** - action cards (separate growth, mitigation, adaptation piles) - event cards - feedback loop deck 4. **deal 3 action cards** to each player (hand limit: 5). 5. **place round token** on 2025. 6. **explain the core rule:** \"every action you take generates co\u2082 or builds resilience. co\u2082 accumulates and drives temperature rise. temperature rise triggers feedback loops that accelerate warming. you win if you keep warming \u2264 2\u00b0c and maintain collective wealth \u2265 $50b by 2050.\" --- ## (4) turn structure **each round (representing 5 years) proceeds in 5 phases:** ### phase 1: action phase (3 minutes per player) - players take turns in clockwise order. - on your turn, **play exactly 1 action card** from your hand (mandatory). - immediately resolve the card's effects (gain/lose wealth, emit co\u2082, gain resilience). - draw 1 new card. - **pass** if you have no cards (rare). ### phase 2: collective emissions tally (1 minute) - sum all co\u2082 emitted this round. - add to carbon budget track. - **record on score pad:** cumulative emissions. ### phase 3: temperature calculation (2 minutes) - **baseline warming:** 0.1\u00b0c per 100 gt cumulative co\u2082 (simplified ipcc model). - **feedback multiplier:** draw 1 feedback loop card. apply its multiplier (see mechanics, below). - update temperature track. - example: 500 gt cumulative \u2192 0.5\u00b0c baseline. feedback card says \"\u00d71.3 (arctic albedo loss)\" \u2192 0.65\u00b0c actual. ### phase 4: event resolution (2 minutes) - draw 1 event card. read aloud and resolve immediately. - events can be: - **positive surprises** (e.g., \"solar tech breakthrough: all players gain $10b\") - **negative surprises** (e.g., \"permafrost thaw: +0.2\u00b0c unplanned\") - **conditional** (e.g., \"if temperature > 1.5\u00b0c, roll tipping point die\") ### phase 5: end-of-round checks (1 minute) - **wealth check:** if any player drops below $0, they lose $10b from collective pool (representing economic shock). if collective wealth < $0, game ends in loss. - **temperature check:** if temperature > 2\u00b0c, move to phase 5b (tipping point risk). - **advance round token** to next year. ### phase 5b: tipping point risk (if temperature > 2\u00b0c) - roll the tipping point die. - **faces:** 1\u20134 = safe; 5 = minor tipping (temperature +0.3\u00b0c, all players lose 1 resilience token); 6 = major tipping (temperature +0.5\u00b0c, all players lose $20b and 2 resilience tokens). - this represents nonlinear, irreversible climate change. --- ## (5) core mechanics ### a. action cards (three types) **growth cards** (e.g., \"coal power plant,\" \"expand agriculture\") - **cost:** $0 (free or gain $5\u201315b) - **emissions:** +30\u201350 gt co\u2082 - **resilience:** 0 - **rationale:** tempting short-term wealth, but drives warming. **mitigation cards** (e.g., \"renewable energy transition,\" \"carbon capture\") - **cost:** $10\u201330b (wealth loss) - **emissions:** \u221220\u201340 gt co\u2082 (or offset future emissions) - **resilience:** +1\u20132 - **rationale:** expensive now, prevents future catastrophe. **adaptation cards** (e.g., \"flood defenses,\" \"drought-resistant crops\") - **cost:** $5\u201320b - **emissions:** 0\u20135 gt co\u2082 (small footprint) - **resilience:** +2\u20133 - **rationale:** prepares for warming that's already locked in; doesn't reduce emissions. **card example:** ``` \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 solar farm expansion (mitigation) \u2502 \u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524 \u2502 cost: $15b \u2502 \u2502 emissions: \u221225 gt co\u2082 \u2502 \u2502 resilience: +1 \u2502 \u2502 effect: reduce your next growth \u2502 \u2502 card's emissions by 10 gt. \u2502 \u2502 flavor: \"harness the sun's power\" \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ``` ### b. feedback loop deck (nonlinear tipping mechanic) each card represents a climate feedback and applies a **multiplier** to baseline warming: | card | feedback | multiplier | trigger | |------|----------|-----------|---------| | arctic albedo loss | less ice \u2192 less sunlight reflected | \u00d71.3 | always active if temp > 0.5\u00b0c | | methane release | thawing permafrost | \u00d71.5 | triggered if temp > 1.5\u00b0c (roll die) | | ocean acidification | co\u2082 absorption | \u00d71.2 | always active | | forest dieback | rainforest collapse | \u00d71.4 | triggered if temp > 1.8\u00b0c (roll die) | | reduced cooling | clouds change | \u00d71.1 | always active | | **runaway (tipping)** | multiple feedbacks | \u00d72.0 | only if temp > 2.5\u00b0c (automatic)": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5652631578947368,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 106.26160296411857,
+      "readability_fk_grade": 9.564598436389481,
+      "coherence_mean": 0.31354942445002365,
+      "prompt_relevance": 0.553714992957152,
+      "connective_density": 0.0425531914893617,
+      "word_count": 867,
+      "repetition_rate": 0.013888888888888888
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

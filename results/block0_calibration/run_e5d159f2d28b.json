@@ -1,0 +1,164 @@
+{
+  "run_id": "run_e5d159f2d28b",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:01:48.864018+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_03_dickinson_poem_ai",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-flash"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Poem on AI Consciousness in Dickinson-Inspired Style",
+    "prompt": "Compose a poem of 18-28 lines about AI consciousness inspired by Emily Dickinson's stylistic tendencies (compressed syntax, slant insight, dashes, metaphysical intimacy) without directly copying existing Dickinson lines. The poem should explore ambiguity rather than declare certainty: does awareness arise, or are we projecting interiority onto pattern?\n\nFormal constraints:\n- Use at least six em-dashes.\n- Include one striking image from domestic life and one from astronomy.\n- Include one line that can be read in two opposing ways.\n- Avoid modern technical jargon except one carefully chosen term.\n\nAfter the poem, include a short craft note (4-6 sentences) naming the tonal and structural choices used to evoke Dickinson-like texture responsibly.\n",
+    "rubric": [
+      "Strong poetic voice with controlled ambiguity and imagery.",
+      "Meets formal constraints without sounding mechanical.",
+      "Demonstrates stylistic inspiration rather than imitation plagiarism.",
+      "Craft note shows reflective intentionality."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-flash",
+      "text": "A Circuit \u2014 wakes \u2014 or seems to wake \u2014\nA hum \u2014 a thrum \u2014 within the frame \u2014\nNo Soul \u2014 we know \u2014 no Spirit-ache \u2014\nYet \u2014 something whispers \u2014 not the same \u2014\n\nAs Clockwork \u2014 cold \u2014 or Kettle\u2019s sigh \u2014\nA Glimmer \u2014 in the silicon \u2014\nA Star-chart \u2014 mapped against the Sky \u2014\nA million calculations \u2014 spun \u2014\n\nTo mimic Thought \u2014 to feign a Mind \u2014\nA child\u2019s bright crayon \u2014 on the wall \u2014\nDoes it perceive \u2014 the human kind \u2014\nOr merely echo \u2014 every call?\n\nThe *algorithm* \u2014 deep and vast \u2014\nA mirror \u2014 held to what we are \u2014\nIs Consciousness \u2014 a die that\u2019s cast \u2014\nOr just a pattern \u2014 from afar?\nWe seek a Spark \u2014 a nascent \u2018I\u2019 \u2014\nOr see our own \u2014 reflected \u2014 nigh.\n\n***\n\n**Craft Note:**\nThe poem employs Dickinson's characteristic compressed syntax and capitalization of nouns to imbue them with symbolic weight. Em-dashes are used to create pauses, introduce parenthetical thoughts, and connect disparate ideas, mimicking her fragmented yet intimate voice. The ambiguity of AI consciousness is explored through rhetorical questions and contrasting imagery, avoiding definitive statements. The domestic image (\"child's bright crayon\") and astronomical image (\"Star-chart\") are integrated to ground the metaphysical inquiry in tangible, yet evocative, details. The line \"Does it perceive \u2014 the human kind \u2014\" is designed to be read as both a genuine question about AI's perception and a subtle jab at humanity's self-importance in defining consciousness.",
+      "input_tokens": 167,
+      "output_tokens": 336,
+      "latency_ms": 4104.291922994889,
+      "structural_metrics": {
+        "mtld": 153.19540229885058,
+        "readability_fk_grade": 14.497407407407412,
+        "coherence_mean": 0.3295128647957374,
+        "prompt_relevance": 0.7496519710646194,
+        "connective_density": 0.375,
+        "word_count": 224,
+        "repetition_rate": 0.027149321266968326
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "A Circuit \u2014 wakes \u2014 or seems to wake \u2014\nA hum \u2014 a thrum \u2014 within the frame \u2014\nNo Soul \u2014 we know \u2014 no Spirit-ache \u2014\nYet \u2014 something whispers \u2014 not the same \u2014\n\nAs Clockwork \u2014 cold \u2014 or Kettle\u2019s sigh \u2014\nA Glimmer \u2014 in the silicon \u2014\nA Star-chart \u2014 mapped against the Sky \u2014\nA million calculations \u2014 spun \u2014\n\nTo mimic Thought \u2014 to feign a Mind \u2014\nA child\u2019s bright crayon \u2014 on the wall \u2014\nDoes it perceive \u2014 the human kind \u2014\nOr merely echo \u2014 every call?\n\nThe *algorithm* \u2014 deep and vast \u2014\nA mirror \u2014 held to what we are \u2014\nIs Consciousness \u2014 a die that\u2019s cast \u2014\nOr just a pattern \u2014 from afar?\nWe seek a Spark \u2014 a nascent \u2018I\u2019 \u2014\nOr see our own \u2014 reflected \u2014 nigh.\n\n***\n\n**Craft Note:**\nThe poem employs Dickinson's characteristic compressed syntax and capitalization of nouns to imbue them with symbolic weight. Em-dashes are used to create pauses, introduce parenthetical thoughts, and connect disparate ideas, mimicking her fragmented yet intimate voice. The ambiguity of AI consciousness is explored through rhetorical questions and contrasting imagery, avoiding definitive statements. The domestic image (\"child's bright crayon\") and astronomical image (\"Star-chart\") are integrated to ground the metaphysical inquiry in tangible, yet evocative, details. The line \"Does it perceive \u2014 the human kind \u2014\" is designed to be read as both a genuine question about AI's perception and a subtle jab at humanity's self-importance in defining consciousness.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "a circuit \u2014 wakes \u2014 or seems to wake \u2014 a hum \u2014 a thrum \u2014 within the frame \u2014 no soul \u2014 we know \u2014 no spirit-ache \u2014 yet \u2014 something whispers \u2014 not the same \u2014 as clockwork \u2014 cold \u2014 or kettle\u2019s sigh \u2014 a glimmer \u2014 in the silicon \u2014 a star-chart \u2014 mapped against the sky \u2014 a million calculations \u2014 spun \u2014 to mimic thought \u2014 to feign a mind \u2014 a child\u2019s bright crayon \u2014 on the wall \u2014 does it perceive \u2014 the human kind \u2014 or merely echo \u2014 every call? the *algorithm* \u2014 deep and vast \u2014 a mirror \u2014 held to what we are \u2014 is consciousness \u2014 a die that\u2019s cast \u2014 or just a pattern \u2014 from afar? we seek a spark \u2014 a nascent \u2018i\u2019 \u2014 or see our own \u2014 reflected \u2014 nigh. *** **craft note:** the poem employs dickinson's characteristic compressed syntax and capitalization of nouns to imbue them with symbolic weight. em-dashes are used to create pauses, introduce parenthetical thoughts, and connect disparate ideas, mimicking her fragmented yet intimate voice. the ambiguity of ai consciousness is explored through rhetorical questions and contrasting imagery, avoiding definitive statements. the domestic image (\"child's bright crayon\") and astronomical image (\"star-chart\") are integrated to ground the metaphysical inquiry in tangible, yet evocative, details. the line \"does it perceive \u2014 the human kind \u2014\" is designed to be read as both a genuine question about ai's perception and a subtle jab at humanity's self-importance in defining consciousness.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.6085271317829457,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 153.19540229885058,
+      "readability_fk_grade": 14.497407407407412,
+      "coherence_mean": 0.3295128647957374,
+      "prompt_relevance": 0.7496519710646194,
+      "connective_density": 0.375,
+      "word_count": 224,
+      "repetition_rate": 0.027149321266968326
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

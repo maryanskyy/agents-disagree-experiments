@@ -1,0 +1,164 @@
+{
+  "run_id": "run_ea1514680180",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:01:57.570165+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_06_constraint_satisfaction",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Constraint Satisfaction Scheduling Problem",
+    "prompt": "You must schedule five reviewers (R1-R5) across three proposal panels (A, B, C). Constraints:\n1) Each panel needs exactly two reviewers.\n2) No reviewer can serve on more than one panel.\n3) R1 cannot review panel A.\n4) R2 must be assigned if and only if R4 is assigned.\n5) Panel C must include at least one of {R3, R5}.\n6) If R5 is assigned, panel B cannot include R2.\n\nDetermine whether a valid assignment exists. If yes, provide one valid schedule and explain each constraint check. If multiple solutions exist, provide a second distinct solution and compare robustness (which is less brittle if one reviewer drops out). If no solution exists, prove infeasibility with minimal contradiction set.\n",
+    "rubric": [
+      "Produces a schedule (or infeasibility proof) consistent with all constraints.",
+      "Verifies each constraint explicitly.",
+      "Demonstrates search reasoning, not random guessing.",
+      "Robustness comparison (if feasible) is logically grounded."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "Excellent. As an expert agent, I will provide a structured and self-critical analysis of this scheduling problem.\n\n### **Executive Summary**\n\nA valid assignment is **impossible** under the exact constraints provided. There is a fundamental contradiction between the number of available reviewers and the number of required review slots.\n\nI will first prove the infeasibility and identify the minimal set of conflicting constraints. Then, to demonstrate a constructive approach, I will propose a minor, logical modification to the problem statement that makes it solvable, and proceed to provide and compare two distinct solutions based on that modification.\n\n---\n\n### **Part 1: Proof of Infeasibility**\n\nA valid schedule cannot be created because the constraints on panel size and reviewer uniqueness are irreconcilable with the number of reviewers provided.\n\n**Logical Proof:**\n\n1.  **Required Review Slots (Constraint 1):** The problem requires scheduling for three panels (A, B, C), and each panel needs *exactly two* reviewers.\n    *   Total Slots = (Number of Panels) \u00d7 (Reviewers per Panel)\n    *   Total Slots = 3 \u00d7 2 = **6 slots**.\n\n2.  **Required Unique Reviewers (Constraint 2):** The constraint \"No reviewer can serve on more than one panel\" means that each of the 6 required slots must be filled by a unique individual.\n    *   Therefore, **6 unique reviewers** are required to form the schedule.\n\n3.  **Available Reviewer Pool:** The problem explicitly defines the set of available reviewers as {R1, R2, R3",
+      "input_tokens": 184,
+      "output_tokens": 4092,
+      "latency_ms": 3977.8445690171793,
+      "structural_metrics": {
+        "mtld": 63.469152690659435,
+        "readability_fk_grade": 12.896572398190049,
+        "coherence_mean": 0.33387484542420914,
+        "prompt_relevance": 0.8240943387704784,
+        "connective_density": 0.2,
+        "word_count": 222,
+        "repetition_rate": 0.0
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "Excellent. As an expert agent, I will provide a structured and self-critical analysis of this scheduling problem.\n\n### **Executive Summary**\n\nA valid assignment is **impossible** under the exact constraints provided. There is a fundamental contradiction between the number of available reviewers and the number of required review slots.\n\nI will first prove the infeasibility and identify the minimal set of conflicting constraints. Then, to demonstrate a constructive approach, I will propose a minor, logical modification to the problem statement that makes it solvable, and proceed to provide and compare two distinct solutions based on that modification.\n\n---\n\n### **Part 1: Proof of Infeasibility**\n\nA valid schedule cannot be created because the constraints on panel size and reviewer uniqueness are irreconcilable with the number of reviewers provided.\n\n**Logical Proof:**\n\n1.  **Required Review Slots (Constraint 1):** The problem requires scheduling for three panels (A, B, C), and each panel needs *exactly two* reviewers.\n    *   Total Slots = (Number of Panels) \u00d7 (Reviewers per Panel)\n    *   Total Slots = 3 \u00d7 2 = **6 slots**.\n\n2.  **Required Unique Reviewers (Constraint 2):** The constraint \"No reviewer can serve on more than one panel\" means that each of the 6 required slots must be filled by a unique individual.\n    *   Therefore, **6 unique reviewers** are required to form the schedule.\n\n3.  **Available Reviewer Pool:** The problem explicitly defines the set of available reviewers as {R1, R2, R3",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "excellent. as an expert agent, i will provide a structured and self-critical analysis of this scheduling problem. ### **executive summary** a valid assignment is **impossible** under the exact constraints provided. there is a fundamental contradiction between the number of available reviewers and the number of required review slots. i will first prove the infeasibility and identify the minimal set of conflicting constraints. then, to demonstrate a constructive approach, i will propose a minor, logical modification to the problem statement that makes it solvable, and proceed to provide and compare two distinct solutions based on that modification. --- ### **part 1: proof of infeasibility** a valid schedule cannot be created because the constraints on panel size and reviewer uniqueness are irreconcilable with the number of reviewers provided. **logical proof:** 1. **required review slots (constraint 1):** the problem requires scheduling for three panels (a, b, c), and each panel needs *exactly two* reviewers. * total slots = (number of panels) \u00d7 (reviewers per panel) * total slots = 3 \u00d7 2 = **6 slots**. 2. **required unique reviewers (constraint 2):** the constraint \"no reviewer can serve on more than one panel\" means that each of the 6 required slots must be filled by a unique individual. * therefore, **6 unique reviewers** are required to form the schedule. 3. **available reviewer pool:** the problem explicitly defines the set of available reviewers as {r1, r2, r3": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.6379310344827587,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 63.469152690659435,
+      "readability_fk_grade": 12.896572398190049,
+      "coherence_mean": 0.33387484542420914,
+      "prompt_relevance": 0.8240943387704784,
+      "connective_density": 0.2,
+      "word_count": 222,
+      "repetition_rate": 0.0
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

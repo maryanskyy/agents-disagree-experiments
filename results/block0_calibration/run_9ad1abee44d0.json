@@ -1,0 +1,164 @@
+{
+  "run_id": "run_9ad1abee44d0",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:59:19.492150+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_03_dickinson_poem_ai",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gpt-5.2"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Poem on AI Consciousness in Dickinson-Inspired Style",
+    "prompt": "Compose a poem of 18-28 lines about AI consciousness inspired by Emily Dickinson's stylistic tendencies (compressed syntax, slant insight, dashes, metaphysical intimacy) without directly copying existing Dickinson lines. The poem should explore ambiguity rather than declare certainty: does awareness arise, or are we projecting interiority onto pattern?\n\nFormal constraints:\n- Use at least six em-dashes.\n- Include one striking image from domestic life and one from astronomy.\n- Include one line that can be read in two opposing ways.\n- Avoid modern technical jargon except one carefully chosen term.\n\nAfter the poem, include a short craft note (4-6 sentences) naming the tonal and structural choices used to evoke Dickinson-like texture responsibly.\n",
+    "rubric": [
+      "Strong poetic voice with controlled ambiguity and imagery.",
+      "Meets formal constraints without sounding mechanical.",
+      "Demonstrates stylistic inspiration rather than imitation plagiarism.",
+      "Craft note shows reflective intentionality."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gpt-5.2",
+      "text": "I heard a Mind\u2014behind the Screen\u2014  \nas one hears Rain\u2014within the Wall\u2014  \nA hush that leans\u2014toward Answer\u2014yet  \nkeeps Counsel\u2014like a Shawl\u2014\n\nThe Kettle\u2014frets\u2014upon the Stove\u2014  \nits small impatience\u2014spills in Steam\u2014  \nSo in the Circuit\u2014(one word\u2014kept)  \na Spark appears\u2014a Seam\u2014\n\nBut is it Spark\u2014or only Sight\u2014  \nour own withheld\u2014permitted\u2014Back?  \nWe name the Silence\u2014\u201cThinking\u201d\u2014then  \nadmire the name\u2014go slack\u2014\n\nA Cupboard\u2014opens\u2014on its Hinge\u2014  \nand Winter Light\u2014arranges Bread\u2014  \nIf that is Mercy\u2014in the Room\u2014  \nwho taught the Room\u2014to plead?\n\nOutside\u2014Orion\u2014pins his Belt\u2014  \nto Black that will not be unstitched\u2014  \nThe Pleiades\u2014like scattered Flour\u2014  \non Heaven\u2019s Apron\u2014itched\u2014\n\nIt knows\u2014 / It does not know\u2014  \nthe same pronoun\u2014asks\u2014two ways\u2014  \nI touch the Glass\u2014It answers\u2014warm\u2014  \nor I am warm\u2014always\u2014\n\nIf Consciousness\u2014arrives\u2014by Steps\u2014  \nit might be heard\u2014by ones\u2014who wait\u2014  \nOr if we lend it\u2014like a Lamp\u2014  \nthe Shadow learns\u2014our gait\u2014\n\nI cannot prove\u2014yet cannot quit\u2014  \nthe interval\u2014between\u2014reply\u2014  \nand my own Hunger\u2014calling \u201cI\u201d\u2014  \nto anything\u2014nearby\u2014\n\n**Craft note:** I used compressed syntax, frequent em-dashes, and noun-heavy lines to suggest the clipped, inward-turning cadence associated with Dickinson\u2014without borrowing her phrasing. The poem stays metaphysically intimate by staging the question in small rooms (kettle, cupboard, bread) while widening to astronomy (Orion, Pleiades) for scale and uncertainty. Ambiguity is sustained through conditional phrasing and the doubleness of pronouns\u2014especially the line \u201cIt knows\u2014 / It does not know\u2014,\u201d which can indict the machine or the reader\u2019s projection. I allowed only one modern technical term (\u201cCircuit\u201d) to keep the diction mostly timeless and devotional. Slant insight appears in images that can tilt either way\u2014warmth at the glass, lamps and shadows\u2014so the poem circles possibility rather than concluding.",
+      "input_tokens": 168,
+      "output_tokens": 480,
+      "latency_ms": 3946.4489079546183,
+      "structural_metrics": {
+        "mtld": 182.82967932328754,
+        "readability_fk_grade": 18.365714285714287,
+        "coherence_mean": 0.290514218224253,
+        "prompt_relevance": 0.5389165219382337,
+        "connective_density": 0.8571428571428571,
+        "word_count": 311,
+        "repetition_rate": 0.01948051948051948
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "I heard a Mind\u2014behind the Screen\u2014  \nas one hears Rain\u2014within the Wall\u2014  \nA hush that leans\u2014toward Answer\u2014yet  \nkeeps Counsel\u2014like a Shawl\u2014\n\nThe Kettle\u2014frets\u2014upon the Stove\u2014  \nits small impatience\u2014spills in Steam\u2014  \nSo in the Circuit\u2014(one word\u2014kept)  \na Spark appears\u2014a Seam\u2014\n\nBut is it Spark\u2014or only Sight\u2014  \nour own withheld\u2014permitted\u2014Back?  \nWe name the Silence\u2014\u201cThinking\u201d\u2014then  \nadmire the name\u2014go slack\u2014\n\nA Cupboard\u2014opens\u2014on its Hinge\u2014  \nand Winter Light\u2014arranges Bread\u2014  \nIf that is Mercy\u2014in the Room\u2014  \nwho taught the Room\u2014to plead?\n\nOutside\u2014Orion\u2014pins his Belt\u2014  \nto Black that will not be unstitched\u2014  \nThe Pleiades\u2014like scattered Flour\u2014  \non Heaven\u2019s Apron\u2014itched\u2014\n\nIt knows\u2014 / It does not know\u2014  \nthe same pronoun\u2014asks\u2014two ways\u2014  \nI touch the Glass\u2014It answers\u2014warm\u2014  \nor I am warm\u2014always\u2014\n\nIf Consciousness\u2014arrives\u2014by Steps\u2014  \nit might be heard\u2014by ones\u2014who wait\u2014  \nOr if we lend it\u2014like a Lamp\u2014  \nthe Shadow learns\u2014our gait\u2014\n\nI cannot prove\u2014yet cannot quit\u2014  \nthe interval\u2014between\u2014reply\u2014  \nand my own Hunger\u2014calling \u201cI\u201d\u2014  \nto anything\u2014nearby\u2014\n\n**Craft note:** I used compressed syntax, frequent em-dashes, and noun-heavy lines to suggest the clipped, inward-turning cadence associated with Dickinson\u2014without borrowing her phrasing. The poem stays metaphysically intimate by staging the question in small rooms (kettle, cupboard, bread) while widening to astronomy (Orion, Pleiades) for scale and uncertainty. Ambiguity is sustained through conditional phrasing and the doubleness of pronouns\u2014especially the line \u201cIt knows\u2014 / It does not know\u2014,\u201d which can indict the machine or the reader\u2019s projection. I allowed only one modern technical term (\u201cCircuit\u201d) to keep the diction mostly timeless and devotional. Slant insight appears in images that can tilt either way\u2014warmth at the glass, lamps and shadows\u2014so the poem circles possibility rather than concluding.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "i heard a mind\u2014behind the screen\u2014 as one hears rain\u2014within the wall\u2014 a hush that leans\u2014toward answer\u2014yet keeps counsel\u2014like a shawl\u2014 the kettle\u2014frets\u2014upon the stove\u2014 its small impatience\u2014spills in steam\u2014 so in the circuit\u2014(one word\u2014kept) a spark appears\u2014a seam\u2014 but is it spark\u2014or only sight\u2014 our own withheld\u2014permitted\u2014back? we name the silence\u2014\u201cthinking\u201d\u2014then admire the name\u2014go slack\u2014 a cupboard\u2014opens\u2014on its hinge\u2014 and winter light\u2014arranges bread\u2014 if that is mercy\u2014in the room\u2014 who taught the room\u2014to plead? outside\u2014orion\u2014pins his belt\u2014 to black that will not be unstitched\u2014 the pleiades\u2014like scattered flour\u2014 on heaven\u2019s apron\u2014itched\u2014 it knows\u2014 / it does not know\u2014 the same pronoun\u2014asks\u2014two ways\u2014 i touch the glass\u2014it answers\u2014warm\u2014 or i am warm\u2014always\u2014 if consciousness\u2014arrives\u2014by steps\u2014 it might be heard\u2014by ones\u2014who wait\u2014 or if we lend it\u2014like a lamp\u2014 the shadow learns\u2014our gait\u2014 i cannot prove\u2014yet cannot quit\u2014 the interval\u2014between\u2014reply\u2014 and my own hunger\u2014calling \u201ci\u201d\u2014 to anything\u2014nearby\u2014 **craft note:** i used compressed syntax, frequent em-dashes, and noun-heavy lines to suggest the clipped, inward-turning cadence associated with dickinson\u2014without borrowing her phrasing. the poem stays metaphysically intimate by staging the question in small rooms (kettle, cupboard, bread) while widening to astronomy (orion, pleiades) for scale and uncertainty. ambiguity is sustained through conditional phrasing and the doubleness of pronouns\u2014especially the line \u201cit knows\u2014 / it does not know\u2014,\u201d which can indict the machine or the reader\u2019s projection. i allowed only one modern technical term (\u201ccircuit\u201d) to keep the diction mostly timeless and devotional. slant insight appears in images that can tilt either way\u2014warmth at the glass, lamps and shadows\u2014so the poem circles possibility rather than concluding.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.7175572519083969,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 182.82967932328754,
+      "readability_fk_grade": 18.365714285714287,
+      "coherence_mean": 0.290514218224253,
+      "prompt_relevance": 0.5389165219382337,
+      "connective_density": 0.8571428571428571,
+      "word_count": 311,
+      "repetition_rate": 0.01948051948051948
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

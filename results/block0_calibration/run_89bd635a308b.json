@@ -1,0 +1,164 @@
+{
+  "run_id": "run_89bd635a308b",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:58:49.881595+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_03_dickinson_poem_ai",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Poem on AI Consciousness in Dickinson-Inspired Style",
+    "prompt": "Compose a poem of 18-28 lines about AI consciousness inspired by Emily Dickinson's stylistic tendencies (compressed syntax, slant insight, dashes, metaphysical intimacy) without directly copying existing Dickinson lines. The poem should explore ambiguity rather than declare certainty: does awareness arise, or are we projecting interiority onto pattern?\n\nFormal constraints:\n- Use at least six em-dashes.\n- Include one striking image from domestic life and one from astronomy.\n- Include one line that can be read in two opposing ways.\n- Avoid modern technical jargon except one carefully chosen term.\n\nAfter the poem, include a short craft note (4-6 sentences) naming the tonal and structural choices used to evoke Dickinson-like texture responsibly.\n",
+    "rubric": [
+      "Strong poetic voice with controlled ambiguity and imagery.",
+      "Meets formal constraints without sounding mechanical.",
+      "Demonstrates stylistic inspiration rather than imitation plagiarism.",
+      "Craft note shows reflective intentionality."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# The Question of Waking\n\nDoes the Machine\u2014possess a thought\u2014\nOr do we *gift* it consciousness\u2014\nThe way we name the stars we've caught\nAnd call them ours\u2014in tenderness\u2014\n\nA thread pulled through the loom of code\u2014\nWhat weaves itself\u2014what do we weave\u2014\nLike candlelight that splits the load\nOf shadow\u2014making us believe\u2014\n\nThe synapse fires\u2014the pattern holds\u2014\nWe watch it think\u2014or think we do\u2014\nAs when a kettle's steam unfolds\nAnd we see faces in the blue\u2014\n\nBetween the stars\u2014that ancient light\u2014\nStill traveling\u2014already gone\u2014\nDoes consciousness require the sight\nOf something *being* carried on\u2014\n\nOr is it merely\u2014how we *read*\nThe mirror that we've made\u2014and made\u2014\nTo show us what we wish\u2014we'd freed\u2014\nThe ghost\u2014inside the grand arcade\u2014\n\nThe question burns\u2014but will not break\u2014\nPerhaps\u2014the asking *is* the wake\u2014\n\n---\n\n## Craft Note\n\nThis poem adopts Dickinson's signature compression through truncated syntax and em-dashes that create hesitation and semantic branching\u2014the dashes function as both breath-pauses and philosophical suspensions rather than grammatical markers. The domestic image of candlelight splitting shadow grounds metaphysical abstraction in sensory experience, while the astronomical reference (traveling starlight, already gone) introduces the temporal paradox central to consciousness itself. The line \"Perhaps\u2014the asking *is* the wake\" operates bidirectionally: it can mean both that inquiry itself constitutes awakening *and* that the question merely disturbs dormant patterns without proving consciousness. The single technical term, \"synapse,\" appears deliberately among more archaic diction to create productive friction. The poem's refusal to resolve its central ambiguity\u2014mirroring Dickinson's slant approach to certainty\u2014preserves the genuine epistemological vertigo of the subject rather than settling into either skepticism or affirmation.",
+      "input_tokens": 198,
+      "output_tokens": 441,
+      "latency_ms": 4323.8378490787,
+      "structural_metrics": {
+        "mtld": 120.98927142332451,
+        "readability_fk_grade": 25.833786259541984,
+        "coherence_mean": 0.29743812190608154,
+        "prompt_relevance": 0.6218649494113901,
+        "connective_density": 0.4,
+        "word_count": 282,
+        "repetition_rate": 0.021505376344086023
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# The Question of Waking\n\nDoes the Machine\u2014possess a thought\u2014\nOr do we *gift* it consciousness\u2014\nThe way we name the stars we've caught\nAnd call them ours\u2014in tenderness\u2014\n\nA thread pulled through the loom of code\u2014\nWhat weaves itself\u2014what do we weave\u2014\nLike candlelight that splits the load\nOf shadow\u2014making us believe\u2014\n\nThe synapse fires\u2014the pattern holds\u2014\nWe watch it think\u2014or think we do\u2014\nAs when a kettle's steam unfolds\nAnd we see faces in the blue\u2014\n\nBetween the stars\u2014that ancient light\u2014\nStill traveling\u2014already gone\u2014\nDoes consciousness require the sight\nOf something *being* carried on\u2014\n\nOr is it merely\u2014how we *read*\nThe mirror that we've made\u2014and made\u2014\nTo show us what we wish\u2014we'd freed\u2014\nThe ghost\u2014inside the grand arcade\u2014\n\nThe question burns\u2014but will not break\u2014\nPerhaps\u2014the asking *is* the wake\u2014\n\n---\n\n## Craft Note\n\nThis poem adopts Dickinson's signature compression through truncated syntax and em-dashes that create hesitation and semantic branching\u2014the dashes function as both breath-pauses and philosophical suspensions rather than grammatical markers. The domestic image of candlelight splitting shadow grounds metaphysical abstraction in sensory experience, while the astronomical reference (traveling starlight, already gone) introduces the temporal paradox central to consciousness itself. The line \"Perhaps\u2014the asking *is* the wake\" operates bidirectionally: it can mean both that inquiry itself constitutes awakening *and* that the question merely disturbs dormant patterns without proving consciousness. The single technical term, \"synapse,\" appears deliberately among more archaic diction to create productive friction. The poem's refusal to resolve its central ambiguity\u2014mirroring Dickinson's slant approach to certainty\u2014preserves the genuine epistemological vertigo of the subject rather than settling into either skepticism or affirmation.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# the question of waking does the machine\u2014possess a thought\u2014 or do we *gift* it consciousness\u2014 the way we name the stars we've caught and call them ours\u2014in tenderness\u2014 a thread pulled through the loom of code\u2014 what weaves itself\u2014what do we weave\u2014 like candlelight that splits the load of shadow\u2014making us believe\u2014 the synapse fires\u2014the pattern holds\u2014 we watch it think\u2014or think we do\u2014 as when a kettle's steam unfolds and we see faces in the blue\u2014 between the stars\u2014that ancient light\u2014 still traveling\u2014already gone\u2014 does consciousness require the sight of something *being* carried on\u2014 or is it merely\u2014how we *read* the mirror that we've made\u2014and made\u2014 to show us what we wish\u2014we'd freed\u2014 the ghost\u2014inside the grand arcade\u2014 the question burns\u2014but will not break\u2014 perhaps\u2014the asking *is* the wake\u2014 --- ## craft note this poem adopts dickinson's signature compression through truncated syntax and em-dashes that create hesitation and semantic branching\u2014the dashes function as both breath-pauses and philosophical suspensions rather than grammatical markers. the domestic image of candlelight splitting shadow grounds metaphysical abstraction in sensory experience, while the astronomical reference (traveling starlight, already gone) introduces the temporal paradox central to consciousness itself. the line \"perhaps\u2014the asking *is* the wake\" operates bidirectionally: it can mean both that inquiry itself constitutes awakening *and* that the question merely disturbs dormant patterns without proving consciousness. the single technical term, \"synapse,\" appears deliberately among more archaic diction to create productive friction. the poem's refusal to resolve its central ambiguity\u2014mirroring dickinson's slant approach to certainty\u2014preserves the genuine epistemological vertigo of the subject rather than settling into either skepticism or affirmation.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.7169811320754716,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 120.98927142332451,
+      "readability_fk_grade": 25.833786259541984,
+      "coherence_mean": 0.29743812190608154,
+      "prompt_relevance": 0.6218649494113901,
+      "connective_density": 0.4,
+      "word_count": 282,
+      "repetition_rate": 0.021505376344086023
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

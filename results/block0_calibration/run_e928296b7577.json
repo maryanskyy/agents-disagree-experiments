@@ -1,0 +1,166 @@
+{
+  "run_id": "run_e928296b7577",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:01:57.436455+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_07_mystery_2050_opening",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gpt-5.2"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Opening Paragraph for a 2050 Mystery Novel",
+    "prompt": "Write the opening paragraph (180-260 words) of a mystery novel set in 2050, where forensic tools are advanced enough to solve most crimes quickly, yet this case resists easy explanation. The paragraph must hook the reader through atmosphere, specificity, and narrative tension while implying deeper social context without worldbuilding dump.\n\nConstraints:\n- First-person perspective.\n- Include one sensory detail tied to weather.\n- Include one object that seems trivial but later could be crucial.\n- End on a line that reframes what the narrator thought they knew.\n\nAfter the paragraph, add three bullet points listing plausible directions for chapter two.\n",
+    "rubric": [
+      "Strong hook, voice, and setting integration within compact length.",
+      "Satisfies constraints while preserving natural prose.",
+      "Seeds mystery clues without overexplaining.",
+      "Follow-up chapter directions are compelling and consistent."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gpt-5.2",
+      "text": "The rain in New Glasgow fell sideways, needle-fine and metallic, hissing against my visor like static while the streetlights turned it into a slanted curtain of copper. I stood in the dead center of Suite 41B, where the air scrubbers had already pulled the usual signatures apart\u2014skin cells catalogued, breath chemistry timestamped, microfibers mapped into a neat little timeline that would have wrapped this up before my coffee cooled. The wall display kept insisting on closure: no forced entry, no struggle, no unknown DNA, no unregistered implants in range, no anomalous heat traces beyond the window\u2019s draft. And yet the body on the floor looked like a sentence without a verb. His face was calm, almost arranged, eyelids lowered as if he\u2019d agreed to stop living at exactly 02:17:33. The neighbors\u2019 door cams had gaps where there shouldn\u2019t be gaps; the building\u2019s mesh logs showed polite, perfect continuity; even the victim\u2019s own lifelog\u2014mandatory in this district, \u201cfor public safety\u201d\u2014ended with a clean sign-off and a cheery wellness ping. On the kitchen counter sat a plastic paperclip, translucent green, holding nothing at all. I told myself it was just clutter, the kind you stop seeing once the algorithms start talking\u2014but as the rain kept ticking on my visor, I realized the tools weren\u2019t failing to find the truth; they were faithfully confirming a lie.\n\n- The narrator canvasses the building\u2019s \u201ctrusted\u201d network and discovers a pattern of micro-edits in residents\u2019 lifelogs tied to a private security contractor.  \n- A lab follow-up on the green paperclip reveals an unusual manufacturing fingerprint or embedded tag, pointing to an unexpected supply chain or person.  \n- The narrator interviews a neighbor whose memory of the night contradicts their own recorded door-cam footage, raising questions about consent, coercion, or altered perception.",
+      "input_tokens": 148,
+      "output_tokens": 390,
+      "latency_ms": 4300.130259012803,
+      "structural_metrics": {
+        "mtld": 311.4418604651163,
+        "readability_fk_grade": 13.715466998754675,
+        "coherence_mean": 0.20660717762372832,
+        "prompt_relevance": 0.44337784452386864,
+        "connective_density": 0.18181818181818182,
+        "word_count": 310,
+        "repetition_rate": 0.0
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "The rain in New Glasgow fell sideways, needle-fine and metallic, hissing against my visor like static while the streetlights turned it into a slanted curtain of copper. I stood in the dead center of Suite 41B, where the air scrubbers had already pulled the usual signatures apart\u2014skin cells catalogued, breath chemistry timestamped, microfibers mapped into a neat little timeline that would have wrapped this up before my coffee cooled. The wall display kept insisting on closure: no forced entry, no struggle, no unknown DNA, no unregistered implants in range, no anomalous heat traces beyond the window\u2019s draft. And yet the body on the floor looked like a sentence without a verb. His face was calm, almost arranged, eyelids lowered as if he\u2019d agreed to stop living at exactly 02:17:33. The neighbors\u2019 door cams had gaps where there shouldn\u2019t be gaps; the building\u2019s mesh logs showed polite, perfect continuity; even the victim\u2019s own lifelog\u2014mandatory in this district, \u201cfor public safety\u201d\u2014ended with a clean sign-off and a cheery wellness ping. On the kitchen counter sat a plastic paperclip, translucent green, holding nothing at all. I told myself it was just clutter, the kind you stop seeing once the algorithms start talking\u2014but as the rain kept ticking on my visor, I realized the tools weren\u2019t failing to find the truth; they were faithfully confirming a lie.\n\n- The narrator canvasses the building\u2019s \u201ctrusted\u201d network and discovers a pattern of micro-edits in residents\u2019 lifelogs tied to a private security contractor.  \n- A lab follow-up on the green paperclip reveals an unusual manufacturing fingerprint or embedded tag, pointing to an unexpected supply chain or person.  \n- The narrator interviews a neighbor whose memory of the night contradicts their own recorded door-cam footage, raising questions about consent, coercion, or altered perception.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "the rain in new glasgow fell sideways, needle-fine and metallic, hissing against my visor like static while the streetlights turned it into a slanted curtain of copper. i stood in the dead center of suite 41b, where the air scrubbers had already pulled the usual signatures apart\u2014skin cells catalogued, breath chemistry timestamped, microfibers mapped into a neat little timeline that would have wrapped this up before my coffee cooled. the wall display kept insisting on closure: no forced entry, no struggle, no unknown dna, no unregistered implants in range, no anomalous heat traces beyond the window\u2019s draft. and yet the body on the floor looked like a sentence without a verb. his face was calm, almost arranged, eyelids lowered as if he\u2019d agreed to stop living at exactly 02:17:33. the neighbors\u2019 door cams had gaps where there shouldn\u2019t be gaps; the building\u2019s mesh logs showed polite, perfect continuity; even the victim\u2019s own lifelog\u2014mandatory in this district, \u201cfor public safety\u201d\u2014ended with a clean sign-off and a cheery wellness ping. on the kitchen counter sat a plastic paperclip, translucent green, holding nothing at all. i told myself it was just clutter, the kind you stop seeing once the algorithms start talking\u2014but as the rain kept ticking on my visor, i realized the tools weren\u2019t failing to find the truth; they were faithfully confirming a lie. - the narrator canvasses the building\u2019s \u201ctrusted\u201d network and discovers a pattern of micro-edits in residents\u2019 lifelogs tied to a private security contractor. - a lab follow-up on the green paperclip reveals an unusual manufacturing fingerprint or embedded tag, pointing to an unexpected supply chain or person. - the narrator interviews a neighbor whose memory of the night contradicts their own recorded door-cam footage, raising questions about consent, coercion, or altered perception.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.735593220338983,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 311.4418604651163,
+      "readability_fk_grade": 13.715466998754675,
+      "coherence_mean": 0.20660717762372832,
+      "prompt_relevance": 0.44337784452386864,
+      "connective_density": 0.18181818181818182,
+      "word_count": 310,
+      "repetition_rate": 0.0
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "random_sample_15pct"
+      ],
+      "sheet_path": "results/human_eval/run_e928296b7577.json"
+    }
+  }
+}

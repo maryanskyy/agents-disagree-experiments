@@ -1,0 +1,164 @@
+{
+  "run_id": "run_cf5342446836",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:00:57.483648+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_06_unconventional_traffic",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Five Unconventional Urban Traffic Solutions",
+    "prompt": "Propose five unconventional interventions to reduce urban traffic congestion in a city of 2-4 million residents. Avoid standard suggestions like \"build more lanes\" or \"improve public transit\" unless your proposal fundamentally reframes implementation.\n\nFor each intervention provide: concept summary, mechanism of action, expected upside, biggest failure mode, equity implications, and first 90-day pilot design. Include at least one behavioral intervention, one pricing/governance intervention, and one street-design intervention.\n\nEmphasize creative but testable ideas that could survive contact with political and operational realities. Rank the five by expected impact-to-feasibility ratio and justify the ranking in 1-2 sentences each.\n",
+    "rubric": [
+      "Delivers five genuinely novel yet plausible interventions.",
+      "Covers required intervention categories and pilot plans.",
+      "Addresses equity and implementation risks explicitly.",
+      "Ranking rationale is coherent and comparative."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# Five Unconventional Urban Traffic Interventions\n\n## 1. **Congestion Pricing with Mandatory Reinvestment in Affected Neighborhoods** (Pricing/Governance)\n\n**Concept Summary**\nImplement congestion pricing in the central business district, but constitutionally mandate that 100% of revenue funds transit, cycling, and car-free amenities *exclusively in lower-income neighborhoods outside the priced zone*. This inverts the typical equity critique by making congestion pricing politically sustainable through direct, visible redistribution.\n\n**Mechanism of Action**\n- Peak-hour pricing ($8-15) on vehicles entering CBD during 7-10am and 4-7pm\n- Real-time revenue dashboard showing neighborhood-by-neighborhood allocation\n- Quarterly \"congestion dividend\" town halls where residents vote on specific projects (bus lanes, protected bike paths, parklets)\n- Exemptions: commercial vehicles, residents of priced zone, low-income permit holders\n\n**Expected Upside**\n- 15-25% reduction in peak-hour vehicle trips to CBD (London, Stockholm data)\n- Creates political constituency for congestion reduction (outer neighborhoods benefit materially)\n- Generates $80-120M annually for a 2-4M city; funds 200+ km of transit/cycling infrastructure over 5 years\n- Shifts frame from \"tax on driving\" to \"investment in my neighborhood\"\n\n**Biggest Failure Mode**\nPolitical capture: city council redirects revenue to general fund or CBD improvements, destroying the equity compact. Requires constitutional/charter-level lock-in and independent revenue board (not city council controlled).\n\n**Equity Implications**\n- *Positive*: Outer neighborhoods receive tangible infrastructure; low-income residents in priced zone get exemptions; reduces air pollution in lower-income areas near highways\n- *Negative*: Regressive if exemptions are insufficient; requires robust permit system to prevent fraud\n- *Mitigation*: Means-tested exemptions (income <200% poverty line); subsidized transit passes for affected workers\n\n**First 90-Day Pilot Design**\n- **Week 1-2**: Establish independent Revenue Oversight Board (7 members: 3 outer-neighborhood residents, 2 transit advocates, 2 city officials)\n- **Week 3-4**: Deploy congestion pricing on 2 CBD entry corridors (not full zone) during 8-10am only; $5 flat rate\n- **Week 5-8**: Conduct daily surveys (n=500) on willingness-to-pay, trip shifting, and neighborhood awareness\n- **Week 9-12**: Hold 4 neighborhood town halls (one per quadrant) to design first $2M in projects; measure attendance and voting participation\n- **Success metric**: 10%+ reduction in priced corridor traffic; >60% awareness of revenue allocation in outer neighborhoods; zero political attempts to redirect revenue\n\n---\n\n## 2. **Staggered Work Hours Mandate with Employer Incentives** (Behavioral)\n\n**Concept Summary**\nRequire large employers (500+ employees) to stagger work start times across a 2-hour window (7am-9am), with financial incentives for those who shift to off-peak hours. Pair with a \"congestion tax credit\" for employers who reduce peak-hour commuting by 20%+.\n\n**Mechanism of Action**\n- Employers choose one of three start-time cohorts: 7:00am, 8:00am, or 9:00am\n- Employees can opt for flexible schedules; employers receive $500/employee/year tax credit for those working 7-7:30am or 9-9:30am\n- City provides real-time congestion data to employers; those reducing peak trips by 20%+ get additional $200/employee credit\n- Enforcement: building permits and business licenses conditional on compliance; audited annually\n\n**Expected Upside**\n- 20-30% reduction in peak-hour vehicle trips (spreads demand across 2-hour window)\n- Minimal infrastructure cost; leverages existing employer infrastructure\n- Improves air quality during traditional peak hours\n- Employers benefit from reduced parking demand and employee satisfaction\n\n**Biggest Failure Mode**\nEmployer gaming: large firms hire contractors or shift to gig workers to avoid mandate; small employers (100-500 employees) face disproportionate burden. Requires clear definitions and enforcement capacity.\n\n**Equity Implications**\n- *Positive*: Flexible schedules benefit workers with caregiving responsibilities; off-peak commuting reduces stress\n- *Negative*: Shift workers and service workers excluded; may disadvantage low-wage workers who lack schedule flexibility\n- *Mitigation*: Exemptions for healthcare, retail, hospitality; subsidized transit passes for workers unable to shift hours\n\n**First 90-Day Pilot Design**\n- **Week 1-2**: Recruit 15-20 large employers (tech, finance, government) representing 30,000+ employees\n- **Week 3-4**: Baseline traffic counts on 5 major commute corridors; employee surveys on schedule flexibility (n=2,000)\n- **Week 5-8**: Implement staggered start times; provide employers with weekly congestion data and employee feedback\n- **Week 9-12**: Measure traffic reduction by cohort; survey employee satisfaction and productivity; calculate employer tax credit costs\n- **Success metric**: 15%+ reduction in peak-hour traffic on pilot corridors; >70% employer participation in year 2; no significant employee attrition\n\n---\n\n## 3. **\"Congestion Zones\" with Reverse Tolling for Off-Peak Travel** (Pricing/Governance)\n\n**Concept Summary**\nDivide the city into 4-6 \"congestion zones\" (not just CBD). Charge $3-5 to enter during peak hours (7-10am, 4-7pm), but *pay drivers $2-3* to travel during off-peak hours (10am-4pm, 7pm-6am). Funded by peak-hour revenue; creates positive incentive for behavior change.\n\n**Mechanism of Action**\n- ANPR (automatic number plate recognition) cameras at zone boundaries\n- Peak-hour charges deducted from account; off-peak credits added automatically\n- Monthly statements show savings/costs; app shows real-time pricing\n- Exemptions: emergency vehicles, residents of zone, commercial vehicles with permits\n\n**Expected Upside**\n- 25-35% reduction in peak-hour trips; 15-20% increase in off-peak trips\n- Distributes traffic more evenly across the day, reducing infrastructure strain\n- Positive framing (\"earn money\") vs. negative (\"pay tax\")\n- Generates net revenue if peak charges exceed off-peak credits (likely 60/40 split)\n\n**Biggest Failure Mode**\nInduced demand: off-peak credits encourage more total trips, offsetting congestion reduction. Requires careful calibration of credit levels and monitoring of total vehicle-miles traveled.\n\n**Equity Implications**\n- *Positive*: Low-income drivers benefit from off-peak credits if they have schedule flexibility; reduces regressive impact vs. peak-only pricing\n- *Negative*: Shift workers and service workers (who work off-peak) don't benefit; may increase off-peak congestion in lower-income neighborhoods\n- *Mitigation*: Means-tested exemptions; higher credits for low-income drivers; monitor off-peak congestion in residential areas\n\n**First 90-Day Pilot Design**\n- **Week 1-2**: Deploy ANPR cameras on 2 zone boundaries (not full zone); baseline traffic counts\n- **Week 3-4**: Announce pricing structure; $3 peak charge, $1 off-peak credit; recruit 5,000 voluntary participants\n- **Week 5-8**: Monitor traffic patterns, account balances, and trip shifting; conduct weekly surveys (n=500)\n- **Week 9-12**: Analyze net revenue, equity impacts, and induced demand; adjust credit levels if needed\n- **Success metric**: 15%+ reduction in peak-hour traffic; >50% of participants shift at least 1 trip/week to off-peak; net revenue positive; no increase in off-peak congestion in low-income areas\n\n---\n\n## 4. **\"Congestion Permits\" for Vehicles with Tradeable Allowances** (Pricing/Governance)\n\n**Concept Summary**\nIssue annual \"congestion permits\" (one per vehicle) allowing a fixed number of peak-hour trips (e.g., 40 per month). Permits are tradeable; drivers can sell unused allowances to others. Creates a market-based system that respects individual choice while capping total peak-hour trips.\n\n**Mechanism of Action**\n- Every registered vehicle receives 40 peak-hour trip allowances per month (tradeable, non-transferable between months)\n- Drivers scan permit QR code at zone entry; one allowance deducted per peak-hour trip\n- Secondary market: drivers",
+      "input_tokens": 173,
+      "output_tokens": 2048,
+      "latency_ms": 4380.911290994845,
+      "structural_metrics": {
+        "mtld": 164.93428840462738,
+        "readability_fk_grade": 24.77450779727096,
+        "coherence_mean": 0.4120629890545076,
+        "prompt_relevance": 0.674770095212289,
+        "connective_density": 0.09523809523809523,
+        "word_count": 1143,
+        "repetition_rate": 0.0456140350877193
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# Five Unconventional Urban Traffic Interventions\n\n## 1. **Congestion Pricing with Mandatory Reinvestment in Affected Neighborhoods** (Pricing/Governance)\n\n**Concept Summary**\nImplement congestion pricing in the central business district, but constitutionally mandate that 100% of revenue funds transit, cycling, and car-free amenities *exclusively in lower-income neighborhoods outside the priced zone*. This inverts the typical equity critique by making congestion pricing politically sustainable through direct, visible redistribution.\n\n**Mechanism of Action**\n- Peak-hour pricing ($8-15) on vehicles entering CBD during 7-10am and 4-7pm\n- Real-time revenue dashboard showing neighborhood-by-neighborhood allocation\n- Quarterly \"congestion dividend\" town halls where residents vote on specific projects (bus lanes, protected bike paths, parklets)\n- Exemptions: commercial vehicles, residents of priced zone, low-income permit holders\n\n**Expected Upside**\n- 15-25% reduction in peak-hour vehicle trips to CBD (London, Stockholm data)\n- Creates political constituency for congestion reduction (outer neighborhoods benefit materially)\n- Generates $80-120M annually for a 2-4M city; funds 200+ km of transit/cycling infrastructure over 5 years\n- Shifts frame from \"tax on driving\" to \"investment in my neighborhood\"\n\n**Biggest Failure Mode**\nPolitical capture: city council redirects revenue to general fund or CBD improvements, destroying the equity compact. Requires constitutional/charter-level lock-in and independent revenue board (not city council controlled).\n\n**Equity Implications**\n- *Positive*: Outer neighborhoods receive tangible infrastructure; low-income residents in priced zone get exemptions; reduces air pollution in lower-income areas near highways\n- *Negative*: Regressive if exemptions are insufficient; requires robust permit system to prevent fraud\n- *Mitigation*: Means-tested exemptions (income <200% poverty line); subsidized transit passes for affected workers\n\n**First 90-Day Pilot Design**\n- **Week 1-2**: Establish independent Revenue Oversight Board (7 members: 3 outer-neighborhood residents, 2 transit advocates, 2 city officials)\n- **Week 3-4**: Deploy congestion pricing on 2 CBD entry corridors (not full zone) during 8-10am only; $5 flat rate\n- **Week 5-8**: Conduct daily surveys (n=500) on willingness-to-pay, trip shifting, and neighborhood awareness\n- **Week 9-12**: Hold 4 neighborhood town halls (one per quadrant) to design first $2M in projects; measure attendance and voting participation\n- **Success metric**: 10%+ reduction in priced corridor traffic; >60% awareness of revenue allocation in outer neighborhoods; zero political attempts to redirect revenue\n\n---\n\n## 2. **Staggered Work Hours Mandate with Employer Incentives** (Behavioral)\n\n**Concept Summary**\nRequire large employers (500+ employees) to stagger work start times across a 2-hour window (7am-9am), with financial incentives for those who shift to off-peak hours. Pair with a \"congestion tax credit\" for employers who reduce peak-hour commuting by 20%+.\n\n**Mechanism of Action**\n- Employers choose one of three start-time cohorts: 7:00am, 8:00am, or 9:00am\n- Employees can opt for flexible schedules; employers receive $500/employee/year tax credit for those working 7-7:30am or 9-9:30am\n- City provides real-time congestion data to employers; those reducing peak trips by 20%+ get additional $200/employee credit\n- Enforcement: building permits and business licenses conditional on compliance; audited annually\n\n**Expected Upside**\n- 20-30% reduction in peak-hour vehicle trips (spreads demand across 2-hour window)\n- Minimal infrastructure cost; leverages existing employer infrastructure\n- Improves air quality during traditional peak hours\n- Employers benefit from reduced parking demand and employee satisfaction\n\n**Biggest Failure Mode**\nEmployer gaming: large firms hire contractors or shift to gig workers to avoid mandate; small employers (100-500 employees) face disproportionate burden. Requires clear definitions and enforcement capacity.\n\n**Equity Implications**\n- *Positive*: Flexible schedules benefit workers with caregiving responsibilities; off-peak commuting reduces stress\n- *Negative*: Shift workers and service workers excluded; may disadvantage low-wage workers who lack schedule flexibility\n- *Mitigation*: Exemptions for healthcare, retail, hospitality; subsidized transit passes for workers unable to shift hours\n\n**First 90-Day Pilot Design**\n- **Week 1-2**: Recruit 15-20 large employers (tech, finance, government) representing 30,000+ employees\n- **Week 3-4**: Baseline traffic counts on 5 major commute corridors; employee surveys on schedule flexibility (n=2,000)\n- **Week 5-8**: Implement staggered start times; provide employers with weekly congestion data and employee feedback\n- **Week 9-12**: Measure traffic reduction by cohort; survey employee satisfaction and productivity; calculate employer tax credit costs\n- **Success metric**: 15%+ reduction in peak-hour traffic on pilot corridors; >70% employer participation in year 2; no significant employee attrition\n\n---\n\n## 3. **\"Congestion Zones\" with Reverse Tolling for Off-Peak Travel** (Pricing/Governance)\n\n**Concept Summary**\nDivide the city into 4-6 \"congestion zones\" (not just CBD). Charge $3-5 to enter during peak hours (7-10am, 4-7pm), but *pay drivers $2-3* to travel during off-peak hours (10am-4pm, 7pm-6am). Funded by peak-hour revenue; creates positive incentive for behavior change.\n\n**Mechanism of Action**\n- ANPR (automatic number plate recognition) cameras at zone boundaries\n- Peak-hour charges deducted from account; off-peak credits added automatically\n- Monthly statements show savings/costs; app shows real-time pricing\n- Exemptions: emergency vehicles, residents of zone, commercial vehicles with permits\n\n**Expected Upside**\n- 25-35% reduction in peak-hour trips; 15-20% increase in off-peak trips\n- Distributes traffic more evenly across the day, reducing infrastructure strain\n- Positive framing (\"earn money\") vs. negative (\"pay tax\")\n- Generates net revenue if peak charges exceed off-peak credits (likely 60/40 split)\n\n**Biggest Failure Mode**\nInduced demand: off-peak credits encourage more total trips, offsetting congestion reduction. Requires careful calibration of credit levels and monitoring of total vehicle-miles traveled.\n\n**Equity Implications**\n- *Positive*: Low-income drivers benefit from off-peak credits if they have schedule flexibility; reduces regressive impact vs. peak-only pricing\n- *Negative*: Shift workers and service workers (who work off-peak) don't benefit; may increase off-peak congestion in lower-income neighborhoods\n- *Mitigation*: Means-tested exemptions; higher credits for low-income drivers; monitor off-peak congestion in residential areas\n\n**First 90-Day Pilot Design**\n- **Week 1-2**: Deploy ANPR cameras on 2 zone boundaries (not full zone); baseline traffic counts\n- **Week 3-4**: Announce pricing structure; $3 peak charge, $1 off-peak credit; recruit 5,000 voluntary participants\n- **Week 5-8**: Monitor traffic patterns, account balances, and trip shifting; conduct weekly surveys (n=500)\n- **Week 9-12**: Analyze net revenue, equity impacts, and induced demand; adjust credit levels if needed\n- **Success metric**: 15%+ reduction in peak-hour traffic; >50% of participants shift at least 1 trip/week to off-peak; net revenue positive; no increase in off-peak congestion in low-income areas\n\n---\n\n## 4. **\"Congestion Permits\" for Vehicles with Tradeable Allowances** (Pricing/Governance)\n\n**Concept Summary**\nIssue annual \"congestion permits\" (one per vehicle) allowing a fixed number of peak-hour trips (e.g., 40 per month). Permits are tradeable; drivers can sell unused allowances to others. Creates a market-based system that respects individual choice while capping total peak-hour trips.\n\n**Mechanism of Action**\n- Every registered vehicle receives 40 peak-hour trip allowances per month (tradeable, non-transferable between months)\n- Drivers scan permit QR code at zone entry; one allowance deducted per peak-hour trip\n- Secondary market: drivers",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# five unconventional urban traffic interventions ## 1. **congestion pricing with mandatory reinvestment in affected neighborhoods** (pricing/governance) **concept summary** implement congestion pricing in the central business district, but constitutionally mandate that 100% of revenue funds transit, cycling, and car-free amenities *exclusively in lower-income neighborhoods outside the priced zone*. this inverts the typical equity critique by making congestion pricing politically sustainable through direct, visible redistribution. **mechanism of action** - peak-hour pricing ($8-15) on vehicles entering cbd during 7-10am and 4-7pm - real-time revenue dashboard showing neighborhood-by-neighborhood allocation - quarterly \"congestion dividend\" town halls where residents vote on specific projects (bus lanes, protected bike paths, parklets) - exemptions: commercial vehicles, residents of priced zone, low-income permit holders **expected upside** - 15-25% reduction in peak-hour vehicle trips to cbd (london, stockholm data) - creates political constituency for congestion reduction (outer neighborhoods benefit materially) - generates $80-120m annually for a 2-4m city; funds 200+ km of transit/cycling infrastructure over 5 years - shifts frame from \"tax on driving\" to \"investment in my neighborhood\" **biggest failure mode** political capture: city council redirects revenue to general fund or cbd improvements, destroying the equity compact. requires constitutional/charter-level lock-in and independent revenue board (not city council controlled). **equity implications** - *positive*: outer neighborhoods receive tangible infrastructure; low-income residents in priced zone get exemptions; reduces air pollution in lower-income areas near highways - *negative*: regressive if exemptions are insufficient; requires robust permit system to prevent fraud - *mitigation*: means-tested exemptions (income <200% poverty line); subsidized transit passes for affected workers **first 90-day pilot design** - **week 1-2**: establish independent revenue oversight board (7 members: 3 outer-neighborhood residents, 2 transit advocates, 2 city officials) - **week 3-4**: deploy congestion pricing on 2 cbd entry corridors (not full zone) during 8-10am only; $5 flat rate - **week 5-8**: conduct daily surveys (n=500) on willingness-to-pay, trip shifting, and neighborhood awareness - **week 9-12**: hold 4 neighborhood town halls (one per quadrant) to design first $2m in projects; measure attendance and voting participation - **success metric**: 10%+ reduction in priced corridor traffic; >60% awareness of revenue allocation in outer neighborhoods; zero political attempts to redirect revenue --- ## 2. **staggered work hours mandate with employer incentives** (behavioral) **concept summary** require large employers (500+ employees) to stagger work start times across a 2-hour window (7am-9am), with financial incentives for those who shift to off-peak hours. pair with a \"congestion tax credit\" for employers who reduce peak-hour commuting by 20%+. **mechanism of action** - employers choose one of three start-time cohorts: 7:00am, 8:00am, or 9:00am - employees can opt for flexible schedules; employers receive $500/employee/year tax credit for those working 7-7:30am or 9-9:30am - city provides real-time congestion data to employers; those reducing peak trips by 20%+ get additional $200/employee credit - enforcement: building permits and business licenses conditional on compliance; audited annually **expected upside** - 20-30% reduction in peak-hour vehicle trips (spreads demand across 2-hour window) - minimal infrastructure cost; leverages existing employer infrastructure - improves air quality during traditional peak hours - employers benefit from reduced parking demand and employee satisfaction **biggest failure mode** employer gaming: large firms hire contractors or shift to gig workers to avoid mandate; small employers (100-500 employees) face disproportionate burden. requires clear definitions and enforcement capacity. **equity implications** - *positive*: flexible schedules benefit workers with caregiving responsibilities; off-peak commuting reduces stress - *negative*: shift workers and service workers excluded; may disadvantage low-wage workers who lack schedule flexibility - *mitigation*: exemptions for healthcare, retail, hospitality; subsidized transit passes for workers unable to shift hours **first 90-day pilot design** - **week 1-2**: recruit 15-20 large employers (tech, finance, government) representing 30,000+ employees - **week 3-4**: baseline traffic counts on 5 major commute corridors; employee surveys on schedule flexibility (n=2,000) - **week 5-8**: implement staggered start times; provide employers with weekly congestion data and employee feedback - **week 9-12**: measure traffic reduction by cohort; survey employee satisfaction and productivity; calculate employer tax credit costs - **success metric**: 15%+ reduction in peak-hour traffic on pilot corridors; >70% employer participation in year 2; no significant employee attrition --- ## 3. **\"congestion zones\" with reverse tolling for off-peak travel** (pricing/governance) **concept summary** divide the city into 4-6 \"congestion zones\" (not just cbd). charge $3-5 to enter during peak hours (7-10am, 4-7pm), but *pay drivers $2-3* to travel during off-peak hours (10am-4pm, 7pm-6am). funded by peak-hour revenue; creates positive incentive for behavior change. **mechanism of action** - anpr (automatic number plate recognition) cameras at zone boundaries - peak-hour charges deducted from account; off-peak credits added automatically - monthly statements show savings/costs; app shows real-time pricing - exemptions: emergency vehicles, residents of zone, commercial vehicles with permits **expected upside** - 25-35% reduction in peak-hour trips; 15-20% increase in off-peak trips - distributes traffic more evenly across the day, reducing infrastructure strain - positive framing (\"earn money\") vs. negative (\"pay tax\") - generates net revenue if peak charges exceed off-peak credits (likely 60/40 split) **biggest failure mode** induced demand: off-peak credits encourage more total trips, offsetting congestion reduction. requires careful calibration of credit levels and monitoring of total vehicle-miles traveled. **equity implications** - *positive*: low-income drivers benefit from off-peak credits if they have schedule flexibility; reduces regressive impact vs. peak-only pricing - *negative*: shift workers and service workers (who work off-peak) don't benefit; may increase off-peak congestion in lower-income neighborhoods - *mitigation*: means-tested exemptions; higher credits for low-income drivers; monitor off-peak congestion in residential areas **first 90-day pilot design** - **week 1-2**: deploy anpr cameras on 2 zone boundaries (not full zone); baseline traffic counts - **week 3-4**: announce pricing structure; $3 peak charge, $1 off-peak credit; recruit 5,000 voluntary participants - **week 5-8**: monitor traffic patterns, account balances, and trip shifting; conduct weekly surveys (n=500) - **week 9-12**: analyze net revenue, equity impacts, and induced demand; adjust credit levels if needed - **success metric**: 15%+ reduction in peak-hour traffic; >50% of participants shift at least 1 trip/week to off-peak; net revenue positive; no increase in off-peak congestion in low-income areas --- ## 4. **\"congestion permits\" for vehicles with tradeable allowances** (pricing/governance) **concept summary** issue annual \"congestion permits\" (one per vehicle) allowing a fixed number of peak-hour trips (e.g., 40 per month). permits are tradeable; drivers can sell unused allowances to others. creates a market-based system that respects individual choice while capping total peak-hour trips. **mechanism of action** - every registered vehicle receives 40 peak-hour trip allowances per month (tradeable, non-transferable between months) - drivers scan permit qr code at zone entry; one allowance deducted per peak-hour trip - secondary market: drivers": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5124423963133641,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 164.93428840462738,
+      "readability_fk_grade": 24.77450779727096,
+      "coherence_mean": 0.4120629890545076,
+      "prompt_relevance": 0.674770095212289,
+      "connective_density": 0.09523809523809523,
+      "word_count": 1143,
+      "repetition_rate": 0.0456140350877193
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

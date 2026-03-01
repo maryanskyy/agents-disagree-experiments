@@ -1,0 +1,164 @@
+{
+  "run_id": "run_82a2a04bd8b6",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:58:37.454612+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_03_premise_consequence",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-flash"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Deductive Consequence Extraction from Formal Premises",
+    "prompt": "Consider the premises:\n(P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit.\n(P2) If content cannot be inspected in transit, then real-time keyword filtering is impossible.\n(P3) Any platform where real-time keyword filtering is impossible must rely on endpoint moderation or metadata signals.\n(P4) This platform uses end-to-end encryption.\n(P5) If endpoint moderation is weak and abuse volume is high, enforcement lag increases.\n(P6) This platform currently has weak endpoint moderation and high abuse volume.\n\nDerive all non-trivial conclusions that logically follow, classify each as direct (single chain) or composite (multiple premise interaction), and explicitly mark which tempting conclusions do NOT follow. Conclude with one recommendation that is logically consistent with the premises without adding unstated assumptions.\n",
+    "rubric": [
+      "Correctly derives transitive implications from P1-P4 and P5-P6.",
+      "Separates valid deductions from unsupported speculation.",
+      "Labels direct vs composite conclusions appropriately.",
+      "Recommendation is premise-consistent and non-contradictory."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-flash",
+      "text": "Here's a derivation of conclusions based on the provided premises, along with classifications and a recommendation:\n\n## Derived Conclusions\n\n### Direct Conclusions\n\nThese conclusions follow directly from a single chain of premises.\n\n*   **C1: Message content on this platform cannot be inspected in transit.**\n    *   **Derivation:** (P4) This platform uses end-to-end encryption. (P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit.\n    *   **Classification:** Direct\n\n*   **C2: Real-time keyword filtering is impossible on this platform.**\n    *   **Derivation:** (P4) This platform uses end-to-end encryption. (P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit. (P2) If content cannot be inspected in transit, then real-time keyword filtering is impossible.\n    *   **Classification:** Direct\n\n*   **C3: This platform must rely on endpoint moderation or metadata signals.**\n    *   **Derivation:** (P4) This platform uses end-to-end encryption. (P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit. (P2) If content cannot be inspected in transit, then real-time keyword filtering is impossible. (P3) Any platform where real-time keyword filtering is impossible must rely on endpoint moderation or metadata signals.\n    *   **Classification:** Direct\n\n*   **C4: Enforcement lag on this platform is increasing.**\n    *   **Derivation:** (P6) This platform currently has weak endpoint moderation and high abuse volume. (P5) If endpoint moderation is weak and abuse volume is high, enforcement lag increases.\n    *   **Classification:** Direct\n\n### Composite Conclusions\n\nThese conclusions require the interaction of multiple, distinct premises or chains of reasoning.\n\n*   **C5: The increasing enforcement lag on this platform is a consequence of its current moderation strategy and abuse levels, given its reliance on endpoint moderation or metadata signals.**\n    *   **Derivation:**\n        *   From (P4), (P1), (P2), (P3), we know: This platform must rely on endpoint moderation or metadata signals (C3).\n        *   From (P6) and (P5), we know: Enforcement lag on this platform is increasing (C4).\n        *   Combining these: The increasing enforcement lag (C4) is occurring in a context where the platform *must* rely on endpoint moderation or metadata signals (C3), and is specifically due to the *weakness* of that endpoint moderation and *high abuse volume* (P6) as per the condition in (P5). This highlights the specific mechanism of the lag within the platform's architectural constraints.\n    *   **Classification:** Composite\n\n*   **C6: The platform's use of end-to-end encryption directly contributes to the necessity of relying on moderation methods that, under current conditions, lead to increased enforcement lag.**\n    *   **Derivation:**\n        *   (P4) -> (P1) -> (P2) -> (P3) establishes that E2EE necessitates reliance on endpoint moderation or metadata signals.\n        *   (P6) and (P5) establish that the current state of endpoint moderation (weak) and abuse volume (high) leads to increased enforcement lag.\n        *   This conclusion links the initial architectural choice (E2EE) to the *type* of moderation required, and then links that type of moderation to the *current problem* of increasing enforcement lag, given the specific conditions. It's not just that lag is increasing, but that the *reason* for the lag is tied back to the E2EE constraint.\n    *   **Classification:** Composite\n\n## Tempting Conclusions That Do NOT Follow\n\nThese conclusions might seem plausible but cannot be logically derived *solely* from the given premises without additional assumptions.\n\n*   **T1: This platform has poor overall moderation.**\n    *   **Why it doesn't follow:** While endpoint moderation is weak (P6) and enforcement lag is increasing (C4), \"poor overall moderation\" is a broader judgment. The platform *also* relies on metadata signals (C3), and the effectiveness of these signals is not stated. It's possible metadata signals are very strong, mitigating some of the weakness in endpoint moderation, or that \"weak\" endpoint moderation is only weak relative to the high abuse volume, not inherently \"poor.\"\n\n*   **T2: The platform should disable end-to-end encryption to improve moderation.**\n    *   **Why it doesn't follow:** The premises establish that E2EE prevents real-time keyword filtering (C2) and necessitates other moderation methods (C3). They *do not* state that disabling E2EE would *solve* the moderation problem or that it's a desirable or even feasible solution. It only implies that *if* E2EE were disabled, real-time keyword filtering *might* become possible, but it doesn't guarantee improved moderation or address other potential consequences of removing E2EE.\n\n*   **T3: The platform is failing to address abuse.**\n    *   **Why it doesn't follow:** \"Enforcement lag increases\" (C4) indicates a growing problem, but it doesn't necessarily mean the platform is *failing* to address abuse. They might be trying, but the volume is overwhelming, or their current methods are insufficient. \"Failing\" implies a lack of effort or complete ineffectiveness, which isn't explicitly stated.\n\n*   **T4: The platform's metadata signals are ineffective.**\n    *   **Why it doesn't follow:** (P3) states the platform *must rely* on endpoint moderation *or* metadata signals. While endpoint moderation is stated to be weak (P6), there is no information provided about the effectiveness or strength of the metadata signals. They could be very effective, or completely absent, or anything in between.\n\n## Recommendation\n\n**Recommendation:** The platform should prioritize strengthening its endpoint moderation capabilities or enhancing the effectiveness and utilization of metadata signals to counteract the increasing enforcement lag, given its architectural constraint of end-to-end encryption and current high abuse volume.\n\n**Justification:**\n*   (C3) establishes that the platform *must* rely on endpoint moderation or metadata signals due to E2EE.\n*   (P6) explicitly states that endpoint moderation is *weak* and abuse volume is *high*.\n*   (P5) and (C4) directly link weak endpoint moderation and high abuse volume to *increasing enforcement lag*.\n*   Therefore, to address the increasing enforcement lag, the platform must improve the components it *can* control within its established moderation framework: either strengthen the weak endpoint moderation or improve the alternative (metadata signals), as real-time keyword filtering is impossible. This recommendation directly targets the identified causes of increasing lag within the platform's operational constraints.",
+      "input_tokens": 199,
+      "output_tokens": 1490,
+      "latency_ms": 3889.4870560616255,
+      "structural_metrics": {
+        "mtld": 52.76591034506545,
+        "readability_fk_grade": 13.866976677667768,
+        "coherence_mean": 0.45990554557476204,
+        "prompt_relevance": 0.8471528961816083,
+        "connective_density": 0.4358974358974359,
+        "word_count": 934,
+        "repetition_rate": 0.25241675617615467
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "Here's a derivation of conclusions based on the provided premises, along with classifications and a recommendation:\n\n## Derived Conclusions\n\n### Direct Conclusions\n\nThese conclusions follow directly from a single chain of premises.\n\n*   **C1: Message content on this platform cannot be inspected in transit.**\n    *   **Derivation:** (P4) This platform uses end-to-end encryption. (P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit.\n    *   **Classification:** Direct\n\n*   **C2: Real-time keyword filtering is impossible on this platform.**\n    *   **Derivation:** (P4) This platform uses end-to-end encryption. (P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit. (P2) If content cannot be inspected in transit, then real-time keyword filtering is impossible.\n    *   **Classification:** Direct\n\n*   **C3: This platform must rely on endpoint moderation or metadata signals.**\n    *   **Derivation:** (P4) This platform uses end-to-end encryption. (P1) If a platform uses end-to-end encryption, then message content cannot be inspected in transit. (P2) If content cannot be inspected in transit, then real-time keyword filtering is impossible. (P3) Any platform where real-time keyword filtering is impossible must rely on endpoint moderation or metadata signals.\n    *   **Classification:** Direct\n\n*   **C4: Enforcement lag on this platform is increasing.**\n    *   **Derivation:** (P6) This platform currently has weak endpoint moderation and high abuse volume. (P5) If endpoint moderation is weak and abuse volume is high, enforcement lag increases.\n    *   **Classification:** Direct\n\n### Composite Conclusions\n\nThese conclusions require the interaction of multiple, distinct premises or chains of reasoning.\n\n*   **C5: The increasing enforcement lag on this platform is a consequence of its current moderation strategy and abuse levels, given its reliance on endpoint moderation or metadata signals.**\n    *   **Derivation:**\n        *   From (P4), (P1), (P2), (P3), we know: This platform must rely on endpoint moderation or metadata signals (C3).\n        *   From (P6) and (P5), we know: Enforcement lag on this platform is increasing (C4).\n        *   Combining these: The increasing enforcement lag (C4) is occurring in a context where the platform *must* rely on endpoint moderation or metadata signals (C3), and is specifically due to the *weakness* of that endpoint moderation and *high abuse volume* (P6) as per the condition in (P5). This highlights the specific mechanism of the lag within the platform's architectural constraints.\n    *   **Classification:** Composite\n\n*   **C6: The platform's use of end-to-end encryption directly contributes to the necessity of relying on moderation methods that, under current conditions, lead to increased enforcement lag.**\n    *   **Derivation:**\n        *   (P4) -> (P1) -> (P2) -> (P3) establishes that E2EE necessitates reliance on endpoint moderation or metadata signals.\n        *   (P6) and (P5) establish that the current state of endpoint moderation (weak) and abuse volume (high) leads to increased enforcement lag.\n        *   This conclusion links the initial architectural choice (E2EE) to the *type* of moderation required, and then links that type of moderation to the *current problem* of increasing enforcement lag, given the specific conditions. It's not just that lag is increasing, but that the *reason* for the lag is tied back to the E2EE constraint.\n    *   **Classification:** Composite\n\n## Tempting Conclusions That Do NOT Follow\n\nThese conclusions might seem plausible but cannot be logically derived *solely* from the given premises without additional assumptions.\n\n*   **T1: This platform has poor overall moderation.**\n    *   **Why it doesn't follow:** While endpoint moderation is weak (P6) and enforcement lag is increasing (C4), \"poor overall moderation\" is a broader judgment. The platform *also* relies on metadata signals (C3), and the effectiveness of these signals is not stated. It's possible metadata signals are very strong, mitigating some of the weakness in endpoint moderation, or that \"weak\" endpoint moderation is only weak relative to the high abuse volume, not inherently \"poor.\"\n\n*   **T2: The platform should disable end-to-end encryption to improve moderation.**\n    *   **Why it doesn't follow:** The premises establish that E2EE prevents real-time keyword filtering (C2) and necessitates other moderation methods (C3). They *do not* state that disabling E2EE would *solve* the moderation problem or that it's a desirable or even feasible solution. It only implies that *if* E2EE were disabled, real-time keyword filtering *might* become possible, but it doesn't guarantee improved moderation or address other potential consequences of removing E2EE.\n\n*   **T3: The platform is failing to address abuse.**\n    *   **Why it doesn't follow:** \"Enforcement lag increases\" (C4) indicates a growing problem, but it doesn't necessarily mean the platform is *failing* to address abuse. They might be trying, but the volume is overwhelming, or their current methods are insufficient. \"Failing\" implies a lack of effort or complete ineffectiveness, which isn't explicitly stated.\n\n*   **T4: The platform's metadata signals are ineffective.**\n    *   **Why it doesn't follow:** (P3) states the platform *must rely* on endpoint moderation *or* metadata signals. While endpoint moderation is stated to be weak (P6), there is no information provided about the effectiveness or strength of the metadata signals. They could be very effective, or completely absent, or anything in between.\n\n## Recommendation\n\n**Recommendation:** The platform should prioritize strengthening its endpoint moderation capabilities or enhancing the effectiveness and utilization of metadata signals to counteract the increasing enforcement lag, given its architectural constraint of end-to-end encryption and current high abuse volume.\n\n**Justification:**\n*   (C3) establishes that the platform *must* rely on endpoint moderation or metadata signals due to E2EE.\n*   (P6) explicitly states that endpoint moderation is *weak* and abuse volume is *high*.\n*   (P5) and (C4) directly link weak endpoint moderation and high abuse volume to *increasing enforcement lag*.\n*   Therefore, to address the increasing enforcement lag, the platform must improve the components it *can* control within its established moderation framework: either strengthen the weak endpoint moderation or improve the alternative (metadata signals), as real-time keyword filtering is impossible. This recommendation directly targets the identified causes of increasing lag within the platform's operational constraints.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "here's a derivation of conclusions based on the provided premises, along with classifications and a recommendation: ## derived conclusions ### direct conclusions these conclusions follow directly from a single chain of premises. * **c1: message content on this platform cannot be inspected in transit.** * **derivation:** (p4) this platform uses end-to-end encryption. (p1) if a platform uses end-to-end encryption, then message content cannot be inspected in transit. * **classification:** direct * **c2: real-time keyword filtering is impossible on this platform.** * **derivation:** (p4) this platform uses end-to-end encryption. (p1) if a platform uses end-to-end encryption, then message content cannot be inspected in transit. (p2) if content cannot be inspected in transit, then real-time keyword filtering is impossible. * **classification:** direct * **c3: this platform must rely on endpoint moderation or metadata signals.** * **derivation:** (p4) this platform uses end-to-end encryption. (p1) if a platform uses end-to-end encryption, then message content cannot be inspected in transit. (p2) if content cannot be inspected in transit, then real-time keyword filtering is impossible. (p3) any platform where real-time keyword filtering is impossible must rely on endpoint moderation or metadata signals. * **classification:** direct * **c4: enforcement lag on this platform is increasing.** * **derivation:** (p6) this platform currently has weak endpoint moderation and high abuse volume. (p5) if endpoint moderation is weak and abuse volume is high, enforcement lag increases. * **classification:** direct ### composite conclusions these conclusions require the interaction of multiple, distinct premises or chains of reasoning. * **c5: the increasing enforcement lag on this platform is a consequence of its current moderation strategy and abuse levels, given its reliance on endpoint moderation or metadata signals.** * **derivation:** * from (p4), (p1), (p2), (p3), we know: this platform must rely on endpoint moderation or metadata signals (c3). * from (p6) and (p5), we know: enforcement lag on this platform is increasing (c4). * combining these: the increasing enforcement lag (c4) is occurring in a context where the platform *must* rely on endpoint moderation or metadata signals (c3), and is specifically due to the *weakness* of that endpoint moderation and *high abuse volume* (p6) as per the condition in (p5). this highlights the specific mechanism of the lag within the platform's architectural constraints. * **classification:** composite * **c6: the platform's use of end-to-end encryption directly contributes to the necessity of relying on moderation methods that, under current conditions, lead to increased enforcement lag.** * **derivation:** * (p4) -> (p1) -> (p2) -> (p3) establishes that e2ee necessitates reliance on endpoint moderation or metadata signals. * (p6) and (p5) establish that the current state of endpoint moderation (weak) and abuse volume (high) leads to increased enforcement lag. * this conclusion links the initial architectural choice (e2ee) to the *type* of moderation required, and then links that type of moderation to the *current problem* of increasing enforcement lag, given the specific conditions. it's not just that lag is increasing, but that the *reason* for the lag is tied back to the e2ee constraint. * **classification:** composite ## tempting conclusions that do not follow these conclusions might seem plausible but cannot be logically derived *solely* from the given premises without additional assumptions. * **t1: this platform has poor overall moderation.** * **why it doesn't follow:** while endpoint moderation is weak (p6) and enforcement lag is increasing (c4), \"poor overall moderation\" is a broader judgment. the platform *also* relies on metadata signals (c3), and the effectiveness of these signals is not stated. it's possible metadata signals are very strong, mitigating some of the weakness in endpoint moderation, or that \"weak\" endpoint moderation is only weak relative to the high abuse volume, not inherently \"poor.\" * **t2: the platform should disable end-to-end encryption to improve moderation.** * **why it doesn't follow:** the premises establish that e2ee prevents real-time keyword filtering (c2) and necessitates other moderation methods (c3). they *do not* state that disabling e2ee would *solve* the moderation problem or that it's a desirable or even feasible solution. it only implies that *if* e2ee were disabled, real-time keyword filtering *might* become possible, but it doesn't guarantee improved moderation or address other potential consequences of removing e2ee. * **t3: the platform is failing to address abuse.** * **why it doesn't follow:** \"enforcement lag increases\" (c4) indicates a growing problem, but it doesn't necessarily mean the platform is *failing* to address abuse. they might be trying, but the volume is overwhelming, or their current methods are insufficient. \"failing\" implies a lack of effort or complete ineffectiveness, which isn't explicitly stated. * **t4: the platform's metadata signals are ineffective.** * **why it doesn't follow:** (p3) states the platform *must rely* on endpoint moderation *or* metadata signals. while endpoint moderation is stated to be weak (p6), there is no information provided about the effectiveness or strength of the metadata signals. they could be very effective, or completely absent, or anything in between. ## recommendation **recommendation:** the platform should prioritize strengthening its endpoint moderation capabilities or enhancing the effectiveness and utilization of metadata signals to counteract the increasing enforcement lag, given its architectural constraint of end-to-end encryption and current high abuse volume. **justification:** * (c3) establishes that the platform *must* rely on endpoint moderation or metadata signals due to e2ee. * (p6) explicitly states that endpoint moderation is *weak* and abuse volume is *high*. * (p5) and (c4) directly link weak endpoint moderation and high abuse volume to *increasing enforcement lag*. * therefore, to address the increasing enforcement lag, the platform must improve the components it *can* control within its established moderation framework: either strengthen the weak endpoint moderation or improve the alternative (metadata signals), as real-time keyword filtering is impossible. this recommendation directly targets the identified causes of increasing lag within the platform's operational constraints.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.3462749213011542,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 52.76591034506545,
+      "readability_fk_grade": 13.866976677667768,
+      "coherence_mean": 0.45990554557476204,
+      "prompt_relevance": 0.8471528961816083,
+      "connective_density": 0.4358974358974359,
+      "word_count": 934,
+      "repetition_rate": 0.25241675617615467
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

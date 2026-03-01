@@ -1,0 +1,164 @@
+{
+  "run_id": "run_6f2b24c81c53",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:57:57.548612+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_06_constraint_satisfaction",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 3,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Constraint Satisfaction Scheduling Problem",
+    "prompt": "You must schedule five reviewers (R1-R5) across three proposal panels (A, B, C). Constraints:\n1) Each panel needs exactly two reviewers.\n2) No reviewer can serve on more than one panel.\n3) R1 cannot review panel A.\n4) R2 must be assigned if and only if R4 is assigned.\n5) Panel C must include at least one of {R3, R5}.\n6) If R5 is assigned, panel B cannot include R2.\n\nDetermine whether a valid assignment exists. If yes, provide one valid schedule and explain each constraint check. If multiple solutions exist, provide a second distinct solution and compare robustness (which is less brittle if one reviewer drops out). If no solution exists, prove infeasibility with minimal contradiction set.\n",
+    "rubric": [
+      "Produces a schedule (or infeasibility proof) consistent with all constraints.",
+      "Verifies each constraint explicitly.",
+      "Demonstrates search reasoning, not random guessing.",
+      "Robustness comparison (if feasible) is logically grounded."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# Scheduling Analysis: Five Reviewers Across Three Panels\n\n## Problem Setup\n- **Panels**: A, B, C (each needs exactly 2 reviewers)\n- **Reviewers**: R1, R2, R3, R4, R5 (5 reviewers for 6 slots)\n- **Total assignments**: 6 reviewer-slots across 3 panels\n\n## Constraint Analysis\n\nLet me systematically explore the solution space.\n\n### Key Constraint Implications\n\n**Constraint 4** (R2 \u2194 R4): Either both assigned or both unassigned.\n- **Case 1**: Both R2 and R4 assigned \u2192 4 reviewers used, 1 unused\n- **Case 2**: Both R2 and R4 unassigned \u2192 3 reviewers (R1, R3, R5) for 6 slots \u2192 **IMPOSSIBLE**\n\nTherefore: **R2 and R4 must both be assigned.**\n\nThis means: **R1, R2, R3, R4 are assigned; R5 is unassigned** OR **R2, R4, R5 and two of {R1, R3}**\n\nLet me reconsider: We have 5 reviewers and 6 slots. We must use exactly 4 reviewers (one reviewer appears twice? No\u2014constraint 2 forbids this).\n\n**Correction**: We need exactly 6 assignments from 5 reviewers with each reviewer on at most 1 panel. This is impossible unless... let me reread.\n\nActually, with 5 reviewers and 6 slots needed, we cannot satisfy the constraints if each reviewer serves on at most one panel. **We need 6 assignments but only 5 reviewers.**\n\nWait\u2014let me reconsider the problem. Perhaps one reviewer serves on two panels? No, constraint 2 explicitly forbids this.\n\n**This appears infeasible.** Let me verify by checking if we can assign 4 reviewers to 6 slots:\n- 4 reviewers \u00d7 1 panel each = 4 slots filled\n- We need 6 slots\n- **Deficit: 2 slots cannot be filled**\n\n## Feasibility Proof\n\n**Claim**: No valid assignment exists.\n\n**Proof by contradiction**:\n\n1. From Constraint 4: R2 and R4 must have the same assignment status (both in or both out).\n\n2. **Case A**: R2 and R4 both assigned\n   - Reviewers assigned: R2, R4, plus 2 others from {R1, R3, R5}\n   - Total: 4 reviewers for 6 slots\n   - **Impossible** (each reviewer on \u22641 panel)\n\n3. **Case B**: R2 and R4 both unassigned\n   - Available reviewers: {R1, R3, R5} = 3 reviewers\n   - Needed: 6 slots\n   - **Impossible** (3 reviewers \u00d7 1 panel max = 3 slots)\n\n**Conclusion**: No valid assignment exists.\n\n## Minimal Contradiction Set\n\nThe infeasibility is caused by:\n- **Structural constraint**: 5 reviewers, 6 required slots, max 1 panel per reviewer\n- **Constraint 4** forces either 4 or 3 reviewers to be assigned\n- Neither 4 nor 3 reviewers can fill 6 slots\n\n**Minimal contradiction**: {Constraint 2 (no reviewer on >1 panel), Constraint 4 (R2\u2194R4), Panel structure (3 panels \u00d7 2 reviewers)}\n\n## Recommendation\n\nTo make this problem feasible, consider:\n1. **Reduce panels to 2** (4 slots for 5 reviewers) \u2192 feasible\n2. **Allow one reviewer on 2 panels** (relax Constraint 2)\n3. **Increase reviewer pool to 6+** reviewers\n4. **Modify Constraint 4** to be less restrictive\n\n---\n\n**Final Answer**: **No valid assignment exists.** The problem is structurally infeasible due to insufficient reviewers (5) for required slots (6) given the constraint that each reviewer serves on at most one panel.",
+      "input_tokens": 202,
+      "output_tokens": 997,
+      "latency_ms": 3825.975243933499,
+      "structural_metrics": {
+        "mtld": 54.19062174201497,
+        "readability_fk_grade": 10.541965811965813,
+        "coherence_mean": 0.3926822150062423,
+        "prompt_relevance": 0.7900771563109268,
+        "connective_density": 0.17391304347826086,
+        "word_count": 472,
+        "repetition_rate": 0.07462686567164178
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# Scheduling Analysis: Five Reviewers Across Three Panels\n\n## Problem Setup\n- **Panels**: A, B, C (each needs exactly 2 reviewers)\n- **Reviewers**: R1, R2, R3, R4, R5 (5 reviewers for 6 slots)\n- **Total assignments**: 6 reviewer-slots across 3 panels\n\n## Constraint Analysis\n\nLet me systematically explore the solution space.\n\n### Key Constraint Implications\n\n**Constraint 4** (R2 \u2194 R4): Either both assigned or both unassigned.\n- **Case 1**: Both R2 and R4 assigned \u2192 4 reviewers used, 1 unused\n- **Case 2**: Both R2 and R4 unassigned \u2192 3 reviewers (R1, R3, R5) for 6 slots \u2192 **IMPOSSIBLE**\n\nTherefore: **R2 and R4 must both be assigned.**\n\nThis means: **R1, R2, R3, R4 are assigned; R5 is unassigned** OR **R2, R4, R5 and two of {R1, R3}**\n\nLet me reconsider: We have 5 reviewers and 6 slots. We must use exactly 4 reviewers (one reviewer appears twice? No\u2014constraint 2 forbids this).\n\n**Correction**: We need exactly 6 assignments from 5 reviewers with each reviewer on at most 1 panel. This is impossible unless... let me reread.\n\nActually, with 5 reviewers and 6 slots needed, we cannot satisfy the constraints if each reviewer serves on at most one panel. **We need 6 assignments but only 5 reviewers.**\n\nWait\u2014let me reconsider the problem. Perhaps one reviewer serves on two panels? No, constraint 2 explicitly forbids this.\n\n**This appears infeasible.** Let me verify by checking if we can assign 4 reviewers to 6 slots:\n- 4 reviewers \u00d7 1 panel each = 4 slots filled\n- We need 6 slots\n- **Deficit: 2 slots cannot be filled**\n\n## Feasibility Proof\n\n**Claim**: No valid assignment exists.\n\n**Proof by contradiction**:\n\n1. From Constraint 4: R2 and R4 must have the same assignment status (both in or both out).\n\n2. **Case A**: R2 and R4 both assigned\n   - Reviewers assigned: R2, R4, plus 2 others from {R1, R3, R5}\n   - Total: 4 reviewers for 6 slots\n   - **Impossible** (each reviewer on \u22641 panel)\n\n3. **Case B**: R2 and R4 both unassigned\n   - Available reviewers: {R1, R3, R5} = 3 reviewers\n   - Needed: 6 slots\n   - **Impossible** (3 reviewers \u00d7 1 panel max = 3 slots)\n\n**Conclusion**: No valid assignment exists.\n\n## Minimal Contradiction Set\n\nThe infeasibility is caused by:\n- **Structural constraint**: 5 reviewers, 6 required slots, max 1 panel per reviewer\n- **Constraint 4** forces either 4 or 3 reviewers to be assigned\n- Neither 4 nor 3 reviewers can fill 6 slots\n\n**Minimal contradiction**: {Constraint 2 (no reviewer on >1 panel), Constraint 4 (R2\u2194R4), Panel structure (3 panels \u00d7 2 reviewers)}\n\n## Recommendation\n\nTo make this problem feasible, consider:\n1. **Reduce panels to 2** (4 slots for 5 reviewers) \u2192 feasible\n2. **Allow one reviewer on 2 panels** (relax Constraint 2)\n3. **Increase reviewer pool to 6+** reviewers\n4. **Modify Constraint 4** to be less restrictive\n\n---\n\n**Final Answer**: **No valid assignment exists.** The problem is structurally infeasible due to insufficient reviewers (5) for required slots (6) given the constraint that each reviewer serves on at most one panel.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# scheduling analysis: five reviewers across three panels ## problem setup - **panels**: a, b, c (each needs exactly 2 reviewers) - **reviewers**: r1, r2, r3, r4, r5 (5 reviewers for 6 slots) - **total assignments**: 6 reviewer-slots across 3 panels ## constraint analysis let me systematically explore the solution space. ### key constraint implications **constraint 4** (r2 \u2194 r4): either both assigned or both unassigned. - **case 1**: both r2 and r4 assigned \u2192 4 reviewers used, 1 unused - **case 2**: both r2 and r4 unassigned \u2192 3 reviewers (r1, r3, r5) for 6 slots \u2192 **impossible** therefore: **r2 and r4 must both be assigned.** this means: **r1, r2, r3, r4 are assigned; r5 is unassigned** or **r2, r4, r5 and two of {r1, r3}** let me reconsider: we have 5 reviewers and 6 slots. we must use exactly 4 reviewers (one reviewer appears twice? no\u2014constraint 2 forbids this). **correction**: we need exactly 6 assignments from 5 reviewers with each reviewer on at most 1 panel. this is impossible unless... let me reread. actually, with 5 reviewers and 6 slots needed, we cannot satisfy the constraints if each reviewer serves on at most one panel. **we need 6 assignments but only 5 reviewers.** wait\u2014let me reconsider the problem. perhaps one reviewer serves on two panels? no, constraint 2 explicitly forbids this. **this appears infeasible.** let me verify by checking if we can assign 4 reviewers to 6 slots: - 4 reviewers \u00d7 1 panel each = 4 slots filled - we need 6 slots - **deficit: 2 slots cannot be filled** ## feasibility proof **claim**: no valid assignment exists. **proof by contradiction**: 1. from constraint 4: r2 and r4 must have the same assignment status (both in or both out). 2. **case a**: r2 and r4 both assigned - reviewers assigned: r2, r4, plus 2 others from {r1, r3, r5} - total: 4 reviewers for 6 slots - **impossible** (each reviewer on \u22641 panel) 3. **case b**: r2 and r4 both unassigned - available reviewers: {r1, r3, r5} = 3 reviewers - needed: 6 slots - **impossible** (3 reviewers \u00d7 1 panel max = 3 slots) **conclusion**: no valid assignment exists. ## minimal contradiction set the infeasibility is caused by: - **structural constraint**: 5 reviewers, 6 required slots, max 1 panel per reviewer - **constraint 4** forces either 4 or 3 reviewers to be assigned - neither 4 nor 3 reviewers can fill 6 slots **minimal contradiction**: {constraint 2 (no reviewer on >1 panel), constraint 4 (r2\u2194r4), panel structure (3 panels \u00d7 2 reviewers)} ## recommendation to make this problem feasible, consider: 1. **reduce panels to 2** (4 slots for 5 reviewers) \u2192 feasible 2. **allow one reviewer on 2 panels** (relax constraint 2) 3. **increase reviewer pool to 6+** reviewers 4. **modify constraint 4** to be less restrictive --- **final answer**: **no valid assignment exists.** the problem is structurally infeasible due to insufficient reviewers (5) for required slots (6) given the constraint that each reviewer serves on at most one panel.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.47619047619047616,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 54.19062174201497,
+      "readability_fk_grade": 10.541965811965813,
+      "coherence_mean": 0.3926822150062423,
+      "prompt_relevance": 0.7900771563109268,
+      "connective_density": 0.17391304347826086,
+      "word_count": 472,
+      "repetition_rate": 0.07462686567164178
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

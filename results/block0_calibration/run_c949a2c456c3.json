@@ -1,0 +1,164 @@
+{
+  "run_id": "run_c949a2c456c3",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:00:51.331426+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_01_signal_triage_deduction",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-flash"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Multi-Constraint Incident Triage Deduction Puzzle",
+    "prompt": "A security operations team receives four overnight alerts, each tied to one system: Atlas, Beacon, Cipher, and Drift. Exactly one alert is a true critical incident that must be escalated before business hours.\n\nFacts collected by the morning lead:\n1) Exactly one system has all three indicators: anomalous login location, privileged token use, and abnormal data transfer volume.\n2) Atlas and Drift are in the same network zone. If one of them has abnormal data transfer volume, then the other does not.\n3) Beacon has anomalous login location if and only if Cipher does not have privileged token use.\n4) Any system in the critical incident state must have privileged token use.\n5) Cipher has abnormal data transfer volume.\n6) Drift does not have anomalous login location.\n7) Atlas has privileged token use only if Beacon has anomalous login location.\n8) Exactly two systems have privileged token use.\n\nYour tasks:\n(1) Determine which system is the true critical incident.\n(2) Provide a step-by-step deduction chain showing why alternatives fail.\n(3) Generalize a reusable reasoning procedure for similar triage puzzles where signals are partially dependent.\n(4) Give one real-world operations lesson about avoiding premature escalation.\n\nRespond in four labeled sections and do not skip intermediate inferences.\n",
+    "rubric": [
+      "Correctly identifies the unique critical system implied by all constraints.",
+      "Uses explicit multi-step deduction rather than intuition-only narration.",
+      "Provides a valid generalized method for solving similar dependency puzzles.",
+      "Gives a coherent real-world mapping with accurate analogy limits."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-flash",
+      "text": "This is a classic logic puzzle that can be solved by systematically applying the given facts and eliminating possibilities.\n\n---\n\n### (1) Determination of the True Critical Incident\n\nThe true critical incident is **Beacon**.\n\n---\n\n### (2) Step-by-Step Deduction Chain\n\nLet's denote the indicators as follows:\n*   **L**: Anomalous Login Location\n*   **P**: Privileged Token Use\n*   **D**: Abnormal Data Transfer Volume\n\nWe have four systems: Atlas (A), Beacon (B), Cipher (C), Drift (D).\nExactly one system is the critical incident (CI).\nA system is CI $\\implies$ it has P (Fact 4).\nExactly one system has all three indicators (L, P, D) (Fact 1).\n\nLet's build a table to track the indicators for each system.\n\n| System | L | P | D | All 3 | CI |\n|---|---|---|---|---|---|\n| Atlas (A) | ? | ? | ? | ? | ? |\n| Beacon (B) | ? | ? | ? | ? | ? |\n| Cipher (C) | ? | ? | ? | ? | ? |\n| Drift (D) | ? | ? | ? | ? | ? |\n\n**Initial Deductions:**\n\n*   **Fact 5: Cipher has abnormal data transfer volume.**\n    *   C: D = True\n\n*   **Fact 6: Drift does not have anomalous login location.**\n    *   D: L = False\n\n*   **Fact 8: Exactly two systems have privileged token use.**\n    *   Total P = 2\n\n**Applying Facts and Building the Table (Iteration 1):**\n\n| System | L | P | D | All 3 | CI |\n|---|---|---|---|---|---|\n| Atlas (A) | ? | ? | ? | ? | ? |\n| Beacon (B) | ? | ? | ? | ? | ? |\n| Cipher (C) | ? | ? | **T** | ? | ? |\n| Drift (D) | **F** | ? | ? | ? | ? |\n\n---\n\n**Deduction Step 1: Using Fact 2 (Atlas and Drift in the same network zone. If one has D, the other does not).**\n\n*   We know C has D (Fact 5). This fact is about A and D.\n*   Let's consider the possibilities for D:D.\n    *   **Case 1: Drift has Abnormal Data Transfer Volume (D:D = True).**\n        *   Then, by Fact 2, Atlas does NOT have Abnormal Data Transfer Volume (A:D = False).\n    *   **Case 2: Drift does NOT have Abnormal Data Transfer Volume (D:D = False).**\n        *   Then, by Fact 2, Atlas HAS Abnormal Data Transfer Volume (A:D = True).\n\nLet's keep these cases in mind.\n\n---\n\n**Deduction Step 2: Using Fact 1 (Exactly one system has all three indicators).**\n\n*   The system with all three indicators (L, P, D) is the \"All 3\" system.\n*   This \"All 3\" system must also be the Critical Incident (CI) system, because CI systems must have P (Fact 4), and if it has L and D as well, it fits Fact 1.\n*   However, Fact 1 states \"Exactly one system has all three indicators\". This system is *a* system, not necessarily *the* CI system. Let's re-evaluate.\n    *   If a system is CI, it must have P (Fact 4).\n    *   If a system has L, P, and D, it is the \"All 3\" system.\n    *   The CI system *could* be the \"All 3\" system, or it could be a different system that has P but not L or D.\n    *   Let's assume for now that the \"All 3\" system is the CI system. If this leads to a contradiction, we'll reconsider.\n\nLet's look at Drift (D).\n*   D:L = False (from Fact 6).\n*   Therefore, Drift cannot have all three indicators (L, P, D).\n*   Therefore, Drift cannot be the \"All 3\" system.\n*   Therefore, Drift cannot be the Critical Incident (CI) system (because if it were CI, it would need P, and if it had L and D, it would be the \"All 3\" system, which it cannot be). This is a bit circular.\n\nLet's be more precise:\n*   **Drift (D) cannot be the \"All 3\" system because D:L is False.**\n*   **The CI system must have P (Fact 4).**\n*   **The \"All 3\" system must have P (by definition).**\n\nThis means the \"All 3\" system is one of A, B, C.\nThe CI system is one of A, B, C, D.\n\n---\n\n**Deduction Step 3: Using Fact 3 (Beacon has L if and only if Cipher does not have P).**\n\n*   (B:L = True) $\\iff$ (C:P = False)\n\n**Deduction Step 4: Using Fact 7 (Atlas has P only if Beacon has L).**\n\n*   (A:P = True) $\\implies$ (B:L = True)\n\n---\n\n**Let's try to identify the \"All 3\" system first, as it's a strong constraint.**\nThe \"All 3\" system must have L, P, D.\nWe know D:L = False, so Drift is not the \"All 3\" system.\nSo, the \"All 3\" system is A, B, or C.\n\n**Consider Cipher (C):**\n*   C:D = True (Fact 5).\n*   If C is the \"All 3\" system, then C:L = True and C:P = True.\n    *   If C:P = True, then by Fact 3, B:L = False.\n    *   If B:L = False, then by Fact 7, A:P = False.\n\nLet's explore this path: **Assume Cipher is the \"All 3\" system.**\n*   C:L = T, C:P = T, C:D = T. (This means C has all 3 indicators).\n*   From C:P = T, by Fact 3, B:L = F.\n*   From B:L = F, by Fact 7, A:P = F.\n\nNow let's update the table under this assumption:\n\n| System | L | P | D | All 3 | CI |\n|---|---|---|---|---|---|\n| Atlas (A) | ? | **F** | ? | F | ? |\n| Beacon (B) | **F** | ? | ? | F | ? |\n| Cipher (C) | **T** | **T** | **T** | T | ? |\n| Drift (D) | **F** | ? | ? | F | ? |\n\n*   We have C:P = T and A:P = F.\n*   We need exactly two systems to have P (Fact 8).\n*   So, the remaining P must come from B or D.\n*   If B:P = T, then D:P = F.\n*   If D:P = T, then B:P = F.\n\nLet's check the CI condition (Fact 4: CI $\\implies$ P).\n*   If C is the \"All 3\" system, it has P, so C *could* be CI.\n*   If A is CI, A must have P. But A:P = F, so **A cannot be CI.**\n*   If B is CI, B must have P.\n*   If D is CI, D must have P.\n\nLet's look at Fact 2 again: (A:D = T $\\iff$ D:D = F) AND (A:D = F $\\iff$ D:D = T).\n*   We don't know A:D or D:D yet.\n\nLet's continue with the assumption that **Cipher is the \"All 3\" system.**\n*   C:L=T, C:P=T, C:D=T.\n*   B:L=F (from Fact 3 and C:P=T).\n*   A:P=F (from Fact 7 and B:L=F).\n*   D:L=F (Fact 6).\n\nCurrent P count: C:P=T, A:P=F. We need one more P (Fact 8).\nSo, either B:P=T or D:P=T.\n\n**Subcase 1.1: Assume Cipher is the \"All 3\" system AND Beacon has P (B:P=T).**\n*   C:L=T, C:P=T, C:D=T (All 3 system)\n*   B:L=F, B:P=T\n*   A:P=F\n*",
+      "input_tokens": 287,
+      "output_tokens": 2048,
+      "latency_ms": 4128.255874034949,
+      "structural_metrics": {
+        "mtld": 28.69679089026915,
+        "readability_fk_grade": 4.329386892177592,
+        "coherence_mean": 0.5310810291598641,
+        "prompt_relevance": 0.7255489311905765,
+        "connective_density": 0.21621621621621623,
+        "word_count": 1027,
+        "repetition_rate": 0.21484375
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "This is a classic logic puzzle that can be solved by systematically applying the given facts and eliminating possibilities.\n\n---\n\n### (1) Determination of the True Critical Incident\n\nThe true critical incident is **Beacon**.\n\n---\n\n### (2) Step-by-Step Deduction Chain\n\nLet's denote the indicators as follows:\n*   **L**: Anomalous Login Location\n*   **P**: Privileged Token Use\n*   **D**: Abnormal Data Transfer Volume\n\nWe have four systems: Atlas (A), Beacon (B), Cipher (C), Drift (D).\nExactly one system is the critical incident (CI).\nA system is CI $\\implies$ it has P (Fact 4).\nExactly one system has all three indicators (L, P, D) (Fact 1).\n\nLet's build a table to track the indicators for each system.\n\n| System | L | P | D | All 3 | CI |\n|---|---|---|---|---|---|\n| Atlas (A) | ? | ? | ? | ? | ? |\n| Beacon (B) | ? | ? | ? | ? | ? |\n| Cipher (C) | ? | ? | ? | ? | ? |\n| Drift (D) | ? | ? | ? | ? | ? |\n\n**Initial Deductions:**\n\n*   **Fact 5: Cipher has abnormal data transfer volume.**\n    *   C: D = True\n\n*   **Fact 6: Drift does not have anomalous login location.**\n    *   D: L = False\n\n*   **Fact 8: Exactly two systems have privileged token use.**\n    *   Total P = 2\n\n**Applying Facts and Building the Table (Iteration 1):**\n\n| System | L | P | D | All 3 | CI |\n|---|---|---|---|---|---|\n| Atlas (A) | ? | ? | ? | ? | ? |\n| Beacon (B) | ? | ? | ? | ? | ? |\n| Cipher (C) | ? | ? | **T** | ? | ? |\n| Drift (D) | **F** | ? | ? | ? | ? |\n\n---\n\n**Deduction Step 1: Using Fact 2 (Atlas and Drift in the same network zone. If one has D, the other does not).**\n\n*   We know C has D (Fact 5). This fact is about A and D.\n*   Let's consider the possibilities for D:D.\n    *   **Case 1: Drift has Abnormal Data Transfer Volume (D:D = True).**\n        *   Then, by Fact 2, Atlas does NOT have Abnormal Data Transfer Volume (A:D = False).\n    *   **Case 2: Drift does NOT have Abnormal Data Transfer Volume (D:D = False).**\n        *   Then, by Fact 2, Atlas HAS Abnormal Data Transfer Volume (A:D = True).\n\nLet's keep these cases in mind.\n\n---\n\n**Deduction Step 2: Using Fact 1 (Exactly one system has all three indicators).**\n\n*   The system with all three indicators (L, P, D) is the \"All 3\" system.\n*   This \"All 3\" system must also be the Critical Incident (CI) system, because CI systems must have P (Fact 4), and if it has L and D as well, it fits Fact 1.\n*   However, Fact 1 states \"Exactly one system has all three indicators\". This system is *a* system, not necessarily *the* CI system. Let's re-evaluate.\n    *   If a system is CI, it must have P (Fact 4).\n    *   If a system has L, P, and D, it is the \"All 3\" system.\n    *   The CI system *could* be the \"All 3\" system, or it could be a different system that has P but not L or D.\n    *   Let's assume for now that the \"All 3\" system is the CI system. If this leads to a contradiction, we'll reconsider.\n\nLet's look at Drift (D).\n*   D:L = False (from Fact 6).\n*   Therefore, Drift cannot have all three indicators (L, P, D).\n*   Therefore, Drift cannot be the \"All 3\" system.\n*   Therefore, Drift cannot be the Critical Incident (CI) system (because if it were CI, it would need P, and if it had L and D, it would be the \"All 3\" system, which it cannot be). This is a bit circular.\n\nLet's be more precise:\n*   **Drift (D) cannot be the \"All 3\" system because D:L is False.**\n*   **The CI system must have P (Fact 4).**\n*   **The \"All 3\" system must have P (by definition).**\n\nThis means the \"All 3\" system is one of A, B, C.\nThe CI system is one of A, B, C, D.\n\n---\n\n**Deduction Step 3: Using Fact 3 (Beacon has L if and only if Cipher does not have P).**\n\n*   (B:L = True) $\\iff$ (C:P = False)\n\n**Deduction Step 4: Using Fact 7 (Atlas has P only if Beacon has L).**\n\n*   (A:P = True) $\\implies$ (B:L = True)\n\n---\n\n**Let's try to identify the \"All 3\" system first, as it's a strong constraint.**\nThe \"All 3\" system must have L, P, D.\nWe know D:L = False, so Drift is not the \"All 3\" system.\nSo, the \"All 3\" system is A, B, or C.\n\n**Consider Cipher (C):**\n*   C:D = True (Fact 5).\n*   If C is the \"All 3\" system, then C:L = True and C:P = True.\n    *   If C:P = True, then by Fact 3, B:L = False.\n    *   If B:L = False, then by Fact 7, A:P = False.\n\nLet's explore this path: **Assume Cipher is the \"All 3\" system.**\n*   C:L = T, C:P = T, C:D = T. (This means C has all 3 indicators).\n*   From C:P = T, by Fact 3, B:L = F.\n*   From B:L = F, by Fact 7, A:P = F.\n\nNow let's update the table under this assumption:\n\n| System | L | P | D | All 3 | CI |\n|---|---|---|---|---|---|\n| Atlas (A) | ? | **F** | ? | F | ? |\n| Beacon (B) | **F** | ? | ? | F | ? |\n| Cipher (C) | **T** | **T** | **T** | T | ? |\n| Drift (D) | **F** | ? | ? | F | ? |\n\n*   We have C:P = T and A:P = F.\n*   We need exactly two systems to have P (Fact 8).\n*   So, the remaining P must come from B or D.\n*   If B:P = T, then D:P = F.\n*   If D:P = T, then B:P = F.\n\nLet's check the CI condition (Fact 4: CI $\\implies$ P).\n*   If C is the \"All 3\" system, it has P, so C *could* be CI.\n*   If A is CI, A must have P. But A:P = F, so **A cannot be CI.**\n*   If B is CI, B must have P.\n*   If D is CI, D must have P.\n\nLet's look at Fact 2 again: (A:D = T $\\iff$ D:D = F) AND (A:D = F $\\iff$ D:D = T).\n*   We don't know A:D or D:D yet.\n\nLet's continue with the assumption that **Cipher is the \"All 3\" system.**\n*   C:L=T, C:P=T, C:D=T.\n*   B:L=F (from Fact 3 and C:P=T).\n*   A:P=F (from Fact 7 and B:L=F).\n*   D:L=F (Fact 6).\n\nCurrent P count: C:P=T, A:P=F. We need one more P (Fact 8).\nSo, either B:P=T or D:P=T.\n\n**Subcase 1.1: Assume Cipher is the \"All 3\" system AND Beacon has P (B:P=T).**\n*   C:L=T, C:P=T, C:D=T (All 3 system)\n*   B:L=F, B:P=T\n*   A:P=F\n*",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "this is a classic logic puzzle that can be solved by systematically applying the given facts and eliminating possibilities. --- ### (1) determination of the true critical incident the true critical incident is **beacon**. --- ### (2) step-by-step deduction chain let's denote the indicators as follows: * **l**: anomalous login location * **p**: privileged token use * **d**: abnormal data transfer volume we have four systems: atlas (a), beacon (b), cipher (c), drift (d). exactly one system is the critical incident (ci). a system is ci $\\implies$ it has p (fact 4). exactly one system has all three indicators (l, p, d) (fact 1). let's build a table to track the indicators for each system. | system | l | p | d | all 3 | ci | |---|---|---|---|---|---| | atlas (a) | ? | ? | ? | ? | ? | | beacon (b) | ? | ? | ? | ? | ? | | cipher (c) | ? | ? | ? | ? | ? | | drift (d) | ? | ? | ? | ? | ? | **initial deductions:** * **fact 5: cipher has abnormal data transfer volume.** * c: d = true * **fact 6: drift does not have anomalous login location.** * d: l = false * **fact 8: exactly two systems have privileged token use.** * total p = 2 **applying facts and building the table (iteration 1):** | system | l | p | d | all 3 | ci | |---|---|---|---|---|---| | atlas (a) | ? | ? | ? | ? | ? | | beacon (b) | ? | ? | ? | ? | ? | | cipher (c) | ? | ? | **t** | ? | ? | | drift (d) | **f** | ? | ? | ? | ? | --- **deduction step 1: using fact 2 (atlas and drift in the same network zone. if one has d, the other does not).** * we know c has d (fact 5). this fact is about a and d. * let's consider the possibilities for d:d. * **case 1: drift has abnormal data transfer volume (d:d = true).** * then, by fact 2, atlas does not have abnormal data transfer volume (a:d = false). * **case 2: drift does not have abnormal data transfer volume (d:d = false).** * then, by fact 2, atlas has abnormal data transfer volume (a:d = true). let's keep these cases in mind. --- **deduction step 2: using fact 1 (exactly one system has all three indicators).** * the system with all three indicators (l, p, d) is the \"all 3\" system. * this \"all 3\" system must also be the critical incident (ci) system, because ci systems must have p (fact 4), and if it has l and d as well, it fits fact 1. * however, fact 1 states \"exactly one system has all three indicators\". this system is *a* system, not necessarily *the* ci system. let's re-evaluate. * if a system is ci, it must have p (fact 4). * if a system has l, p, and d, it is the \"all 3\" system. * the ci system *could* be the \"all 3\" system, or it could be a different system that has p but not l or d. * let's assume for now that the \"all 3\" system is the ci system. if this leads to a contradiction, we'll reconsider. let's look at drift (d). * d:l = false (from fact 6). * therefore, drift cannot have all three indicators (l, p, d). * therefore, drift cannot be the \"all 3\" system. * therefore, drift cannot be the critical incident (ci) system (because if it were ci, it would need p, and if it had l and d, it would be the \"all 3\" system, which it cannot be). this is a bit circular. let's be more precise: * **drift (d) cannot be the \"all 3\" system because d:l is false.** * **the ci system must have p (fact 4).** * **the \"all 3\" system must have p (by definition).** this means the \"all 3\" system is one of a, b, c. the ci system is one of a, b, c, d. --- **deduction step 3: using fact 3 (beacon has l if and only if cipher does not have p).** * (b:l = true) $\\iff$ (c:p = false) **deduction step 4: using fact 7 (atlas has p only if beacon has l).** * (a:p = true) $\\implies$ (b:l = true) --- **let's try to identify the \"all 3\" system first, as it's a strong constraint.** the \"all 3\" system must have l, p, d. we know d:l = false, so drift is not the \"all 3\" system. so, the \"all 3\" system is a, b, or c. **consider cipher (c):** * c:d = true (fact 5). * if c is the \"all 3\" system, then c:l = true and c:p = true. * if c:p = true, then by fact 3, b:l = false. * if b:l = false, then by fact 7, a:p = false. let's explore this path: **assume cipher is the \"all 3\" system.** * c:l = t, c:p = t, c:d = t. (this means c has all 3 indicators). * from c:p = t, by fact 3, b:l = f. * from b:l = f, by fact 7, a:p = f. now let's update the table under this assumption: | system | l | p | d | all 3 | ci | |---|---|---|---|---|---| | atlas (a) | ? | **f** | ? | f | ? | | beacon (b) | **f** | ? | ? | f | ? | | cipher (c) | **t** | **t** | **t** | t | ? | | drift (d) | **f** | ? | ? | f | ? | * we have c:p = t and a:p = f. * we need exactly two systems to have p (fact 8). * so, the remaining p must come from b or d. * if b:p = t, then d:p = f. * if d:p = t, then b:p = f. let's check the ci condition (fact 4: ci $\\implies$ p). * if c is the \"all 3\" system, it has p, so c *could* be ci. * if a is ci, a must have p. but a:p = f, so **a cannot be ci.** * if b is ci, b must have p. * if d is ci, d must have p. let's look at fact 2 again: (a:d = t $\\iff$ d:d = f) and (a:d = f $\\iff$ d:d = t). * we don't know a:d or d:d yet. let's continue with the assumption that **cipher is the \"all 3\" system.** * c:l=t, c:p=t, c:d=t. * b:l=f (from fact 3 and c:p=t). * a:p=f (from fact 7 and b:l=f). * d:l=f (fact 6). current p count: c:p=t, a:p=f. we need one more p (fact 8). so, either b:p=t or d:p=t. **subcase 1.1: assume cipher is the \"all 3\" system and beacon has p (b:p=t).** * c:l=t, c:p=t, c:d=t (all 3 system) * b:l=f, b:p=t * a:p=f *": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.26578073089701,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 28.69679089026915,
+      "readability_fk_grade": 4.329386892177592,
+      "coherence_mean": 0.5310810291598641,
+      "prompt_relevance": 0.7255489311905765,
+      "connective_density": 0.21621621621621623,
+      "word_count": 1027,
+      "repetition_rate": 0.21484375
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

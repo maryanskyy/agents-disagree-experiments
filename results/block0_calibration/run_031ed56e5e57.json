@@ -1,0 +1,166 @@
+{
+  "run_id": "run_031ed56e5e57",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:55:03.328393+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_01_signal_triage_deduction",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Multi-Constraint Incident Triage Deduction Puzzle",
+    "prompt": "A security operations team receives four overnight alerts, each tied to one system: Atlas, Beacon, Cipher, and Drift. Exactly one alert is a true critical incident that must be escalated before business hours.\n\nFacts collected by the morning lead:\n1) Exactly one system has all three indicators: anomalous login location, privileged token use, and abnormal data transfer volume.\n2) Atlas and Drift are in the same network zone. If one of them has abnormal data transfer volume, then the other does not.\n3) Beacon has anomalous login location if and only if Cipher does not have privileged token use.\n4) Any system in the critical incident state must have privileged token use.\n5) Cipher has abnormal data transfer volume.\n6) Drift does not have anomalous login location.\n7) Atlas has privileged token use only if Beacon has anomalous login location.\n8) Exactly two systems have privileged token use.\n\nYour tasks:\n(1) Determine which system is the true critical incident.\n(2) Provide a step-by-step deduction chain showing why alternatives fail.\n(3) Generalize a reusable reasoning procedure for similar triage puzzles where signals are partially dependent.\n(4) Give one real-world operations lesson about avoiding premature escalation.\n\nRespond in four labeled sections and do not skip intermediate inferences.\n",
+    "rubric": [
+      "Correctly identifies the unique critical system implied by all constraints.",
+      "Uses explicit multi-step deduction rather than intuition-only narration.",
+      "Provides a valid generalized method for solving similar dependency puzzles.",
+      "Gives a coherent real-world mapping with accurate analogy limits."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "This is an excellent logic puzzle that mirrors the deductive reasoning required in a real Security Operations Center (SOC). Here is a detailed breakdown of the solution.\n\n### (1) The True Critical Incident\n\nThe system that is the true critical incident is **Beacon**.\n\n### (2) Step-by-Step Deduction Chain\n\nTo solve this, we will use a logic grid to track the state of each indicator (Anomalous Login Location, Privileged Token Use, Abnormal Data Transfer) for each system (Atlas, Beacon, Cipher, Drift). We will fill this grid by systematically applying the given facts.\n\n**Let's define our terms:**\n*   **Systems:** Atlas (A), Beacon (B), Cipher (C), Drift (D)\n*   **Indicators:** Anomalous",
+      "input_tokens": 287,
+      "output_tokens": 4092,
+      "latency_ms": 4362.699021934532,
+      "structural_metrics": {
+        "mtld": 64.04538439955107,
+        "readability_fk_grade": 11.366153846153846,
+        "coherence_mean": 0.21727605672876055,
+        "prompt_relevance": 0.7980058284333792,
+        "connective_density": 0.0,
+        "word_count": 106,
+        "repetition_rate": 0.019417475728155338
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "This is an excellent logic puzzle that mirrors the deductive reasoning required in a real Security Operations Center (SOC). Here is a detailed breakdown of the solution.\n\n### (1) The True Critical Incident\n\nThe system that is the true critical incident is **Beacon**.\n\n### (2) Step-by-Step Deduction Chain\n\nTo solve this, we will use a logic grid to track the state of each indicator (Anomalous Login Location, Privileged Token Use, Abnormal Data Transfer) for each system (Atlas, Beacon, Cipher, Drift). We will fill this grid by systematically applying the given facts.\n\n**Let's define our terms:**\n*   **Systems:** Atlas (A), Beacon (B), Cipher (C), Drift (D)\n*   **Indicators:** Anomalous",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "this is an excellent logic puzzle that mirrors the deductive reasoning required in a real security operations center (soc). here is a detailed breakdown of the solution. ### (1) the true critical incident the system that is the true critical incident is **beacon**. ### (2) step-by-step deduction chain to solve this, we will use a logic grid to track the state of each indicator (anomalous login location, privileged token use, abnormal data transfer) for each system (atlas, beacon, cipher, drift). we will fill this grid by systematically applying the given facts. **let's define our terms:** * **systems:** atlas (a), beacon (b), cipher (c), drift (d) * **indicators:** anomalous": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.7592592592592593,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 64.04538439955107,
+      "readability_fk_grade": 11.366153846153846,
+      "coherence_mean": 0.21727605672876055,
+      "prompt_relevance": 0.7980058284333792,
+      "connective_density": 0.0,
+      "word_count": 106,
+      "repetition_rate": 0.019417475728155338
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "random_sample_15pct"
+      ],
+      "sheet_path": "results/human_eval/run_031ed56e5e57.json"
+    }
+  }
+}

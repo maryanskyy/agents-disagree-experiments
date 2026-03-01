@@ -1,0 +1,166 @@
+{
+  "run_id": "run_479261cec0bd",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:56:53.752983+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_05_statistical_claim_flaw",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Diagnose Flaws in a Statistical Performance Claim",
+    "prompt": "A startup claims: \"Our AI tutor improves exam scores by 25%.\" Their evidence: 40 volunteer students used the tutor for two weeks and their average score rose from 64 to 80. There was no control group. Students self-selected into the trial. Exams before and after were not equated for difficulty. The company highlights p < 0.05 from a paired t-test and concludes broad effectiveness.\n\nCritically evaluate this claim. Identify methodological threats to validity, explain why the statistical significance result is insufficient for the causal claim, and propose a minimally credible redesign that could be executed within one school term. Include sampling, randomization (or quasi-experimental fallback), outcome measurement, and pre-registration elements. End by stating what claim is actually justified from current evidence.\n",
+    "rubric": [
+      "Flags core validity issues (selection bias, no control, test non-equivalence, regression effects).",
+      "Explains mismatch between p-value and causal inference.",
+      "Proposes feasible improved study design with concrete safeguards.",
+      "Final justified claim is appropriately modest and evidence-aligned."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# Critical Evaluation of AI Tutor Effectiveness Claim\n\n## I. Methodological Threats to Validity\n\n### A. Internal Validity Threats (Causal Inference)\n\n| Threat | Mechanism | Impact |\n|--------|-----------|--------|\n| **Selection bias** | Volunteers self-select; likely more motivated, engaged, or struggling students | Score gains may reflect motivation, not tutor efficacy |\n| **Maturation** | Two weeks of any tutoring/practice improves performance naturally | Confounded with treatment effect |\n| **Practice effects** | Students familiar with exam format on second attempt | Inflates post-test scores independent of tutor |\n| **Regression to the mean** | If students selected because scores were low, natural variation produces upward drift | Baseline 64 is suspiciously low; regression artifact likely |\n| **Hawthorne effect** | Volunteer students aware they're in a trial; increased effort/attention | Effect attributable to observation, not tutor quality |\n| **Instrumentation** | Pre/post exams not equated for difficulty | A harder pre-test and easier post-test mechanically inflate gains |\n\n### B. External Validity Threats (Generalizability)\n\n- **Volunteer sample**: Non-representative; excludes disengaged students most needing help\n- **Two-week window**: Insufficient to assess durability; gains may be temporary\n- **No context specification**: Unknown subject, student demographics, baseline ability distribution\n- **Novelty effect**: New technology may produce short-term enthusiasm boost\n\n---\n\n## II. Why Statistical Significance \u2260 Causal Claim\n\n### The p-value Problem\n\n**What p < 0.05 actually means:**\n- Probability of observing this mean difference (or larger) *if the null hypothesis is true* and all assumptions hold\n- Does NOT indicate effect size, practical significance, or causation\n- Assumes random assignment (violated here)\n\n**Why it's misleading here:**\n\n1. **Multiple confounds are correlated with the outcome.** A paired t-test assumes the only difference between pre and post is the treatment. Here, at minimum:\n   - Motivation (volunteer effect)\n   - Practice/familiarity with exam format\n   - Possible exam difficulty differences\n   \n   All inflate the observed difference.\n\n2. **Statistical significance \u2260 treatment effect.** The 16-point gain reflects:\n   - True tutor effect (unknown magnitude)\n   - Selection bias (unknown magnitude)\n   - Practice effects (unknown magnitude)\n   - Possible instrumentation bias (unknown direction)\n   \n   The p-value does not decompose these.\n\n3. **No baseline equivalence.** Without random assignment or matched controls, we cannot attribute the difference to the tutor.\n\n**Analogy:** If I measure my height before and after wearing platform shoes, find a significant difference (p < 0.05), I cannot conclude the shoes caused growth\u2014the measurement method changed.\n\n---\n\n## III. Minimally Credible Redesign (One School Term)\n\n### A. Study Design: Cluster Randomized Quasi-Experiment\n\n**Rationale:** Full RCT may be infeasible (ethical concerns about withholding tutoring); cluster design reduces contamination and is administratively realistic.\n\n### B. Sampling & Randomization\n\n**Population:**\n- Target: 4\u20136 intact classrooms (n \u2248 120\u2013180 students) in a single school/district\n- Inclusion: All students in selected classes (no self-selection)\n- Stratify by baseline performance quartile to ensure balanced groups\n\n**Randomization:**\n- Randomize **classrooms** (not individuals) to:\n  - **Treatment:** AI tutor + standard instruction (8\u201310 weeks)\n  - **Control:** Standard instruction only\n- Minimum 2 classrooms per arm (ideally 3 each)\n- Document randomization process; publish allocation before outcome analysis\n\n**Rationale:** Avoids ethical concerns, reduces peer-effect contamination, maintains ecological validity.\n\n---\n\n### C. Outcome Measurement\n\n**Primary outcome:**\n- **Standardized exam** (same for all students, administered by independent proctor)\n- Administer pre-test (baseline), mid-point (week 4), post-test (week 10)\n- Use **parallel forms** of equal difficulty (validated via pilot or item-response theory)\n- Blind graders to treatment assignment\n\n**Secondary outcomes:**\n- **Engagement metrics:** Time-on-task, assignment completion (objective, platform-recorded)\n- **Durability:** Retention test 4 weeks post-intervention\n- **Heterogeneity:** Stratified analysis by baseline performance quartile (does tutor help low performers more?)\n\n**Measurement quality:**\n- Pre-register exam difficulty equivalence check (e.g., Rasch analysis)\n- Report effect sizes (Cohen's d) and 95% CIs, not just p-values\n\n---\n\n### D. Pre-Registration & Analysis Plan\n\n**Pre-register (before outcome data are locked):**\n1. Primary hypothesis: Treatment group mean \u2265 control group mean + 5 percentile points (conservative, realistic)\n2. Primary analysis: ANCOVA with baseline score as covariate, classroom as random effect\n3. Secondary analyses: Stratified by baseline quartile; intent-to-treat (all enrolled students)\n4. Stopping rule: No interim analyses; analyze after all post-tests collected\n5. Sensitivity analyses: Exclude students with <80% attendance; exclude outliers (\u00b13 SD)\n\n**Transparency:**\n- Register on OSF or AsPredicted before data collection\n- Report all outcomes, including null findings\n- Publish pre-test equivalence table\n\n---\n\n### E. Timeline (One School Term \u2248 15 weeks)\n\n| Week | Activity |\n|------|----------|\n| 1\u20132 | Recruit schools, randomize classrooms, develop parallel exams, pre-register |\n| 3 | Administer baseline exam, begin intervention |\n| 7 | Mid-point exam (check fidelity, engagement) |\n| 12 | Post-intervention exam |\n| 13\u201314 | Retention test; data cleaning, analysis |\n| 15 | Report findings |\n\n---\n\n## IV. What the Current Evidence Actually Justifies\n\n### Honest Claim (Supported by Data):\n\n> \"In a small volunteer sample (n=40) over two weeks, students using our AI tutor showed a 16-point average increase on an unvalidated exam, with a statistically significant paired t-test (p < 0.05). **This does not establish that the tutor caused the improvement**, as the study lacked a control group, random assignment, and exam difficulty controls. The result is consistent with selection bias, practice effects, and measurement artifacts. Causal claims require a controlled trial.\"\n\n### What Should Be Communicated to Stakeholders:\n\n- \u2705 \"Preliminary signal of potential benefit; warrants rigorous testing\"\n- \u274c \"Proven 25% improvement in exam scores\"\n- \u274c \"Statistically significant, therefore effective\"\n\n---\n\n## V. Summary Table: Threats & Mitigations\n\n| Threat | Current Study | Proposed Redesign |\n|--------|---------------|-------------------|\n| Selection bias | Volunteers only | All students in randomized classrooms |\n| No control | None | Randomized control group |\n| Practice effects | Same exam format pre/post | Parallel forms, equated difficulty |\n| Regression to mean | Baseline 64 (low) | Stratified randomization; ANCOVA |\n| Instrumentation | Exams not equated | Validated parallel forms, blind grading |\n| Hawthorne effect | Volunteers aware | All students; blinded outcome assessment |\n| Generalizability | 2 weeks, unclear context | Full term, specified population |\n\n---\n\n## VI. Conclusion\n\nThe startup's claim conflates **statistical significance with causal efficacy**. The p-value is a red herring; it reflects noise reduction in a biased sample, not proof of treatment effect. The 16-point gain is almost entirely attributable to selection bias, practice effects, and possible measurement artifacts.\n\n**The minimally credible redesign** uses cluster randomization (practical for schools), parallel exams (controls instrumentation), pre-registration (prevents p-hacking), and stratified analysis (detects heterogeneous effects). This can be executed in one term and would provide evidence suitable for marketing claims.\n\n**Until then:** The honest claim is \"promising preliminary signal, not proven efficacy.\"",
+      "input_tokens": 199,
+      "output_tokens": 1975,
+      "latency_ms": 4181.641895091161,
+      "structural_metrics": {
+        "mtld": 230.25544716640258,
+        "readability_fk_grade": 18.639,
+        "coherence_mean": 0.26184952490562197,
+        "prompt_relevance": 0.7534851070971775,
+        "connective_density": 0.08333333333333333,
+        "word_count": 1000,
+        "repetition_rate": 0.012036108324974924
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# Critical Evaluation of AI Tutor Effectiveness Claim\n\n## I. Methodological Threats to Validity\n\n### A. Internal Validity Threats (Causal Inference)\n\n| Threat | Mechanism | Impact |\n|--------|-----------|--------|\n| **Selection bias** | Volunteers self-select; likely more motivated, engaged, or struggling students | Score gains may reflect motivation, not tutor efficacy |\n| **Maturation** | Two weeks of any tutoring/practice improves performance naturally | Confounded with treatment effect |\n| **Practice effects** | Students familiar with exam format on second attempt | Inflates post-test scores independent of tutor |\n| **Regression to the mean** | If students selected because scores were low, natural variation produces upward drift | Baseline 64 is suspiciously low; regression artifact likely |\n| **Hawthorne effect** | Volunteer students aware they're in a trial; increased effort/attention | Effect attributable to observation, not tutor quality |\n| **Instrumentation** | Pre/post exams not equated for difficulty | A harder pre-test and easier post-test mechanically inflate gains |\n\n### B. External Validity Threats (Generalizability)\n\n- **Volunteer sample**: Non-representative; excludes disengaged students most needing help\n- **Two-week window**: Insufficient to assess durability; gains may be temporary\n- **No context specification**: Unknown subject, student demographics, baseline ability distribution\n- **Novelty effect**: New technology may produce short-term enthusiasm boost\n\n---\n\n## II. Why Statistical Significance \u2260 Causal Claim\n\n### The p-value Problem\n\n**What p < 0.05 actually means:**\n- Probability of observing this mean difference (or larger) *if the null hypothesis is true* and all assumptions hold\n- Does NOT indicate effect size, practical significance, or causation\n- Assumes random assignment (violated here)\n\n**Why it's misleading here:**\n\n1. **Multiple confounds are correlated with the outcome.** A paired t-test assumes the only difference between pre and post is the treatment. Here, at minimum:\n   - Motivation (volunteer effect)\n   - Practice/familiarity with exam format\n   - Possible exam difficulty differences\n   \n   All inflate the observed difference.\n\n2. **Statistical significance \u2260 treatment effect.** The 16-point gain reflects:\n   - True tutor effect (unknown magnitude)\n   - Selection bias (unknown magnitude)\n   - Practice effects (unknown magnitude)\n   - Possible instrumentation bias (unknown direction)\n   \n   The p-value does not decompose these.\n\n3. **No baseline equivalence.** Without random assignment or matched controls, we cannot attribute the difference to the tutor.\n\n**Analogy:** If I measure my height before and after wearing platform shoes, find a significant difference (p < 0.05), I cannot conclude the shoes caused growth\u2014the measurement method changed.\n\n---\n\n## III. Minimally Credible Redesign (One School Term)\n\n### A. Study Design: Cluster Randomized Quasi-Experiment\n\n**Rationale:** Full RCT may be infeasible (ethical concerns about withholding tutoring); cluster design reduces contamination and is administratively realistic.\n\n### B. Sampling & Randomization\n\n**Population:**\n- Target: 4\u20136 intact classrooms (n \u2248 120\u2013180 students) in a single school/district\n- Inclusion: All students in selected classes (no self-selection)\n- Stratify by baseline performance quartile to ensure balanced groups\n\n**Randomization:**\n- Randomize **classrooms** (not individuals) to:\n  - **Treatment:** AI tutor + standard instruction (8\u201310 weeks)\n  - **Control:** Standard instruction only\n- Minimum 2 classrooms per arm (ideally 3 each)\n- Document randomization process; publish allocation before outcome analysis\n\n**Rationale:** Avoids ethical concerns, reduces peer-effect contamination, maintains ecological validity.\n\n---\n\n### C. Outcome Measurement\n\n**Primary outcome:**\n- **Standardized exam** (same for all students, administered by independent proctor)\n- Administer pre-test (baseline), mid-point (week 4), post-test (week 10)\n- Use **parallel forms** of equal difficulty (validated via pilot or item-response theory)\n- Blind graders to treatment assignment\n\n**Secondary outcomes:**\n- **Engagement metrics:** Time-on-task, assignment completion (objective, platform-recorded)\n- **Durability:** Retention test 4 weeks post-intervention\n- **Heterogeneity:** Stratified analysis by baseline performance quartile (does tutor help low performers more?)\n\n**Measurement quality:**\n- Pre-register exam difficulty equivalence check (e.g., Rasch analysis)\n- Report effect sizes (Cohen's d) and 95% CIs, not just p-values\n\n---\n\n### D. Pre-Registration & Analysis Plan\n\n**Pre-register (before outcome data are locked):**\n1. Primary hypothesis: Treatment group mean \u2265 control group mean + 5 percentile points (conservative, realistic)\n2. Primary analysis: ANCOVA with baseline score as covariate, classroom as random effect\n3. Secondary analyses: Stratified by baseline quartile; intent-to-treat (all enrolled students)\n4. Stopping rule: No interim analyses; analyze after all post-tests collected\n5. Sensitivity analyses: Exclude students with <80% attendance; exclude outliers (\u00b13 SD)\n\n**Transparency:**\n- Register on OSF or AsPredicted before data collection\n- Report all outcomes, including null findings\n- Publish pre-test equivalence table\n\n---\n\n### E. Timeline (One School Term \u2248 15 weeks)\n\n| Week | Activity |\n|------|----------|\n| 1\u20132 | Recruit schools, randomize classrooms, develop parallel exams, pre-register |\n| 3 | Administer baseline exam, begin intervention |\n| 7 | Mid-point exam (check fidelity, engagement) |\n| 12 | Post-intervention exam |\n| 13\u201314 | Retention test; data cleaning, analysis |\n| 15 | Report findings |\n\n---\n\n## IV. What the Current Evidence Actually Justifies\n\n### Honest Claim (Supported by Data):\n\n> \"In a small volunteer sample (n=40) over two weeks, students using our AI tutor showed a 16-point average increase on an unvalidated exam, with a statistically significant paired t-test (p < 0.05). **This does not establish that the tutor caused the improvement**, as the study lacked a control group, random assignment, and exam difficulty controls. The result is consistent with selection bias, practice effects, and measurement artifacts. Causal claims require a controlled trial.\"\n\n### What Should Be Communicated to Stakeholders:\n\n- \u2705 \"Preliminary signal of potential benefit; warrants rigorous testing\"\n- \u274c \"Proven 25% improvement in exam scores\"\n- \u274c \"Statistically significant, therefore effective\"\n\n---\n\n## V. Summary Table: Threats & Mitigations\n\n| Threat | Current Study | Proposed Redesign |\n|--------|---------------|-------------------|\n| Selection bias | Volunteers only | All students in randomized classrooms |\n| No control | None | Randomized control group |\n| Practice effects | Same exam format pre/post | Parallel forms, equated difficulty |\n| Regression to mean | Baseline 64 (low) | Stratified randomization; ANCOVA |\n| Instrumentation | Exams not equated | Validated parallel forms, blind grading |\n| Hawthorne effect | Volunteers aware | All students; blinded outcome assessment |\n| Generalizability | 2 weeks, unclear context | Full term, specified population |\n\n---\n\n## VI. Conclusion\n\nThe startup's claim conflates **statistical significance with causal efficacy**. The p-value is a red herring; it reflects noise reduction in a biased sample, not proof of treatment effect. The 16-point gain is almost entirely attributable to selection bias, practice effects, and possible measurement artifacts.\n\n**The minimally credible redesign** uses cluster randomization (practical for schools), parallel exams (controls instrumentation), pre-registration (prevents p-hacking), and stratified analysis (detects heterogeneous effects). This can be executed in one term and would provide evidence suitable for marketing claims.\n\n**Until then:** The honest claim is \"promising preliminary signal, not proven efficacy.\"",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# critical evaluation of ai tutor effectiveness claim ## i. methodological threats to validity ### a. internal validity threats (causal inference) | threat | mechanism | impact | |--------|-----------|--------| | **selection bias** | volunteers self-select; likely more motivated, engaged, or struggling students | score gains may reflect motivation, not tutor efficacy | | **maturation** | two weeks of any tutoring/practice improves performance naturally | confounded with treatment effect | | **practice effects** | students familiar with exam format on second attempt | inflates post-test scores independent of tutor | | **regression to the mean** | if students selected because scores were low, natural variation produces upward drift | baseline 64 is suspiciously low; regression artifact likely | | **hawthorne effect** | volunteer students aware they're in a trial; increased effort/attention | effect attributable to observation, not tutor quality | | **instrumentation** | pre/post exams not equated for difficulty | a harder pre-test and easier post-test mechanically inflate gains | ### b. external validity threats (generalizability) - **volunteer sample**: non-representative; excludes disengaged students most needing help - **two-week window**: insufficient to assess durability; gains may be temporary - **no context specification**: unknown subject, student demographics, baseline ability distribution - **novelty effect**: new technology may produce short-term enthusiasm boost --- ## ii. why statistical significance \u2260 causal claim ### the p-value problem **what p < 0.05 actually means:** - probability of observing this mean difference (or larger) *if the null hypothesis is true* and all assumptions hold - does not indicate effect size, practical significance, or causation - assumes random assignment (violated here) **why it's misleading here:** 1. **multiple confounds are correlated with the outcome.** a paired t-test assumes the only difference between pre and post is the treatment. here, at minimum: - motivation (volunteer effect) - practice/familiarity with exam format - possible exam difficulty differences all inflate the observed difference. 2. **statistical significance \u2260 treatment effect.** the 16-point gain reflects: - true tutor effect (unknown magnitude) - selection bias (unknown magnitude) - practice effects (unknown magnitude) - possible instrumentation bias (unknown direction) the p-value does not decompose these. 3. **no baseline equivalence.** without random assignment or matched controls, we cannot attribute the difference to the tutor. **analogy:** if i measure my height before and after wearing platform shoes, find a significant difference (p < 0.05), i cannot conclude the shoes caused growth\u2014the measurement method changed. --- ## iii. minimally credible redesign (one school term) ### a. study design: cluster randomized quasi-experiment **rationale:** full rct may be infeasible (ethical concerns about withholding tutoring); cluster design reduces contamination and is administratively realistic. ### b. sampling & randomization **population:** - target: 4\u20136 intact classrooms (n \u2248 120\u2013180 students) in a single school/district - inclusion: all students in selected classes (no self-selection) - stratify by baseline performance quartile to ensure balanced groups **randomization:** - randomize **classrooms** (not individuals) to: - **treatment:** ai tutor + standard instruction (8\u201310 weeks) - **control:** standard instruction only - minimum 2 classrooms per arm (ideally 3 each) - document randomization process; publish allocation before outcome analysis **rationale:** avoids ethical concerns, reduces peer-effect contamination, maintains ecological validity. --- ### c. outcome measurement **primary outcome:** - **standardized exam** (same for all students, administered by independent proctor) - administer pre-test (baseline), mid-point (week 4), post-test (week 10) - use **parallel forms** of equal difficulty (validated via pilot or item-response theory) - blind graders to treatment assignment **secondary outcomes:** - **engagement metrics:** time-on-task, assignment completion (objective, platform-recorded) - **durability:** retention test 4 weeks post-intervention - **heterogeneity:** stratified analysis by baseline performance quartile (does tutor help low performers more?) **measurement quality:** - pre-register exam difficulty equivalence check (e.g., rasch analysis) - report effect sizes (cohen's d) and 95% cis, not just p-values --- ### d. pre-registration & analysis plan **pre-register (before outcome data are locked):** 1. primary hypothesis: treatment group mean \u2265 control group mean + 5 percentile points (conservative, realistic) 2. primary analysis: ancova with baseline score as covariate, classroom as random effect 3. secondary analyses: stratified by baseline quartile; intent-to-treat (all enrolled students) 4. stopping rule: no interim analyses; analyze after all post-tests collected 5. sensitivity analyses: exclude students with <80% attendance; exclude outliers (\u00b13 sd) **transparency:** - register on osf or aspredicted before data collection - report all outcomes, including null findings - publish pre-test equivalence table --- ### e. timeline (one school term \u2248 15 weeks) | week | activity | |------|----------| | 1\u20132 | recruit schools, randomize classrooms, develop parallel exams, pre-register | | 3 | administer baseline exam, begin intervention | | 7 | mid-point exam (check fidelity, engagement) | | 12 | post-intervention exam | | 13\u201314 | retention test; data cleaning, analysis | | 15 | report findings | --- ## iv. what the current evidence actually justifies ### honest claim (supported by data): > \"in a small volunteer sample (n=40) over two weeks, students using our ai tutor showed a 16-point average increase on an unvalidated exam, with a statistically significant paired t-test (p < 0.05). **this does not establish that the tutor caused the improvement**, as the study lacked a control group, random assignment, and exam difficulty controls. the result is consistent with selection bias, practice effects, and measurement artifacts. causal claims require a controlled trial.\" ### what should be communicated to stakeholders: - \u2705 \"preliminary signal of potential benefit; warrants rigorous testing\" - \u274c \"proven 25% improvement in exam scores\" - \u274c \"statistically significant, therefore effective\" --- ## v. summary table: threats & mitigations | threat | current study | proposed redesign | |--------|---------------|-------------------| | selection bias | volunteers only | all students in randomized classrooms | | no control | none | randomized control group | | practice effects | same exam format pre/post | parallel forms, equated difficulty | | regression to mean | baseline 64 (low) | stratified randomization; ancova | | instrumentation | exams not equated | validated parallel forms, blind grading | | hawthorne effect | volunteers aware | all students; blinded outcome assessment | | generalizability | 2 weeks, unclear context | full term, specified population | --- ## vi. conclusion the startup's claim conflates **statistical significance with causal efficacy**. the p-value is a red herring; it reflects noise reduction in a biased sample, not proof of treatment effect. the 16-point gain is almost entirely attributable to selection bias, practice effects, and possible measurement artifacts. **the minimally credible redesign** uses cluster randomization (practical for schools), parallel exams (controls instrumentation), pre-registration (prevents p-hacking), and stratified analysis (detects heterogeneous effects). this can be executed in one term and would provide evidence suitable for marketing claims. **until then:** the honest claim is \"promising preliminary signal, not proven efficacy.\"": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5537488708220416,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 230.25544716640258,
+      "readability_fk_grade": 18.639,
+      "coherence_mean": 0.26184952490562197,
+      "prompt_relevance": 0.7534851070971775,
+      "connective_density": 0.08333333333333333,
+      "word_count": 1000,
+      "repetition_rate": 0.012036108324974924
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "random_sample_15pct"
+      ],
+      "sheet_path": "results/human_eval/run_479261cec0bd.json"
+    }
+  }
+}

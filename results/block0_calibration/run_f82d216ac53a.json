@@ -1,0 +1,164 @@
+{
+  "run_id": "run_f82d216ac53a",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:02:34.892056+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_07_assumption_mapping",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Hidden Assumption Mapping for Business Case",
+    "prompt": "A SaaS company proposes entering a new region with this plan: cut prices 30%, spend heavily on influencer marketing, and promise profitability in 12 months. Their slide deck assumes rapid user growth will offset lower margins and that customer support costs will remain stable due to automation.\n\nIdentify the implicit assumptions behind this plan and categorize them as market, operational, financial, regulatory, or behavioral assumptions. For each assumption, state what evidence would validate or falsify it within the first two quarters. Then rank the top five risk assumptions by expected downside and propose targeted experiments or safeguards to reduce decision risk before full rollout.\n\nOutput format: assumption table + prioritized risk narrative + next-step validation roadmap.\n",
+    "rubric": [
+      "Surfaces implicit assumptions across multiple categories, not only financial.",
+      "Provides concrete validation/falsification signals and timelines.",
+      "Risk ranking is coherent and tied to downside impact.",
+      "Recommended safeguards are actionable and staged."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# SaaS Regional Expansion Plan: Assumption Analysis & Risk Framework\n\n## PART 1: ASSUMPTION INVENTORY & VALIDATION CRITERIA\n\n| # | Assumption | Category | Implicit Logic | Q1-Q2 Validation Evidence (Validate) | Q1-Q2 Falsification Evidence (Falsify) |\n|---|---|---|---|---|---|\n| 1 | Price elasticity: 30% cut drives >30% volume growth | Market | Lower price \u2192 volume offset \u2192 margin maintained | CAC payback <12mo; LTV:CAC >3:1; conversion rate +25-40% YoY | Conversion flat/down; churn >5% above baseline; CAC increases |\n| 2 | Influencer marketing ROI >3:1 within 6 months | Market/Behavioral | Influencer reach = qualified demand; brand halo effect | Influencer-sourced cohort CAC <$X; retention \u2265baseline; NPS \u22658 | Influencer cohort CAC 2x+ higher; churn 2-3x baseline; NPS <6 |\n| 3 | Rapid user growth will materialize (target: 50%+ QoQ) | Market | Price + marketing = demand pull | MRR growth 40-60% QoQ; signup velocity 3x baseline | MRR growth <20% QoQ; signup velocity flat or declining |\n| 4 | Support costs remain stable despite 50%+ user growth | Operational | Automation scales linearly; ticket volume doesn't spike | Support cost/user flat YoY; ticket resolution time \u2264baseline; automation deflection >60% | Support cost/user +30-50%; ticket backlog grows; CSAT <70% |\n| 5 | Regional market has similar willingness-to-pay (WTP) as home market | Market | Product-market fit transfers; no localization friction | Pricing acceptance >80%; churn \u2264baseline+2%; NPS \u2265baseline-1 | Pricing rejection >30%; churn +5-10%; NPS -3+ points |\n| 6 | Profitability achievable in 12 months at current burn rate | Financial | Revenue growth + margin recovery offsets 12-month spend | Gross margin \u226550% by Q4; CAC payback <15mo; Rule of 40 >0.3 by Q4 | Gross margin <40%; CAC payback >18mo; Rule of 40 <0.1 |\n| 7 | Competitor response will be muted or slow | Market | Market size large enough; competitors distracted | No aggressive price wars; no major competitor entry; market share gains stick | Competitors cut prices 20%+; new entrant launches; share erosion >15% |\n| 8 | Localization needs are minimal (product, compliance, payment) | Operational/Regulatory | Product is sufficiently generic; regulatory burden low | <5% feature requests for localization; payment processing <2% friction; compliance sign-off <4 weeks | >20% localization requests; payment failures >5%; regulatory delays >8 weeks |\n| 9 | Customer support can be automated to current staffing levels | Operational | Current automation tech sufficient; ticket complexity won't increase | Automation handles 60%+ of tickets; CSAT \u226580%; escalation rate <15% | Automation handles <40%; CSAT <70%; escalation rate >25% |\n| 10 | Influencer audience overlap with target customer is >70% | Market/Behavioral | Influencer followers = ICP; no wasted reach | Influencer cohort ICP match >70%; engagement rate >5%; conversion >2% | Influencer cohort ICP match <40%; engagement <2%; conversion <0.5% |\n| 11 | Brand reputation transfers; no regional stigma or distrust | Behavioral | Home market brand equity = regional equity | Brand awareness >40% by Q2; consideration >25%; trust score \u22657/10 | Brand awareness <15%; consideration <10%; trust score <5/10 |\n| 12 | Churn will remain stable despite price cut and new user cohort | Behavioral | Price cut doesn't attract low-quality users; onboarding scales | Churn \u2264baseline; cohort retention curves match historical; NPS stable | Churn +3-5% points; new cohort retention 30% lower; NPS -2+ points |\n\n---\n\n## PART 2: TOP 5 PRIORITIZED RISKS & DOWNSIDE SCENARIOS\n\n### Risk Ranking Methodology\n**Expected Downside = (Probability \u00d7 Impact \u00d7 Detectability Gap)**\n- **Probability**: Likelihood within 12 months\n- **Impact**: Revenue/profitability damage if realized\n- **Detectability Gap**: How late we'd discover it (Q3+ = higher risk)\n\n---\n\n### **RISK #1: Support Cost Explosion (Operational)**\n**Probability**: 65% | **Impact**: -$2-4M annual OPEX | **Detectability Gap**: HIGH (Q3-Q4)\n\n**Downside Scenario:**\n- 50% user growth + 30% price cut = lower-quality user cohort with higher support friction\n- Automation handles only 35-40% of tickets (vs. assumed 60%+) due to regional language nuances, payment issues, compliance questions\n- Support cost/user increases 40-60% despite headcount staying flat\n- By Q3, support backlog >2 weeks; CSAT drops to 65%; churn accelerates to 8-10%\n- **12-month cost overrun**: $2-4M; profitability target missed by 18+ months\n\n**Why High Risk:**\n- Support costs are **sticky and slow to reverse** (hiring lag, training, infrastructure)\n- Automation assumptions are **untested in new region** (language, payment rails, regulatory Q&A)\n- **Detectability lag**: Churn and CSAT degrade over 8-12 weeks; by then, damage is done\n\n---\n\n### **RISK #2: Influencer Cohort Quality Mismatch (Market/Behavioral)**\n**Probability**: 55% | **Impact**: -$1.5-3M CAC waste | **Detectability Gap**: MEDIUM-HIGH (Q2-Q3)\n\n**Downside Scenario:**\n- Influencer audiences are 40-50% outside ICP (e.g., price-sensitive, non-enterprise, geographic mismatch)\n- Influencer-sourced CAC is $250-400 vs. assumed $100-150\n- Cohort churn is 8-12% vs. baseline 3-5% (low-quality users, price-sensitive, low intent)\n- By Q2, influencer spend ($500K-1M) has generated 2,000-3,000 users with 50%+ churn by month 6\n- **Effective CAC**: $400-600 per retained user; LTV:CAC <1.5:1 (unprofitable)\n\n**Why High Risk:**\n- **Influencer selection is subjective** and hard to validate pre-launch\n- Cohort quality **lags by 6-8 weeks** (churn curves take time to materialize)\n- **Sunk cost fallacy**: Pressure to continue spend even as data turns negative\n\n---\n\n### **RISK #3: Competitor Price War (Market)**\n**Probability**: 60% | **Impact**: -$3-5M revenue + margin compression | **Detectability Gap**: MEDIUM (Q1-Q2)\n\n**Downside Scenario:**\n- Incumbent competitor or new entrant responds to 30% price cut with 25-35% cut of their own\n- Market becomes commoditized; price becomes primary differentiator\n- Company's margin advantage disappears; gross margin drops from 65% to 45-50%\n- Growth target requires even deeper discounts or higher CAC spend\n- **12-month impact**: Revenue growth stalls at 15-20% (vs. 50%+ target); profitability pushed to 18-24 months\n\n**Why High Risk:**\n- **Competitors have visibility** into pricing moves within weeks\n- **Margin compression is irreversible** in short term (hard to raise prices)\n- **Detectability is fast** but **response options are limited** (can't un-cut prices)\n\n---\n\n### **RISK #4: Localization & Regulatory Friction (Operational/Regulatory)**\n**Probability**: 50% | **Impact**: -$500K-1.5M + 6-month delay | **Detectability Gap**: HIGH (Q2-Q3)**\n\n**Downside Scenario:**\n- Regional market requires 15-25% product loc",
+      "input_tokens": 176,
+      "output_tokens": 2048,
+      "latency_ms": 4183.1923860590905,
+      "structural_metrics": {
+        "mtld": 110.92050688409103,
+        "readability_fk_grade": 34.821162790697684,
+        "coherence_mean": NaN,
+        "prompt_relevance": 0.717167458596219,
+        "connective_density": 7.0,
+        "word_count": 943,
+        "repetition_rate": 0.010638297872340425
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# SaaS Regional Expansion Plan: Assumption Analysis & Risk Framework\n\n## PART 1: ASSUMPTION INVENTORY & VALIDATION CRITERIA\n\n| # | Assumption | Category | Implicit Logic | Q1-Q2 Validation Evidence (Validate) | Q1-Q2 Falsification Evidence (Falsify) |\n|---|---|---|---|---|---|\n| 1 | Price elasticity: 30% cut drives >30% volume growth | Market | Lower price \u2192 volume offset \u2192 margin maintained | CAC payback <12mo; LTV:CAC >3:1; conversion rate +25-40% YoY | Conversion flat/down; churn >5% above baseline; CAC increases |\n| 2 | Influencer marketing ROI >3:1 within 6 months | Market/Behavioral | Influencer reach = qualified demand; brand halo effect | Influencer-sourced cohort CAC <$X; retention \u2265baseline; NPS \u22658 | Influencer cohort CAC 2x+ higher; churn 2-3x baseline; NPS <6 |\n| 3 | Rapid user growth will materialize (target: 50%+ QoQ) | Market | Price + marketing = demand pull | MRR growth 40-60% QoQ; signup velocity 3x baseline | MRR growth <20% QoQ; signup velocity flat or declining |\n| 4 | Support costs remain stable despite 50%+ user growth | Operational | Automation scales linearly; ticket volume doesn't spike | Support cost/user flat YoY; ticket resolution time \u2264baseline; automation deflection >60% | Support cost/user +30-50%; ticket backlog grows; CSAT <70% |\n| 5 | Regional market has similar willingness-to-pay (WTP) as home market | Market | Product-market fit transfers; no localization friction | Pricing acceptance >80%; churn \u2264baseline+2%; NPS \u2265baseline-1 | Pricing rejection >30%; churn +5-10%; NPS -3+ points |\n| 6 | Profitability achievable in 12 months at current burn rate | Financial | Revenue growth + margin recovery offsets 12-month spend | Gross margin \u226550% by Q4; CAC payback <15mo; Rule of 40 >0.3 by Q4 | Gross margin <40%; CAC payback >18mo; Rule of 40 <0.1 |\n| 7 | Competitor response will be muted or slow | Market | Market size large enough; competitors distracted | No aggressive price wars; no major competitor entry; market share gains stick | Competitors cut prices 20%+; new entrant launches; share erosion >15% |\n| 8 | Localization needs are minimal (product, compliance, payment) | Operational/Regulatory | Product is sufficiently generic; regulatory burden low | <5% feature requests for localization; payment processing <2% friction; compliance sign-off <4 weeks | >20% localization requests; payment failures >5%; regulatory delays >8 weeks |\n| 9 | Customer support can be automated to current staffing levels | Operational | Current automation tech sufficient; ticket complexity won't increase | Automation handles 60%+ of tickets; CSAT \u226580%; escalation rate <15% | Automation handles <40%; CSAT <70%; escalation rate >25% |\n| 10 | Influencer audience overlap with target customer is >70% | Market/Behavioral | Influencer followers = ICP; no wasted reach | Influencer cohort ICP match >70%; engagement rate >5%; conversion >2% | Influencer cohort ICP match <40%; engagement <2%; conversion <0.5% |\n| 11 | Brand reputation transfers; no regional stigma or distrust | Behavioral | Home market brand equity = regional equity | Brand awareness >40% by Q2; consideration >25%; trust score \u22657/10 | Brand awareness <15%; consideration <10%; trust score <5/10 |\n| 12 | Churn will remain stable despite price cut and new user cohort | Behavioral | Price cut doesn't attract low-quality users; onboarding scales | Churn \u2264baseline; cohort retention curves match historical; NPS stable | Churn +3-5% points; new cohort retention 30% lower; NPS -2+ points |\n\n---\n\n## PART 2: TOP 5 PRIORITIZED RISKS & DOWNSIDE SCENARIOS\n\n### Risk Ranking Methodology\n**Expected Downside = (Probability \u00d7 Impact \u00d7 Detectability Gap)**\n- **Probability**: Likelihood within 12 months\n- **Impact**: Revenue/profitability damage if realized\n- **Detectability Gap**: How late we'd discover it (Q3+ = higher risk)\n\n---\n\n### **RISK #1: Support Cost Explosion (Operational)**\n**Probability**: 65% | **Impact**: -$2-4M annual OPEX | **Detectability Gap**: HIGH (Q3-Q4)\n\n**Downside Scenario:**\n- 50% user growth + 30% price cut = lower-quality user cohort with higher support friction\n- Automation handles only 35-40% of tickets (vs. assumed 60%+) due to regional language nuances, payment issues, compliance questions\n- Support cost/user increases 40-60% despite headcount staying flat\n- By Q3, support backlog >2 weeks; CSAT drops to 65%; churn accelerates to 8-10%\n- **12-month cost overrun**: $2-4M; profitability target missed by 18+ months\n\n**Why High Risk:**\n- Support costs are **sticky and slow to reverse** (hiring lag, training, infrastructure)\n- Automation assumptions are **untested in new region** (language, payment rails, regulatory Q&A)\n- **Detectability lag**: Churn and CSAT degrade over 8-12 weeks; by then, damage is done\n\n---\n\n### **RISK #2: Influencer Cohort Quality Mismatch (Market/Behavioral)**\n**Probability**: 55% | **Impact**: -$1.5-3M CAC waste | **Detectability Gap**: MEDIUM-HIGH (Q2-Q3)\n\n**Downside Scenario:**\n- Influencer audiences are 40-50% outside ICP (e.g., price-sensitive, non-enterprise, geographic mismatch)\n- Influencer-sourced CAC is $250-400 vs. assumed $100-150\n- Cohort churn is 8-12% vs. baseline 3-5% (low-quality users, price-sensitive, low intent)\n- By Q2, influencer spend ($500K-1M) has generated 2,000-3,000 users with 50%+ churn by month 6\n- **Effective CAC**: $400-600 per retained user; LTV:CAC <1.5:1 (unprofitable)\n\n**Why High Risk:**\n- **Influencer selection is subjective** and hard to validate pre-launch\n- Cohort quality **lags by 6-8 weeks** (churn curves take time to materialize)\n- **Sunk cost fallacy**: Pressure to continue spend even as data turns negative\n\n---\n\n### **RISK #3: Competitor Price War (Market)**\n**Probability**: 60% | **Impact**: -$3-5M revenue + margin compression | **Detectability Gap**: MEDIUM (Q1-Q2)\n\n**Downside Scenario:**\n- Incumbent competitor or new entrant responds to 30% price cut with 25-35% cut of their own\n- Market becomes commoditized; price becomes primary differentiator\n- Company's margin advantage disappears; gross margin drops from 65% to 45-50%\n- Growth target requires even deeper discounts or higher CAC spend\n- **12-month impact**: Revenue growth stalls at 15-20% (vs. 50%+ target); profitability pushed to 18-24 months\n\n**Why High Risk:**\n- **Competitors have visibility** into pricing moves within weeks\n- **Margin compression is irreversible** in short term (hard to raise prices)\n- **Detectability is fast** but **response options are limited** (can't un-cut prices)\n\n---\n\n### **RISK #4: Localization & Regulatory Friction (Operational/Regulatory)**\n**Probability**: 50% | **Impact**: -$500K-1.5M + 6-month delay | **Detectability Gap**: HIGH (Q2-Q3)**\n\n**Downside Scenario:**\n- Regional market requires 15-25% product loc",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# saas regional expansion plan: assumption analysis & risk framework ## part 1: assumption inventory & validation criteria | # | assumption | category | implicit logic | q1-q2 validation evidence (validate) | q1-q2 falsification evidence (falsify) | |---|---|---|---|---|---| | 1 | price elasticity: 30% cut drives >30% volume growth | market | lower price \u2192 volume offset \u2192 margin maintained | cac payback <12mo; ltv:cac >3:1; conversion rate +25-40% yoy | conversion flat/down; churn >5% above baseline; cac increases | | 2 | influencer marketing roi >3:1 within 6 months | market/behavioral | influencer reach = qualified demand; brand halo effect | influencer-sourced cohort cac <$x; retention \u2265baseline; nps \u22658 | influencer cohort cac 2x+ higher; churn 2-3x baseline; nps <6 | | 3 | rapid user growth will materialize (target: 50%+ qoq) | market | price + marketing = demand pull | mrr growth 40-60% qoq; signup velocity 3x baseline | mrr growth <20% qoq; signup velocity flat or declining | | 4 | support costs remain stable despite 50%+ user growth | operational | automation scales linearly; ticket volume doesn't spike | support cost/user flat yoy; ticket resolution time \u2264baseline; automation deflection >60% | support cost/user +30-50%; ticket backlog grows; csat <70% | | 5 | regional market has similar willingness-to-pay (wtp) as home market | market | product-market fit transfers; no localization friction | pricing acceptance >80%; churn \u2264baseline+2%; nps \u2265baseline-1 | pricing rejection >30%; churn +5-10%; nps -3+ points | | 6 | profitability achievable in 12 months at current burn rate | financial | revenue growth + margin recovery offsets 12-month spend | gross margin \u226550% by q4; cac payback <15mo; rule of 40 >0.3 by q4 | gross margin <40%; cac payback >18mo; rule of 40 <0.1 | | 7 | competitor response will be muted or slow | market | market size large enough; competitors distracted | no aggressive price wars; no major competitor entry; market share gains stick | competitors cut prices 20%+; new entrant launches; share erosion >15% | | 8 | localization needs are minimal (product, compliance, payment) | operational/regulatory | product is sufficiently generic; regulatory burden low | <5% feature requests for localization; payment processing <2% friction; compliance sign-off <4 weeks | >20% localization requests; payment failures >5%; regulatory delays >8 weeks | | 9 | customer support can be automated to current staffing levels | operational | current automation tech sufficient; ticket complexity won't increase | automation handles 60%+ of tickets; csat \u226580%; escalation rate <15% | automation handles <40%; csat <70%; escalation rate >25% | | 10 | influencer audience overlap with target customer is >70% | market/behavioral | influencer followers = icp; no wasted reach | influencer cohort icp match >70%; engagement rate >5%; conversion >2% | influencer cohort icp match <40%; engagement <2%; conversion <0.5% | | 11 | brand reputation transfers; no regional stigma or distrust | behavioral | home market brand equity = regional equity | brand awareness >40% by q2; consideration >25%; trust score \u22657/10 | brand awareness <15%; consideration <10%; trust score <5/10 | | 12 | churn will remain stable despite price cut and new user cohort | behavioral | price cut doesn't attract low-quality users; onboarding scales | churn \u2264baseline; cohort retention curves match historical; nps stable | churn +3-5% points; new cohort retention 30% lower; nps -2+ points | --- ## part 2: top 5 prioritized risks & downside scenarios ### risk ranking methodology **expected downside = (probability \u00d7 impact \u00d7 detectability gap)** - **probability**: likelihood within 12 months - **impact**: revenue/profitability damage if realized - **detectability gap**: how late we'd discover it (q3+ = higher risk) --- ### **risk #1: support cost explosion (operational)** **probability**: 65% | **impact**: -$2-4m annual opex | **detectability gap**: high (q3-q4) **downside scenario:** - 50% user growth + 30% price cut = lower-quality user cohort with higher support friction - automation handles only 35-40% of tickets (vs. assumed 60%+) due to regional language nuances, payment issues, compliance questions - support cost/user increases 40-60% despite headcount staying flat - by q3, support backlog >2 weeks; csat drops to 65%; churn accelerates to 8-10% - **12-month cost overrun**: $2-4m; profitability target missed by 18+ months **why high risk:** - support costs are **sticky and slow to reverse** (hiring lag, training, infrastructure) - automation assumptions are **untested in new region** (language, payment rails, regulatory q&a) - **detectability lag**: churn and csat degrade over 8-12 weeks; by then, damage is done --- ### **risk #2: influencer cohort quality mismatch (market/behavioral)** **probability**: 55% | **impact**: -$1.5-3m cac waste | **detectability gap**: medium-high (q2-q3) **downside scenario:** - influencer audiences are 40-50% outside icp (e.g., price-sensitive, non-enterprise, geographic mismatch) - influencer-sourced cac is $250-400 vs. assumed $100-150 - cohort churn is 8-12% vs. baseline 3-5% (low-quality users, price-sensitive, low intent) - by q2, influencer spend ($500k-1m) has generated 2,000-3,000 users with 50%+ churn by month 6 - **effective cac**: $400-600 per retained user; ltv:cac <1.5:1 (unprofitable) **why high risk:** - **influencer selection is subjective** and hard to validate pre-launch - cohort quality **lags by 6-8 weeks** (churn curves take time to materialize) - **sunk cost fallacy**: pressure to continue spend even as data turns negative --- ### **risk #3: competitor price war (market)** **probability**: 60% | **impact**: -$3-5m revenue + margin compression | **detectability gap**: medium (q1-q2) **downside scenario:** - incumbent competitor or new entrant responds to 30% price cut with 25-35% cut of their own - market becomes commoditized; price becomes primary differentiator - company's margin advantage disappears; gross margin drops from 65% to 45-50% - growth target requires even deeper discounts or higher cac spend - **12-month impact**: revenue growth stalls at 15-20% (vs. 50%+ target); profitability pushed to 18-24 months **why high risk:** - **competitors have visibility** into pricing moves within weeks - **margin compression is irreversible** in short term (hard to raise prices) - **detectability is fast** but **response options are limited** (can't un-cut prices) --- ### **risk #4: localization & regulatory friction (operational/regulatory)** **probability**: 50% | **impact**: -$500k-1.5m + 6-month delay | **detectability gap**: high (q2-q3)** **downside scenario:** - regional market requires 15-25% product loc": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5019569471624267,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 110.92050688409103,
+      "readability_fk_grade": 34.821162790697684,
+      "coherence_mean": NaN,
+      "prompt_relevance": 0.717167458596219,
+      "connective_density": 7.0,
+      "word_count": 943,
+      "repetition_rate": 0.010638297872340425
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

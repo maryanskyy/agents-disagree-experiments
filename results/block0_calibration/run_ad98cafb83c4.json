@@ -1,0 +1,164 @@
+{
+  "run_id": "run_ad98cafb83c4",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:59:49.611237+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_05_statistical_claim_flaw",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 3,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Diagnose Flaws in a Statistical Performance Claim",
+    "prompt": "A startup claims: \"Our AI tutor improves exam scores by 25%.\" Their evidence: 40 volunteer students used the tutor for two weeks and their average score rose from 64 to 80. There was no control group. Students self-selected into the trial. Exams before and after were not equated for difficulty. The company highlights p < 0.05 from a paired t-test and concludes broad effectiveness.\n\nCritically evaluate this claim. Identify methodological threats to validity, explain why the statistical significance result is insufficient for the causal claim, and propose a minimally credible redesign that could be executed within one school term. Include sampling, randomization (or quasi-experimental fallback), outcome measurement, and pre-registration elements. End by stating what claim is actually justified from current evidence.\n",
+    "rubric": [
+      "Flags core validity issues (selection bias, no control, test non-equivalence, regression effects).",
+      "Explains mismatch between p-value and causal inference.",
+      "Proposes feasible improved study design with concrete safeguards.",
+      "Final justified claim is appropriately modest and evidence-aligned."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "Of course. Here is a critical evaluation of the startup's claim, structured as requested.\n\n### Executive Summary\n\nThe startup's claim that its \"AI tutor improves exam scores by 25%\" is not supported by the evidence provided. The study suffers from fundamental methodological flaws that make it impossible to attribute the observed score increase to the AI tutor. The use of a p-value is misleading, as it only indicates a statistical change, not the cause of that change. A credible study would require, at minimum, a randomized controlled design. Based on the current evidence, the only justified claim is that a small group of motivated volunteers saw their scores increase after using the tutor, a result that is preliminary and requires rigorous validation.\n\n---\n\n### 1. Critical Evaluation: Methodological Threats to Validity\n\nThe study's design is a **one-group pre-test/post-test design**, which is notoriously weak for making causal claims. The observed increase from 64 to 80, while numerically impressive, is likely the result of several confounding factors, not just the AI tutor. These factors are known as threats to internal and external validity.\n\n#### A. Threats to Internal Validity (Can we trust the causal conclusion?)\n\nInternal validity is the extent to which we can say that the intervention (the AI tutor) *caused* the outcome (the score increase). The current study has numerous threats:\n\n1.  **History:** External events occurring between the pre-test and post-test could explain the result. In two weeks, students also attended regular classes, may have had other school-wide exam prep sessions, or collaborated in study groups. Any of these could have contributed to the score increase. Without a control group that experienced the same \"history\" but without the tutor, it's impossible to isolate the tutor's effect.\n2.  **Maturation:** Students naturally learn, grow, and become more familiar with academic material over a two-week period, even without a special intervention. This natural cognitive development could account for some or all of the score increase.\n3.  **Testing Effects (Practice Effects):** The act of taking the pre-test can itself improve performance on the post-test. Students become familiar with the question format, the scope of the content, and may be prompted to think about topics they didn't know, leading them to study those specific areas.\n4.  **Instrumentation:** This is a critical and explicitly stated flaw. The pre- and post-test exams were **not equated for difficulty**. The 16-point jump could be entirely explained if the post-test was simply an easier exam than the pre-test.\n5.  **Statistical Regression to the Mean:** Students who score below the average on a test are statistically likely to score closer to the average on a subsequent test, due to random error and natural performance fluctuations. A pre-test average of 64 is not exceptionally high. It is probable that some of the increase to 80 (a score closer to a higher group mean) is simply this statistical artifact.\n\n#### B. Threats to External Validity (Can the results be generalized?)\n\nExternal validity is the extent to which the results can be generalized to a broader population (e.g., \"all students\").\n\n1.  **Selection Bias:** The study used **40 volunteer students**. This is a self-selected sample. Volunteers are systematically different from the general student population. They are likely more motivated, more interested in technology, or perhaps more desperate for help. Therefore, any effect observed in this group cannot be generalized to unmotivated or average students. The claim of \"broad effectiveness\" is completely unfounded.\n\n### 2. The Insufficiency of Statistical Significance (p < 0.05)\n\nThe startup's highlighting of \"p < 0.05\" is a common but misleading tactic used to lend scientific credibility to a weak study.\n\n*   **What a Paired t-test Actually Shows:** A paired t-test assesses the null hypothesis that the mean difference between two paired observations (the pre-test and post-test scores for each student) is zero. A p-value of less than 0.05 simply means that it is statistically unlikely (less than a 5% probability) that the observed 16-point average increase is due to random chance *if the null hypothesis were true*.\n\n*   **What it Does NOT Show:** The p-value provides **no information about the cause of the change**. It only confirms that a change occurred that is unlikely to be random noise. It cannot distinguish between the AI tutor's effect and the effects of history, maturation, an easier post-test, or any other confounding variable.\n\nIn short, the statistical test confirms **that** scores went up, but the study design fails to explain **why** they went up. Claiming the tutor is the cause is a leap of faith, not a scientific conclusion.\n\n### 3. A Minimally Credible Redesign (Within One School Term)\n\nTo generate credible evidence, the startup must conduct a study that isolates the effect of the AI tutor. A **Randomized Controlled Trial (RCT)** is the gold standard. Here is a minimally credible design that could be executed within a single school term.\n\n#### A. Sampling\n*   **Population:** Instead of open volunteers, partner with a school to recruit from a specific, well-defined population (e.g., all 10th-grade biology students).\n*   **Recruitment:** Recruit a larger sample (e.g., N=100) to account for potential dropouts and to have sufficient statistical power to detect a meaningful effect. Obtain informed consent from students and parents.\n\n#### B. Randomization (or Quasi-Experimental Fallback)\n*   **Gold Standard (RCT):** After students complete the pre-test, randomly assign them to one of two groups using a random number generator.\n    *   **Treatment Group (N=50):** Receives access to the AI tutor for a set period (e.g., 4 weeks) as a supplement to their normal instruction.\n    *   **Control Group (N=50):** Receives only \"business as usual\" instruction. They do not get access to the tutor during the study period. This group provides the baseline for what happens without the intervention.\n*   **Quasi-Experimental Fallback (Waitlist Control):** If the school objects to withholding the tutor, a waitlist design is a strong alternative.\n    *   Randomly assign students to two groups.\n    *   **Group A:** Gets the tutor for the first half of the term.\n    *   **Group B:** Gets the tutor for the second half of the term.\n    *   **Analysis:** Compare the score change of Group A (with tutor) to the score change of Group B (without tutor) at the mid-term point. This allows each group to act as a control for the other.\n\n#### C. Outcome Measurement\n*   **Equated Exams:** The pre-test and post-test must be rigorously equated for difficulty. The best practice is to use a **validated, standardized third-party exam** for the subject.\n*   **Blinding:** If possible, the person grading the exams should be \"blind\" to which group each student belonged to, preventing unconscious bias.\n*   **Implementation:** Administer the pre-test to all students before randomization. Administer the post-test to all students (both groups) at the end of the study period.\n\n#### D. Pre-registration\n*   Before launching the study, the startup must pre-register its research plan on a public platform like the **Open Science Framework (OSF)**. This prevents p-hacking and HARKing (Hypothesizing After Results are Known).\n*   The pre-registration document should specify:\n    1.  **The exact hypothesis** (e.g., \"Students in the treatment group will have a higher mean post-test score than students in the control group, when controlling for pre-test scores.\").\n    2.  **The sample size and the power analysis** used to justify it",
+      "input_tokens": 180,
+      "output_tokens": 4092,
+      "latency_ms": 4111.9314529933035,
+      "structural_metrics": {
+        "mtld": 75.28784201368055,
+        "readability_fk_grade": 10.38055655863501,
+        "coherence_mean": 0.23467267910586198,
+        "prompt_relevance": 0.8009932870560174,
+        "connective_density": 0.1125,
+        "word_count": 1219,
+        "repetition_rate": 0.032072368421052634
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "Of course. Here is a critical evaluation of the startup's claim, structured as requested.\n\n### Executive Summary\n\nThe startup's claim that its \"AI tutor improves exam scores by 25%\" is not supported by the evidence provided. The study suffers from fundamental methodological flaws that make it impossible to attribute the observed score increase to the AI tutor. The use of a p-value is misleading, as it only indicates a statistical change, not the cause of that change. A credible study would require, at minimum, a randomized controlled design. Based on the current evidence, the only justified claim is that a small group of motivated volunteers saw their scores increase after using the tutor, a result that is preliminary and requires rigorous validation.\n\n---\n\n### 1. Critical Evaluation: Methodological Threats to Validity\n\nThe study's design is a **one-group pre-test/post-test design**, which is notoriously weak for making causal claims. The observed increase from 64 to 80, while numerically impressive, is likely the result of several confounding factors, not just the AI tutor. These factors are known as threats to internal and external validity.\n\n#### A. Threats to Internal Validity (Can we trust the causal conclusion?)\n\nInternal validity is the extent to which we can say that the intervention (the AI tutor) *caused* the outcome (the score increase). The current study has numerous threats:\n\n1.  **History:** External events occurring between the pre-test and post-test could explain the result. In two weeks, students also attended regular classes, may have had other school-wide exam prep sessions, or collaborated in study groups. Any of these could have contributed to the score increase. Without a control group that experienced the same \"history\" but without the tutor, it's impossible to isolate the tutor's effect.\n2.  **Maturation:** Students naturally learn, grow, and become more familiar with academic material over a two-week period, even without a special intervention. This natural cognitive development could account for some or all of the score increase.\n3.  **Testing Effects (Practice Effects):** The act of taking the pre-test can itself improve performance on the post-test. Students become familiar with the question format, the scope of the content, and may be prompted to think about topics they didn't know, leading them to study those specific areas.\n4.  **Instrumentation:** This is a critical and explicitly stated flaw. The pre- and post-test exams were **not equated for difficulty**. The 16-point jump could be entirely explained if the post-test was simply an easier exam than the pre-test.\n5.  **Statistical Regression to the Mean:** Students who score below the average on a test are statistically likely to score closer to the average on a subsequent test, due to random error and natural performance fluctuations. A pre-test average of 64 is not exceptionally high. It is probable that some of the increase to 80 (a score closer to a higher group mean) is simply this statistical artifact.\n\n#### B. Threats to External Validity (Can the results be generalized?)\n\nExternal validity is the extent to which the results can be generalized to a broader population (e.g., \"all students\").\n\n1.  **Selection Bias:** The study used **40 volunteer students**. This is a self-selected sample. Volunteers are systematically different from the general student population. They are likely more motivated, more interested in technology, or perhaps more desperate for help. Therefore, any effect observed in this group cannot be generalized to unmotivated or average students. The claim of \"broad effectiveness\" is completely unfounded.\n\n### 2. The Insufficiency of Statistical Significance (p < 0.05)\n\nThe startup's highlighting of \"p < 0.05\" is a common but misleading tactic used to lend scientific credibility to a weak study.\n\n*   **What a Paired t-test Actually Shows:** A paired t-test assesses the null hypothesis that the mean difference between two paired observations (the pre-test and post-test scores for each student) is zero. A p-value of less than 0.05 simply means that it is statistically unlikely (less than a 5% probability) that the observed 16-point average increase is due to random chance *if the null hypothesis were true*.\n\n*   **What it Does NOT Show:** The p-value provides **no information about the cause of the change**. It only confirms that a change occurred that is unlikely to be random noise. It cannot distinguish between the AI tutor's effect and the effects of history, maturation, an easier post-test, or any other confounding variable.\n\nIn short, the statistical test confirms **that** scores went up, but the study design fails to explain **why** they went up. Claiming the tutor is the cause is a leap of faith, not a scientific conclusion.\n\n### 3. A Minimally Credible Redesign (Within One School Term)\n\nTo generate credible evidence, the startup must conduct a study that isolates the effect of the AI tutor. A **Randomized Controlled Trial (RCT)** is the gold standard. Here is a minimally credible design that could be executed within a single school term.\n\n#### A. Sampling\n*   **Population:** Instead of open volunteers, partner with a school to recruit from a specific, well-defined population (e.g., all 10th-grade biology students).\n*   **Recruitment:** Recruit a larger sample (e.g., N=100) to account for potential dropouts and to have sufficient statistical power to detect a meaningful effect. Obtain informed consent from students and parents.\n\n#### B. Randomization (or Quasi-Experimental Fallback)\n*   **Gold Standard (RCT):** After students complete the pre-test, randomly assign them to one of two groups using a random number generator.\n    *   **Treatment Group (N=50):** Receives access to the AI tutor for a set period (e.g., 4 weeks) as a supplement to their normal instruction.\n    *   **Control Group (N=50):** Receives only \"business as usual\" instruction. They do not get access to the tutor during the study period. This group provides the baseline for what happens without the intervention.\n*   **Quasi-Experimental Fallback (Waitlist Control):** If the school objects to withholding the tutor, a waitlist design is a strong alternative.\n    *   Randomly assign students to two groups.\n    *   **Group A:** Gets the tutor for the first half of the term.\n    *   **Group B:** Gets the tutor for the second half of the term.\n    *   **Analysis:** Compare the score change of Group A (with tutor) to the score change of Group B (without tutor) at the mid-term point. This allows each group to act as a control for the other.\n\n#### C. Outcome Measurement\n*   **Equated Exams:** The pre-test and post-test must be rigorously equated for difficulty. The best practice is to use a **validated, standardized third-party exam** for the subject.\n*   **Blinding:** If possible, the person grading the exams should be \"blind\" to which group each student belonged to, preventing unconscious bias.\n*   **Implementation:** Administer the pre-test to all students before randomization. Administer the post-test to all students (both groups) at the end of the study period.\n\n#### D. Pre-registration\n*   Before launching the study, the startup must pre-register its research plan on a public platform like the **Open Science Framework (OSF)**. This prevents p-hacking and HARKing (Hypothesizing After Results are Known).\n*   The pre-registration document should specify:\n    1.  **The exact hypothesis** (e.g., \"Students in the treatment group will have a higher mean post-test score than students in the control group, when controlling for pre-test scores.\").\n    2.  **The sample size and the power analysis** used to justify it",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "of course. here is a critical evaluation of the startup's claim, structured as requested. ### executive summary the startup's claim that its \"ai tutor improves exam scores by 25%\" is not supported by the evidence provided. the study suffers from fundamental methodological flaws that make it impossible to attribute the observed score increase to the ai tutor. the use of a p-value is misleading, as it only indicates a statistical change, not the cause of that change. a credible study would require, at minimum, a randomized controlled design. based on the current evidence, the only justified claim is that a small group of motivated volunteers saw their scores increase after using the tutor, a result that is preliminary and requires rigorous validation. --- ### 1. critical evaluation: methodological threats to validity the study's design is a **one-group pre-test/post-test design**, which is notoriously weak for making causal claims. the observed increase from 64 to 80, while numerically impressive, is likely the result of several confounding factors, not just the ai tutor. these factors are known as threats to internal and external validity. #### a. threats to internal validity (can we trust the causal conclusion?) internal validity is the extent to which we can say that the intervention (the ai tutor) *caused* the outcome (the score increase). the current study has numerous threats: 1. **history:** external events occurring between the pre-test and post-test could explain the result. in two weeks, students also attended regular classes, may have had other school-wide exam prep sessions, or collaborated in study groups. any of these could have contributed to the score increase. without a control group that experienced the same \"history\" but without the tutor, it's impossible to isolate the tutor's effect. 2. **maturation:** students naturally learn, grow, and become more familiar with academic material over a two-week period, even without a special intervention. this natural cognitive development could account for some or all of the score increase. 3. **testing effects (practice effects):** the act of taking the pre-test can itself improve performance on the post-test. students become familiar with the question format, the scope of the content, and may be prompted to think about topics they didn't know, leading them to study those specific areas. 4. **instrumentation:** this is a critical and explicitly stated flaw. the pre- and post-test exams were **not equated for difficulty**. the 16-point jump could be entirely explained if the post-test was simply an easier exam than the pre-test. 5. **statistical regression to the mean:** students who score below the average on a test are statistically likely to score closer to the average on a subsequent test, due to random error and natural performance fluctuations. a pre-test average of 64 is not exceptionally high. it is probable that some of the increase to 80 (a score closer to a higher group mean) is simply this statistical artifact. #### b. threats to external validity (can the results be generalized?) external validity is the extent to which the results can be generalized to a broader population (e.g., \"all students\"). 1. **selection bias:** the study used **40 volunteer students**. this is a self-selected sample. volunteers are systematically different from the general student population. they are likely more motivated, more interested in technology, or perhaps more desperate for help. therefore, any effect observed in this group cannot be generalized to unmotivated or average students. the claim of \"broad effectiveness\" is completely unfounded. ### 2. the insufficiency of statistical significance (p < 0.05) the startup's highlighting of \"p < 0.05\" is a common but misleading tactic used to lend scientific credibility to a weak study. * **what a paired t-test actually shows:** a paired t-test assesses the null hypothesis that the mean difference between two paired observations (the pre-test and post-test scores for each student) is zero. a p-value of less than 0.05 simply means that it is statistically unlikely (less than a 5% probability) that the observed 16-point average increase is due to random chance *if the null hypothesis were true*. * **what it does not show:** the p-value provides **no information about the cause of the change**. it only confirms that a change occurred that is unlikely to be random noise. it cannot distinguish between the ai tutor's effect and the effects of history, maturation, an easier post-test, or any other confounding variable. in short, the statistical test confirms **that** scores went up, but the study design fails to explain **why** they went up. claiming the tutor is the cause is a leap of faith, not a scientific conclusion. ### 3. a minimally credible redesign (within one school term) to generate credible evidence, the startup must conduct a study that isolates the effect of the ai tutor. a **randomized controlled trial (rct)** is the gold standard. here is a minimally credible design that could be executed within a single school term. #### a. sampling * **population:** instead of open volunteers, partner with a school to recruit from a specific, well-defined population (e.g., all 10th-grade biology students). * **recruitment:** recruit a larger sample (e.g., n=100) to account for potential dropouts and to have sufficient statistical power to detect a meaningful effect. obtain informed consent from students and parents. #### b. randomization (or quasi-experimental fallback) * **gold standard (rct):** after students complete the pre-test, randomly assign them to one of two groups using a random number generator. * **treatment group (n=50):** receives access to the ai tutor for a set period (e.g., 4 weeks) as a supplement to their normal instruction. * **control group (n=50):** receives only \"business as usual\" instruction. they do not get access to the tutor during the study period. this group provides the baseline for what happens without the intervention. * **quasi-experimental fallback (waitlist control):** if the school objects to withholding the tutor, a waitlist design is a strong alternative. * randomly assign students to two groups. * **group a:** gets the tutor for the first half of the term. * **group b:** gets the tutor for the second half of the term. * **analysis:** compare the score change of group a (with tutor) to the score change of group b (without tutor) at the mid-term point. this allows each group to act as a control for the other. #### c. outcome measurement * **equated exams:** the pre-test and post-test must be rigorously equated for difficulty. the best practice is to use a **validated, standardized third-party exam** for the subject. * **blinding:** if possible, the person grading the exams should be \"blind\" to which group each student belonged to, preventing unconscious bias. * **implementation:** administer the pre-test to all students before randomization. administer the post-test to all students (both groups) at the end of the study period. #### d. pre-registration * before launching the study, the startup must pre-register its research plan on a public platform like the **open science framework (osf)**. this prevents p-hacking and harking (hypothesizing after results are known). * the pre-registration document should specify: 1. **the exact hypothesis** (e.g., \"students in the treatment group will have a higher mean post-test score than students in the control group, when controlling for pre-test scores.\"). 2. **the sample size and the power analysis** used to justify it": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.45735785953177255,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 75.28784201368055,
+      "readability_fk_grade": 10.38055655863501,
+      "coherence_mean": 0.23467267910586198,
+      "prompt_relevance": 0.8009932870560174,
+      "connective_density": 0.1125,
+      "word_count": 1219,
+      "repetition_rate": 0.032072368421052634
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

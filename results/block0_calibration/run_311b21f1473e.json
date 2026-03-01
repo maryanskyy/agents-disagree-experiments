@@ -1,0 +1,166 @@
+{
+  "run_id": "run_311b21f1473e",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:56:31.270868+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_02_fallacy_audit",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Logical Fallacy Audit of a Policy Argument",
+    "prompt": "Evaluate the following policy argument for reasoning quality: \"Our city's pilot bike lane reduced downtown car speed by 7%, and during that month retail revenue dipped by 3%. Therefore bike lanes harm local businesses. Since one district suffered, we should ban all future bike lanes citywide. Experts who disagree are biased activists, not objective analysts.\"\n\nProduce a structured critical analysis that identifies at least five distinct issues, including causal inference errors, generalization problems, and rhetorical manipulation. For each issue, quote the relevant claim, name the error class (or describe it if naming is uncertain), and explain exactly why it weakens the argument. Then rewrite the argument into a stronger evidence-seeking version that would be suitable for a city council briefing.\n\nKeep the tone analytical and precise. The output should help a reviewer distinguish valid concerns from invalid reasoning.\n",
+    "rubric": [
+      "Identifies at least five concrete reasoning flaws with claim-level grounding.",
+      "Distinguishes correlation from causation and addresses confounders/time horizon.",
+      "Detects overgeneralization and ad hominem style moves.",
+      "Provides a materially improved, testable reformulation."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "Of course. Here is a structured critical analysis of the policy argument and a rewritten, evidence-seeking version.\n\n***\n\n### **Critical Analysis of the Policy Argument**\n\nThis analysis evaluates the provided argument by identifying five distinct reasoning and rhetorical flaws. Each point includes the relevant quote, the name of the error, and an explanation of its impact on the argument's validity.\n\n---\n\n**1. Causal Inference Error**\n\n*   **Claim:** \"...during that month retail revenue dipped by 3%. Therefore bike lanes harm local businesses.\"\n*   **Error Class:** **False Cause Fallacy** (specifically, *Post Hoc Ergo Propter Hoc* - \"after this, therefore because of this\").\n*   **Explanation:** The argument commits a fundamental error by assuming that because the revenue dip occurred *after* the bike lane was installed, the bike lane must be the *cause* of the dip. This conclusion is premature and unsupported. A one-month correlation is insufficient to establish causation. The revenue dip could have been caused by numerous other factors (confounding variables) such as:\n    *   **Seasonality:** Was it a typically slow month for retail (e.g., post-holiday slump)?\n    *   **Economic Trends:** Was there a broader local or national economic downturn?\n    *   **Weather:** Did inclement weather discourage shopping?\n    *   **Local Events:** Did a major event or conference end, reducing foot traffic from the previous month?\n    *   **Random Fluctuation:** Business revenues naturally fluctuate month-to-month.\n\n**2. Hasty Generalization**\n\n*   **Claim:** \"Since one district suffered, we should ban all future bike lanes citywide.\"\n*   **Error Class:** **Hasty Generalization** (or Faulty Generalization).\n*   **Explanation:** The argument uses an isolated, short-term data point from a single pilot program to justify a sweeping, permanent, citywide policy. This is a classic error of generalizing from an insufficient sample. The conditions in the downtown pilot district (e.g., business types, existing traffic patterns, population density) may be completely different from those in other residential, commercial, or industrial districts. A policy's success or failure is context-dependent, and what happens in one area cannot be assumed to happen everywhere.\n\n**3. Rhetorical Manipulation**\n\n*   **Claim:** \"Experts who disagree are biased activists, not objective analysts.\"\n*   **Error Class:** **Ad Hominem Fallacy** (and **Poisoning the Well**).\n*   **Explanation:** This is a direct attack on the character and motives of potential opponents rather than the substance of their arguments or data. By labeling disagreeing experts as \"biased activists,\" the speaker attempts to preemptively discredit their findings without ever having to engage with them. This tactic avoids genuine debate and undermines the principles of objective, evidence-based policymaking. A strong argument would welcome expert scrutiny and address counter-evidence directly.\n\n**4. Cherry-Picking and Framing**\n\n*   **Claim:** \"...reduced downtown car speed by 7%...\"\n*   **Error Class:** **Cherry-Picking** / **Context-Free Framing**.\n*   **Explanation:** The argument presents the 7% reduction in car speed as an implicit negative, framing it as a harmful consequence that supports the overall negative conclusion. However, this data point is presented without context. For transportation planners and safety advocates, a reduction in vehicle speed in a dense urban core is often a primary *goal* of such projects, as it is strongly correlated with:\n    *   Increased safety for pedestrians and cyclists.\n    *   A more pleasant and walkable environment.\n    *   Reduced severity of accidents.\n    By failing to acknowledge the potential positive interpretations of this data, the argument cherry-picks a fact and frames it negatively to fit a predetermined narrative.\n\n**5. Insufficient Timescale and Data**\n\n*   **Claim:** \"...during that month...\"\n*   **Error Class:** **Reliance on Anecdotal or Insufficient Evidence**.\n*   **Explanation:** A single month of data is far too short a period to evaluate the economic impact of a significant infrastructure change. Consumer behavior and business revenue patterns take time to adjust. Short-term disruption during construction or the initial adjustment period is common. A robust analysis would require data over a much longer timeframe (e.g., 6-12 months) and compare it to previous years to control for seasonal effects. Relying on one month transforms a data point into an anecdote, not a trend.\n\n***\n\n### **Rewritten Argument: Evidence-Seeking Version for a City Council Briefing**\n\n**To:** City Council Members\n**From:** Policy Analysis Department\n**Date:** [Current Date]\n**Subject:** Initial Findings and Recommended Next Steps for Downtown Bike Lane Pilot Program\n\n**1. Executive Summary**\n\nThis memo provides a preliminary review of the data from the first month of the downtown bike lane pilot program. Initial findings show correlations between the project's implementation and changes in key metrics, including vehicle speed and retail revenue. However, these early data points are insufficient for drawing definitive conclusions about the project's long-term impacts. We recommend a structured, extended evaluation period to gather comprehensive data before making any citywide policy decisions.\n\n**2. Initial Observations (Month 1)**\n\nDuring the first 30-day operational period of the pilot program, we observed the following:\n\n*   **Vehicle Speed:** Average vehicle speeds within the pilot corridor decreased by approximately 7%. This aligns with initial traffic calming and safety objectives.\n*   **Retail Revenue:** Aggregate retail sales data for businesses within the pilot corridor showed a 3% decrease compared to the preceding month.\n\n**3. Analysis and Methodological Cautions**\n\nIt is critical to interpret these initial findings with caution.\n\n*   **Correlation vs. Causation:** The observed 3% dip in retail revenue is a correlation, not proven causation. A one-month timeframe is highly susceptible to confounding variables, including seasonal shopping patterns, local events, weather, and broader economic shifts. We cannot attribute this change solely to the bike lane at this stage.\n*   **Insufficient Timeframe:** One month is not an adequate period to assess behavioral or economic adjustments to new infrastructure. A longer-term analysis is required to distinguish between short-term disruption and a stable, long-term trend.\n*   **Need for Control Group:** To better isolate the project's impact, future analysis must compare the pilot district's performance against a comparable \"control\" district within the city that has not had infrastructure changes.\n\n**4. Recommended Path Forward**\n\nTo ensure our final policy decisions are evidence-based and serve the best interests of our businesses, residents, and visitors, we propose the following actions:\n\n1.  **Extend the Pilot Evaluation Period:** Continue data collection for a total of 12 months to capture a full cycle of seasonality and allow for long-term behavioral adjustments.\n2.  **Broaden Data Collection:** Supplement existing metrics with additional data points, including:\n    *   Pedestrian and cyclist counts (foot/bike traffic).\n    *   Customer origin surveys to understand how people are traveling to the district.\n    *   Crash and accident data.\n    *   Business vacancy rates.\n    *   Air quality and noise level measurements.\n3.  **Establish a Control Group:** Immediately identify and begin collecting parallel data from a comparable business district to provide a baseline for comparison.\n4.  **Commission an Independent Expert Review:** Engage with objective third-party transportation engineers and urban economists to conduct a formal analysis of the complete dataset at the conclusion of the 12-month pilot.\n\nBy taking these steps, the Council will be equipped with robust, multi-faceted evidence to make an informed decision about the future of bike lanes in our city.",
+      "input_tokens": 185,
+      "output_tokens": 3611,
+      "latency_ms": 3870.852216030471,
+      "structural_metrics": {
+        "mtld": 129.11728117937741,
+        "readability_fk_grade": 13.213763051899743,
+        "coherence_mean": 0.26246510839908016,
+        "prompt_relevance": 0.6810251822324429,
+        "connective_density": 0.09722222222222222,
+        "word_count": 1129,
+        "repetition_rate": 0.012433392539964476
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "Of course. Here is a structured critical analysis of the policy argument and a rewritten, evidence-seeking version.\n\n***\n\n### **Critical Analysis of the Policy Argument**\n\nThis analysis evaluates the provided argument by identifying five distinct reasoning and rhetorical flaws. Each point includes the relevant quote, the name of the error, and an explanation of its impact on the argument's validity.\n\n---\n\n**1. Causal Inference Error**\n\n*   **Claim:** \"...during that month retail revenue dipped by 3%. Therefore bike lanes harm local businesses.\"\n*   **Error Class:** **False Cause Fallacy** (specifically, *Post Hoc Ergo Propter Hoc* - \"after this, therefore because of this\").\n*   **Explanation:** The argument commits a fundamental error by assuming that because the revenue dip occurred *after* the bike lane was installed, the bike lane must be the *cause* of the dip. This conclusion is premature and unsupported. A one-month correlation is insufficient to establish causation. The revenue dip could have been caused by numerous other factors (confounding variables) such as:\n    *   **Seasonality:** Was it a typically slow month for retail (e.g., post-holiday slump)?\n    *   **Economic Trends:** Was there a broader local or national economic downturn?\n    *   **Weather:** Did inclement weather discourage shopping?\n    *   **Local Events:** Did a major event or conference end, reducing foot traffic from the previous month?\n    *   **Random Fluctuation:** Business revenues naturally fluctuate month-to-month.\n\n**2. Hasty Generalization**\n\n*   **Claim:** \"Since one district suffered, we should ban all future bike lanes citywide.\"\n*   **Error Class:** **Hasty Generalization** (or Faulty Generalization).\n*   **Explanation:** The argument uses an isolated, short-term data point from a single pilot program to justify a sweeping, permanent, citywide policy. This is a classic error of generalizing from an insufficient sample. The conditions in the downtown pilot district (e.g., business types, existing traffic patterns, population density) may be completely different from those in other residential, commercial, or industrial districts. A policy's success or failure is context-dependent, and what happens in one area cannot be assumed to happen everywhere.\n\n**3. Rhetorical Manipulation**\n\n*   **Claim:** \"Experts who disagree are biased activists, not objective analysts.\"\n*   **Error Class:** **Ad Hominem Fallacy** (and **Poisoning the Well**).\n*   **Explanation:** This is a direct attack on the character and motives of potential opponents rather than the substance of their arguments or data. By labeling disagreeing experts as \"biased activists,\" the speaker attempts to preemptively discredit their findings without ever having to engage with them. This tactic avoids genuine debate and undermines the principles of objective, evidence-based policymaking. A strong argument would welcome expert scrutiny and address counter-evidence directly.\n\n**4. Cherry-Picking and Framing**\n\n*   **Claim:** \"...reduced downtown car speed by 7%...\"\n*   **Error Class:** **Cherry-Picking** / **Context-Free Framing**.\n*   **Explanation:** The argument presents the 7% reduction in car speed as an implicit negative, framing it as a harmful consequence that supports the overall negative conclusion. However, this data point is presented without context. For transportation planners and safety advocates, a reduction in vehicle speed in a dense urban core is often a primary *goal* of such projects, as it is strongly correlated with:\n    *   Increased safety for pedestrians and cyclists.\n    *   A more pleasant and walkable environment.\n    *   Reduced severity of accidents.\n    By failing to acknowledge the potential positive interpretations of this data, the argument cherry-picks a fact and frames it negatively to fit a predetermined narrative.\n\n**5. Insufficient Timescale and Data**\n\n*   **Claim:** \"...during that month...\"\n*   **Error Class:** **Reliance on Anecdotal or Insufficient Evidence**.\n*   **Explanation:** A single month of data is far too short a period to evaluate the economic impact of a significant infrastructure change. Consumer behavior and business revenue patterns take time to adjust. Short-term disruption during construction or the initial adjustment period is common. A robust analysis would require data over a much longer timeframe (e.g., 6-12 months) and compare it to previous years to control for seasonal effects. Relying on one month transforms a data point into an anecdote, not a trend.\n\n***\n\n### **Rewritten Argument: Evidence-Seeking Version for a City Council Briefing**\n\n**To:** City Council Members\n**From:** Policy Analysis Department\n**Date:** [Current Date]\n**Subject:** Initial Findings and Recommended Next Steps for Downtown Bike Lane Pilot Program\n\n**1. Executive Summary**\n\nThis memo provides a preliminary review of the data from the first month of the downtown bike lane pilot program. Initial findings show correlations between the project's implementation and changes in key metrics, including vehicle speed and retail revenue. However, these early data points are insufficient for drawing definitive conclusions about the project's long-term impacts. We recommend a structured, extended evaluation period to gather comprehensive data before making any citywide policy decisions.\n\n**2. Initial Observations (Month 1)**\n\nDuring the first 30-day operational period of the pilot program, we observed the following:\n\n*   **Vehicle Speed:** Average vehicle speeds within the pilot corridor decreased by approximately 7%. This aligns with initial traffic calming and safety objectives.\n*   **Retail Revenue:** Aggregate retail sales data for businesses within the pilot corridor showed a 3% decrease compared to the preceding month.\n\n**3. Analysis and Methodological Cautions**\n\nIt is critical to interpret these initial findings with caution.\n\n*   **Correlation vs. Causation:** The observed 3% dip in retail revenue is a correlation, not proven causation. A one-month timeframe is highly susceptible to confounding variables, including seasonal shopping patterns, local events, weather, and broader economic shifts. We cannot attribute this change solely to the bike lane at this stage.\n*   **Insufficient Timeframe:** One month is not an adequate period to assess behavioral or economic adjustments to new infrastructure. A longer-term analysis is required to distinguish between short-term disruption and a stable, long-term trend.\n*   **Need for Control Group:** To better isolate the project's impact, future analysis must compare the pilot district's performance against a comparable \"control\" district within the city that has not had infrastructure changes.\n\n**4. Recommended Path Forward**\n\nTo ensure our final policy decisions are evidence-based and serve the best interests of our businesses, residents, and visitors, we propose the following actions:\n\n1.  **Extend the Pilot Evaluation Period:** Continue data collection for a total of 12 months to capture a full cycle of seasonality and allow for long-term behavioral adjustments.\n2.  **Broaden Data Collection:** Supplement existing metrics with additional data points, including:\n    *   Pedestrian and cyclist counts (foot/bike traffic).\n    *   Customer origin surveys to understand how people are traveling to the district.\n    *   Crash and accident data.\n    *   Business vacancy rates.\n    *   Air quality and noise level measurements.\n3.  **Establish a Control Group:** Immediately identify and begin collecting parallel data from a comparable business district to provide a baseline for comparison.\n4.  **Commission an Independent Expert Review:** Engage with objective third-party transportation engineers and urban economists to conduct a formal analysis of the complete dataset at the conclusion of the 12-month pilot.\n\nBy taking these steps, the Council will be equipped with robust, multi-faceted evidence to make an informed decision about the future of bike lanes in our city.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "of course. here is a structured critical analysis of the policy argument and a rewritten, evidence-seeking version. *** ### **critical analysis of the policy argument** this analysis evaluates the provided argument by identifying five distinct reasoning and rhetorical flaws. each point includes the relevant quote, the name of the error, and an explanation of its impact on the argument's validity. --- **1. causal inference error** * **claim:** \"...during that month retail revenue dipped by 3%. therefore bike lanes harm local businesses.\" * **error class:** **false cause fallacy** (specifically, *post hoc ergo propter hoc* - \"after this, therefore because of this\"). * **explanation:** the argument commits a fundamental error by assuming that because the revenue dip occurred *after* the bike lane was installed, the bike lane must be the *cause* of the dip. this conclusion is premature and unsupported. a one-month correlation is insufficient to establish causation. the revenue dip could have been caused by numerous other factors (confounding variables) such as: * **seasonality:** was it a typically slow month for retail (e.g., post-holiday slump)? * **economic trends:** was there a broader local or national economic downturn? * **weather:** did inclement weather discourage shopping? * **local events:** did a major event or conference end, reducing foot traffic from the previous month? * **random fluctuation:** business revenues naturally fluctuate month-to-month. **2. hasty generalization** * **claim:** \"since one district suffered, we should ban all future bike lanes citywide.\" * **error class:** **hasty generalization** (or faulty generalization). * **explanation:** the argument uses an isolated, short-term data point from a single pilot program to justify a sweeping, permanent, citywide policy. this is a classic error of generalizing from an insufficient sample. the conditions in the downtown pilot district (e.g., business types, existing traffic patterns, population density) may be completely different from those in other residential, commercial, or industrial districts. a policy's success or failure is context-dependent, and what happens in one area cannot be assumed to happen everywhere. **3. rhetorical manipulation** * **claim:** \"experts who disagree are biased activists, not objective analysts.\" * **error class:** **ad hominem fallacy** (and **poisoning the well**). * **explanation:** this is a direct attack on the character and motives of potential opponents rather than the substance of their arguments or data. by labeling disagreeing experts as \"biased activists,\" the speaker attempts to preemptively discredit their findings without ever having to engage with them. this tactic avoids genuine debate and undermines the principles of objective, evidence-based policymaking. a strong argument would welcome expert scrutiny and address counter-evidence directly. **4. cherry-picking and framing** * **claim:** \"...reduced downtown car speed by 7%...\" * **error class:** **cherry-picking** / **context-free framing**. * **explanation:** the argument presents the 7% reduction in car speed as an implicit negative, framing it as a harmful consequence that supports the overall negative conclusion. however, this data point is presented without context. for transportation planners and safety advocates, a reduction in vehicle speed in a dense urban core is often a primary *goal* of such projects, as it is strongly correlated with: * increased safety for pedestrians and cyclists. * a more pleasant and walkable environment. * reduced severity of accidents. by failing to acknowledge the potential positive interpretations of this data, the argument cherry-picks a fact and frames it negatively to fit a predetermined narrative. **5. insufficient timescale and data** * **claim:** \"...during that month...\" * **error class:** **reliance on anecdotal or insufficient evidence**. * **explanation:** a single month of data is far too short a period to evaluate the economic impact of a significant infrastructure change. consumer behavior and business revenue patterns take time to adjust. short-term disruption during construction or the initial adjustment period is common. a robust analysis would require data over a much longer timeframe (e.g., 6-12 months) and compare it to previous years to control for seasonal effects. relying on one month transforms a data point into an anecdote, not a trend. *** ### **rewritten argument: evidence-seeking version for a city council briefing** **to:** city council members **from:** policy analysis department **date:** [current date] **subject:** initial findings and recommended next steps for downtown bike lane pilot program **1. executive summary** this memo provides a preliminary review of the data from the first month of the downtown bike lane pilot program. initial findings show correlations between the project's implementation and changes in key metrics, including vehicle speed and retail revenue. however, these early data points are insufficient for drawing definitive conclusions about the project's long-term impacts. we recommend a structured, extended evaluation period to gather comprehensive data before making any citywide policy decisions. **2. initial observations (month 1)** during the first 30-day operational period of the pilot program, we observed the following: * **vehicle speed:** average vehicle speeds within the pilot corridor decreased by approximately 7%. this aligns with initial traffic calming and safety objectives. * **retail revenue:** aggregate retail sales data for businesses within the pilot corridor showed a 3% decrease compared to the preceding month. **3. analysis and methodological cautions** it is critical to interpret these initial findings with caution. * **correlation vs. causation:** the observed 3% dip in retail revenue is a correlation, not proven causation. a one-month timeframe is highly susceptible to confounding variables, including seasonal shopping patterns, local events, weather, and broader economic shifts. we cannot attribute this change solely to the bike lane at this stage. * **insufficient timeframe:** one month is not an adequate period to assess behavioral or economic adjustments to new infrastructure. a longer-term analysis is required to distinguish between short-term disruption and a stable, long-term trend. * **need for control group:** to better isolate the project's impact, future analysis must compare the pilot district's performance against a comparable \"control\" district within the city that has not had infrastructure changes. **4. recommended path forward** to ensure our final policy decisions are evidence-based and serve the best interests of our businesses, residents, and visitors, we propose the following actions: 1. **extend the pilot evaluation period:** continue data collection for a total of 12 months to capture a full cycle of seasonality and allow for long-term behavioral adjustments. 2. **broaden data collection:** supplement existing metrics with additional data points, including: * pedestrian and cyclist counts (foot/bike traffic). * customer origin surveys to understand how people are traveling to the district. * crash and accident data. * business vacancy rates. * air quality and noise level measurements. 3. **establish a control group:** immediately identify and begin collecting parallel data from a comparable business district to provide a baseline for comparison. 4. **commission an independent expert review:** engage with objective third-party transportation engineers and urban economists to conduct a formal analysis of the complete dataset at the conclusion of the 12-month pilot. by taking these steps, the council will be equipped with robust, multi-faceted evidence to make an informed decision about the future of bike lanes in our city.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.6666665555556297,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.3333331111112594,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 1.0,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.999999000002
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.6666665555556297,
+        "agent_0": 0.33333344444437035
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.999999000002,
+          "agent_0": 9.99998000004e-07
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 0.3333333333333333,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 0.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 0.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "left"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5351493848857645,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 129.11728117937741,
+      "readability_fk_grade": 13.213763051899743,
+      "coherence_mean": 0.26246510839908016,
+      "prompt_relevance": 0.6810251822324429,
+      "connective_density": 0.09722222222222222,
+      "word_count": 1129,
+      "repetition_rate": 0.012433392539964476
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_311b21f1473e.json"
+    }
+  }
+}

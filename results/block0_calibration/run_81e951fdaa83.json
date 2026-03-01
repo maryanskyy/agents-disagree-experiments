@@ -1,0 +1,164 @@
+{
+  "run_id": "run_81e951fdaa83",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:58:34.868189+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_06_constraint_satisfaction",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gpt-5.2"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Constraint Satisfaction Scheduling Problem",
+    "prompt": "You must schedule five reviewers (R1-R5) across three proposal panels (A, B, C). Constraints:\n1) Each panel needs exactly two reviewers.\n2) No reviewer can serve on more than one panel.\n3) R1 cannot review panel A.\n4) R2 must be assigned if and only if R4 is assigned.\n5) Panel C must include at least one of {R3, R5}.\n6) If R5 is assigned, panel B cannot include R2.\n\nDetermine whether a valid assignment exists. If yes, provide one valid schedule and explain each constraint check. If multiple solutions exist, provide a second distinct solution and compare robustness (which is less brittle if one reviewer drops out). If no solution exists, prove infeasibility with minimal contradiction set.\n",
+    "rubric": [
+      "Produces a schedule (or infeasibility proof) consistent with all constraints.",
+      "Verifies each constraint explicitly.",
+      "Demonstrates search reasoning, not random guessing.",
+      "Robustness comparison (if feasible) is logically grounded."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gpt-5.2",
+      "text": "No valid assignment exists.\n\n### Proof of infeasibility (minimal contradiction set)\n\nFrom constraints (1) and (2):\n\n- Each of the 3 panels (A, B, C) needs exactly 2 reviewers \u21d2 total reviewer \u201cslots\u201d = \\(3 \\times 2 = 6\\).\n- No reviewer can serve on more than one panel \u21d2 each reviewer can fill at most 1 slot.\n- There are only 5 reviewers total (R1\u2013R5) \u21d2 at most 5 slots can be filled.\n\nSo we must have:\n\\[\n6 \\text{ required slots} \\le 5 \\text{ available slots}\n\\]\nwhich is false.\n\nTherefore, the problem is infeasible regardless of constraints (3)\u2013(6).\n\n### Minimal contradiction set\nThe infeasibility follows from **only** constraints:\n- **(1)** each panel needs exactly two reviewers, and  \n- **(2)** no reviewer can serve on more than one panel,  \ntogether with the given fact that there are only **five** reviewers and **three** panels.\n\nAll other constraints are irrelevant because feasibility already fails on simple counting.\n\n---\n\nIf you want, I can propose the *closest* feasible variants (e.g., allow one reviewer to serve on two panels, or add one more reviewer R6) and then produce valid schedules satisfying the remaining constraints.",
+      "input_tokens": 185,
+      "output_tokens": 282,
+      "latency_ms": 3985.490489983931,
+      "structural_metrics": {
+        "mtld": 101.65057174731558,
+        "readability_fk_grade": 10.312999999999999,
+        "coherence_mean": 0.49785819804067233,
+        "prompt_relevance": 0.8143118345708378,
+        "connective_density": 0.5555555555555556,
+        "word_count": 180,
+        "repetition_rate": 0.06779661016949153
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "No valid assignment exists.\n\n### Proof of infeasibility (minimal contradiction set)\n\nFrom constraints (1) and (2):\n\n- Each of the 3 panels (A, B, C) needs exactly 2 reviewers \u21d2 total reviewer \u201cslots\u201d = \\(3 \\times 2 = 6\\).\n- No reviewer can serve on more than one panel \u21d2 each reviewer can fill at most 1 slot.\n- There are only 5 reviewers total (R1\u2013R5) \u21d2 at most 5 slots can be filled.\n\nSo we must have:\n\\[\n6 \\text{ required slots} \\le 5 \\text{ available slots}\n\\]\nwhich is false.\n\nTherefore, the problem is infeasible regardless of constraints (3)\u2013(6).\n\n### Minimal contradiction set\nThe infeasibility follows from **only** constraints:\n- **(1)** each panel needs exactly two reviewers, and  \n- **(2)** no reviewer can serve on more than one panel,  \ntogether with the given fact that there are only **five** reviewers and **three** panels.\n\nAll other constraints are irrelevant because feasibility already fails on simple counting.\n\n---\n\nIf you want, I can propose the *closest* feasible variants (e.g., allow one reviewer to serve on two panels, or add one more reviewer R6) and then produce valid schedules satisfying the remaining constraints.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "no valid assignment exists. ### proof of infeasibility (minimal contradiction set) from constraints (1) and (2): - each of the 3 panels (a, b, c) needs exactly 2 reviewers \u21d2 total reviewer \u201cslots\u201d = \\(3 \\times 2 = 6\\). - no reviewer can serve on more than one panel \u21d2 each reviewer can fill at most 1 slot. - there are only 5 reviewers total (r1\u2013r5) \u21d2 at most 5 slots can be filled. so we must have: \\[ 6 \\text{ required slots} \\le 5 \\text{ available slots} \\] which is false. therefore, the problem is infeasible regardless of constraints (3)\u2013(6). ### minimal contradiction set the infeasibility follows from **only** constraints: - **(1)** each panel needs exactly two reviewers, and - **(2)** no reviewer can serve on more than one panel, together with the given fact that there are only **five** reviewers and **three** panels. all other constraints are irrelevant because feasibility already fails on simple counting. --- if you want, i can propose the *closest* feasible variants (e.g., allow one reviewer to serve on two panels, or add one more reviewer r6) and then produce valid schedules satisfying the remaining constraints.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.6510416666666666,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 101.65057174731558,
+      "readability_fk_grade": 10.312999999999999,
+      "coherence_mean": 0.49785819804067233,
+      "prompt_relevance": 0.8143118345708378,
+      "connective_density": 0.5555555555555556,
+      "word_count": 180,
+      "repetition_rate": 0.06779661016949153
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

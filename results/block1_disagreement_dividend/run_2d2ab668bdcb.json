@@ -1,0 +1,443 @@
+{
+  "run_id": "run_2d2ab668bdcb",
+  "block_id": "block1_disagreement_dividend",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:07:13.389505+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_07_mystery_2050_opening",
+    "topology": "flat",
+    "consensus": "debate_then_vote",
+    "agent_count": 5,
+    "model_assignment": [
+      "claude-opus-4-6",
+      "gpt-5.2",
+      "gemini-2.5-pro",
+      "claude-opus-4-6",
+      "gpt-5.2"
+    ],
+    "disagreement_level": 3,
+    "temperature": 0.3,
+    "prompt_strategy": "perspective_diversity",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Opening Paragraph for a 2050 Mystery Novel",
+    "prompt": "Write the opening paragraph (180-260 words) of a mystery novel set in 2050, where forensic tools are advanced enough to solve most crimes quickly, yet this case resists easy explanation. The paragraph must hook the reader through atmosphere, specificity, and narrative tension while implying deeper social context without worldbuilding dump.\n\nConstraints:\n- First-person perspective.\n- Include one sensory detail tied to weather.\n- Include one object that seems trivial but later could be crucial.\n- End on a line that reframes what the narrator thought they knew.\n\nAfter the paragraph, add three bullet points listing plausible directions for chapter two.\n",
+    "rubric": [
+      "Strong hook, voice, and setting integration within compact length.",
+      "Satisfies constraints while preserving natural prose.",
+      "Seeds mystery clues without overexplaining.",
+      "Follow-up chapter directions are compelling and consistent."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-opus-4-6",
+      "text": "# The Linden Threshold\n\nThe rain that morning tasted of copper and salt, the way it always does when the atmospheric scrubbers over District Nine fall behind on their cycling \u2014 a taste most people have learned to ignore, but I never could. I stood at the edge of the apartment where Yuna Shin had, by every metric available to us, simply stopped existing. Not died. The BioTrace suite had swept the room in under four minutes: no blood, no skin particulate beyond her baseline shed, no accelerant, no toxin signature, no evidence of struggle or departure. The front door's memory confirmed it hadn't opened in eleven hours. Her coffee sat on the counter, still warm \u2014 not reheated, not insulated, *warm* \u2014 beside a single brass button that didn't match anything in her wardrobe. I picked it up with a gloved hand and turned it over. It was old, genuinely old, machine-stamped in a style I hadn't seen outside a museum. Captain Ong wanted the case filed as a voluntary disappearance, because the system had no category for what this actually was, and in 2050 an uncategorizable case is a bureaucratic emergency more than a criminal one. I almost agreed with him. I'd built my career on trusting the instruments, on the principle that evidence doesn't lie, only hides. But Yuna Shin's apartment wasn't hiding anything. It was showing me everything \u2014 and none of it meant what I'd spent twenty years believing evidence could mean.\n\n---\n\n- **Chapter Two Direction 1:** The narrator traces the brass button to a defunct garment manufacturer linked to a series of \"non-event\" disappearances spanning three decades, suggesting a pattern the forensic system was never designed to detect.\n- **Chapter Two Direction 2:** Yuna Shin's warm coffee becomes the central anomaly \u2014 thermodynamic analysis reveals it exists in a state that shouldn't be physically possible, drawing the narrator into consultation with a discredited physicist living off-grid.\n- **Chapter Two Direction 3:** The narrator discovers that Yuna Shin filed a formal request, denied and buried, to be removed from the BioTrace civil registry \u2014 raising questions about who wanted her data erased and whether her disappearance was an act of resistance rather than a crime.",
+      "input_tokens": 170,
+      "output_tokens": 503,
+      "latency_ms": 4269.584008026868,
+      "structural_metrics": {
+        "mtld": 188.78838086059304,
+        "readability_fk_grade": 13.371111111111112,
+        "coherence_mean": 0.2017347639090833,
+        "prompt_relevance": 0.4006701495403914,
+        "connective_density": 0.25,
+        "word_count": 363,
+        "repetition_rate": 0.0
+      }
+    },
+    {
+      "agent_id": "agent_1",
+      "model_name": "gpt-5.2",
+      "text": "By 2050, murders don\u2019t linger. The city\u2019s skin is laced with listeners\u2014airborne spore cams, curbside lidar, the quiet math that turns a footprint into a name before the blood dries\u2014and most nights my job is just to watch the answers arrive. But the rain tonight tastes metallic on my tongue, wind shoving it sideways against the precinct windows, and on my desk the case file won\u2019t populate: no match, no timeline, no familiar cascade of probabilities pretending to be certainty. The victim is a civic auditor, found in a locked apartment that registered no door cycles, no interior motion, no heat anomaly\u2014just a body arranged too carefully for panic and too clumsily for art. The autopsy drone swears the cause is suffocation without fibers, toxins without signature, hands without pressure marks. Everyone keeps saying *glitch* like that word absolves them. I\u2019m staring at the only item the sweep tagged as \u201cnon-evidentiary\u201d\u2014a cheap paper loyalty card from a corner tea stall, softened at the edges as if it\u2019s been worried between fingers\u2014and I can\u2019t tell whether it\u2019s trash or bait. Outside, the streetlights stutter in the storm as if they\u2019re listening too. I came in believing this was the first unsolved killing of my career; now I\u2019m wondering if it\u2019s the first honest one.\n\n- The narrator revisits the tea stall tied to the loyalty card and finds the stall\u2019s transaction ledger is the only system that didn\u2019t \u201cglitch\u201d\u2014for reasons that feel political, not technical.  \n- A private analytics firm offers an off-the-books reconstruction, but its \u201canswer\u201d contradicts the city\u2019s sensor record, forcing the narrator to choose between official certainty and messy truth.  \n- The victim\u2019s work as a civic auditor connects to a quiet pattern of \u201csolved\u201d cases that may have been curated, and the narrator discovers their own past reports were part of that curation.",
+      "input_tokens": 154,
+      "output_tokens": 403,
+      "latency_ms": 4582.310907077044,
+      "structural_metrics": {
+        "mtld": 172.84511416060735,
+        "readability_fk_grade": 12.405354785478547,
+        "coherence_mean": 0.18261996646737064,
+        "prompt_relevance": 0.48231999859467656,
+        "connective_density": 0.16666666666666666,
+        "word_count": 326,
+        "repetition_rate": 0.0
+      }
+    },
+    {
+      "agent_id": "agent_2",
+      "model_name": "gemini-2.5-pro",
+      "text": "As an expert agent adopting a risk-management perspective, the primary objective is to craft an opening that maximizes reader engagement while minimizing the risk of narrative clich\u00e9 or premature exposition. The paragraph must establish the core anomaly\u2014the failure of a near-perfect system\u2014as the central risk that the protagonist must now manage.\n\n***\n\nThe system should have had him. By the time I arrived on the 87th floor of the Lyra Spire, the chrono-scans should have already rendered a full kinetic playback of the event, the nano-tracers should have isolated the killer\u2019s unique genetic residue from the victim\u2019s, and a tidy data packet with a name, face, and real-time location should have been waiting in my queue. Dr. Aris Thorne, a bio-ethicist of some renown, lay on the sterile white floor of his apartment, the cause of death brutally, archaically obvious. Yet the forensic cloud had returned only a single, impossible word: NULL. Not an error, not corrupted data, but a definitive void. Outside, a chilly, synthetic rain designed to scrub the sky of last week\u2019s industrial haze streaked the smart-glass, blurring the neon glow of the transit lines below. My gaze drifted from the readouts to the scene itself, my boots crunching softly on crystalline dust the scrub-drones had missed. That\u2019s when I saw it, sitting on a polished chrome side table, a thing of such profound incongruity it felt like a deliberate taunt: a small, hand-carved wooden bird, its surface worn smooth with touch. It was analog, unchipped, unreadable. I\u2019d assumed a system failure, a catastrophic glitch. But staring at the impossible void where a killer\u2019s data-ghost should be, a more chilling certainty crystallized. This wasn't a crime our tools had failed to solve; it was a crime they were never designed to see.\n\n***\n\n### Plausible Directions for Chapter Two:\n\n*   **The Human Element:** The narrator, stripped of their technological crutches, must pivot to obsolete, \"analog\" detective work. This involves interviewing Thorne's colleagues, rivals, and family members, navigating awkward, face-to-face interactions in a society that has largely outsourced social memory to data profiles. The focus would be on uncovering motive and character through human fallibility, a skill the narrator may have to relearn. The wooden bird becomes the first physical clue to trace, leading them to an artisan or a community that exists \"off-grid.\"\n\n*   **The Systemic Threat:** The narrator reports the NULL finding to their superiors, triggering a high-level panic. The primary risk is not just one unsolved murder, but the existence of a \"ghost\" protocol or technology that can render the entire forensic security apparatus blind. This chapter would follow the narrator as they team up with a systems analyst or a white-hat hacker to probe the digital architecture of the crime scene, searching for traces of a sophisticated intrusion or a new form of data-erasure technology that could be sold on the black market, threatening societal order.\n\n*   **The Victim's Secret:** The investigation turns inward on Dr. Thorne himself. As a bio-ethicist, his work was likely controversial. This chapter would see the narrator digging into Thorne's encrypted files and professional history, uncovering a secret project or a philosophical stance that put him in conflict with a powerful entity. The murder may be a message, and the method\u2014a \"digital vacuum\"\u2014is symbolic of the victim's work. The wooden bird could be a calling card from a radical \"bio-purist\" or anti-tech group that Thorne was either studying or secretly a part of.",
+      "input_tokens": 159,
+      "output_tokens": 3111,
+      "latency_ms": 4094.5034730248153,
+      "structural_metrics": {
+        "mtld": 120.39087136929462,
+        "readability_fk_grade": 12.354295774647891,
+        "coherence_mean": 0.26866653585513406,
+        "prompt_relevance": 0.5292239571663957,
+        "connective_density": 0.16,
+        "word_count": 597,
+        "repetition_rate": 0.0
+      }
+    },
+    {
+      "agent_id": "agent_3",
+      "model_name": "claude-opus-4-6",
+      "text": "# The Linden Threshold\n\nThe rain that morning tasted of sulfur and synthetic lavender\u2014the city's atmospheric scrubbers working overtime after the coastal fires\u2014and I stood at the edge of Apartment 1412 trying to understand why every forensic system we owned had returned the same result: *no crime detected*. The body of Maren Alisande Voss lay centered on her living room floor, arms folded neatly across her chest, eyes open, skin already carrying that porcelain stillness that no amount of wishing can reverse. BioTrace had swept the room in ninety seconds: no foreign DNA, no toxicological flags, no micro-abrasion evidence, no thermal residue suggesting another person had been present in the past seventy-two hours. The departmental AI had already drafted a preliminary ruling of natural causes and filed it to the coroner's queue before I'd finished pulling on my gloves. Case closed, theoretically. Except that Maren Voss was thirty-one, had passed a full biometric screening four days ago, and had sent me\u2014not the department, *me*\u2014a handwritten letter I'd found in my mailbox that morning, three words on a torn envelope flap: *Don't trust it.* I pocketed the envelope. On the kitchen counter, a single house key sat on a saucer, unremarkable, labeled with a faded sticker reading **Unit 7**. There was no Unit 7 in this building. I'd been a detective for fourteen years, and I thought I understood what it meant when the machines said nothing happened. I was only now beginning to understand what it meant when the machines *lied*.\n\n---\n\n**Plausible directions for Chapter Two:**\n\n- **The narrator investigates the origin of the key and its \"Unit 7\" label**, tracing it to a decommissioned municipal building where Maren Voss held a lease under a different name\u2014revealing a hidden life that the city's pervasive surveillance systems have no record of.\n- **The departmental AI flags the narrator for \"case interference\"** after detecting the pocketed envelope, forcing them to work covertly while questioning whether the institution they serve has been compromised\u2014or was designed this way from the start.\n- **Maren's biometric screening from four days prior is quietly deleted from the health database**, and the narrator discovers that other young, healthy citizens have died under identical \"natural causes\" rulings, all within districts scheduled for redevelopment.",
+      "input_tokens": 171,
+      "output_tokens": 556,
+      "latency_ms": 4116.062982939184,
+      "structural_metrics": {
+        "mtld": 167.17381591843488,
+        "readability_fk_grade": 14.426332046332046,
+        "coherence_mean": 0.26852872731687866,
+        "prompt_relevance": 0.47631507969563613,
+        "connective_density": 0.0,
+        "word_count": 379,
+        "repetition_rate": 0.015957446808510637
+      }
+    },
+    {
+      "agent_id": "agent_4",
+      "model_name": "gpt-5.2",
+      "text": "By 2050, murder is mostly a scheduling problem: you bag the air, you scrape the light, you subpoena the city\u2019s memory, and the algorithms hand you a name before the coffee goes cold. I\u2019d built my career on that certainty, on the clean comfort of a case that resolves into a report number and a conviction. Tonight, the riverfront precinct smelled of ozone and wet concrete; rain ticked against the ballistic glass like impatient fingernails, and every drop felt like a reminder that the sky still did what it wanted. The body on the autopsy slab had no prints, no skin-cell drift, no microbial halo\u2014nothing the lab could sing back into a timeline. No drone footage, either, though the street outside was a corridor of lenses. The victim\u2019s implants were intact, unaltered, and stubbornly silent, as if they\u2019d never belonged to a living person. The only thing that didn\u2019t fit the void was a cheap paper receipt, curled and soft from moisture, stuck to the sole of his shoe: 03:17, a corner kiosk two districts over, one bottle of spring water and a pack of chewing gum. I almost tossed it into the \u201cnoise\u201d tray, the way we all do when the machines are hungry for meaning. Then my wrist display pulsed with the preliminary match\u2014identity confirmed\u2014and I realized I didn\u2019t actually know what \u201cconfirmed\u201d meant anymore.\n\n- I run the receipt through analog channels, tracing the kiosk clerk and discovering the purchase shouldn\u2019t exist in any ledger.  \n- A senior analyst quietly warns me off the case, hinting at a protected class of \u201cunrecorded\u201d citizens and offering a trade.  \n- I revisit the crime scene in person, bypassing drones, and notice a physical anomaly the sensors missed\u2014something designed for human eyes, not machine ones.",
+      "input_tokens": 154,
+      "output_tokens": 378,
+      "latency_ms": 4623.407869017683,
+      "structural_metrics": {
+        "mtld": 163.8867313621389,
+        "readability_fk_grade": 11.761643835616443,
+        "coherence_mean": 0.19625000035383477,
+        "prompt_relevance": 0.5249532498765609,
+        "connective_density": 0.16666666666666666,
+        "word_count": 305,
+        "repetition_rate": 0.0
+      }
+    }
+  ],
+  "consensus": {
+    "method": "debate_then_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# The Linden Threshold\n\nThe rain that morning tasted of copper and salt, the way it always does when the atmospheric scrubbers over District Nine fall behind on their cycling \u2014 a taste most people have learned to ignore, but I never could. I stood at the edge of the apartment where Yuna Shin had, by every metric available to us, simply stopped existing. Not died. The BioTrace suite had swept the room in under four minutes: no blood, no skin particulate beyond her baseline shed, no accelerant, no toxin signature, no evidence of struggle or departure. The front door's memory confirmed it hadn't opened in eleven hours. Her coffee sat on the counter, still warm \u2014 not reheated, not insulated, *warm* \u2014 beside a single brass button that didn't match anything in her wardrobe. I picked it up with a gloved hand and turned it over. It was old, genuinely old, machine-stamped in a style I hadn't seen outside a museum. Captain Ong wanted the case filed as a voluntary disappearance, because the system had no category for what this actually was, and in 2050 an uncategorizable case is a bureaucratic emergency more than a criminal one. I almost agreed with him. I'd built my career on trusting the instruments, on the principle that evidence doesn't lie, only hides. But Yuna Shin's apartment wasn't hiding anything. It was showing me everything \u2014 and none of it meant what I'd spent twenty years believing evidence could mean.\n\n---\n\n- **Chapter Two Direction 1:** The narrator traces the brass button to a defunct garment manufacturer linked to a series of \"non-event\" disappearances spanning three decades, suggesting a pattern the forensic system was never designed to detect.\n- **Chapter Two Direction 2:** Yuna Shin's warm coffee becomes the central anomaly \u2014 thermodynamic analysis reveals it exists in a state that shouldn't be physically possible, drawing the narrator into consultation with a discredited physicist living off-grid.\n- **Chapter Two Direction 3:** The narrator discovers that Yuna Shin filed a formal request, denied and buried, to be removed from the BioTrace civil registry \u2014 raising questions about who wanted her data erased and whether her disappearance was an act of resistance rather than a crime.",
+    "confidence": 0.11537472105182824,
+    "scores": {
+      "agent_0": 0.11537472105182824,
+      "agent_1": 0.1021311668125165,
+      "agent_2": 0.08954554810596482,
+      "agent_3": 0.10643036486054269,
+      "agent_4": 0.10267231941003976
+    },
+    "metadata": {
+      "debate_rounds": 1
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [
+    {
+      "round": 1,
+      "phase": "initial_outputs",
+      "agent_outputs": [
+        {
+          "agent_id": "agent_0",
+          "model_name": "claude-opus-4-6",
+          "text": "# The Linden Threshold\n\nThe rain that morning tasted of copper and salt, the way it always does when the atmospheric scrubbers over District Nine fall behind on their cycling \u2014 a taste most people have learned to ignore, but I never could. I stood at the edge of the apartment where Yuna Shin had, by every metric available to us, simply stopped existing. Not died. The BioTrace suite had swept the room in under four minutes: no blood, no skin particulate beyond her baseline shed, no accelerant, no toxin signature, no evidence of struggle or departure. The front door's memory confirmed it hadn't opened in eleven hours. Her coffee sat on the counter, still warm \u2014 not reheated, not insulated, *warm* \u2014 beside a single brass button that didn't match anything in her wardrobe. I picked it up with a gloved hand and turned it over. It was old, genuinely old, machine-stamped in a style I hadn't seen outside a museum. Captain Ong wanted the case filed as a voluntary disappearance, because the system had no category for what this actually was, and in 2050 an uncategorizable case is a bureaucratic emergency more than a criminal one. I almost agreed with him. I'd built my career on trusting the instruments, on the principle that evidence doesn't lie, only hides. But Yuna Shin's apartment wasn't hiding anything. It was showing me everything \u2014 and none of it meant what I'd spent twenty years believing evidence could mean.\n\n---\n\n- **Chapter Two Direction 1:** The narrator traces the brass button to a defunct garment manufacturer linked to a series of \"non-event\" disappearances spanning three decades, suggesting a pattern the forensic system was never designed to detect.\n- **Chapter Two Direction 2:** Yuna Shin's warm coffee becomes the central anomaly \u2014 thermodynamic analysis reveals it exists in a state that shouldn't be physically possible, drawing the narrator into consultation with a discredited physicist living off-grid.\n- **Chapter Two Direction 3:** The narrator discovers that Yuna Shin filed a formal request, denied and buried, to be removed from the BioTrace civil registry \u2014 raising questions about who wanted her data erased and whether her disappearance was an act of resistance rather than a crime."
+        },
+        {
+          "agent_id": "agent_1",
+          "model_name": "gpt-5.2",
+          "text": "By 2050, murders don\u2019t linger. The city\u2019s skin is laced with listeners\u2014airborne spore cams, curbside lidar, the quiet math that turns a footprint into a name before the blood dries\u2014and most nights my job is just to watch the answers arrive. But the rain tonight tastes metallic on my tongue, wind shoving it sideways against the precinct windows, and on my desk the case file won\u2019t populate: no match, no timeline, no familiar cascade of probabilities pretending to be certainty. The victim is a civic auditor, found in a locked apartment that registered no door cycles, no interior motion, no heat anomaly\u2014just a body arranged too carefully for panic and too clumsily for art. The autopsy drone swears the cause is suffocation without fibers, toxins without signature, hands without pressure marks. Everyone keeps saying *glitch* like that word absolves them. I\u2019m staring at the only item the sweep tagged as \u201cnon-evidentiary\u201d\u2014a cheap paper loyalty card from a corner tea stall, softened at the edges as if it\u2019s been worried between fingers\u2014and I can\u2019t tell whether it\u2019s trash or bait. Outside, the streetlights stutter in the storm as if they\u2019re listening too. I came in believing this was the first unsolved killing of my career; now I\u2019m wondering if it\u2019s the first honest one.\n\n- The narrator revisits the tea stall tied to the loyalty card and finds the stall\u2019s transaction ledger is the only system that didn\u2019t \u201cglitch\u201d\u2014for reasons that feel political, not technical.  \n- A private analytics firm offers an off-the-books reconstruction, but its \u201canswer\u201d contradicts the city\u2019s sensor record, forcing the narrator to choose between official certainty and messy truth.  \n- The victim\u2019s work as a civic auditor connects to a quiet pattern of \u201csolved\u201d cases that may have been curated, and the narrator discovers their own past reports were part of that curation."
+        },
+        {
+          "agent_id": "agent_2",
+          "model_name": "gemini-2.5-pro",
+          "text": "As an expert agent adopting a risk-management perspective, the primary objective is to craft an opening that maximizes reader engagement while minimizing the risk of narrative clich\u00e9 or premature exposition. The paragraph must establish the core anomaly\u2014the failure of a near-perfect system\u2014as the central risk that the protagonist must now manage.\n\n***\n\nThe system should have had him. By the time I arrived on the 87th floor of the Lyra Spire, the chrono-scans should have already rendered a full kinetic playback of the event, the nano-tracers should have isolated the killer\u2019s unique genetic residue from the victim\u2019s, and a tidy data packet with a name, face, and real-time location should have been waiting in my queue. Dr. Aris Thorne, a bio-ethicist of some renown, lay on the sterile white floor of his apartment, the cause of death brutally, archaically obvious. Yet the forensic cloud had returned only a single, impossible word: NULL. Not an error, not corrupted data, but a definitive void. Outside, a chilly, synthetic rain designed to scrub the sky of last week\u2019s industrial haze streaked the smart-glass, blurring the neon glow of the transit lines below. My gaze drifted from the readouts to the scene itself, my boots crunching softly on crystalline dust the scrub-drones had missed. That\u2019s when I saw it, sitting on a polished chrome side table, a thing of such profound incongruity it felt like a deliberate taunt: a small, hand-carved wooden bird, its surface worn smooth with touch. It was analog, unchipped, unreadable. I\u2019d assumed a system failure, a catastrophic glitch. But staring at the impossible void where a killer\u2019s data-ghost should be, a more chilling certainty crystallized. This wasn't a crime our tools had failed to solve; it was a crime they were never designed to see.\n\n***\n\n### Plausible Directions for Chapter Two:\n\n*   **The Human Element:** The narrator, stripped of their technological crutches, must pivot to obsolete, \"analog\" detective work. This involves interviewing Thorne's colleagues, rivals, and family members, navigating awkward, face-to-face interactions in a society that has largely outsourced social memory to data profiles. The focus would be on uncovering motive and character through human fallibility, a skill the narrator may have to relearn. The wooden bird becomes the first physical clue to trace, leading them to an artisan or a community that exists \"off-grid.\"\n\n*   **The Systemic Threat:** The narrator reports the NULL finding to their superiors, triggering a high-level panic. The primary risk is not just one unsolved murder, but the existence of a \"ghost\" protocol or technology that can render the entire forensic security apparatus blind. This chapter would follow the narrator as they team up with a systems analyst or a white-hat hacker to probe the digital architecture of the crime scene, searching for traces of a sophisticated intrusion or a new form of data-erasure technology that could be sold on the black market, threatening societal order.\n\n*   **The Victim's Secret:** The investigation turns inward on Dr. Thorne himself. As a bio-ethicist, his work was likely controversial. This chapter would see the narrator digging into Thorne's encrypted files and professional history, uncovering a secret project or a philosophical stance that put him in conflict with a powerful entity. The murder may be a message, and the method\u2014a \"digital vacuum\"\u2014is symbolic of the victim's work. The wooden bird could be a calling card from a radical \"bio-purist\" or anti-tech group that Thorne was either studying or secretly a part of."
+        },
+        {
+          "agent_id": "agent_3",
+          "model_name": "claude-opus-4-6",
+          "text": "# The Linden Threshold\n\nThe rain that morning tasted of sulfur and synthetic lavender\u2014the city's atmospheric scrubbers working overtime after the coastal fires\u2014and I stood at the edge of Apartment 1412 trying to understand why every forensic system we owned had returned the same result: *no crime detected*. The body of Maren Alisande Voss lay centered on her living room floor, arms folded neatly across her chest, eyes open, skin already carrying that porcelain stillness that no amount of wishing can reverse. BioTrace had swept the room in ninety seconds: no foreign DNA, no toxicological flags, no micro-abrasion evidence, no thermal residue suggesting another person had been present in the past seventy-two hours. The departmental AI had already drafted a preliminary ruling of natural causes and filed it to the coroner's queue before I'd finished pulling on my gloves. Case closed, theoretically. Except that Maren Voss was thirty-one, had passed a full biometric screening four days ago, and had sent me\u2014not the department, *me*\u2014a handwritten letter I'd found in my mailbox that morning, three words on a torn envelope flap: *Don't trust it.* I pocketed the envelope. On the kitchen counter, a single house key sat on a saucer, unremarkable, labeled with a faded sticker reading **Unit 7**. There was no Unit 7 in this building. I'd been a detective for fourteen years, and I thought I understood what it meant when the machines said nothing happened. I was only now beginning to understand what it meant when the machines *lied*.\n\n---\n\n**Plausible directions for Chapter Two:**\n\n- **The narrator investigates the origin of the key and its \"Unit 7\" label**, tracing it to a decommissioned municipal building where Maren Voss held a lease under a different name\u2014revealing a hidden life that the city's pervasive surveillance systems have no record of.\n- **The departmental AI flags the narrator for \"case interference\"** after detecting the pocketed envelope, forcing them to work covertly while questioning whether the institution they serve has been compromised\u2014or was designed this way from the start.\n- **Maren's biometric screening from four days prior is quietly deleted from the health database**, and the narrator discovers that other young, healthy citizens have died under identical \"natural causes\" rulings, all within districts scheduled for redevelopment."
+        },
+        {
+          "agent_id": "agent_4",
+          "model_name": "gpt-5.2",
+          "text": "By 2050, murder is mostly a scheduling problem: you bag the air, you scrape the light, you subpoena the city\u2019s memory, and the algorithms hand you a name before the coffee goes cold. I\u2019d built my career on that certainty, on the clean comfort of a case that resolves into a report number and a conviction. Tonight, the riverfront precinct smelled of ozone and wet concrete; rain ticked against the ballistic glass like impatient fingernails, and every drop felt like a reminder that the sky still did what it wanted. The body on the autopsy slab had no prints, no skin-cell drift, no microbial halo\u2014nothing the lab could sing back into a timeline. No drone footage, either, though the street outside was a corridor of lenses. The victim\u2019s implants were intact, unaltered, and stubbornly silent, as if they\u2019d never belonged to a living person. The only thing that didn\u2019t fit the void was a cheap paper receipt, curled and soft from moisture, stuck to the sole of his shoe: 03:17, a corner kiosk two districts over, one bottle of spring water and a pack of chewing gum. I almost tossed it into the \u201cnoise\u201d tray, the way we all do when the machines are hungry for meaning. Then my wrist display pulsed with the preliminary match\u2014identity confirmed\u2014and I realized I didn\u2019t actually know what \u201cconfirmed\u201d meant anymore.\n\n- I run the receipt through analog channels, tracing the kiosk clerk and discovering the purchase shouldn\u2019t exist in any ledger.  \n- A senior analyst quietly warns me off the case, hinting at a protected class of \u201cunrecorded\u201d citizens and offering a trade.  \n- I revisit the crime scene in person, bypassing drones, and notice a physical anomaly the sensors missed\u2014something designed for human eyes, not machine ones."
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "phase": "final_consensus",
+      "agent_outputs": [
+        {
+          "agent_id": "agent_0",
+          "model_name": "consensus",
+          "text": "# The Linden Threshold\n\nThe rain that morning tasted of copper and salt, the way it always does when the atmospheric scrubbers over District Nine fall behind on their cycling \u2014 a taste most people have learned to ignore, but I never could. I stood at the edge of the apartment where Yuna Shin had, by every metric available to us, simply stopped existing. Not died. The BioTrace suite had swept the room in under four minutes: no blood, no skin particulate beyond her baseline shed, no accelerant, no toxin signature, no evidence of struggle or departure. The front door's memory confirmed it hadn't opened in eleven hours. Her coffee sat on the counter, still warm \u2014 not reheated, not insulated, *warm* \u2014 beside a single brass button that didn't match anything in her wardrobe. I picked it up with a gloved hand and turned it over. It was old, genuinely old, machine-stamped in a style I hadn't seen outside a museum. Captain Ong wanted the case filed as a voluntary disappearance, because the system had no category for what this actually was, and in 2050 an uncategorizable case is a bureaucratic emergency more than a criminal one. I almost agreed with him. I'd built my career on trusting the instruments, on the principle that evidence doesn't lie, only hides. But Yuna Shin's apartment wasn't hiding anything. It was showing me everything \u2014 and none of it meant what I'd spent twenty years believing evidence could mean.\n\n---\n\n- **Chapter Two Direction 1:** The narrator traces the brass button to a defunct garment manufacturer linked to a series of \"non-event\" disappearances spanning three decades, suggesting a pattern the forensic system was never designed to detect.\n- **Chapter Two Direction 2:** Yuna Shin's warm coffee becomes the central anomaly \u2014 thermodynamic analysis reveals it exists in a state that shouldn't be physically possible, drawing the narrator into consultation with a discredited physicist living off-grid.\n- **Chapter Two Direction 3:** The narrator discovers that Yuna Shin filed a formal request, denied and buried, to be removed from the BioTrace civil registry \u2014 raising questions about who wanted her data erased and whether her disappearance was an act of resistance rather than a crime."
+        }
+      ]
+    }
+  ],
+  "evaluation": {
+    "quality_score": 0.15959966522632915,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 0.9575979913579749,
+      "num_bt_candidates": 6,
+      "consensus_vs_best_agent": false,
+      "consensus_comparisons": 5,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.10799450158461643,
+      "gpt-4o": 0.16666666666666669,
+      "deepseek-v3p2": 0.1634929213349984
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.15959966522632915,
+        "agent_0": 0.15959966522632915,
+        "agent_1": 0.17883185742523108,
+        "agent_2": 0.08903038997513539,
+        "agent_3": 0.2533387569206461,
+        "agent_4": 0.15959966522632915
+      },
+      "ranking": [
+        "agent_3",
+        "agent_1",
+        "final_consensus",
+        "agent_0",
+        "agent_4",
+        "agent_2"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.10799450158461643,
+          "agent_0": 0.10799450158461643,
+          "agent_1": 0.25891604453861605,
+          "agent_2": 1.46890418201771e-07,
+          "agent_3": 0.41710030381711655,
+          "agent_4": 0.10799450158461639
+        },
+        "gpt-4o": {
+          "final_consensus": 0.16666666666666669,
+          "agent_0": 0.16666666666666669,
+          "agent_1": 0.16666666666666669,
+          "agent_2": 0.16666666666666669,
+          "agent_3": 0.16666666666666669,
+          "agent_4": 0.16666666666666669
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.1634929213349984,
+          "agent_0": 0.1634929213349984,
+          "agent_1": 0.1164105932636828,
+          "agent_2": 0.1634929213349984,
+          "agent_3": 0.22961772139632347,
+          "agent_4": 0.1634929213349984
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": -0.03252032520325204,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": -0.09756097560975613,
+          "claude-sonnet-4-6__vs__gpt-4o": 0.0,
+          "deepseek-v3p2__vs__gpt-4o": 0.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_1",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_3",
+          "per_judge": {
+            "claude-sonnet-4-6": "right",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_4",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_1",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_3",
+          "per_judge": {
+            "claude-sonnet-4-6": "right",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_4",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_1",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_1",
+          "candidate_j": "agent_3",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "right"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_1",
+          "candidate_j": "agent_4",
+          "per_judge": {
+            "claude-sonnet-4-6": "left",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_2",
+          "candidate_j": "agent_3",
+          "per_judge": {
+            "claude-sonnet-4-6": "right",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_2",
+          "candidate_j": "agent_4",
+          "per_judge": {
+            "claude-sonnet-4-6": "right",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_3",
+          "candidate_j": "agent_4",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 0.5969664887551633,
+      "disagreement_rate": 0.40303351124483666,
+      "vote_entropy": 1.0000000000000002,
+      "lexical_diversity": 0.6710594529503623,
+      "pairwise_similarity_lexical": 0.10323082404817843
+    },
+    "structural_metrics": {
+      "mtld": 188.78838086059304,
+      "readability_fk_grade": 13.371111111111112,
+      "coherence_mean": 0.2017347639090833,
+      "prompt_relevance": 0.4006701495403914,
+      "connective_density": 0.25,
+      "word_count": 363,
+      "repetition_rate": 0.0
+    },
+    "human_review": {
+      "flagged": true,
+      "reasons": [
+        "judge_disagreement"
+      ],
+      "sheet_path": "results/human_eval/run_2d2ab668bdcb.json"
+    }
+  }
+}

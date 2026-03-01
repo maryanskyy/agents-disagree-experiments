@@ -1,0 +1,164 @@
+{
+  "run_id": "run_df345d4e4337",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:01:34.931002+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_07_mystery_2050_opening",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Opening Paragraph for a 2050 Mystery Novel",
+    "prompt": "Write the opening paragraph (180-260 words) of a mystery novel set in 2050, where forensic tools are advanced enough to solve most crimes quickly, yet this case resists easy explanation. The paragraph must hook the reader through atmosphere, specificity, and narrative tension while implying deeper social context without worldbuilding dump.\n\nConstraints:\n- First-person perspective.\n- Include one sensory detail tied to weather.\n- Include one object that seems trivial but later could be crucial.\n- End on a line that reframes what the narrator thought they knew.\n\nAfter the paragraph, add three bullet points listing plausible directions for chapter two.\n",
+    "rubric": [
+      "Strong hook, voice, and setting integration within compact length.",
+      "Satisfies constraints while preserving natural prose.",
+      "Seeds mystery clues without overexplaining.",
+      "Follow-up chapter directions are compelling and consistent."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# Opening Paragraph\n\nThe rain tasted like copper\u2014actual copper, not metaphor, the atmospheric processors having failed again in Sector Seven\u2014when Detective Sarah Chen pulled the victim's neural backup from evidence lock. Twenty-three years old, Keisha Okonkwo, found in her apartment with a bullet wound that ballistics had matched to a weapon registered to her mother, who'd been dead for six months. The case should have closed by lunch. Our forensic AI could reconstruct a suspect's movements from skin cells and ambient dust; we could pull memories directly from neural implants, watch the crime unfold like security footage from inside someone's skull. But Keisha's implant had been wiped\u2014not corrupted, not degraded, but surgically excised with precision that suggested medical training. The backup showed nothing after 11 PM the night before. Her mother's gun had been fired exactly once, ballistics confirmed, but the weapon had been locked in a climate-controlled vault downtown, untouched for 180 days according to the access logs. I was holding the backup drive, feeling its weight in my palm like a stone, when the lab director called with the result that made me understand we weren't looking for a killer at all. We were looking for someone who'd learned to erase themselves from a world where erasure was supposed to be impossible.\n\n---\n\n## Three Directions for Chapter Two\n\n\u2022 **The Institutional Angle**: Sarah discovers that Keisha worked for NeuroState, the corporation that manufactures neural implants and maintains the backup infrastructure\u2014raising questions about whether this is corporate sabotage, a whistleblower situation, or something worse involving the company's own security apparatus.\n\n\u2022 **The Temporal Impossibility**: Forensic reconstruction of the crime scene reveals evidence suggesting the murder occurred at a time when multiple independent systems confirm Keisha was alive and elsewhere, forcing Sarah to confront whether the timeline itself has been compromised or whether someone has found a way to manipulate the supposedly immutable digital record.\n\n\u2022 **The Personal Connection**: Sarah's own neural implant begins showing anomalies\u2014small gaps in her memories, timestamps that don't align\u2014suggesting she may have been at or near the crime scene without remembering it, making her both investigator and suspect in a case that might implicate her own department.",
+      "input_tokens": 163,
+      "output_tokens": 501,
+      "latency_ms": 4088.4579230332747,
+      "structural_metrics": {
+        "mtld": 189.0853039499351,
+        "readability_fk_grade": 16.141911764705885,
+        "coherence_mean": 0.24275667895481598,
+        "prompt_relevance": 0.4719151775936066,
+        "connective_density": 0.25,
+        "word_count": 365,
+        "repetition_rate": 0.0
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# Opening Paragraph\n\nThe rain tasted like copper\u2014actual copper, not metaphor, the atmospheric processors having failed again in Sector Seven\u2014when Detective Sarah Chen pulled the victim's neural backup from evidence lock. Twenty-three years old, Keisha Okonkwo, found in her apartment with a bullet wound that ballistics had matched to a weapon registered to her mother, who'd been dead for six months. The case should have closed by lunch. Our forensic AI could reconstruct a suspect's movements from skin cells and ambient dust; we could pull memories directly from neural implants, watch the crime unfold like security footage from inside someone's skull. But Keisha's implant had been wiped\u2014not corrupted, not degraded, but surgically excised with precision that suggested medical training. The backup showed nothing after 11 PM the night before. Her mother's gun had been fired exactly once, ballistics confirmed, but the weapon had been locked in a climate-controlled vault downtown, untouched for 180 days according to the access logs. I was holding the backup drive, feeling its weight in my palm like a stone, when the lab director called with the result that made me understand we weren't looking for a killer at all. We were looking for someone who'd learned to erase themselves from a world where erasure was supposed to be impossible.\n\n---\n\n## Three Directions for Chapter Two\n\n\u2022 **The Institutional Angle**: Sarah discovers that Keisha worked for NeuroState, the corporation that manufactures neural implants and maintains the backup infrastructure\u2014raising questions about whether this is corporate sabotage, a whistleblower situation, or something worse involving the company's own security apparatus.\n\n\u2022 **The Temporal Impossibility**: Forensic reconstruction of the crime scene reveals evidence suggesting the murder occurred at a time when multiple independent systems confirm Keisha was alive and elsewhere, forcing Sarah to confront whether the timeline itself has been compromised or whether someone has found a way to manipulate the supposedly immutable digital record.\n\n\u2022 **The Personal Connection**: Sarah's own neural implant begins showing anomalies\u2014small gaps in her memories, timestamps that don't align\u2014suggesting she may have been at or near the crime scene without remembering it, making her both investigator and suspect in a case that might implicate her own department.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# opening paragraph the rain tasted like copper\u2014actual copper, not metaphor, the atmospheric processors having failed again in sector seven\u2014when detective sarah chen pulled the victim's neural backup from evidence lock. twenty-three years old, keisha okonkwo, found in her apartment with a bullet wound that ballistics had matched to a weapon registered to her mother, who'd been dead for six months. the case should have closed by lunch. our forensic ai could reconstruct a suspect's movements from skin cells and ambient dust; we could pull memories directly from neural implants, watch the crime unfold like security footage from inside someone's skull. but keisha's implant had been wiped\u2014not corrupted, not degraded, but surgically excised with precision that suggested medical training. the backup showed nothing after 11 pm the night before. her mother's gun had been fired exactly once, ballistics confirmed, but the weapon had been locked in a climate-controlled vault downtown, untouched for 180 days according to the access logs. i was holding the backup drive, feeling its weight in my palm like a stone, when the lab director called with the result that made me understand we weren't looking for a killer at all. we were looking for someone who'd learned to erase themselves from a world where erasure was supposed to be impossible. --- ## three directions for chapter two \u2022 **the institutional angle**: sarah discovers that keisha worked for neurostate, the corporation that manufactures neural implants and maintains the backup infrastructure\u2014raising questions about whether this is corporate sabotage, a whistleblower situation, or something worse involving the company's own security apparatus. \u2022 **the temporal impossibility**: forensic reconstruction of the crime scene reveals evidence suggesting the murder occurred at a time when multiple independent systems confirm keisha was alive and elsewhere, forcing sarah to confront whether the timeline itself has been compromised or whether someone has found a way to manipulate the supposedly immutable digital record. \u2022 **the personal connection**: sarah's own neural implant begins showing anomalies\u2014small gaps in her memories, timestamps that don't align\u2014suggesting she may have been at or near the crime scene without remembering it, making her both investigator and suspect in a case that might implicate her own department.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.6639118457300276,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 189.0853039499351,
+      "readability_fk_grade": 16.141911764705885,
+      "coherence_mean": 0.24275667895481598,
+      "prompt_relevance": 0.4719151775936066,
+      "connective_density": 0.25,
+      "word_count": 365,
+      "repetition_rate": 0.0
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

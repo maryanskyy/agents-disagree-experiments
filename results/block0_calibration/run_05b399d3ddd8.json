@@ -1,0 +1,164 @@
+{
+  "run_id": "run_05b399d3ddd8",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:55:04.324125+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_07_mystery_2050_opening",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Opening Paragraph for a 2050 Mystery Novel",
+    "prompt": "Write the opening paragraph (180-260 words) of a mystery novel set in 2050, where forensic tools are advanced enough to solve most crimes quickly, yet this case resists easy explanation. The paragraph must hook the reader through atmosphere, specificity, and narrative tension while implying deeper social context without worldbuilding dump.\n\nConstraints:\n- First-person perspective.\n- Include one sensory detail tied to weather.\n- Include one object that seems trivial but later could be crucial.\n- End on a line that reframes what the narrator thought they knew.\n\nAfter the paragraph, add three bullet points listing plausible directions for chapter two.\n",
+    "rubric": [
+      "Strong hook, voice, and setting integration within compact length.",
+      "Satisfies constraints while preserving natural prose.",
+      "Seeds mystery clues without overexplaining.",
+      "Follow-up chapter directions are compelling and consistent."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "The Chrono-Scanner was supposed to make my job obsolete, a relic of a less-enlightened age. It painted the last sixty minutes of a subject\u2019s life in shimmering light-constructs, mapping every particle, every stray bio-signature, every quantum fluctuation. It turned murder into a solvable equation. But tonight, it was painting abstracts. The victim, financial titan Aris Thorne, lay on a pristine white rug in his penthouse aerie, a single, precise wound in his chest. No weapon, no forced entry, no genetic residue besides his own. Through the triple-paned glass, the ozone tang of the post-deluge air scrubbers stung my nostrils, a clean, sterile scent for a clean, sterile crime scene that refused to give up its secrets. My team buzzed with the nervous energy of artists asked to critique a blank canvas, their faith in the infallible system visibly cracking. My own gaze kept snagging on a detail too physical, too anachronistic for this automated mausoleum: a single, paper-stock playing card resting on the marble countertop. The Queen of Spades, her face worn smooth from countless shuffles. For a decade, my work had been about interpreting data. Now, I was staring at an object that felt like a ghost. The lead tech\u2019s voice finally crackled in my audio implant, thin and disbelieving. \u201cMa\u2019am, the final render is in. According to the data\u2026 Mr. Thorne was never in the room.\u201d\n\n***\n\n**Plausible Directions for Chapter Two:**\n\n*   **Investigate the Anomaly:** The narrator focuses on the only piece of physical, non-digital evidence: the playing card. This leads them away from the sterile, data-driven world of official forensics and into the city's underbelly, searching for underground casinos, collectors of pre-digital artifacts, or anyone who uses such a card as a symbol, suggesting a subculture that operates outside the system's view.\n*   **Attack the Technology:** The narrator operates on the premise that the Chrono-Scanner wasn't wrong, but was actively deceived. This chapter would involve a deep dive into the technology itself, consulting with its creators or even black-hat hackers to understand how one could create a \"data vacuum\" or spoof the system to erase a person's presence, pointing toward a highly sophisticated, tech-savvy killer.\n*   **Profile the Ghost:** The narrator begins a \"victimology\" of Aris Thorne, but with a twist. If he could be erased from a secure room's data-log, he must have had secrets the system couldn't see. The investigation would focus on Thorne's off-grid life, searching for encrypted communications, hidden properties, or connections to anti-surveillance movements, building a profile of a man who lived a double life in a society where privacy is tantamount to criminality.",
+      "input_tokens": 152,
+      "output_tokens": 2630,
+      "latency_ms": 4229.136046953499,
+      "structural_metrics": {
+        "mtld": 168.26356321971133,
+        "readability_fk_grade": 11.268497010236143,
+        "coherence_mean": 0.26159326088157847,
+        "prompt_relevance": 0.42531103169325013,
+        "connective_density": 0.2777777777777778,
+        "word_count": 448,
+        "repetition_rate": 0.0
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "The Chrono-Scanner was supposed to make my job obsolete, a relic of a less-enlightened age. It painted the last sixty minutes of a subject\u2019s life in shimmering light-constructs, mapping every particle, every stray bio-signature, every quantum fluctuation. It turned murder into a solvable equation. But tonight, it was painting abstracts. The victim, financial titan Aris Thorne, lay on a pristine white rug in his penthouse aerie, a single, precise wound in his chest. No weapon, no forced entry, no genetic residue besides his own. Through the triple-paned glass, the ozone tang of the post-deluge air scrubbers stung my nostrils, a clean, sterile scent for a clean, sterile crime scene that refused to give up its secrets. My team buzzed with the nervous energy of artists asked to critique a blank canvas, their faith in the infallible system visibly cracking. My own gaze kept snagging on a detail too physical, too anachronistic for this automated mausoleum: a single, paper-stock playing card resting on the marble countertop. The Queen of Spades, her face worn smooth from countless shuffles. For a decade, my work had been about interpreting data. Now, I was staring at an object that felt like a ghost. The lead tech\u2019s voice finally crackled in my audio implant, thin and disbelieving. \u201cMa\u2019am, the final render is in. According to the data\u2026 Mr. Thorne was never in the room.\u201d\n\n***\n\n**Plausible Directions for Chapter Two:**\n\n*   **Investigate the Anomaly:** The narrator focuses on the only piece of physical, non-digital evidence: the playing card. This leads them away from the sterile, data-driven world of official forensics and into the city's underbelly, searching for underground casinos, collectors of pre-digital artifacts, or anyone who uses such a card as a symbol, suggesting a subculture that operates outside the system's view.\n*   **Attack the Technology:** The narrator operates on the premise that the Chrono-Scanner wasn't wrong, but was actively deceived. This chapter would involve a deep dive into the technology itself, consulting with its creators or even black-hat hackers to understand how one could create a \"data vacuum\" or spoof the system to erase a person's presence, pointing toward a highly sophisticated, tech-savvy killer.\n*   **Profile the Ghost:** The narrator begins a \"victimology\" of Aris Thorne, but with a twist. If he could be erased from a secure room's data-log, he must have had secrets the system couldn't see. The investigation would focus on Thorne's off-grid life, searching for encrypted communications, hidden properties, or connections to anti-surveillance movements, building a profile of a man who lived a double life in a society where privacy is tantamount to criminality.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "the chrono-scanner was supposed to make my job obsolete, a relic of a less-enlightened age. it painted the last sixty minutes of a subject\u2019s life in shimmering light-constructs, mapping every particle, every stray bio-signature, every quantum fluctuation. it turned murder into a solvable equation. but tonight, it was painting abstracts. the victim, financial titan aris thorne, lay on a pristine white rug in his penthouse aerie, a single, precise wound in his chest. no weapon, no forced entry, no genetic residue besides his own. through the triple-paned glass, the ozone tang of the post-deluge air scrubbers stung my nostrils, a clean, sterile scent for a clean, sterile crime scene that refused to give up its secrets. my team buzzed with the nervous energy of artists asked to critique a blank canvas, their faith in the infallible system visibly cracking. my own gaze kept snagging on a detail too physical, too anachronistic for this automated mausoleum: a single, paper-stock playing card resting on the marble countertop. the queen of spades, her face worn smooth from countless shuffles. for a decade, my work had been about interpreting data. now, i was staring at an object that felt like a ghost. the lead tech\u2019s voice finally crackled in my audio implant, thin and disbelieving. \u201cma\u2019am, the final render is in. according to the data\u2026 mr. thorne was never in the room.\u201d *** **plausible directions for chapter two:** * **investigate the anomaly:** the narrator focuses on the only piece of physical, non-digital evidence: the playing card. this leads them away from the sterile, data-driven world of official forensics and into the city's underbelly, searching for underground casinos, collectors of pre-digital artifacts, or anyone who uses such a card as a symbol, suggesting a subculture that operates outside the system's view. * **attack the technology:** the narrator operates on the premise that the chrono-scanner wasn't wrong, but was actively deceived. this chapter would involve a deep dive into the technology itself, consulting with its creators or even black-hat hackers to understand how one could create a \"data vacuum\" or spoof the system to erase a person's presence, pointing toward a highly sophisticated, tech-savvy killer. * **profile the ghost:** the narrator begins a \"victimology\" of aris thorne, but with a twist. if he could be erased from a secure room's data-log, he must have had secrets the system couldn't see. the investigation would focus on thorne's off-grid life, searching for encrypted communications, hidden properties, or connections to anti-surveillance movements, building a profile of a man who lived a double life in a society where privacy is tantamount to criminality.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.6558891454965358,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 168.26356321971133,
+      "readability_fk_grade": 11.268497010236143,
+      "coherence_mean": 0.26159326088157847,
+      "prompt_relevance": 0.42531103169325013,
+      "connective_density": 0.2777777777777778,
+      "word_count": 448,
+      "repetition_rate": 0.0
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "run_id": "run_d54248943a59",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:01:19.526627+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_08_counterfactual_chain",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 3,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Counterfactual Reasoning on Infrastructure Failure",
+    "prompt": "Analyze this counterfactual: A regional hospital network experienced a 9-hour outage after a ransomware attack disabled centralized scheduling. Suppose the network had adopted a segmented architecture six months earlier, with offline fallback booking in each hospital and weekly incident drills.\n\nBuild a counterfactual causal chain describing what likely would have changed in (a) outage propagation, (b) recovery time, (c) patient triage quality, and (d) communication errors. Distinguish high-confidence effects from speculative ones. Include at least three possible unintended consequences of segmentation (for example, synchronization lag or inconsistent policy enforcement).\n\nEnd with a concise decision recommendation on whether the segmented architecture is justified under uncertainty, and what additional evidence should be collected in future drills.\n",
+    "rubric": [
+      "Provides structured causal reasoning across all requested outcome dimensions.",
+      "Separates confident inferences from speculative claims.",
+      "Includes plausible unintended consequences, not one-sided advocacy.",
+      "Recommendation reflects uncertainty and evidence gaps."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# Counterfactual Analysis: Segmented Architecture vs. Ransomware Outage\n\n## I. Causal Chain Analysis\n\n### (A) Outage Propagation\n\n**High-Confidence Effects:**\n\n1. **Containment to single hospital or subset**\n   - Causal mechanism: Segmented architecture isolates scheduling systems; centralized attack vector eliminated\n   - Evidence base: Standard network segmentation principles; empirically validated in healthcare (VA system studies)\n   - Likely outcome: Outage confined to 1\u20132 hospitals instead of entire network\n   - Confidence: 85%\n\n2. **Reduced lateral movement**\n   - Ransomware typically exploits trust relationships between networked systems\n   - Segmentation with strict API boundaries limits propagation pathways\n   - Confidence: 80%\n\n**Speculative Effects:**\n\n3. **Attacker might target multiple segments sequentially**\n   - Ransomware operators could adapt tactics if segmentation is known\n   - Requires higher sophistication; adds operational cost to attack\n   - Confidence: 45% (depends on attacker sophistication and reconnaissance)\n\n4. **Backup systems themselves become targets**\n   - If offline fallback systems are discoverable, attackers might prioritize them\n   - Confidence: 35% (requires pre-attack reconnaissance of fallback locations)\n\n---\n\n### (B) Recovery Time\n\n**High-Confidence Effects:**\n\n1. **Faster restoration of unaffected hospitals**\n   - Causal mechanism: Unaffected segments can resume normal operations immediately\n   - Actual outage: 9 hours network-wide\n   - Counterfactual: 2\u20133 hours for unaffected hospitals; 6\u20138 hours for affected segment\n   - Confidence: 80%\n\n2. **Offline fallback reduces dependency on IT recovery**\n   - Booking can continue on paper/local systems during IT remediation\n   - Reduces pressure on incident response team\n   - Estimated time savings: 2\u20134 hours\n   - Confidence: 75%\n\n3. **Weekly drills accelerate incident recognition and response**\n   - Staff familiarity with fallback procedures reduces decision lag\n   - Estimated acceleration: 30\u201345 minutes faster activation\n   - Confidence: 70%\n\n**Speculative Effects:**\n\n4. **Faster forensic isolation if segmentation is well-documented**\n   - IT teams can quickly identify which segment was compromised\n   - Confidence: 60% (depends on documentation quality and staff training)\n\n5. **Potential delays in cross-segment coordination**\n   - If recovery requires re-synchronizing data across segments, this could add 1\u20133 hours\n   - Confidence: 50% (depends on sync protocols)\n\n---\n\n### (C) Patient Triage Quality\n\n**High-Confidence Effects:**\n\n1. **Maintained local scheduling in unaffected hospitals**\n   - Causal mechanism: Offline fallback systems allow continued intake and triage\n   - Actual outage impact: Likely 15\u201330% reduction in triage capacity network-wide\n   - Counterfactual: 5\u201310% reduction (only affected hospital)\n   - Confidence: 80%\n\n2. **Reduced emergency department crowding in unaffected hospitals**\n   - Patients can be scheduled and routed normally\n   - Fewer diversions to distant facilities\n   - Confidence: 75%\n\n**Speculative Effects:**\n\n3. **Increased triage errors due to lack of centralized patient history**\n   - Offline systems may not have access to recent lab results, medication lists\n   - Risk of duplicate testing or missed drug interactions\n   - Confidence: 55% (depends on how much history is cached locally)\n\n4. **Paradoxical worsening in affected hospital**\n   - Paper-based triage is slower than digital; may create bottlenecks\n   - Confidence: 50% (depends on staff training and paper system design)\n\n---\n\n### (D) Communication Errors\n\n**High-Confidence Effects:**\n\n1. **Faster situational awareness**\n   - Causal mechanism: Weekly drills establish communication protocols\n   - Actual outage: Likely 1\u20132 hours of confusion about scope and severity\n   - Counterfactual: 15\u201330 minutes to establish that outage is localized\n   - Confidence: 75%\n\n2. **Reduced misinformation about network-wide impact**\n   - Staff trained in drills know which systems are affected\n   - Fewer false reports of cascading failures\n   - Confidence: 70%\n\n**Speculative Effects:**\n\n3. **Increased communication overhead between segments**\n   - Segmented systems require explicit coordination; may generate more messages\n   - Risk of conflicting instructions if policies differ between hospitals\n   - Confidence: 45%\n\n4. **Delayed communication to patients**\n   - If offline fallback systems don't integrate with patient notification systems, delays in appointment rescheduling notifications\n   - Confidence: 40%\n\n---\n\n## II. Three Unintended Consequences of Segmentation\n\n### 1. **Synchronization Lag and Data Inconsistency**\n\n**Mechanism:**\n- Segmented systems require periodic reconciliation of patient records, appointment data, and billing\n- Weekly or daily batch syncs create windows where data is stale\n- Example: Patient books appointment at Hospital A, then transfers to Hospital B; Hospital B's system doesn't reflect the booking for 24 hours\n\n**Severity:** Medium\n- **Impact:** Duplicate bookings, missed appointments, billing errors\n- **Frequency:** Estimated 2\u20135% of cross-hospital referrals affected\n- **Mitigation cost:** Real-time API layer (partially defeats segmentation benefits)\n\n**Confidence in occurrence:** 75%\n\n---\n\n### 2. **Inconsistent Policy Enforcement Across Segments**\n\n**Mechanism:**\n- Each hospital's scheduling system may implement different rules:\n  - Maximum appointment duration\n  - Cancellation policies\n  - Triage priority algorithms\n  - Infection control protocols\n- Segmentation reduces ability to enforce network-wide standards\n\n**Example scenario:**\n- Hospital A allows 48-hour cancellations; Hospital B requires 72 hours\n- Patient books at A, transfers to B, cancels within 48 hours \u2192 penalty at B despite A's policy\n- Generates patient complaints and administrative overhead\n\n**Severity:** Medium-High\n- **Impact:** Patient dissatisfaction, revenue leakage, compliance risk\n- **Frequency:** Estimated 1\u20133% of cross-hospital interactions\n- **Mitigation cost:** Centralized policy management layer (adds complexity)\n\n**Confidence in occurrence:** 80%\n\n---\n\n### 3. **Increased Operational Complexity and Staff Confusion**\n\n**Mechanism:**\n- Segmented architecture requires staff to understand:\n  - When to use offline fallback vs. online system\n  - How to manually escalate cross-hospital issues\n  - Different user interfaces for different segments\n  - Fallback procedures that may be outdated if not regularly drilled\n\n**Example scenario:**\n- New staff member trained only on online system; during drill, doesn't know how to access paper booking forms\n- During actual outage, creates bottleneck in triage\n- Alternatively, staff over-rely on fallback system even after online system is restored, causing duplicate entries\n\n**Severity:** Medium\n- **Impact:** Slower response times, higher error rates, training burden\n- **Frequency:** Estimated 10\u201320% of staff make procedural errors during first outage\n- **Mitigation cost:** Quarterly drills, updated documentation, onboarding modules\n\n**Confidence in occurrence:** 85%\n\n---\n\n## III. Decision Recommendation\n\n### Summary Assessment\n\n| Dimension | Actual Outage | Counterfactual (Segmented) | Net Benefit |\n|-----------|---------------|---------------------------|------------|\n| **Outage Duration** | 9 hours (network-wide) | 6\u20138 hours (1\u20132 hospitals) | **2\u20133 hours saved** |\n| **Affected Capacity** | 100% of network | 20\u201330% of network | **70\u201380% maintained** |\n| **Triage Quality** | Severely degraded | Mildly degraded | **Significant improvement** |\n| **Recovery Cost** | High (full network remediation) | Medium (single segment) | **20\u201330% cost reduction** |\n| **Operational Complexity** | Low (centralized) | High (distributed) | **Ongoing cost** |\n\n### Recommendation: **ADOPT SEGMENTED ARCHITECTURE**\n\n**Justification under uncertainty:**\n\n1. **High-confidence benefits outweigh speculative risks**\n   - Outage containment (80% confidence) and faster recovery (75% confidence) are robust across scenarios\n   - Unintended consequences (synchronization lag, policy inconsistency) are manageable with",
+      "input_tokens": 195,
+      "output_tokens": 2048,
+      "latency_ms": 4431.164972949773,
+      "structural_metrics": {
+        "mtld": 178.05260824589922,
+        "readability_fk_grade": 24.36894894894895,
+        "coherence_mean": 0.45194906723433537,
+        "prompt_relevance": 0.7329769943533861,
+        "connective_density": 0.16,
+        "word_count": 967,
+        "repetition_rate": 0.01867219917012448
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# Counterfactual Analysis: Segmented Architecture vs. Ransomware Outage\n\n## I. Causal Chain Analysis\n\n### (A) Outage Propagation\n\n**High-Confidence Effects:**\n\n1. **Containment to single hospital or subset**\n   - Causal mechanism: Segmented architecture isolates scheduling systems; centralized attack vector eliminated\n   - Evidence base: Standard network segmentation principles; empirically validated in healthcare (VA system studies)\n   - Likely outcome: Outage confined to 1\u20132 hospitals instead of entire network\n   - Confidence: 85%\n\n2. **Reduced lateral movement**\n   - Ransomware typically exploits trust relationships between networked systems\n   - Segmentation with strict API boundaries limits propagation pathways\n   - Confidence: 80%\n\n**Speculative Effects:**\n\n3. **Attacker might target multiple segments sequentially**\n   - Ransomware operators could adapt tactics if segmentation is known\n   - Requires higher sophistication; adds operational cost to attack\n   - Confidence: 45% (depends on attacker sophistication and reconnaissance)\n\n4. **Backup systems themselves become targets**\n   - If offline fallback systems are discoverable, attackers might prioritize them\n   - Confidence: 35% (requires pre-attack reconnaissance of fallback locations)\n\n---\n\n### (B) Recovery Time\n\n**High-Confidence Effects:**\n\n1. **Faster restoration of unaffected hospitals**\n   - Causal mechanism: Unaffected segments can resume normal operations immediately\n   - Actual outage: 9 hours network-wide\n   - Counterfactual: 2\u20133 hours for unaffected hospitals; 6\u20138 hours for affected segment\n   - Confidence: 80%\n\n2. **Offline fallback reduces dependency on IT recovery**\n   - Booking can continue on paper/local systems during IT remediation\n   - Reduces pressure on incident response team\n   - Estimated time savings: 2\u20134 hours\n   - Confidence: 75%\n\n3. **Weekly drills accelerate incident recognition and response**\n   - Staff familiarity with fallback procedures reduces decision lag\n   - Estimated acceleration: 30\u201345 minutes faster activation\n   - Confidence: 70%\n\n**Speculative Effects:**\n\n4. **Faster forensic isolation if segmentation is well-documented**\n   - IT teams can quickly identify which segment was compromised\n   - Confidence: 60% (depends on documentation quality and staff training)\n\n5. **Potential delays in cross-segment coordination**\n   - If recovery requires re-synchronizing data across segments, this could add 1\u20133 hours\n   - Confidence: 50% (depends on sync protocols)\n\n---\n\n### (C) Patient Triage Quality\n\n**High-Confidence Effects:**\n\n1. **Maintained local scheduling in unaffected hospitals**\n   - Causal mechanism: Offline fallback systems allow continued intake and triage\n   - Actual outage impact: Likely 15\u201330% reduction in triage capacity network-wide\n   - Counterfactual: 5\u201310% reduction (only affected hospital)\n   - Confidence: 80%\n\n2. **Reduced emergency department crowding in unaffected hospitals**\n   - Patients can be scheduled and routed normally\n   - Fewer diversions to distant facilities\n   - Confidence: 75%\n\n**Speculative Effects:**\n\n3. **Increased triage errors due to lack of centralized patient history**\n   - Offline systems may not have access to recent lab results, medication lists\n   - Risk of duplicate testing or missed drug interactions\n   - Confidence: 55% (depends on how much history is cached locally)\n\n4. **Paradoxical worsening in affected hospital**\n   - Paper-based triage is slower than digital; may create bottlenecks\n   - Confidence: 50% (depends on staff training and paper system design)\n\n---\n\n### (D) Communication Errors\n\n**High-Confidence Effects:**\n\n1. **Faster situational awareness**\n   - Causal mechanism: Weekly drills establish communication protocols\n   - Actual outage: Likely 1\u20132 hours of confusion about scope and severity\n   - Counterfactual: 15\u201330 minutes to establish that outage is localized\n   - Confidence: 75%\n\n2. **Reduced misinformation about network-wide impact**\n   - Staff trained in drills know which systems are affected\n   - Fewer false reports of cascading failures\n   - Confidence: 70%\n\n**Speculative Effects:**\n\n3. **Increased communication overhead between segments**\n   - Segmented systems require explicit coordination; may generate more messages\n   - Risk of conflicting instructions if policies differ between hospitals\n   - Confidence: 45%\n\n4. **Delayed communication to patients**\n   - If offline fallback systems don't integrate with patient notification systems, delays in appointment rescheduling notifications\n   - Confidence: 40%\n\n---\n\n## II. Three Unintended Consequences of Segmentation\n\n### 1. **Synchronization Lag and Data Inconsistency**\n\n**Mechanism:**\n- Segmented systems require periodic reconciliation of patient records, appointment data, and billing\n- Weekly or daily batch syncs create windows where data is stale\n- Example: Patient books appointment at Hospital A, then transfers to Hospital B; Hospital B's system doesn't reflect the booking for 24 hours\n\n**Severity:** Medium\n- **Impact:** Duplicate bookings, missed appointments, billing errors\n- **Frequency:** Estimated 2\u20135% of cross-hospital referrals affected\n- **Mitigation cost:** Real-time API layer (partially defeats segmentation benefits)\n\n**Confidence in occurrence:** 75%\n\n---\n\n### 2. **Inconsistent Policy Enforcement Across Segments**\n\n**Mechanism:**\n- Each hospital's scheduling system may implement different rules:\n  - Maximum appointment duration\n  - Cancellation policies\n  - Triage priority algorithms\n  - Infection control protocols\n- Segmentation reduces ability to enforce network-wide standards\n\n**Example scenario:**\n- Hospital A allows 48-hour cancellations; Hospital B requires 72 hours\n- Patient books at A, transfers to B, cancels within 48 hours \u2192 penalty at B despite A's policy\n- Generates patient complaints and administrative overhead\n\n**Severity:** Medium-High\n- **Impact:** Patient dissatisfaction, revenue leakage, compliance risk\n- **Frequency:** Estimated 1\u20133% of cross-hospital interactions\n- **Mitigation cost:** Centralized policy management layer (adds complexity)\n\n**Confidence in occurrence:** 80%\n\n---\n\n### 3. **Increased Operational Complexity and Staff Confusion**\n\n**Mechanism:**\n- Segmented architecture requires staff to understand:\n  - When to use offline fallback vs. online system\n  - How to manually escalate cross-hospital issues\n  - Different user interfaces for different segments\n  - Fallback procedures that may be outdated if not regularly drilled\n\n**Example scenario:**\n- New staff member trained only on online system; during drill, doesn't know how to access paper booking forms\n- During actual outage, creates bottleneck in triage\n- Alternatively, staff over-rely on fallback system even after online system is restored, causing duplicate entries\n\n**Severity:** Medium\n- **Impact:** Slower response times, higher error rates, training burden\n- **Frequency:** Estimated 10\u201320% of staff make procedural errors during first outage\n- **Mitigation cost:** Quarterly drills, updated documentation, onboarding modules\n\n**Confidence in occurrence:** 85%\n\n---\n\n## III. Decision Recommendation\n\n### Summary Assessment\n\n| Dimension | Actual Outage | Counterfactual (Segmented) | Net Benefit |\n|-----------|---------------|---------------------------|------------|\n| **Outage Duration** | 9 hours (network-wide) | 6\u20138 hours (1\u20132 hospitals) | **2\u20133 hours saved** |\n| **Affected Capacity** | 100% of network | 20\u201330% of network | **70\u201380% maintained** |\n| **Triage Quality** | Severely degraded | Mildly degraded | **Significant improvement** |\n| **Recovery Cost** | High (full network remediation) | Medium (single segment) | **20\u201330% cost reduction** |\n| **Operational Complexity** | Low (centralized) | High (distributed) | **Ongoing cost** |\n\n### Recommendation: **ADOPT SEGMENTED ARCHITECTURE**\n\n**Justification under uncertainty:**\n\n1. **High-confidence benefits outweigh speculative risks**\n   - Outage containment (80% confidence) and faster recovery (75% confidence) are robust across scenarios\n   - Unintended consequences (synchronization lag, policy inconsistency) are manageable with",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# counterfactual analysis: segmented architecture vs. ransomware outage ## i. causal chain analysis ### (a) outage propagation **high-confidence effects:** 1. **containment to single hospital or subset** - causal mechanism: segmented architecture isolates scheduling systems; centralized attack vector eliminated - evidence base: standard network segmentation principles; empirically validated in healthcare (va system studies) - likely outcome: outage confined to 1\u20132 hospitals instead of entire network - confidence: 85% 2. **reduced lateral movement** - ransomware typically exploits trust relationships between networked systems - segmentation with strict api boundaries limits propagation pathways - confidence: 80% **speculative effects:** 3. **attacker might target multiple segments sequentially** - ransomware operators could adapt tactics if segmentation is known - requires higher sophistication; adds operational cost to attack - confidence: 45% (depends on attacker sophistication and reconnaissance) 4. **backup systems themselves become targets** - if offline fallback systems are discoverable, attackers might prioritize them - confidence: 35% (requires pre-attack reconnaissance of fallback locations) --- ### (b) recovery time **high-confidence effects:** 1. **faster restoration of unaffected hospitals** - causal mechanism: unaffected segments can resume normal operations immediately - actual outage: 9 hours network-wide - counterfactual: 2\u20133 hours for unaffected hospitals; 6\u20138 hours for affected segment - confidence: 80% 2. **offline fallback reduces dependency on it recovery** - booking can continue on paper/local systems during it remediation - reduces pressure on incident response team - estimated time savings: 2\u20134 hours - confidence: 75% 3. **weekly drills accelerate incident recognition and response** - staff familiarity with fallback procedures reduces decision lag - estimated acceleration: 30\u201345 minutes faster activation - confidence: 70% **speculative effects:** 4. **faster forensic isolation if segmentation is well-documented** - it teams can quickly identify which segment was compromised - confidence: 60% (depends on documentation quality and staff training) 5. **potential delays in cross-segment coordination** - if recovery requires re-synchronizing data across segments, this could add 1\u20133 hours - confidence: 50% (depends on sync protocols) --- ### (c) patient triage quality **high-confidence effects:** 1. **maintained local scheduling in unaffected hospitals** - causal mechanism: offline fallback systems allow continued intake and triage - actual outage impact: likely 15\u201330% reduction in triage capacity network-wide - counterfactual: 5\u201310% reduction (only affected hospital) - confidence: 80% 2. **reduced emergency department crowding in unaffected hospitals** - patients can be scheduled and routed normally - fewer diversions to distant facilities - confidence: 75% **speculative effects:** 3. **increased triage errors due to lack of centralized patient history** - offline systems may not have access to recent lab results, medication lists - risk of duplicate testing or missed drug interactions - confidence: 55% (depends on how much history is cached locally) 4. **paradoxical worsening in affected hospital** - paper-based triage is slower than digital; may create bottlenecks - confidence: 50% (depends on staff training and paper system design) --- ### (d) communication errors **high-confidence effects:** 1. **faster situational awareness** - causal mechanism: weekly drills establish communication protocols - actual outage: likely 1\u20132 hours of confusion about scope and severity - counterfactual: 15\u201330 minutes to establish that outage is localized - confidence: 75% 2. **reduced misinformation about network-wide impact** - staff trained in drills know which systems are affected - fewer false reports of cascading failures - confidence: 70% **speculative effects:** 3. **increased communication overhead between segments** - segmented systems require explicit coordination; may generate more messages - risk of conflicting instructions if policies differ between hospitals - confidence: 45% 4. **delayed communication to patients** - if offline fallback systems don't integrate with patient notification systems, delays in appointment rescheduling notifications - confidence: 40% --- ## ii. three unintended consequences of segmentation ### 1. **synchronization lag and data inconsistency** **mechanism:** - segmented systems require periodic reconciliation of patient records, appointment data, and billing - weekly or daily batch syncs create windows where data is stale - example: patient books appointment at hospital a, then transfers to hospital b; hospital b's system doesn't reflect the booking for 24 hours **severity:** medium - **impact:** duplicate bookings, missed appointments, billing errors - **frequency:** estimated 2\u20135% of cross-hospital referrals affected - **mitigation cost:** real-time api layer (partially defeats segmentation benefits) **confidence in occurrence:** 75% --- ### 2. **inconsistent policy enforcement across segments** **mechanism:** - each hospital's scheduling system may implement different rules: - maximum appointment duration - cancellation policies - triage priority algorithms - infection control protocols - segmentation reduces ability to enforce network-wide standards **example scenario:** - hospital a allows 48-hour cancellations; hospital b requires 72 hours - patient books at a, transfers to b, cancels within 48 hours \u2192 penalty at b despite a's policy - generates patient complaints and administrative overhead **severity:** medium-high - **impact:** patient dissatisfaction, revenue leakage, compliance risk - **frequency:** estimated 1\u20133% of cross-hospital interactions - **mitigation cost:** centralized policy management layer (adds complexity) **confidence in occurrence:** 80% --- ### 3. **increased operational complexity and staff confusion** **mechanism:** - segmented architecture requires staff to understand: - when to use offline fallback vs. online system - how to manually escalate cross-hospital issues - different user interfaces for different segments - fallback procedures that may be outdated if not regularly drilled **example scenario:** - new staff member trained only on online system; during drill, doesn't know how to access paper booking forms - during actual outage, creates bottleneck in triage - alternatively, staff over-rely on fallback system even after online system is restored, causing duplicate entries **severity:** medium - **impact:** slower response times, higher error rates, training burden - **frequency:** estimated 10\u201320% of staff make procedural errors during first outage - **mitigation cost:** quarterly drills, updated documentation, onboarding modules **confidence in occurrence:** 85% --- ## iii. decision recommendation ### summary assessment | dimension | actual outage | counterfactual (segmented) | net benefit | |-----------|---------------|---------------------------|------------| | **outage duration** | 9 hours (network-wide) | 6\u20138 hours (1\u20132 hospitals) | **2\u20133 hours saved** | | **affected capacity** | 100% of network | 20\u201330% of network | **70\u201380% maintained** | | **triage quality** | severely degraded | mildly degraded | **significant improvement** | | **recovery cost** | high (full network remediation) | medium (single segment) | **20\u201330% cost reduction** | | **operational complexity** | low (centralized) | high (distributed) | **ongoing cost** | ### recommendation: **adopt segmented architecture** **justification under uncertainty:** 1. **high-confidence benefits outweigh speculative risks** - outage containment (80% confidence) and faster recovery (75% confidence) are robust across scenarios - unintended consequences (synchronization lag, policy inconsistency) are manageable with": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.49008498583569404,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 178.05260824589922,
+      "readability_fk_grade": 24.36894894894895,
+      "coherence_mean": 0.45194906723433537,
+      "prompt_relevance": 0.7329769943533861,
+      "connective_density": 0.16,
+      "word_count": 967,
+      "repetition_rate": 0.01867219917012448
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

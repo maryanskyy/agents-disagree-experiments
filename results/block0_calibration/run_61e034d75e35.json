@@ -1,0 +1,164 @@
+{
+  "run_id": "run_61e034d75e35",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:57:44.294773+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_05_statistical_claim_flaw",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gpt-5.2"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 3,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Diagnose Flaws in a Statistical Performance Claim",
+    "prompt": "A startup claims: \"Our AI tutor improves exam scores by 25%.\" Their evidence: 40 volunteer students used the tutor for two weeks and their average score rose from 64 to 80. There was no control group. Students self-selected into the trial. Exams before and after were not equated for difficulty. The company highlights p < 0.05 from a paired t-test and concludes broad effectiveness.\n\nCritically evaluate this claim. Identify methodological threats to validity, explain why the statistical significance result is insufficient for the causal claim, and propose a minimally credible redesign that could be executed within one school term. Include sampling, randomization (or quasi-experimental fallback), outcome measurement, and pre-registration elements. End by stating what claim is actually justified from current evidence.\n",
+    "rubric": [
+      "Flags core validity issues (selection bias, no control, test non-equivalence, regression effects).",
+      "Explains mismatch between p-value and causal inference.",
+      "Proposes feasible improved study design with concrete safeguards.",
+      "Final justified claim is appropriately modest and evidence-aligned."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gpt-5.2",
+      "text": "## Critical evaluation of the \u201c25% improvement\u201d claim\n\n### 1) What the company observed vs. what they are claiming\n- **Observed:** In 40 volunteers, the average score increased from **64 to 80** after two weeks using the tutor.\n- **Claimed:** The **AI tutor caused** a **25% improvement** in exam scores and is broadly effective.\n\nThat causal, generalizable claim is not supported by the study design.\n\n---\n\n## Methodological threats to validity (why the result is not credible as causal evidence)\n\n### A. Internal validity threats (causality)\n1) **No control group (history / maturation / time effects)**\n   - Scores can increase over time for many reasons unrelated to the tutor: regular classroom instruction, homework, additional studying, tutoring elsewhere, increased familiarity with the content, or natural learning progression.\n\n2) **Regression to the mean**\n   - If volunteers were motivated because they were doing poorly (or had an unusually low prior score), their scores could rise toward their typical level even without any intervention.\n\n3) **Testing/practice effects**\n   - A pre-test can itself improve post-test performance (students learn what is emphasized, change study habits, or benefit from repeated exposure to exam format).\n\n4) **Instrumentation / non-equated exams**\n   - The \u201cbefore\u201d and \u201cafter\u201d exams were **not equated for difficulty**. If the second exam was easier (or aligned more closely with what students studied), the score gain may be an artifact.\n\n5) **Hawthorne / novelty effects and demand characteristics**\n   - Knowing they are in a study and using a new tool may increase effort and engagement temporarily, inflating short-term gains.\n\n6) **Co-interventions and contamination**\n   - Students may simultaneously use other resources (friends, online videos, private tutors). Without tracking and balancing these, the gain cannot be attributed to the AI tutor.\n\n7) **Attrition (not reported)**\n   - If some students dropped out and only completers were analyzed, results can be biased upward (especially if struggling students are more likely to stop).\n\n### B. External validity threats (generalizability)\n1) **Self-selection of volunteers**\n   - Volunteers are usually more motivated, more tech-comfortable, and more engaged than typical students. Results won\u2019t generalize to all students.\n\n2) **Small, likely unrepresentative sample**\n   - N=40 may be from one school/class/context. Broad \u201ceffectiveness\u201d claims require broader sampling.\n\n3) **Short duration**\n   - Two weeks does not establish sustained learning gains; improvements may be temporary.\n\n---\n\n## Why \u201cp < 0.05\u201d from a paired t-test is insufficient\n\n1) **Statistical significance is not causation**\n   - A paired t-test only assesses whether the **mean change** differs from zero in this group. It does **not** rule out alternative explanations (history, maturation, easier test, practice effects, etc.).\n\n2) **With no control group, the null hypothesis is the wrong comparison**\n   - The relevant question is not \u201cdid scores change?\u201d but \u201cdid scores change **more than they would have without the tutor**?\u201d That counterfactual is unobserved here.\n\n3) **P-values ignore key design flaws**\n   - Non-equivalent exams, self-selection, and uncontrolled co-interventions can produce \u201csignificant\u201d changes even when the tutor has no true effect.\n\n4) **Effect size is not established as attributable**\n   - The increase from 64 to 80 is large descriptively, but without an appropriate comparator, it cannot be interpreted as the tutor\u2019s causal effect.\n\n---\n\n## A minimally credible redesign (feasible within one school term)\n\nBelow is a design that is both practical and meaningfully strengthens causal inference.\n\n### 1) Sampling and recruitment\n- **Population:** Students enrolled in a specific course (e.g., Algebra I) across multiple classes in the same school (or multiple schools if possible).\n- **Recruitment:** Invite *all* students in participating classes; obtain consent.\n- **Baseline data:** Collect prior grades, baseline test scores, attendance, demographic variables, and device access to check balance and support subgroup analyses.\n\n### 2) Randomization (preferred)\n**Option A: Individual-level RCT (best if contamination is manageable)**\n- Randomly assign students to:\n  - **Treatment:** AI tutor access + standard instruction\n  - **Control:** standard instruction + an \u201cactive control\u201d resource (e.g., existing practice worksheets or a non-adaptive digital practice tool) with similar time expectations  \n- Require/encourage comparable time-on-task across groups; track usage logs.\n\n**Option B: Cluster RCT (often more realistic in schools)**\n- Randomize at the **classroom/teacher** level to avoid spillovers (students sharing answers or the tool).\n- Stratify randomization by teacher, class period, or baseline performance to improve balance.\n\n### 3) Quasi-experimental fallback (if randomization is blocked)\nIf the school refuses random assignment:\n- **Matched comparison with difference-in-differences**\n  - Identify comparable classes/schools not using the tutor.\n  - Match on prior achievement, teacher experience, curriculum pacing, and demographics.\n  - Use pre-term to post-term changes and compare trends.\n- **Stepped-wedge rollout** (often acceptable politically)\n  - All classes eventually receive the tutor, but rollout timing is randomized (or at least scheduled exogenously).\n  - Early vs. late adopters provide the comparison window.\n\nRandomization (even at cluster level) is still strongly preferred.\n\n### 4) Outcome measurement (make the test evidence credible)\n- **Primary outcome:** Performance on a **common, equated assessment**\n  - Ideally a standardized benchmark test, or\n  - A researcher/department-created exam with:\n    - Pre/post forms **equated** (e.g., via item response theory or at minimum anchor items and pilot calibration)\n    - Same blueprint, difficulty distribution, and timing\n- **Secondary outcomes (pre-specified):**\n  - Course exam grades (if common across classes)\n  - Retention test 4\u20136 weeks later (to assess durable learning)\n  - Engagement/time-on-task, but treat as mediators not primary outcomes\n- **Blinding:**\n  - Use objective scoring (multiple-choice or externally graded constructed response).\n  - Keep graders blind to condition if open-ended items exist.\n\n### 5) Implementation fidelity and exposure\n- Track:\n  - Minutes practiced, number of problems, mastery metrics\n  - Compliance (who actually used it)\n  - Co-interventions (self-reported other tutoring/resources)\n- Predefine:\n  - Minimum intended dosage (e.g., 90 minutes/week)\n  - Handling of noncompliance (intention-to-treat as primary; per-protocol secondary)\n\n### 6) Analysis plan (pre-registered)\n- **Pre-register** before data collection (e.g., OSF, AEA registry):\n  - Hypotheses and primary/secondary outcomes\n  - Randomization procedure and stratification variables\n  - Exclusion criteria (ideally minimal)\n  - Missing-data handling\n  - Primary estimator:\n    - ANCOVA: post-test ~ condition + pre-test (+ strata fixed effects), clustered SEs if cluster randomized\n  - Multiple comparisons policy (if many outcomes)\n  - Minimum detectable effect and power calculation (so the study isn\u2019t underpowered)\n\n### 7) Duration within one term\n- Run the intervention for **6\u201310 weeks** (more realistic than two weeks for stable learning gains).\n- Administer:\n  - Baseline assessment in week 1\n  - Post-test near end of term\n  - Optional retention assessment after a short delay\n\n---\n\n## What claim is justified from the current evidence?\nFrom the existing study, the only defensible statement is descriptive:\n\n> \u201cAmong 40 volunteer students who used the tutor for two weeks, average scores on a non-equated follow-up exam were higher than on their earlier exam (64 to 80).\u201d\n\nNothing in the presented evidence justifies:\n- that the AI tutor **caused** the increase,\n- that the effect would replicate outside this self-selected group,\n- or that the magnitude corresponds to a \u201c25% improvement\u201d attributable to the tutor.",
+      "input_tokens": 181,
+      "output_tokens": 1710,
+      "latency_ms": 4484.369154088199,
+      "structural_metrics": {
+        "mtld": 221.8,
+        "readability_fk_grade": 15.366718979338376,
+        "coherence_mean": 0.3391309286993597,
+        "prompt_relevance": 0.7908191512628839,
+        "connective_density": 0.21951219512195122,
+        "word_count": 1109,
+        "repetition_rate": 0.0054249547920434
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "## Critical evaluation of the \u201c25% improvement\u201d claim\n\n### 1) What the company observed vs. what they are claiming\n- **Observed:** In 40 volunteers, the average score increased from **64 to 80** after two weeks using the tutor.\n- **Claimed:** The **AI tutor caused** a **25% improvement** in exam scores and is broadly effective.\n\nThat causal, generalizable claim is not supported by the study design.\n\n---\n\n## Methodological threats to validity (why the result is not credible as causal evidence)\n\n### A. Internal validity threats (causality)\n1) **No control group (history / maturation / time effects)**\n   - Scores can increase over time for many reasons unrelated to the tutor: regular classroom instruction, homework, additional studying, tutoring elsewhere, increased familiarity with the content, or natural learning progression.\n\n2) **Regression to the mean**\n   - If volunteers were motivated because they were doing poorly (or had an unusually low prior score), their scores could rise toward their typical level even without any intervention.\n\n3) **Testing/practice effects**\n   - A pre-test can itself improve post-test performance (students learn what is emphasized, change study habits, or benefit from repeated exposure to exam format).\n\n4) **Instrumentation / non-equated exams**\n   - The \u201cbefore\u201d and \u201cafter\u201d exams were **not equated for difficulty**. If the second exam was easier (or aligned more closely with what students studied), the score gain may be an artifact.\n\n5) **Hawthorne / novelty effects and demand characteristics**\n   - Knowing they are in a study and using a new tool may increase effort and engagement temporarily, inflating short-term gains.\n\n6) **Co-interventions and contamination**\n   - Students may simultaneously use other resources (friends, online videos, private tutors). Without tracking and balancing these, the gain cannot be attributed to the AI tutor.\n\n7) **Attrition (not reported)**\n   - If some students dropped out and only completers were analyzed, results can be biased upward (especially if struggling students are more likely to stop).\n\n### B. External validity threats (generalizability)\n1) **Self-selection of volunteers**\n   - Volunteers are usually more motivated, more tech-comfortable, and more engaged than typical students. Results won\u2019t generalize to all students.\n\n2) **Small, likely unrepresentative sample**\n   - N=40 may be from one school/class/context. Broad \u201ceffectiveness\u201d claims require broader sampling.\n\n3) **Short duration**\n   - Two weeks does not establish sustained learning gains; improvements may be temporary.\n\n---\n\n## Why \u201cp < 0.05\u201d from a paired t-test is insufficient\n\n1) **Statistical significance is not causation**\n   - A paired t-test only assesses whether the **mean change** differs from zero in this group. It does **not** rule out alternative explanations (history, maturation, easier test, practice effects, etc.).\n\n2) **With no control group, the null hypothesis is the wrong comparison**\n   - The relevant question is not \u201cdid scores change?\u201d but \u201cdid scores change **more than they would have without the tutor**?\u201d That counterfactual is unobserved here.\n\n3) **P-values ignore key design flaws**\n   - Non-equivalent exams, self-selection, and uncontrolled co-interventions can produce \u201csignificant\u201d changes even when the tutor has no true effect.\n\n4) **Effect size is not established as attributable**\n   - The increase from 64 to 80 is large descriptively, but without an appropriate comparator, it cannot be interpreted as the tutor\u2019s causal effect.\n\n---\n\n## A minimally credible redesign (feasible within one school term)\n\nBelow is a design that is both practical and meaningfully strengthens causal inference.\n\n### 1) Sampling and recruitment\n- **Population:** Students enrolled in a specific course (e.g., Algebra I) across multiple classes in the same school (or multiple schools if possible).\n- **Recruitment:** Invite *all* students in participating classes; obtain consent.\n- **Baseline data:** Collect prior grades, baseline test scores, attendance, demographic variables, and device access to check balance and support subgroup analyses.\n\n### 2) Randomization (preferred)\n**Option A: Individual-level RCT (best if contamination is manageable)**\n- Randomly assign students to:\n  - **Treatment:** AI tutor access + standard instruction\n  - **Control:** standard instruction + an \u201cactive control\u201d resource (e.g., existing practice worksheets or a non-adaptive digital practice tool) with similar time expectations  \n- Require/encourage comparable time-on-task across groups; track usage logs.\n\n**Option B: Cluster RCT (often more realistic in schools)**\n- Randomize at the **classroom/teacher** level to avoid spillovers (students sharing answers or the tool).\n- Stratify randomization by teacher, class period, or baseline performance to improve balance.\n\n### 3) Quasi-experimental fallback (if randomization is blocked)\nIf the school refuses random assignment:\n- **Matched comparison with difference-in-differences**\n  - Identify comparable classes/schools not using the tutor.\n  - Match on prior achievement, teacher experience, curriculum pacing, and demographics.\n  - Use pre-term to post-term changes and compare trends.\n- **Stepped-wedge rollout** (often acceptable politically)\n  - All classes eventually receive the tutor, but rollout timing is randomized (or at least scheduled exogenously).\n  - Early vs. late adopters provide the comparison window.\n\nRandomization (even at cluster level) is still strongly preferred.\n\n### 4) Outcome measurement (make the test evidence credible)\n- **Primary outcome:** Performance on a **common, equated assessment**\n  - Ideally a standardized benchmark test, or\n  - A researcher/department-created exam with:\n    - Pre/post forms **equated** (e.g., via item response theory or at minimum anchor items and pilot calibration)\n    - Same blueprint, difficulty distribution, and timing\n- **Secondary outcomes (pre-specified):**\n  - Course exam grades (if common across classes)\n  - Retention test 4\u20136 weeks later (to assess durable learning)\n  - Engagement/time-on-task, but treat as mediators not primary outcomes\n- **Blinding:**\n  - Use objective scoring (multiple-choice or externally graded constructed response).\n  - Keep graders blind to condition if open-ended items exist.\n\n### 5) Implementation fidelity and exposure\n- Track:\n  - Minutes practiced, number of problems, mastery metrics\n  - Compliance (who actually used it)\n  - Co-interventions (self-reported other tutoring/resources)\n- Predefine:\n  - Minimum intended dosage (e.g., 90 minutes/week)\n  - Handling of noncompliance (intention-to-treat as primary; per-protocol secondary)\n\n### 6) Analysis plan (pre-registered)\n- **Pre-register** before data collection (e.g., OSF, AEA registry):\n  - Hypotheses and primary/secondary outcomes\n  - Randomization procedure and stratification variables\n  - Exclusion criteria (ideally minimal)\n  - Missing-data handling\n  - Primary estimator:\n    - ANCOVA: post-test ~ condition + pre-test (+ strata fixed effects), clustered SEs if cluster randomized\n  - Multiple comparisons policy (if many outcomes)\n  - Minimum detectable effect and power calculation (so the study isn\u2019t underpowered)\n\n### 7) Duration within one term\n- Run the intervention for **6\u201310 weeks** (more realistic than two weeks for stable learning gains).\n- Administer:\n  - Baseline assessment in week 1\n  - Post-test near end of term\n  - Optional retention assessment after a short delay\n\n---\n\n## What claim is justified from the current evidence?\nFrom the existing study, the only defensible statement is descriptive:\n\n> \u201cAmong 40 volunteer students who used the tutor for two weeks, average scores on a non-equated follow-up exam were higher than on their earlier exam (64 to 80).\u201d\n\nNothing in the presented evidence justifies:\n- that the AI tutor **caused** the increase,\n- that the effect would replicate outside this self-selected group,\n- or that the magnitude corresponds to a \u201c25% improvement\u201d attributable to the tutor.",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "## critical evaluation of the \u201c25% improvement\u201d claim ### 1) what the company observed vs. what they are claiming - **observed:** in 40 volunteers, the average score increased from **64 to 80** after two weeks using the tutor. - **claimed:** the **ai tutor caused** a **25% improvement** in exam scores and is broadly effective. that causal, generalizable claim is not supported by the study design. --- ## methodological threats to validity (why the result is not credible as causal evidence) ### a. internal validity threats (causality) 1) **no control group (history / maturation / time effects)** - scores can increase over time for many reasons unrelated to the tutor: regular classroom instruction, homework, additional studying, tutoring elsewhere, increased familiarity with the content, or natural learning progression. 2) **regression to the mean** - if volunteers were motivated because they were doing poorly (or had an unusually low prior score), their scores could rise toward their typical level even without any intervention. 3) **testing/practice effects** - a pre-test can itself improve post-test performance (students learn what is emphasized, change study habits, or benefit from repeated exposure to exam format). 4) **instrumentation / non-equated exams** - the \u201cbefore\u201d and \u201cafter\u201d exams were **not equated for difficulty**. if the second exam was easier (or aligned more closely with what students studied), the score gain may be an artifact. 5) **hawthorne / novelty effects and demand characteristics** - knowing they are in a study and using a new tool may increase effort and engagement temporarily, inflating short-term gains. 6) **co-interventions and contamination** - students may simultaneously use other resources (friends, online videos, private tutors). without tracking and balancing these, the gain cannot be attributed to the ai tutor. 7) **attrition (not reported)** - if some students dropped out and only completers were analyzed, results can be biased upward (especially if struggling students are more likely to stop). ### b. external validity threats (generalizability) 1) **self-selection of volunteers** - volunteers are usually more motivated, more tech-comfortable, and more engaged than typical students. results won\u2019t generalize to all students. 2) **small, likely unrepresentative sample** - n=40 may be from one school/class/context. broad \u201ceffectiveness\u201d claims require broader sampling. 3) **short duration** - two weeks does not establish sustained learning gains; improvements may be temporary. --- ## why \u201cp < 0.05\u201d from a paired t-test is insufficient 1) **statistical significance is not causation** - a paired t-test only assesses whether the **mean change** differs from zero in this group. it does **not** rule out alternative explanations (history, maturation, easier test, practice effects, etc.). 2) **with no control group, the null hypothesis is the wrong comparison** - the relevant question is not \u201cdid scores change?\u201d but \u201cdid scores change **more than they would have without the tutor**?\u201d that counterfactual is unobserved here. 3) **p-values ignore key design flaws** - non-equivalent exams, self-selection, and uncontrolled co-interventions can produce \u201csignificant\u201d changes even when the tutor has no true effect. 4) **effect size is not established as attributable** - the increase from 64 to 80 is large descriptively, but without an appropriate comparator, it cannot be interpreted as the tutor\u2019s causal effect. --- ## a minimally credible redesign (feasible within one school term) below is a design that is both practical and meaningfully strengthens causal inference. ### 1) sampling and recruitment - **population:** students enrolled in a specific course (e.g., algebra i) across multiple classes in the same school (or multiple schools if possible). - **recruitment:** invite *all* students in participating classes; obtain consent. - **baseline data:** collect prior grades, baseline test scores, attendance, demographic variables, and device access to check balance and support subgroup analyses. ### 2) randomization (preferred) **option a: individual-level rct (best if contamination is manageable)** - randomly assign students to: - **treatment:** ai tutor access + standard instruction - **control:** standard instruction + an \u201cactive control\u201d resource (e.g., existing practice worksheets or a non-adaptive digital practice tool) with similar time expectations - require/encourage comparable time-on-task across groups; track usage logs. **option b: cluster rct (often more realistic in schools)** - randomize at the **classroom/teacher** level to avoid spillovers (students sharing answers or the tool). - stratify randomization by teacher, class period, or baseline performance to improve balance. ### 3) quasi-experimental fallback (if randomization is blocked) if the school refuses random assignment: - **matched comparison with difference-in-differences** - identify comparable classes/schools not using the tutor. - match on prior achievement, teacher experience, curriculum pacing, and demographics. - use pre-term to post-term changes and compare trends. - **stepped-wedge rollout** (often acceptable politically) - all classes eventually receive the tutor, but rollout timing is randomized (or at least scheduled exogenously). - early vs. late adopters provide the comparison window. randomization (even at cluster level) is still strongly preferred. ### 4) outcome measurement (make the test evidence credible) - **primary outcome:** performance on a **common, equated assessment** - ideally a standardized benchmark test, or - a researcher/department-created exam with: - pre/post forms **equated** (e.g., via item response theory or at minimum anchor items and pilot calibration) - same blueprint, difficulty distribution, and timing - **secondary outcomes (pre-specified):** - course exam grades (if common across classes) - retention test 4\u20136 weeks later (to assess durable learning) - engagement/time-on-task, but treat as mediators not primary outcomes - **blinding:** - use objective scoring (multiple-choice or externally graded constructed response). - keep graders blind to condition if open-ended items exist. ### 5) implementation fidelity and exposure - track: - minutes practiced, number of problems, mastery metrics - compliance (who actually used it) - co-interventions (self-reported other tutoring/resources) - predefine: - minimum intended dosage (e.g., 90 minutes/week) - handling of noncompliance (intention-to-treat as primary; per-protocol secondary) ### 6) analysis plan (pre-registered) - **pre-register** before data collection (e.g., osf, aea registry): - hypotheses and primary/secondary outcomes - randomization procedure and stratification variables - exclusion criteria (ideally minimal) - missing-data handling - primary estimator: - ancova: post-test ~ condition + pre-test (+ strata fixed effects), clustered ses if cluster randomized - multiple comparisons policy (if many outcomes) - minimum detectable effect and power calculation (so the study isn\u2019t underpowered) ### 7) duration within one term - run the intervention for **6\u201310 weeks** (more realistic than two weeks for stable learning gains). - administer: - baseline assessment in week 1 - post-test near end of term - optional retention assessment after a short delay --- ## what claim is justified from the current evidence? from the existing study, the only defensible statement is descriptive: > \u201camong 40 volunteer students who used the tutor for two weeks, average scores on a non-equated follow-up exam were higher than on their earlier exam (64 to 80).\u201d nothing in the presented evidence justifies: - that the ai tutor **caused** the increase, - that the effect would replicate outside this self-selected group, - or that the magnitude corresponds to a \u201c25% improvement\u201d attributable to the tutor.": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5684210526315789,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 221.8,
+      "readability_fk_grade": 15.366718979338376,
+      "coherence_mean": 0.3391309286993597,
+      "prompt_relevance": 0.7908191512628839,
+      "connective_density": 0.21951219512195122,
+      "word_count": 1109,
+      "repetition_rate": 0.0054249547920434
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

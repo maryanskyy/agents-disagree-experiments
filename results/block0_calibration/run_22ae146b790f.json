@@ -1,0 +1,164 @@
+{
+  "run_id": "run_22ae146b790f",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:56:00.319629+00:00",
+  "config": {
+    "task_type": "analytical",
+    "task_id": "analytical_04_policy_tradeoffs",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-haiku-4-5"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Policy Tradeoff Analysis Under Explicit Constraints",
+    "prompt": "Compare two urban heat mitigation proposals for a city with limited budget:\n\nProposal A: Subsidize cool roofs for private buildings. Estimated cost: $40M over 4 years. Projected average summer indoor temperature reduction: 1.8\u00b0C for participating buildings. Uneven uptake expected.\nProposal B: Expand tree canopy in heat-vulnerable districts. Estimated cost: $40M over 4 years. Projected district-level surface temperature reduction: 1.1\u00b0C, plus long-term air-quality co-benefits. Slower initial impact and maintenance uncertainty.\n\nProvide a decision memo that identifies tradeoffs across equity, time-to-impact, durability, measurement uncertainty, and political feasibility. Include a recommendation with a risk-mitigation plan and at least three measurable indicators the city should track for adaptive policy revision. Do not assume both can be funded.\n",
+    "rubric": [
+      "Compares both options across all requested dimensions, not only temperature effects.",
+      "Addresses distributional equity and implementation risk explicitly.",
+      "Recommendation includes clear rationale and contingency plan.",
+      "Proposes measurable indicators suitable for monitoring."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-haiku-4-5",
+      "text": "# DECISION MEMO: URBAN HEAT MITIGATION STRATEGY SELECTION\n\n**TO:** City Planning & Budget Committee  \n**FROM:** Policy Analysis Team  \n**RE:** Cool Roofs vs. Tree Canopy Expansion\u2014Comparative Assessment  \n**DATE:** [Current Date]\n\n---\n\n## EXECUTIVE SUMMARY\n\nBoth proposals cost $40M over 4 years but differ fundamentally in mechanism, beneficiary profile, and risk profile. **Recommendation: Pursue Proposal B (tree canopy) as primary strategy with targeted Proposal A elements, contingent on equity-first implementation.** This memo details critical tradeoffs and a phased approach to manage budget constraints and measurement uncertainty.\n\n---\n\n## COMPARATIVE ANALYSIS\n\n### 1. EQUITY IMPLICATIONS\n\n| Dimension | Proposal A (Cool Roofs) | Proposal B (Trees) |\n|-----------|------------------------|-------------------|\n| **Direct beneficiaries** | Building owners; renters benefit indirectly | All residents in district; lower-income households disproportionately benefit (fewer private A/C units) |\n| **Uptake barriers** | Requires owner participation; renters excluded from decision-making | Public good; no participation barrier |\n| **Distributional risk** | HIGH: Affluent neighborhoods likely to participate first; subsidy may flow to property-wealthy areas | MODERATE: Requires intentional targeting to vulnerable districts; risk of \"greenwashing\" in already-green areas |\n| **Gentrification risk** | MODERATE: Cool roofs alone unlikely to trigger displacement, but may increase property values in targeted areas | MODERATE-HIGH: Tree canopy improvements can accelerate gentrification if not paired with anti-displacement policy |\n\n**Critical Finding:** Proposal A's subsidy structure creates a *regressive* outcome unless explicitly restricted to low-income building stock. Proposal B's public-good nature is more equitable *if* targeting is enforced.\n\n---\n\n### 2. TIME-TO-IMPACT ANALYSIS\n\n| Phase | Proposal A | Proposal B |\n|-------|-----------|-----------|\n| **Year 1** | Subsidy design, outreach; 10-15% uptake | Site prep, planting; minimal temperature effect |\n| **Year 2-3** | 30-40% cumulative uptake; 1.2-1.5\u00b0C reduction in participating buildings | Canopy closure begins; 0.4-0.6\u00b0C district-level reduction |\n| **Year 4** | 45-60% uptake; 1.8\u00b0C reduction (as projected) | 0.9-1.1\u00b0C reduction; co-benefits (air quality, stormwater) emerging |\n| **Year 5-10** | Plateau; maintenance dependent on owner compliance | Continued maturation; 1.5-2.0\u00b0C reduction potential; compounding co-benefits |\n\n**Assessment:** Proposal A delivers faster initial relief but only to participating buildings. Proposal B's impact is slower but broader and accelerates over time. For vulnerable populations without A/C, Proposal B's district-level cooling is more relevant than building-specific reductions.\n\n---\n\n### 3. DURABILITY & MAINTENANCE RISK\n\n**Proposal A (Cool Roofs):**\n- **Durability:** 15-20 years; coating degrades; requires reapplication\n- **Maintenance burden:** On private owners; compliance monitoring difficult\n- **Failure mode:** Owner non-compliance, coating deterioration, reduced effectiveness over time\n- **Risk level:** HIGH\u2014city has limited enforcement leverage post-subsidy\n- **Long-term cost:** Likely requires re-subsidization in years 8-12\n\n**Proposal B (Trees):**\n- **Durability:** 40-60+ years for mature trees; long-term asset\n- **Maintenance burden:** On city; predictable, budgetable costs (~$500-800/tree/year for watering, pruning)\n- **Failure mode:** Drought stress, pests, poor initial establishment (15-25% mortality typical)\n- **Risk level:** MODERATE\u2014city controls maintenance; climate change may reduce suitability of species\n- **Long-term cost:** Ongoing but declining per-unit cost; trees become self-sustaining\n\n**Critical Finding:** Proposal A requires perpetual subsidy; Proposal B is a capital investment with declining marginal costs.\n\n---\n\n### 4. MEASUREMENT UNCERTAINTY\n\n**Proposal A:**\n- **Temperature measurement:** Building-level data; high precision but limited spatial coverage\n- **Attribution challenge:** MODERATE\u2014difficult to isolate cool roof effect from A/C usage, occupancy, building envelope improvements\n- **Uptake tracking:** Straightforward (subsidy claims)\n- **Co-benefits:** Minimal; energy savings measurable but variable\n- **Uncertainty range:** \u00b10.3\u00b0C (1.8\u00b0C projection has ~17% confidence interval)\n\n**Proposal B:**\n- **Temperature measurement:** District-level surface/air temperature; lower precision, higher spatial variability\n- **Attribution challenge:** HIGH\u2014trees' effect confounded by other urban changes, weather variation, species performance\n- **Uptake tracking:** Tree survival rates; species establishment; canopy coverage (via satellite imagery)\n- **Co-benefits:** Air quality (PM2.5, NOx), stormwater retention, biodiversity\u2014measurable but require additional monitoring infrastructure\n- **Uncertainty range:** \u00b10.4\u00b0C (1.1\u00b0C projection has ~36% confidence interval)\n\n**Critical Finding:** Proposal B has higher measurement uncertainty but more robust co-benefit tracking. Proposal A's temperature benefit is narrower and harder to validate independently.\n\n---\n\n### 5. POLITICAL FEASIBILITY\n\n**Proposal A:**\n- **Constituency support:** Building owners, real estate industry (HIGH); renters, environmental groups (MODERATE)\n- **Opposition:** Fiscal conservatives (subsidy concerns); equity advocates (regressive structure)\n- **Messaging ease:** \"Reduce energy bills\" (tangible, individual benefit)\n- **Implementation speed:** Fast (subsidy rollout straightforward)\n- **Vulnerability:** Subsidy program subject to budget cuts; politically fragile\n\n**Proposal B:**\n- **Constituency support:** Environmental groups, public health advocates, residents (HIGH); real estate industry (LOW-MODERATE)\n- **Opposition:** Fiscal conservatives (maintenance costs); property owners (tree liability concerns)\n- **Messaging ease:** \"Cooler, greener neighborhoods\" (broad appeal but less tangible)\n- **Implementation speed:** Slower (site prep, permitting, planting cycles)\n- **Vulnerability:** Long timelines create political risk; requires sustained commitment across administrations\n\n**Critical Finding:** Proposal A has faster political wins but weaker long-term durability. Proposal B requires patient capital and cross-administration commitment.\n\n---\n\n## RISK MATRIX\n\n| Risk | Proposal A | Proposal B | Mitigation |\n|------|-----------|-----------|-----------|\n| Inequitable uptake | HIGH | MODERATE | Restrict A to low-income buildings; mandate tree planting in vulnerable districts |\n| Measurement failure | MODERATE | HIGH | Establish baseline monitoring; use satellite + ground-truth data |\n| Maintenance collapse | HIGH | MODERATE | Require owner maintenance contracts; establish city tree fund |\n| Climate change undermines efficacy | LOW | MODERATE | Diversify tree species; plan for 2050 climate scenarios |\n| Budget cuts mid-program | HIGH | MODERATE | Front-load Proposal B spending (trees planted early); Proposal A subsidies easier to cut |\n| Gentrification acceleration | MODERATE | MODERATE-HIGH | Pair with anti-displacement policy (community land trusts, rent stabilization) |\n\n---\n\n## RECOMMENDATION\n\n### Primary Strategy: **Proposal B (Tree Canopy Expansion) with Equity Guardrails**\n\n**Rationale:**\n1. **Durability:** Capital investment vs. perpetual subsidy; better long-term ROI\n2. **Equity:** Public good with intentional targeting to vulnerable districts\n3. **Co-benefits:** Air quality, stormwater, biodiversity, mental health\u2014multiplier effects\n4. **Measurement:** Satellite monitoring enables transparent, scalable tracking\n5. **Political sustainability:** Bipartisan appeal; less vulnerable to budget cuts once trees are planted\n\n### Secondary Strategy: **Targeted Proposal A for High-Density Rental Stock**\n\nAllocate $8-10M of the $40M budget to cool roofs for **municipally-owned or subsidized rental buildings only**. This:\n- Ensures equitable distribution (benefits renters directly)\n- Provides faster relief to vulnerable populations\n- Maintains city control over maintenance\n- Reduces measurement uncertainty (city-owned buildings)\n\n**Allocation:**\n- **$30M to tree canopy expansion** (Proposal B primary)\n- **$10M to cool roofs on public/subsidized housing** (Proposal A targeted)\n\n---\n\n## IMPLEMENTATION FRAMEWORK\n\n### Phase 1 (Year",
+      "input_tokens": 219,
+      "output_tokens": 2048,
+      "latency_ms": 4206.211586948484,
+      "structural_metrics": {
+        "mtld": 153.18750366826293,
+        "readability_fk_grade": 23.295255055629415,
+        "coherence_mean": 0.25026340771283706,
+        "prompt_relevance": 0.7692589657250357,
+        "connective_density": 0.4583333333333333,
+        "word_count": 1017,
+        "repetition_rate": 0.020710059171597635
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# DECISION MEMO: URBAN HEAT MITIGATION STRATEGY SELECTION\n\n**TO:** City Planning & Budget Committee  \n**FROM:** Policy Analysis Team  \n**RE:** Cool Roofs vs. Tree Canopy Expansion\u2014Comparative Assessment  \n**DATE:** [Current Date]\n\n---\n\n## EXECUTIVE SUMMARY\n\nBoth proposals cost $40M over 4 years but differ fundamentally in mechanism, beneficiary profile, and risk profile. **Recommendation: Pursue Proposal B (tree canopy) as primary strategy with targeted Proposal A elements, contingent on equity-first implementation.** This memo details critical tradeoffs and a phased approach to manage budget constraints and measurement uncertainty.\n\n---\n\n## COMPARATIVE ANALYSIS\n\n### 1. EQUITY IMPLICATIONS\n\n| Dimension | Proposal A (Cool Roofs) | Proposal B (Trees) |\n|-----------|------------------------|-------------------|\n| **Direct beneficiaries** | Building owners; renters benefit indirectly | All residents in district; lower-income households disproportionately benefit (fewer private A/C units) |\n| **Uptake barriers** | Requires owner participation; renters excluded from decision-making | Public good; no participation barrier |\n| **Distributional risk** | HIGH: Affluent neighborhoods likely to participate first; subsidy may flow to property-wealthy areas | MODERATE: Requires intentional targeting to vulnerable districts; risk of \"greenwashing\" in already-green areas |\n| **Gentrification risk** | MODERATE: Cool roofs alone unlikely to trigger displacement, but may increase property values in targeted areas | MODERATE-HIGH: Tree canopy improvements can accelerate gentrification if not paired with anti-displacement policy |\n\n**Critical Finding:** Proposal A's subsidy structure creates a *regressive* outcome unless explicitly restricted to low-income building stock. Proposal B's public-good nature is more equitable *if* targeting is enforced.\n\n---\n\n### 2. TIME-TO-IMPACT ANALYSIS\n\n| Phase | Proposal A | Proposal B |\n|-------|-----------|-----------|\n| **Year 1** | Subsidy design, outreach; 10-15% uptake | Site prep, planting; minimal temperature effect |\n| **Year 2-3** | 30-40% cumulative uptake; 1.2-1.5\u00b0C reduction in participating buildings | Canopy closure begins; 0.4-0.6\u00b0C district-level reduction |\n| **Year 4** | 45-60% uptake; 1.8\u00b0C reduction (as projected) | 0.9-1.1\u00b0C reduction; co-benefits (air quality, stormwater) emerging |\n| **Year 5-10** | Plateau; maintenance dependent on owner compliance | Continued maturation; 1.5-2.0\u00b0C reduction potential; compounding co-benefits |\n\n**Assessment:** Proposal A delivers faster initial relief but only to participating buildings. Proposal B's impact is slower but broader and accelerates over time. For vulnerable populations without A/C, Proposal B's district-level cooling is more relevant than building-specific reductions.\n\n---\n\n### 3. DURABILITY & MAINTENANCE RISK\n\n**Proposal A (Cool Roofs):**\n- **Durability:** 15-20 years; coating degrades; requires reapplication\n- **Maintenance burden:** On private owners; compliance monitoring difficult\n- **Failure mode:** Owner non-compliance, coating deterioration, reduced effectiveness over time\n- **Risk level:** HIGH\u2014city has limited enforcement leverage post-subsidy\n- **Long-term cost:** Likely requires re-subsidization in years 8-12\n\n**Proposal B (Trees):**\n- **Durability:** 40-60+ years for mature trees; long-term asset\n- **Maintenance burden:** On city; predictable, budgetable costs (~$500-800/tree/year for watering, pruning)\n- **Failure mode:** Drought stress, pests, poor initial establishment (15-25% mortality typical)\n- **Risk level:** MODERATE\u2014city controls maintenance; climate change may reduce suitability of species\n- **Long-term cost:** Ongoing but declining per-unit cost; trees become self-sustaining\n\n**Critical Finding:** Proposal A requires perpetual subsidy; Proposal B is a capital investment with declining marginal costs.\n\n---\n\n### 4. MEASUREMENT UNCERTAINTY\n\n**Proposal A:**\n- **Temperature measurement:** Building-level data; high precision but limited spatial coverage\n- **Attribution challenge:** MODERATE\u2014difficult to isolate cool roof effect from A/C usage, occupancy, building envelope improvements\n- **Uptake tracking:** Straightforward (subsidy claims)\n- **Co-benefits:** Minimal; energy savings measurable but variable\n- **Uncertainty range:** \u00b10.3\u00b0C (1.8\u00b0C projection has ~17% confidence interval)\n\n**Proposal B:**\n- **Temperature measurement:** District-level surface/air temperature; lower precision, higher spatial variability\n- **Attribution challenge:** HIGH\u2014trees' effect confounded by other urban changes, weather variation, species performance\n- **Uptake tracking:** Tree survival rates; species establishment; canopy coverage (via satellite imagery)\n- **Co-benefits:** Air quality (PM2.5, NOx), stormwater retention, biodiversity\u2014measurable but require additional monitoring infrastructure\n- **Uncertainty range:** \u00b10.4\u00b0C (1.1\u00b0C projection has ~36% confidence interval)\n\n**Critical Finding:** Proposal B has higher measurement uncertainty but more robust co-benefit tracking. Proposal A's temperature benefit is narrower and harder to validate independently.\n\n---\n\n### 5. POLITICAL FEASIBILITY\n\n**Proposal A:**\n- **Constituency support:** Building owners, real estate industry (HIGH); renters, environmental groups (MODERATE)\n- **Opposition:** Fiscal conservatives (subsidy concerns); equity advocates (regressive structure)\n- **Messaging ease:** \"Reduce energy bills\" (tangible, individual benefit)\n- **Implementation speed:** Fast (subsidy rollout straightforward)\n- **Vulnerability:** Subsidy program subject to budget cuts; politically fragile\n\n**Proposal B:**\n- **Constituency support:** Environmental groups, public health advocates, residents (HIGH); real estate industry (LOW-MODERATE)\n- **Opposition:** Fiscal conservatives (maintenance costs); property owners (tree liability concerns)\n- **Messaging ease:** \"Cooler, greener neighborhoods\" (broad appeal but less tangible)\n- **Implementation speed:** Slower (site prep, permitting, planting cycles)\n- **Vulnerability:** Long timelines create political risk; requires sustained commitment across administrations\n\n**Critical Finding:** Proposal A has faster political wins but weaker long-term durability. Proposal B requires patient capital and cross-administration commitment.\n\n---\n\n## RISK MATRIX\n\n| Risk | Proposal A | Proposal B | Mitigation |\n|------|-----------|-----------|-----------|\n| Inequitable uptake | HIGH | MODERATE | Restrict A to low-income buildings; mandate tree planting in vulnerable districts |\n| Measurement failure | MODERATE | HIGH | Establish baseline monitoring; use satellite + ground-truth data |\n| Maintenance collapse | HIGH | MODERATE | Require owner maintenance contracts; establish city tree fund |\n| Climate change undermines efficacy | LOW | MODERATE | Diversify tree species; plan for 2050 climate scenarios |\n| Budget cuts mid-program | HIGH | MODERATE | Front-load Proposal B spending (trees planted early); Proposal A subsidies easier to cut |\n| Gentrification acceleration | MODERATE | MODERATE-HIGH | Pair with anti-displacement policy (community land trusts, rent stabilization) |\n\n---\n\n## RECOMMENDATION\n\n### Primary Strategy: **Proposal B (Tree Canopy Expansion) with Equity Guardrails**\n\n**Rationale:**\n1. **Durability:** Capital investment vs. perpetual subsidy; better long-term ROI\n2. **Equity:** Public good with intentional targeting to vulnerable districts\n3. **Co-benefits:** Air quality, stormwater, biodiversity, mental health\u2014multiplier effects\n4. **Measurement:** Satellite monitoring enables transparent, scalable tracking\n5. **Political sustainability:** Bipartisan appeal; less vulnerable to budget cuts once trees are planted\n\n### Secondary Strategy: **Targeted Proposal A for High-Density Rental Stock**\n\nAllocate $8-10M of the $40M budget to cool roofs for **municipally-owned or subsidized rental buildings only**. This:\n- Ensures equitable distribution (benefits renters directly)\n- Provides faster relief to vulnerable populations\n- Maintains city control over maintenance\n- Reduces measurement uncertainty (city-owned buildings)\n\n**Allocation:**\n- **$30M to tree canopy expansion** (Proposal B primary)\n- **$10M to cool roofs on public/subsidized housing** (Proposal A targeted)\n\n---\n\n## IMPLEMENTATION FRAMEWORK\n\n### Phase 1 (Year",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# decision memo: urban heat mitigation strategy selection **to:** city planning & budget committee **from:** policy analysis team **re:** cool roofs vs. tree canopy expansion\u2014comparative assessment **date:** [current date] --- ## executive summary both proposals cost $40m over 4 years but differ fundamentally in mechanism, beneficiary profile, and risk profile. **recommendation: pursue proposal b (tree canopy) as primary strategy with targeted proposal a elements, contingent on equity-first implementation.** this memo details critical tradeoffs and a phased approach to manage budget constraints and measurement uncertainty. --- ## comparative analysis ### 1. equity implications | dimension | proposal a (cool roofs) | proposal b (trees) | |-----------|------------------------|-------------------| | **direct beneficiaries** | building owners; renters benefit indirectly | all residents in district; lower-income households disproportionately benefit (fewer private a/c units) | | **uptake barriers** | requires owner participation; renters excluded from decision-making | public good; no participation barrier | | **distributional risk** | high: affluent neighborhoods likely to participate first; subsidy may flow to property-wealthy areas | moderate: requires intentional targeting to vulnerable districts; risk of \"greenwashing\" in already-green areas | | **gentrification risk** | moderate: cool roofs alone unlikely to trigger displacement, but may increase property values in targeted areas | moderate-high: tree canopy improvements can accelerate gentrification if not paired with anti-displacement policy | **critical finding:** proposal a's subsidy structure creates a *regressive* outcome unless explicitly restricted to low-income building stock. proposal b's public-good nature is more equitable *if* targeting is enforced. --- ### 2. time-to-impact analysis | phase | proposal a | proposal b | |-------|-----------|-----------| | **year 1** | subsidy design, outreach; 10-15% uptake | site prep, planting; minimal temperature effect | | **year 2-3** | 30-40% cumulative uptake; 1.2-1.5\u00b0c reduction in participating buildings | canopy closure begins; 0.4-0.6\u00b0c district-level reduction | | **year 4** | 45-60% uptake; 1.8\u00b0c reduction (as projected) | 0.9-1.1\u00b0c reduction; co-benefits (air quality, stormwater) emerging | | **year 5-10** | plateau; maintenance dependent on owner compliance | continued maturation; 1.5-2.0\u00b0c reduction potential; compounding co-benefits | **assessment:** proposal a delivers faster initial relief but only to participating buildings. proposal b's impact is slower but broader and accelerates over time. for vulnerable populations without a/c, proposal b's district-level cooling is more relevant than building-specific reductions. --- ### 3. durability & maintenance risk **proposal a (cool roofs):** - **durability:** 15-20 years; coating degrades; requires reapplication - **maintenance burden:** on private owners; compliance monitoring difficult - **failure mode:** owner non-compliance, coating deterioration, reduced effectiveness over time - **risk level:** high\u2014city has limited enforcement leverage post-subsidy - **long-term cost:** likely requires re-subsidization in years 8-12 **proposal b (trees):** - **durability:** 40-60+ years for mature trees; long-term asset - **maintenance burden:** on city; predictable, budgetable costs (~$500-800/tree/year for watering, pruning) - **failure mode:** drought stress, pests, poor initial establishment (15-25% mortality typical) - **risk level:** moderate\u2014city controls maintenance; climate change may reduce suitability of species - **long-term cost:** ongoing but declining per-unit cost; trees become self-sustaining **critical finding:** proposal a requires perpetual subsidy; proposal b is a capital investment with declining marginal costs. --- ### 4. measurement uncertainty **proposal a:** - **temperature measurement:** building-level data; high precision but limited spatial coverage - **attribution challenge:** moderate\u2014difficult to isolate cool roof effect from a/c usage, occupancy, building envelope improvements - **uptake tracking:** straightforward (subsidy claims) - **co-benefits:** minimal; energy savings measurable but variable - **uncertainty range:** \u00b10.3\u00b0c (1.8\u00b0c projection has ~17% confidence interval) **proposal b:** - **temperature measurement:** district-level surface/air temperature; lower precision, higher spatial variability - **attribution challenge:** high\u2014trees' effect confounded by other urban changes, weather variation, species performance - **uptake tracking:** tree survival rates; species establishment; canopy coverage (via satellite imagery) - **co-benefits:** air quality (pm2.5, nox), stormwater retention, biodiversity\u2014measurable but require additional monitoring infrastructure - **uncertainty range:** \u00b10.4\u00b0c (1.1\u00b0c projection has ~36% confidence interval) **critical finding:** proposal b has higher measurement uncertainty but more robust co-benefit tracking. proposal a's temperature benefit is narrower and harder to validate independently. --- ### 5. political feasibility **proposal a:** - **constituency support:** building owners, real estate industry (high); renters, environmental groups (moderate) - **opposition:** fiscal conservatives (subsidy concerns); equity advocates (regressive structure) - **messaging ease:** \"reduce energy bills\" (tangible, individual benefit) - **implementation speed:** fast (subsidy rollout straightforward) - **vulnerability:** subsidy program subject to budget cuts; politically fragile **proposal b:** - **constituency support:** environmental groups, public health advocates, residents (high); real estate industry (low-moderate) - **opposition:** fiscal conservatives (maintenance costs); property owners (tree liability concerns) - **messaging ease:** \"cooler, greener neighborhoods\" (broad appeal but less tangible) - **implementation speed:** slower (site prep, permitting, planting cycles) - **vulnerability:** long timelines create political risk; requires sustained commitment across administrations **critical finding:** proposal a has faster political wins but weaker long-term durability. proposal b requires patient capital and cross-administration commitment. --- ## risk matrix | risk | proposal a | proposal b | mitigation | |------|-----------|-----------|-----------| | inequitable uptake | high | moderate | restrict a to low-income buildings; mandate tree planting in vulnerable districts | | measurement failure | moderate | high | establish baseline monitoring; use satellite + ground-truth data | | maintenance collapse | high | moderate | require owner maintenance contracts; establish city tree fund | | climate change undermines efficacy | low | moderate | diversify tree species; plan for 2050 climate scenarios | | budget cuts mid-program | high | moderate | front-load proposal b spending (trees planted early); proposal a subsidies easier to cut | | gentrification acceleration | moderate | moderate-high | pair with anti-displacement policy (community land trusts, rent stabilization) | --- ## recommendation ### primary strategy: **proposal b (tree canopy expansion) with equity guardrails** **rationale:** 1. **durability:** capital investment vs. perpetual subsidy; better long-term roi 2. **equity:** public good with intentional targeting to vulnerable districts 3. **co-benefits:** air quality, stormwater, biodiversity, mental health\u2014multiplier effects 4. **measurement:** satellite monitoring enables transparent, scalable tracking 5. **political sustainability:** bipartisan appeal; less vulnerable to budget cuts once trees are planted ### secondary strategy: **targeted proposal a for high-density rental stock** allocate $8-10m of the $40m budget to cool roofs for **municipally-owned or subsidized rental buildings only**. this: - ensures equitable distribution (benefits renters directly) - provides faster relief to vulnerable populations - maintains city control over maintenance - reduces measurement uncertainty (city-owned buildings) **allocation:** - **$30m to tree canopy expansion** (proposal b primary) - **$10m to cool roofs on public/subsidized housing** (proposal a targeted) --- ## implementation framework ### phase 1 (year": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5470809792843692,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 153.18750366826293,
+      "readability_fk_grade": 23.295255055629415,
+      "coherence_mean": 0.25026340771283706,
+      "prompt_relevance": 0.7692589657250357,
+      "connective_density": 0.4583333333333333,
+      "word_count": 1017,
+      "repetition_rate": 0.020710059171597635
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

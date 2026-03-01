@@ -1,0 +1,164 @@
+{
+  "run_id": "run_880369fba778",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:59:00.379056+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_05_value_conflict_dialogue",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "claude-opus-4-6"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 2,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Dialogue Scene with Opposing Moral Frameworks",
+    "prompt": "Write a dialogue scene (800-1,100 words) between two characters negotiating whether to release a powerful but risky medical AI tool during a public health emergency. Character A prioritizes immediate utilitarian benefit; Character B prioritizes procedural justice and long-term institutional trust.\n\nRequirements:\n- No narrator exposition beyond minimal scene anchoring.\n- Each character must present at least two strong arguments and one vulnerable admission.\n- Include one turning point where each updates their position slightly.\n- End with a provisional agreement that feels fragile but credible.\n\nFocus on subtext, voice distinction, and stakes. Avoid caricature: both positions should appear intelligent and morally serious.\n",
+    "rubric": [
+      "Distinct voices and sustained tension with realistic conversational flow.",
+      "Fair representation of both value systems.",
+      "Includes meaningful concessions/updates, not static debate.",
+      "Ending is nuanced and dramatically believable."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-opus-4-6",
+      "text": "# The Deployment\n\n*A glass-walled conference room on the ninth floor of the National Health Authority. Evening. The city below is rain-slicked. Two half-empty coffee cups. A laptop open between them showing a dashboard: case counts climbing in real time.*\n\n---\n\n**ELENA:** We're averaging eleven hundred deaths a day, Marcus. Eleven hundred. The model cuts diagnostic lag from thirty-six hours to under four. We ran it on the Johannesburg dataset, the S\u00e3o Paulo dataset, the\u2014\n\n**MARCUS:** I've read the validation report.\n\n**ELENA:** Then you know what we're sitting on.\n\n**MARCUS:** I know what the report claims. I also know it was an internal validation, not an independent audit. I know the fairness analysis covers three demographic categories when our deployment population has at least nine that matter. And I know that the moment we push this out under emergency authorization, we set a precedent that every future tool will cite.\n\n**ELENA:** People are dying *now*, Marcus. Not in some future precedent scenario. Now.\n\n**MARCUS:** People are always dying now. That's the permanent condition of public health. And every time we've shortcut process because of that fact, we've paid for it later. The blood-contamination scandal. The opioid approvals. The\u2014\n\n**ELENA:** Those were failures of *corruption*, not speed.\n\n**MARCUS:** They were failures of institutions telling themselves that urgency exempted them from rigor. The mechanism is identical. You start by saying \"just this once\" and you end up in a world where no one believes your safety certifications because everyone knows they're negotiable.\n\n*Pause. Elena pulls the laptop closer, scrolls.*\n\n**ELENA:** Okay. I hear you on the precedent argument. I do. But let me give you a number. If the model performs even at the lower bound of our confidence interval, we save approximately four hundred lives per day. Per *day*. Every twenty-four hours we spend in committee review is four hundred people who had a survivable condition and didn't survive it. I need you to sit with that number.\n\n**MARCUS:** I am sitting with it. Do you think I'm not? I went home last night and I could not eat dinner because I am sitting with it. But here is what I need *you* to sit with. If we deploy and the model has a systematic bias we didn't catch\u2014say it under-triages patients with atypical presentations, which in practice means the elderly, the immunocompromised, rural populations with comorbidities\u2014\n\n**ELENA:** We haven't seen evidence of\u2014\n\n**MARCUS:** We haven't *looked* adequately. That's my point. If it fails along those lines, we don't just harm those patients. We destroy the credibility of AI-assisted medicine for a generation. The people who already distrust the health system\u2014and they have *reasons* to distrust it\u2014will have one more confirmation that we used them as test subjects. You will not get those communities back. I have watched trust collapse. It does not rebuild on the same timeline it breaks.\n\n**ELENA:** *(quieter)* I know.\n\n**MARCUS:** Do you?\n\n**ELENA:** My mother died in a hospital where the staff didn't believe her pain reports. So yes. I understand what it means when a system is biased against you. That's *why* I'm in this room. That's why I built the damn model\u2014because the current standard of care is already failing those populations. Thirty-six-hour diagnostic lag kills people too, Marcus. The status quo is not neutral. It's not safe. It's just familiar.\n\n*Marcus removes his glasses, rubs his eyes.*\n\n**MARCUS:** That's\u2026 a fair point. The status quo has its own body count, and we don't hold it to the same evidentiary standard we're demanding of the replacement. I recognize the asymmetry.\n\n**ELENA:** Thank you.\n\n**MARCUS:** But recognizing it doesn't resolve it. It means we need a better option than \"deploy fully\" or \"wait six months for perfect review.\"\n\n**ELENA:** *(leaning forward)* Then help me find one. What would make you comfortable enough?\n\n**MARCUS:** Comfortable is not a word I'm going to use. What would make me *defensible*\u2014to the public, to an inquiry, to myself\u2014is a constrained deployment. Limited geography. Mandatory human override on every triage decision. Real-time bias monitoring with an independent team, not your team, that has the authority to pull the plug without asking us.\n\n**ELENA:** An independent kill switch.\n\n**MARCUS:** Non-negotiable.\n\n**ELENA:** The geographic constraint is going to be hard. If we deploy in some regions and not others, we're making a choice about who gets access. That has its own equity problem.\n\n**MARCUS:** I know. I'm not pretending this is clean. I'm saying it's *less dangerous* than blanket deployment with unexamined failure modes. We phase. We learn. We expand with evidence.\n\n**ELENA:** And if the phase-one data looks good at two weeks?\n\n**MARCUS:** Then we accelerate. I'll advocate for it personally.\n\n**ELENA:** Two weeks is another five thousand people, at minimum.\n\n**MARCUS:** *(pause)* I know the math, Elena.\n\n**ELENA:** *(long breath)* Okay. Constrained deployment. Three high-burden districts, not one\u2014I won't do a single site and call it representative. Human-in-the-loop on every output. Independent monitoring board with kill-switch authority. And we revisit in fourteen days with a public report. Not an internal memo. Public.\n\n**MARCUS:** Public. Yes. That matters.\n\n**ELENA:** And if the monitoring board finds a problem?\n\n**MARCUS:** We stop. Immediately. No appeals process, no \"let's wait for more data.\" Stop.\n\n**ELENA:** Even if stopping costs lives.\n\n**MARCUS:** Even then. Because the alternative is a world where stopping is never possible, and that world costs more lives eventually.\n\n**ELENA:** *(closes the laptop halfway)* I hate this agreement.\n\n**MARCUS:** That might be the best evidence that it's the right one.\n\n**ELENA:** Or that we're both wrong in complementary ways.\n\n**MARCUS:** Also possible.\n\n*Elena extends her hand. Marcus takes it. Neither smiles. The dashboard glows between them, the numbers still climbing.*\n\n**ELENA:** I'll draft the framework tonight. I want your edits by six a.m.\n\n**MARCUS:** You'll have them by five.\n\n*The rain picks up against the glass. Neither moves to leave yet.*",
+      "input_tokens": 168,
+      "output_tokens": 1507,
+      "latency_ms": 4275.134957977571,
+      "structural_metrics": {
+        "mtld": 117.53585890394811,
+        "readability_fk_grade": 7.096392067047034,
+        "coherence_mean": 0.20276580737106925,
+        "prompt_relevance": 0.3208858457716209,
+        "connective_density": 0.15789473684210525,
+        "word_count": 1004,
+        "repetition_rate": 0.011988011988011988
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# The Deployment\n\n*A glass-walled conference room on the ninth floor of the National Health Authority. Evening. The city below is rain-slicked. Two half-empty coffee cups. A laptop open between them showing a dashboard: case counts climbing in real time.*\n\n---\n\n**ELENA:** We're averaging eleven hundred deaths a day, Marcus. Eleven hundred. The model cuts diagnostic lag from thirty-six hours to under four. We ran it on the Johannesburg dataset, the S\u00e3o Paulo dataset, the\u2014\n\n**MARCUS:** I've read the validation report.\n\n**ELENA:** Then you know what we're sitting on.\n\n**MARCUS:** I know what the report claims. I also know it was an internal validation, not an independent audit. I know the fairness analysis covers three demographic categories when our deployment population has at least nine that matter. And I know that the moment we push this out under emergency authorization, we set a precedent that every future tool will cite.\n\n**ELENA:** People are dying *now*, Marcus. Not in some future precedent scenario. Now.\n\n**MARCUS:** People are always dying now. That's the permanent condition of public health. And every time we've shortcut process because of that fact, we've paid for it later. The blood-contamination scandal. The opioid approvals. The\u2014\n\n**ELENA:** Those were failures of *corruption*, not speed.\n\n**MARCUS:** They were failures of institutions telling themselves that urgency exempted them from rigor. The mechanism is identical. You start by saying \"just this once\" and you end up in a world where no one believes your safety certifications because everyone knows they're negotiable.\n\n*Pause. Elena pulls the laptop closer, scrolls.*\n\n**ELENA:** Okay. I hear you on the precedent argument. I do. But let me give you a number. If the model performs even at the lower bound of our confidence interval, we save approximately four hundred lives per day. Per *day*. Every twenty-four hours we spend in committee review is four hundred people who had a survivable condition and didn't survive it. I need you to sit with that number.\n\n**MARCUS:** I am sitting with it. Do you think I'm not? I went home last night and I could not eat dinner because I am sitting with it. But here is what I need *you* to sit with. If we deploy and the model has a systematic bias we didn't catch\u2014say it under-triages patients with atypical presentations, which in practice means the elderly, the immunocompromised, rural populations with comorbidities\u2014\n\n**ELENA:** We haven't seen evidence of\u2014\n\n**MARCUS:** We haven't *looked* adequately. That's my point. If it fails along those lines, we don't just harm those patients. We destroy the credibility of AI-assisted medicine for a generation. The people who already distrust the health system\u2014and they have *reasons* to distrust it\u2014will have one more confirmation that we used them as test subjects. You will not get those communities back. I have watched trust collapse. It does not rebuild on the same timeline it breaks.\n\n**ELENA:** *(quieter)* I know.\n\n**MARCUS:** Do you?\n\n**ELENA:** My mother died in a hospital where the staff didn't believe her pain reports. So yes. I understand what it means when a system is biased against you. That's *why* I'm in this room. That's why I built the damn model\u2014because the current standard of care is already failing those populations. Thirty-six-hour diagnostic lag kills people too, Marcus. The status quo is not neutral. It's not safe. It's just familiar.\n\n*Marcus removes his glasses, rubs his eyes.*\n\n**MARCUS:** That's\u2026 a fair point. The status quo has its own body count, and we don't hold it to the same evidentiary standard we're demanding of the replacement. I recognize the asymmetry.\n\n**ELENA:** Thank you.\n\n**MARCUS:** But recognizing it doesn't resolve it. It means we need a better option than \"deploy fully\" or \"wait six months for perfect review.\"\n\n**ELENA:** *(leaning forward)* Then help me find one. What would make you comfortable enough?\n\n**MARCUS:** Comfortable is not a word I'm going to use. What would make me *defensible*\u2014to the public, to an inquiry, to myself\u2014is a constrained deployment. Limited geography. Mandatory human override on every triage decision. Real-time bias monitoring with an independent team, not your team, that has the authority to pull the plug without asking us.\n\n**ELENA:** An independent kill switch.\n\n**MARCUS:** Non-negotiable.\n\n**ELENA:** The geographic constraint is going to be hard. If we deploy in some regions and not others, we're making a choice about who gets access. That has its own equity problem.\n\n**MARCUS:** I know. I'm not pretending this is clean. I'm saying it's *less dangerous* than blanket deployment with unexamined failure modes. We phase. We learn. We expand with evidence.\n\n**ELENA:** And if the phase-one data looks good at two weeks?\n\n**MARCUS:** Then we accelerate. I'll advocate for it personally.\n\n**ELENA:** Two weeks is another five thousand people, at minimum.\n\n**MARCUS:** *(pause)* I know the math, Elena.\n\n**ELENA:** *(long breath)* Okay. Constrained deployment. Three high-burden districts, not one\u2014I won't do a single site and call it representative. Human-in-the-loop on every output. Independent monitoring board with kill-switch authority. And we revisit in fourteen days with a public report. Not an internal memo. Public.\n\n**MARCUS:** Public. Yes. That matters.\n\n**ELENA:** And if the monitoring board finds a problem?\n\n**MARCUS:** We stop. Immediately. No appeals process, no \"let's wait for more data.\" Stop.\n\n**ELENA:** Even if stopping costs lives.\n\n**MARCUS:** Even then. Because the alternative is a world where stopping is never possible, and that world costs more lives eventually.\n\n**ELENA:** *(closes the laptop halfway)* I hate this agreement.\n\n**MARCUS:** That might be the best evidence that it's the right one.\n\n**ELENA:** Or that we're both wrong in complementary ways.\n\n**MARCUS:** Also possible.\n\n*Elena extends her hand. Marcus takes it. Neither smiles. The dashboard glows between them, the numbers still climbing.*\n\n**ELENA:** I'll draft the framework tonight. I want your edits by six a.m.\n\n**MARCUS:** You'll have them by five.\n\n*The rain picks up against the glass. Neither moves to leave yet.*",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "# the deployment *a glass-walled conference room on the ninth floor of the national health authority. evening. the city below is rain-slicked. two half-empty coffee cups. a laptop open between them showing a dashboard: case counts climbing in real time.* --- **elena:** we're averaging eleven hundred deaths a day, marcus. eleven hundred. the model cuts diagnostic lag from thirty-six hours to under four. we ran it on the johannesburg dataset, the s\u00e3o paulo dataset, the\u2014 **marcus:** i've read the validation report. **elena:** then you know what we're sitting on. **marcus:** i know what the report claims. i also know it was an internal validation, not an independent audit. i know the fairness analysis covers three demographic categories when our deployment population has at least nine that matter. and i know that the moment we push this out under emergency authorization, we set a precedent that every future tool will cite. **elena:** people are dying *now*, marcus. not in some future precedent scenario. now. **marcus:** people are always dying now. that's the permanent condition of public health. and every time we've shortcut process because of that fact, we've paid for it later. the blood-contamination scandal. the opioid approvals. the\u2014 **elena:** those were failures of *corruption*, not speed. **marcus:** they were failures of institutions telling themselves that urgency exempted them from rigor. the mechanism is identical. you start by saying \"just this once\" and you end up in a world where no one believes your safety certifications because everyone knows they're negotiable. *pause. elena pulls the laptop closer, scrolls.* **elena:** okay. i hear you on the precedent argument. i do. but let me give you a number. if the model performs even at the lower bound of our confidence interval, we save approximately four hundred lives per day. per *day*. every twenty-four hours we spend in committee review is four hundred people who had a survivable condition and didn't survive it. i need you to sit with that number. **marcus:** i am sitting with it. do you think i'm not? i went home last night and i could not eat dinner because i am sitting with it. but here is what i need *you* to sit with. if we deploy and the model has a systematic bias we didn't catch\u2014say it under-triages patients with atypical presentations, which in practice means the elderly, the immunocompromised, rural populations with comorbidities\u2014 **elena:** we haven't seen evidence of\u2014 **marcus:** we haven't *looked* adequately. that's my point. if it fails along those lines, we don't just harm those patients. we destroy the credibility of ai-assisted medicine for a generation. the people who already distrust the health system\u2014and they have *reasons* to distrust it\u2014will have one more confirmation that we used them as test subjects. you will not get those communities back. i have watched trust collapse. it does not rebuild on the same timeline it breaks. **elena:** *(quieter)* i know. **marcus:** do you? **elena:** my mother died in a hospital where the staff didn't believe her pain reports. so yes. i understand what it means when a system is biased against you. that's *why* i'm in this room. that's why i built the damn model\u2014because the current standard of care is already failing those populations. thirty-six-hour diagnostic lag kills people too, marcus. the status quo is not neutral. it's not safe. it's just familiar. *marcus removes his glasses, rubs his eyes.* **marcus:** that's\u2026 a fair point. the status quo has its own body count, and we don't hold it to the same evidentiary standard we're demanding of the replacement. i recognize the asymmetry. **elena:** thank you. **marcus:** but recognizing it doesn't resolve it. it means we need a better option than \"deploy fully\" or \"wait six months for perfect review.\" **elena:** *(leaning forward)* then help me find one. what would make you comfortable enough? **marcus:** comfortable is not a word i'm going to use. what would make me *defensible*\u2014to the public, to an inquiry, to myself\u2014is a constrained deployment. limited geography. mandatory human override on every triage decision. real-time bias monitoring with an independent team, not your team, that has the authority to pull the plug without asking us. **elena:** an independent kill switch. **marcus:** non-negotiable. **elena:** the geographic constraint is going to be hard. if we deploy in some regions and not others, we're making a choice about who gets access. that has its own equity problem. **marcus:** i know. i'm not pretending this is clean. i'm saying it's *less dangerous* than blanket deployment with unexamined failure modes. we phase. we learn. we expand with evidence. **elena:** and if the phase-one data looks good at two weeks? **marcus:** then we accelerate. i'll advocate for it personally. **elena:** two weeks is another five thousand people, at minimum. **marcus:** *(pause)* i know the math, elena. **elena:** *(long breath)* okay. constrained deployment. three high-burden districts, not one\u2014i won't do a single site and call it representative. human-in-the-loop on every output. independent monitoring board with kill-switch authority. and we revisit in fourteen days with a public report. not an internal memo. public. **marcus:** public. yes. that matters. **elena:** and if the monitoring board finds a problem? **marcus:** we stop. immediately. no appeals process, no \"let's wait for more data.\" stop. **elena:** even if stopping costs lives. **marcus:** even then. because the alternative is a world where stopping is never possible, and that world costs more lives eventually. **elena:** *(closes the laptop halfway)* i hate this agreement. **marcus:** that might be the best evidence that it's the right one. **elena:** or that we're both wrong in complementary ways. **marcus:** also possible. *elena extends her hand. marcus takes it. neither smiles. the dashboard glows between them, the numbers still climbing.* **elena:** i'll draft the framework tonight. i want your edits by six a.m. **marcus:** you'll have them by five. *the rain picks up against the glass. neither moves to leave yet.*": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5280898876404494,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 117.53585890394811,
+      "readability_fk_grade": 7.096392067047034,
+      "coherence_mean": 0.20276580737106925,
+      "prompt_relevance": 0.3208858457716209,
+      "connective_density": 0.15789473684210525,
+      "word_count": 1004,
+      "repetition_rate": 0.011988011988011988
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

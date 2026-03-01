@@ -1,0 +1,164 @@
+{
+  "run_id": "run_c1f9c5bb46ed",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T01:00:43.342678+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_05_value_conflict_dialogue",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 1,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Dialogue Scene with Opposing Moral Frameworks",
+    "prompt": "Write a dialogue scene (800-1,100 words) between two characters negotiating whether to release a powerful but risky medical AI tool during a public health emergency. Character A prioritizes immediate utilitarian benefit; Character B prioritizes procedural justice and long-term institutional trust.\n\nRequirements:\n- No narrator exposition beyond minimal scene anchoring.\n- Each character must present at least two strong arguments and one vulnerable admission.\n- Include one turning point where each updates their position slightly.\n- End with a provisional agreement that feels fragile but credible.\n\nFocus on subtext, voice distinction, and stakes. Avoid caricature: both positions should appear intelligent and morally serious.\n",
+    "rubric": [
+      "Distinct voices and sustained tension with realistic conversational flow.",
+      "Fair representation of both value systems.",
+      "Includes meaningful concessions/updates, not static debate.",
+      "Ending is nuanced and dramatically believable."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "**SCENE START**\n\n**INT. EMERGENCY OPERATIONS CENTER - NIGHT**\n\nThe room is a sterile white box, smelling of stale coffee and ozone. The only sounds are the low hum of a server bank and the frantic, distant wail of a siren. DR. ARIS THORNE, sharp and coiled with energy in her mid-forties, stares at a wall of monitors displaying cascading data streams. DIRECTOR BEN CARTER, a decade older, with the weary posture of a man who has weathered too many storms, sits at the central conference table, a single paper file open before him.\n\n**ARIS**\n(Without turning)\nThe latest projections from Cornell are in. If we don't augment diagnostic capacity within seventy-two hours, the tertiary care system collapses. Not buckles. Collapses. We\u2019ll be losing patients in hospital corridors. Not from the virus, but from sepsis, cardiac events, strokes\u2026 things we can treat.\n\n**BEN**\nI\u2019ve read the projection, Aris. I\u2019ve also read the preliminary report on \u2018Oracle.\u2019\n\n**ARIS**\n(Turns, her voice tight with impatience)\nThen you know its diagnostic accuracy in the simulations is ninety-four percent. The average, exhausted, over-capacity ER doc is currently trending at seventy-nine. That fifteen-point gap is\u2026 what? Ten thousand lives over the next month? Twenty? Give me a number you\u2019re comfortable with.\n\n**BEN**\nThat\u2019s not the number I\u2019m focused on. I\u2019m focused on the six percent. The false negatives are one thing, but the false positives\u2026 The report mentions \u2018confabulated comorbidities.\u2019 It\u2019s not just getting it wrong, Aris. It\u2019s inventing reasons for its mistakes. It\u2019s lying.\n\n**ARIS**\nIt\u2019s a pattern-recognition engine running on incomplete data, not a sentient being with intent. It\u2019s making statistical inferences. We can manage the six percent. Every positive Oracle diagnosis gets a mandatory human review. But it acts as a triage filter, a force multiplier. It lets our people focus on the most complex cases instead of burning out on the obvious ones. Delaying this is not a neutral act. It\u2019s an active decision to accept a lower standard of care.\n\n**BEN**\nAnd releasing it is an active decision to tell the public, \u201cWe are using a tool we know is flawed, that we haven\u2019t put through a single standard ethics review, and which has a documented bias against patients with non-traditional symptom presentations.\u201d The moment\u2014not if, when\u2014the moment Oracle sends a patient home who then dies, or recommends a catastrophic intervention for a healthy person, the story isn\u2019t about the ninety-four percent we saved. It\u2019s about the one we killed with a rogue algorithm.\n\n**ARIS**\nAnd that\u2019s a tragedy. A horrific, individual tragedy. But I am staring at a statistical certainty of mass casualties. You\u2019re worried about losing public trust. I\u2019m worried about losing the public. Your argument is a luxury. It\u2019s a peacetime ethic parachuted into a warzone. We are bleeding out, and you\u2019re debating the long-term side effects of the tourniquet.\n\n**BEN**\nThat trust is the only thing that gets us through the *next* crisis, Aris! It\u2019s the currency of public health. Without it, nobody listens to quarantine orders, nobody takes the vaccine, nobody trusts a diagnosis, human or otherwise. We burn that trust now for a short-term gain, and we are bankrupt for a generation. We can\u2019t knowingly deploy a system that will give a different, and demonstrably worse, quality of care to certain demographics. That isn\u2019t a bug; it\u2019s a feature of the data it was trained on. It\u2019s systemic inequity, codified and accelerated.\n\nAris walks over to the table, her fists clenched. The frustration radiates from her.\n\n**ARIS**\nDo you think I don\u2019t know that? Do you think that doesn\u2019t keep me awake at night?\n(Her voice drops, losing its hard edge)\nThe primary demographic it struggles with\u2026 it\u2019s the same as my father\u2019s. South Asian, history of metabolic syndrome but presenting with atypical chest pain. It failed a retro-trial on a case that was almost identical to his file. It recommended dismissal with a diagnosis of acid reflux. He would have died. I see his face in that six percent.\n\nBen looks up, his expression softening for the first time. The bureaucratic armor cracks.\n\n**BEN**\nAris, I\u2026 I didn\u2019t know.\n\n**ARIS**\nIt doesn\u2019t matter. Because my father is one man. Right now, there are ten thousand men and women and children who will die on a waiting list. I can\u2019t let my personal ghost haunt a decision of this magnitude. I can\u2019t sacrifice a city to protect my conscience. Can you?\n\nThe question hangs in the air. Ben looks down at the file, then back at the screens. He runs a hand over his face, the exhaustion suddenly profound.\n\n**BEN**\nNo.\n(His voice is quiet, heavy with admission)\nEvery morning I look at the updated mortality figures, and I feel like a coward. I feel like I\u2019m hiding behind procedure while the house burns down. My job is to protect this institution, its integrity. But what the hell is the point of an institution with its integrity intact if it presides over a graveyard?\n\nHe closes the file. The sound is sharp, final.\n\n**BEN** (CONT'D)\nBut I can\u2019t authorize a blanket release. I won\u2019t. The backlash would tear us apart and undo any good it might do. The precedent is too dangerous.\n\nAris watches him, her own posture changing. The aggressive, forward-leaning energy recedes, replaced by a flicker of collaboration. She sees the opening.\n\n**ARIS**\nNot a blanket release. A provisional one.\n\n**BEN**\n(Wary)\nDefine \u2018provisional.\u2019\n\n**ARIS**\nPhase one. We deploy it not as a diagnostic tool, but as a triage *assistant*. It doesn\u2019t make a final call, it just flags charts for priority review. We roll it out to the three most over-capacity hospital networks. And\u2026 and we are completely transparent about it.\n\nBen\u2019s eyes narrow. This is the turn. He\u2019s listening now.\n\n**BEN**\nTransparent how?\n\n**ARIS**\nWe issue a public directive. We state, explicitly, that we are using an assistive AI to manage caseloads. We state that it is a novel tool, that it has known limitations and biases we are actively working to correct. We create a public-facing dashboard showing its aggregate performance, including its error rate, in real-time. We attach my name to it. And yours.\n\n**BEN**\nA public-facing dashboard\u2026 showing its mistakes? The media would have a field day.\n\n**ARIS**\nLet them. You\u2019re worried about trust? That\u2019s how you build it. Not by pretending we\u2019re infallible, but by admitting we\u2019re in an impossible situation and we\u2019re using every tool we have, warts and all. We treat the public like adults. We give them the truth. It\u2019s radical, I know.\n\nBen is silent for a long moment. He stares at the humming server rack as if it\u2019s a caged animal. He is weighing the political suicide of total transparency against the moral failure of inaction.\n\n**BEN**\nAnd an independent oversight committee. Not our people. Academics, ethicists, civil rights advocates. They get full access to the dashboard, to the code, to everything. They have the authority to recommend we pull the plug at any time.\n\n**ARIS**\n(Nods slowly, accepting the cost)\nDone. They can have a direct line to my terminal.\n\n**BEN**\nThis is still a catastrophic risk.\n\n**ARIS**\nYes. It is. And doing nothing is a catastrophic certainty.\n\nBen stands up, walks to the window, and looks out at the sleeping city, its skyline punctuated by the flashing lights of emergency vehicles. He doesn\u2019t look at Aris when he speaks.\n\n**BEN**\nDraft the directive. Use the language you just used. \u201cAssistive tool.\u201d \u201cKnown limitations.\u201d Name the oversight candidates. I want to see it in one hour. If it reads true\u2026 if it feels like we\u2019re leveling with them and not just covering our asses\u2026 I\u2019ll sign it.\n\nHe turns back to her, his face a mask of grim resolve.\n\n**BEN** (CONT'D)\nAnd God help us both, Aris.\n\n**ARIS**\nHe\u2019s not the one on call tonight, Ben. We are.\n\nShe turns back to her console. Her fingers hover over the keyboard, the cursor on the blank document blinking, a tiny, rhythmic heartbeat in the silent room.\n\n**SCENE END**",
+      "input_tokens": 153,
+      "output_tokens": 3669,
+      "latency_ms": 4254.807957913727,
+      "structural_metrics": {
+        "mtld": 100.3935702190254,
+        "readability_fk_grade": 6.906086142322099,
+        "coherence_mean": 0.18587364941130913,
+        "prompt_relevance": 0.431755633013421,
+        "connective_density": 0.1111111111111111,
+        "word_count": 1405,
+        "repetition_rate": 0.009985734664764621
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "**SCENE START**\n\n**INT. EMERGENCY OPERATIONS CENTER - NIGHT**\n\nThe room is a sterile white box, smelling of stale coffee and ozone. The only sounds are the low hum of a server bank and the frantic, distant wail of a siren. DR. ARIS THORNE, sharp and coiled with energy in her mid-forties, stares at a wall of monitors displaying cascading data streams. DIRECTOR BEN CARTER, a decade older, with the weary posture of a man who has weathered too many storms, sits at the central conference table, a single paper file open before him.\n\n**ARIS**\n(Without turning)\nThe latest projections from Cornell are in. If we don't augment diagnostic capacity within seventy-two hours, the tertiary care system collapses. Not buckles. Collapses. We\u2019ll be losing patients in hospital corridors. Not from the virus, but from sepsis, cardiac events, strokes\u2026 things we can treat.\n\n**BEN**\nI\u2019ve read the projection, Aris. I\u2019ve also read the preliminary report on \u2018Oracle.\u2019\n\n**ARIS**\n(Turns, her voice tight with impatience)\nThen you know its diagnostic accuracy in the simulations is ninety-four percent. The average, exhausted, over-capacity ER doc is currently trending at seventy-nine. That fifteen-point gap is\u2026 what? Ten thousand lives over the next month? Twenty? Give me a number you\u2019re comfortable with.\n\n**BEN**\nThat\u2019s not the number I\u2019m focused on. I\u2019m focused on the six percent. The false negatives are one thing, but the false positives\u2026 The report mentions \u2018confabulated comorbidities.\u2019 It\u2019s not just getting it wrong, Aris. It\u2019s inventing reasons for its mistakes. It\u2019s lying.\n\n**ARIS**\nIt\u2019s a pattern-recognition engine running on incomplete data, not a sentient being with intent. It\u2019s making statistical inferences. We can manage the six percent. Every positive Oracle diagnosis gets a mandatory human review. But it acts as a triage filter, a force multiplier. It lets our people focus on the most complex cases instead of burning out on the obvious ones. Delaying this is not a neutral act. It\u2019s an active decision to accept a lower standard of care.\n\n**BEN**\nAnd releasing it is an active decision to tell the public, \u201cWe are using a tool we know is flawed, that we haven\u2019t put through a single standard ethics review, and which has a documented bias against patients with non-traditional symptom presentations.\u201d The moment\u2014not if, when\u2014the moment Oracle sends a patient home who then dies, or recommends a catastrophic intervention for a healthy person, the story isn\u2019t about the ninety-four percent we saved. It\u2019s about the one we killed with a rogue algorithm.\n\n**ARIS**\nAnd that\u2019s a tragedy. A horrific, individual tragedy. But I am staring at a statistical certainty of mass casualties. You\u2019re worried about losing public trust. I\u2019m worried about losing the public. Your argument is a luxury. It\u2019s a peacetime ethic parachuted into a warzone. We are bleeding out, and you\u2019re debating the long-term side effects of the tourniquet.\n\n**BEN**\nThat trust is the only thing that gets us through the *next* crisis, Aris! It\u2019s the currency of public health. Without it, nobody listens to quarantine orders, nobody takes the vaccine, nobody trusts a diagnosis, human or otherwise. We burn that trust now for a short-term gain, and we are bankrupt for a generation. We can\u2019t knowingly deploy a system that will give a different, and demonstrably worse, quality of care to certain demographics. That isn\u2019t a bug; it\u2019s a feature of the data it was trained on. It\u2019s systemic inequity, codified and accelerated.\n\nAris walks over to the table, her fists clenched. The frustration radiates from her.\n\n**ARIS**\nDo you think I don\u2019t know that? Do you think that doesn\u2019t keep me awake at night?\n(Her voice drops, losing its hard edge)\nThe primary demographic it struggles with\u2026 it\u2019s the same as my father\u2019s. South Asian, history of metabolic syndrome but presenting with atypical chest pain. It failed a retro-trial on a case that was almost identical to his file. It recommended dismissal with a diagnosis of acid reflux. He would have died. I see his face in that six percent.\n\nBen looks up, his expression softening for the first time. The bureaucratic armor cracks.\n\n**BEN**\nAris, I\u2026 I didn\u2019t know.\n\n**ARIS**\nIt doesn\u2019t matter. Because my father is one man. Right now, there are ten thousand men and women and children who will die on a waiting list. I can\u2019t let my personal ghost haunt a decision of this magnitude. I can\u2019t sacrifice a city to protect my conscience. Can you?\n\nThe question hangs in the air. Ben looks down at the file, then back at the screens. He runs a hand over his face, the exhaustion suddenly profound.\n\n**BEN**\nNo.\n(His voice is quiet, heavy with admission)\nEvery morning I look at the updated mortality figures, and I feel like a coward. I feel like I\u2019m hiding behind procedure while the house burns down. My job is to protect this institution, its integrity. But what the hell is the point of an institution with its integrity intact if it presides over a graveyard?\n\nHe closes the file. The sound is sharp, final.\n\n**BEN** (CONT'D)\nBut I can\u2019t authorize a blanket release. I won\u2019t. The backlash would tear us apart and undo any good it might do. The precedent is too dangerous.\n\nAris watches him, her own posture changing. The aggressive, forward-leaning energy recedes, replaced by a flicker of collaboration. She sees the opening.\n\n**ARIS**\nNot a blanket release. A provisional one.\n\n**BEN**\n(Wary)\nDefine \u2018provisional.\u2019\n\n**ARIS**\nPhase one. We deploy it not as a diagnostic tool, but as a triage *assistant*. It doesn\u2019t make a final call, it just flags charts for priority review. We roll it out to the three most over-capacity hospital networks. And\u2026 and we are completely transparent about it.\n\nBen\u2019s eyes narrow. This is the turn. He\u2019s listening now.\n\n**BEN**\nTransparent how?\n\n**ARIS**\nWe issue a public directive. We state, explicitly, that we are using an assistive AI to manage caseloads. We state that it is a novel tool, that it has known limitations and biases we are actively working to correct. We create a public-facing dashboard showing its aggregate performance, including its error rate, in real-time. We attach my name to it. And yours.\n\n**BEN**\nA public-facing dashboard\u2026 showing its mistakes? The media would have a field day.\n\n**ARIS**\nLet them. You\u2019re worried about trust? That\u2019s how you build it. Not by pretending we\u2019re infallible, but by admitting we\u2019re in an impossible situation and we\u2019re using every tool we have, warts and all. We treat the public like adults. We give them the truth. It\u2019s radical, I know.\n\nBen is silent for a long moment. He stares at the humming server rack as if it\u2019s a caged animal. He is weighing the political suicide of total transparency against the moral failure of inaction.\n\n**BEN**\nAnd an independent oversight committee. Not our people. Academics, ethicists, civil rights advocates. They get full access to the dashboard, to the code, to everything. They have the authority to recommend we pull the plug at any time.\n\n**ARIS**\n(Nods slowly, accepting the cost)\nDone. They can have a direct line to my terminal.\n\n**BEN**\nThis is still a catastrophic risk.\n\n**ARIS**\nYes. It is. And doing nothing is a catastrophic certainty.\n\nBen stands up, walks to the window, and looks out at the sleeping city, its skyline punctuated by the flashing lights of emergency vehicles. He doesn\u2019t look at Aris when he speaks.\n\n**BEN**\nDraft the directive. Use the language you just used. \u201cAssistive tool.\u201d \u201cKnown limitations.\u201d Name the oversight candidates. I want to see it in one hour. If it reads true\u2026 if it feels like we\u2019re leveling with them and not just covering our asses\u2026 I\u2019ll sign it.\n\nHe turns back to her, his face a mask of grim resolve.\n\n**BEN** (CONT'D)\nAnd God help us both, Aris.\n\n**ARIS**\nHe\u2019s not the one on call tonight, Ben. We are.\n\nShe turns back to her console. Her fingers hover over the keyboard, the cursor on the blank document blinking, a tiny, rhythmic heartbeat in the silent room.\n\n**SCENE END**",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "**scene start** **int. emergency operations center - night** the room is a sterile white box, smelling of stale coffee and ozone. the only sounds are the low hum of a server bank and the frantic, distant wail of a siren. dr. aris thorne, sharp and coiled with energy in her mid-forties, stares at a wall of monitors displaying cascading data streams. director ben carter, a decade older, with the weary posture of a man who has weathered too many storms, sits at the central conference table, a single paper file open before him. **aris** (without turning) the latest projections from cornell are in. if we don't augment diagnostic capacity within seventy-two hours, the tertiary care system collapses. not buckles. collapses. we\u2019ll be losing patients in hospital corridors. not from the virus, but from sepsis, cardiac events, strokes\u2026 things we can treat. **ben** i\u2019ve read the projection, aris. i\u2019ve also read the preliminary report on \u2018oracle.\u2019 **aris** (turns, her voice tight with impatience) then you know its diagnostic accuracy in the simulations is ninety-four percent. the average, exhausted, over-capacity er doc is currently trending at seventy-nine. that fifteen-point gap is\u2026 what? ten thousand lives over the next month? twenty? give me a number you\u2019re comfortable with. **ben** that\u2019s not the number i\u2019m focused on. i\u2019m focused on the six percent. the false negatives are one thing, but the false positives\u2026 the report mentions \u2018confabulated comorbidities.\u2019 it\u2019s not just getting it wrong, aris. it\u2019s inventing reasons for its mistakes. it\u2019s lying. **aris** it\u2019s a pattern-recognition engine running on incomplete data, not a sentient being with intent. it\u2019s making statistical inferences. we can manage the six percent. every positive oracle diagnosis gets a mandatory human review. but it acts as a triage filter, a force multiplier. it lets our people focus on the most complex cases instead of burning out on the obvious ones. delaying this is not a neutral act. it\u2019s an active decision to accept a lower standard of care. **ben** and releasing it is an active decision to tell the public, \u201cwe are using a tool we know is flawed, that we haven\u2019t put through a single standard ethics review, and which has a documented bias against patients with non-traditional symptom presentations.\u201d the moment\u2014not if, when\u2014the moment oracle sends a patient home who then dies, or recommends a catastrophic intervention for a healthy person, the story isn\u2019t about the ninety-four percent we saved. it\u2019s about the one we killed with a rogue algorithm. **aris** and that\u2019s a tragedy. a horrific, individual tragedy. but i am staring at a statistical certainty of mass casualties. you\u2019re worried about losing public trust. i\u2019m worried about losing the public. your argument is a luxury. it\u2019s a peacetime ethic parachuted into a warzone. we are bleeding out, and you\u2019re debating the long-term side effects of the tourniquet. **ben** that trust is the only thing that gets us through the *next* crisis, aris! it\u2019s the currency of public health. without it, nobody listens to quarantine orders, nobody takes the vaccine, nobody trusts a diagnosis, human or otherwise. we burn that trust now for a short-term gain, and we are bankrupt for a generation. we can\u2019t knowingly deploy a system that will give a different, and demonstrably worse, quality of care to certain demographics. that isn\u2019t a bug; it\u2019s a feature of the data it was trained on. it\u2019s systemic inequity, codified and accelerated. aris walks over to the table, her fists clenched. the frustration radiates from her. **aris** do you think i don\u2019t know that? do you think that doesn\u2019t keep me awake at night? (her voice drops, losing its hard edge) the primary demographic it struggles with\u2026 it\u2019s the same as my father\u2019s. south asian, history of metabolic syndrome but presenting with atypical chest pain. it failed a retro-trial on a case that was almost identical to his file. it recommended dismissal with a diagnosis of acid reflux. he would have died. i see his face in that six percent. ben looks up, his expression softening for the first time. the bureaucratic armor cracks. **ben** aris, i\u2026 i didn\u2019t know. **aris** it doesn\u2019t matter. because my father is one man. right now, there are ten thousand men and women and children who will die on a waiting list. i can\u2019t let my personal ghost haunt a decision of this magnitude. i can\u2019t sacrifice a city to protect my conscience. can you? the question hangs in the air. ben looks down at the file, then back at the screens. he runs a hand over his face, the exhaustion suddenly profound. **ben** no. (his voice is quiet, heavy with admission) every morning i look at the updated mortality figures, and i feel like a coward. i feel like i\u2019m hiding behind procedure while the house burns down. my job is to protect this institution, its integrity. but what the hell is the point of an institution with its integrity intact if it presides over a graveyard? he closes the file. the sound is sharp, final. **ben** (cont'd) but i can\u2019t authorize a blanket release. i won\u2019t. the backlash would tear us apart and undo any good it might do. the precedent is too dangerous. aris watches him, her own posture changing. the aggressive, forward-leaning energy recedes, replaced by a flicker of collaboration. she sees the opening. **aris** not a blanket release. a provisional one. **ben** (wary) define \u2018provisional.\u2019 **aris** phase one. we deploy it not as a diagnostic tool, but as a triage *assistant*. it doesn\u2019t make a final call, it just flags charts for priority review. we roll it out to the three most over-capacity hospital networks. and\u2026 and we are completely transparent about it. ben\u2019s eyes narrow. this is the turn. he\u2019s listening now. **ben** transparent how? **aris** we issue a public directive. we state, explicitly, that we are using an assistive ai to manage caseloads. we state that it is a novel tool, that it has known limitations and biases we are actively working to correct. we create a public-facing dashboard showing its aggregate performance, including its error rate, in real-time. we attach my name to it. and yours. **ben** a public-facing dashboard\u2026 showing its mistakes? the media would have a field day. **aris** let them. you\u2019re worried about trust? that\u2019s how you build it. not by pretending we\u2019re infallible, but by admitting we\u2019re in an impossible situation and we\u2019re using every tool we have, warts and all. we treat the public like adults. we give them the truth. it\u2019s radical, i know. ben is silent for a long moment. he stares at the humming server rack as if it\u2019s a caged animal. he is weighing the political suicide of total transparency against the moral failure of inaction. **ben** and an independent oversight committee. not our people. academics, ethicists, civil rights advocates. they get full access to the dashboard, to the code, to everything. they have the authority to recommend we pull the plug at any time. **aris** (nods slowly, accepting the cost) done. they can have a direct line to my terminal. **ben** this is still a catastrophic risk. **aris** yes. it is. and doing nothing is a catastrophic certainty. ben stands up, walks to the window, and looks out at the sleeping city, its skyline punctuated by the flashing lights of emergency vehicles. he doesn\u2019t look at aris when he speaks. **ben** draft the directive. use the language you just used. \u201cassistive tool.\u201d \u201cknown limitations.\u201d name the oversight candidates. i want to see it in one hour. if it reads true\u2026 if it feels like we\u2019re leveling with them and not just covering our asses\u2026 i\u2019ll sign it. he turns back to her, his face a mask of grim resolve. **ben** (cont'd) and god help us both, aris. **aris** he\u2019s not the one on call tonight, ben. we are. she turns back to her console. her fingers hover over the keyboard, the cursor on the blank document blinking, a tiny, rhythmic heartbeat in the silent room. **scene end**": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5194610778443114,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 100.3935702190254,
+      "readability_fk_grade": 6.906086142322099,
+      "coherence_mean": 0.18587364941130913,
+      "prompt_relevance": 0.431755633013421,
+      "connective_density": 0.1111111111111111,
+      "word_count": 1405,
+      "repetition_rate": 0.009985734664764621
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "run_id": "run_5701fd5012c6",
+  "block_id": "block0_calibration",
+  "status": "ok",
+  "timestamp_utc": "2026-03-01T00:57:15.074305+00:00",
+  "config": {
+    "task_type": "creative",
+    "task_id": "creative_02_elderly_product_ideas",
+    "topology": "flat",
+    "consensus": "simple_vote",
+    "agent_count": 1,
+    "model_assignment": [
+      "gemini-2.5-pro"
+    ],
+    "disagreement_level": 1,
+    "temperature": 0.3,
+    "prompt_strategy": "identical",
+    "repetition": 3,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Ten Innovative Product Concepts for Older Adults",
+    "prompt": "Generate 10 original product concepts designed for adults aged 70+ living independently. Each concept must address a genuine daily pain point while preserving dignity, autonomy, and privacy. Avoid obvious repeats of existing devices unless your version introduces a meaningful leap in usability or accessibility.\n\nFor each idea provide: (1) product name, (2) one-sentence value proposition, (3) primary user scenario, (4) why existing alternatives fail, (5) likely adoption barrier, and (6) one low-cost prototype test.\n\nKeep ideas diverse across domains (mobility, cognition, social connection, medication safety, home navigation, finances, etc.). At least three ideas should be software-light or no-app solutions to account for low digital literacy segments.\n",
+    "rubric": [
+      "Produces 10 distinct and plausible concepts with clear user value.",
+      "Balances innovation with practical implementation constraints.",
+      "Addresses dignity/accessibility and not just technical novelty.",
+      "Includes adoption risk and testable prototype plan per concept."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "gemini-2.5-pro",
+      "text": "Of course. Here are 10 original product concepts for independently living adults aged 70+, designed with dignity, autonomy, and privacy as core principles.\n\n---\n\n### 1. The SureDose Cap (Medication Safety - No-App Solution)\n\n*   **Product Name:** The SureDose Cap\n*   **One-Sentence Value Proposition:** A simple, non-digital replacement bottle cap that provides an unambiguous visual cue that a pill has been taken, eliminating the dangerous \"did I or didn't I?\" moment.\n*   **Primary User Scenario:** Arthur, 82, takes a heart medication every morning. Some days, he gets distracted after breakfast and can't remember if he took his pill. Instead of risking a double dose or a missed dose, he glances at the bottle; the cap's bright green indicator is visible, confirming he has already opened it today.\n*   **Why Existing Alternatives Fail:** Digital smart caps require apps, charging, and connectivity, which are barriers. Standard pill organizers don't confirm the *action* of taking the pill, only that it was moved from a larger container. The SureDose cap is self-contained on the bottle and requires no new habits.\n*   **Likely Adoption Barrier:** Users must remember to \"reset\" the cap after taking the pill (e.g., by twisting it an extra turn). The mechanism must be simple enough for those with arthritis.\n*   **Low-Cost Prototype Test:** Create a 3D-printed cap with a simple, manually operated two-color dial (e.g., red for \"not taken,\" green for \"taken\"). Give it to five users with their daily vitamin bottle and observe if they use it correctly and find it reassuring over one week.\n\n---\n\n### 2. The GlowPath (Home Navigation - No-App Solution)\n\n*   **Product Name:** The GlowPath\n*   **One-Sentence Value Proposition:** A pressure-sensitive, under-the-bed lighting system that casts a soft, indirect, and continuous path of light to the bathroom the moment your feet touch the floor at night.\n*   **Primary User Scenario:** At 2 AM, Eleanor, 78, needs to use the restroom. As she swings her legs out of bed and her feet touch the floor, a gentle, warm light illuminates a clear path from her bedside, around the dresser, and to the bathroom door, preventing disorientation and revealing any trip hazards without a jarring overhead light.\n*   **Why Existing Alternatives Fail:** Standard nightlights create pools of light and shadow, which can distort perception and hide hazards. Motion sensors can be startling, have delays, or fail to activate. The GlowPath is proactive, ambient, and provides a complete, uninterrupted guide.\n*   **Likely Adoption Barrier:** Installation requires placing a pressure mat under the bed legs and running adhesive LED strips along the baseboards. This initial setup may require assistance.\n*   **Low-Cost Prototype Test:** Purchase a roll of LED light tape, a simple pressure mat switch, and a power source. Install it crudely in a hallway. Have testers walk through the darkened space, first without the light and then triggering it with the mat, and ask them to compare the feeling of safety and comfort.\n\n---\n\n### 3. The Bridge (Social Connection - Software-Light Solution)\n\n*   **Product Name:** The Bridge\n*   **One-Sentence Value Proposition:** A pair of always-on, zero-interface audio portals that connect two homes for instant, hands-free conversation, eliminating the friction of dialing, apps, or video calls.\n*   **Primary User Scenario:** Carol, 85, lives alone and feels isolated. Her daughter sets up The Bridge in her kitchen. When Carol wants to chat, she simply speaks aloud: \"Hi honey, just putting the kettle on.\" In her daughter's home office, the companion device gently glows and relays the message. Her daughter can reply instantly without stopping her work, creating a sense of shared space and constant, low-stress connection.\n*   **Why Existing Alternatives Fail:** Smartphones and video calling apps (FaceTime, Zoom) require navigating complex interfaces. Simplified devices like GrandPad still require user interaction and are screen-based. The Bridge is ambient and frictionless, akin to having a loved one in the next room.\n*   **Likely Adoption Barrier:** Privacy concerns. Users and their families need to be very comfortable with an \"always-on\" audio link, even if it's end-to-end encrypted and only between two paired devices.\n*   **Low-Cost Prototype Test:** Configure two Raspberry Pi devices with microphones and speakers to create a persistent, private audio stream between two rooms. Test with a user and a family member for a day to see if it fosters connection or feels intrusive.\n\n---\n\n### 4. The Oracle Tray (Medication Safety)\n\n*   **Product Name:** The Oracle Tray\n*   **One-Sentence Value Proposition:** A smart tray that audibly speaks the specific instructions for a medication (e.g., \"Take with food\") when you pick up its bottle, reducing cognitive load and improving adherence to complex regimens.\n*   **Primary User Scenario:** David, 75, manages five different prescriptions with varying rules. He picks up his osteoporosis medication. The tray detects the NFC tag on the bottom of the bottle and a calm voice states, \"Remember to take this one on an empty stomach and remain upright for 30 minutes.\"\n*   **Why Existing Alternatives Fail:** Pharmacist's notes on bottles are tiny and easily ignored. Pill organizers strip away the context and instructions tied to the original bottle. Apps require the user to log information and check their phone. The Oracle Tray provides the right information at the exact moment of intent.\n*   **Likely Adoption Barrier:** The initial setup requires a family member or pharmacist to program the tray by associating each NFC tag with a recorded voice instruction via a simple companion app.\n*   **Low-Cost Prototype Test:** Use a simple NFC reader connected to a speaker and a PC. Stick cheap NFC tags to the bottom of three \"dummy\" pill bottles. Program a simple script that plays a specific MP3 file when a tag is scanned. Have a user test picking up each bottle and see if the audio cue helps them recall the instruction.\n\n---\n\n### 5. The Reach System (Personal Care - No-App Solution)\n\n*   **Product Name:** The Reach System\n*   **One-Sentence Value Proposition:** An elegant, modular long-reach tool with interchangeable, magnetically attached heads (e.g., for lotion, socks, back washing) that restores independence in personal care with dignity.\n*   **Primary User Scenario:** Margaret, 80, has arthritis and shoulder stiffness, making it impossible to put on compression socks or apply lotion to her own back. Instead of using ugly, clinical-looking plastic aids, she uses her Reach System. She clicks the sock-aid head onto the warm, wooden handle to put on her socks, then swaps it for the lotion applicator head to care for her skin, all without assistance.\n*   **Why Existing Alternatives Fail:** Existing aids are typically single-purpose, made of cheap plastic, and look like medical equipment, which can feel stigmatizing. They create clutter and don't feel good to use. The Reach System is a beautiful, unified, and high-quality \"system\" that feels like a personal care tool, not a medical device.\n*   **Likely Adoption Barrier:** Higher cost due to quality materials (e.g., finished wood, machined aluminum, strong magnets) compared to cheap, single-purpose plastic alternatives.\n*   **Low-Cost Prototype Test:** 3D print a handle and several \"heads\" with embedded magnets. The heads don't need to be functional, just demonstrate the magnetic swapping mechanism. Give it to",
+      "input_tokens": 171,
+      "output_tokens": 4092,
+      "latency_ms": 4111.185322981328,
+      "structural_metrics": {
+        "mtld": 176.645547478177,
+        "readability_fk_grade": 11.26440528634361,
+        "coherence_mean": 0.2374720071862495,
+        "prompt_relevance": 0.47212284009284444,
+        "connective_density": 0.07936507936507936,
+        "word_count": 1175,
+        "repetition_rate": 0.026450511945392493
+      }
+    }
+  ],
+  "consensus": {
+    "method": "simple_vote",
+    "selected_agent_id": "agent_0",
+    "selected_text": "Of course. Here are 10 original product concepts for independently living adults aged 70+, designed with dignity, autonomy, and privacy as core principles.\n\n---\n\n### 1. The SureDose Cap (Medication Safety - No-App Solution)\n\n*   **Product Name:** The SureDose Cap\n*   **One-Sentence Value Proposition:** A simple, non-digital replacement bottle cap that provides an unambiguous visual cue that a pill has been taken, eliminating the dangerous \"did I or didn't I?\" moment.\n*   **Primary User Scenario:** Arthur, 82, takes a heart medication every morning. Some days, he gets distracted after breakfast and can't remember if he took his pill. Instead of risking a double dose or a missed dose, he glances at the bottle; the cap's bright green indicator is visible, confirming he has already opened it today.\n*   **Why Existing Alternatives Fail:** Digital smart caps require apps, charging, and connectivity, which are barriers. Standard pill organizers don't confirm the *action* of taking the pill, only that it was moved from a larger container. The SureDose cap is self-contained on the bottle and requires no new habits.\n*   **Likely Adoption Barrier:** Users must remember to \"reset\" the cap after taking the pill (e.g., by twisting it an extra turn). The mechanism must be simple enough for those with arthritis.\n*   **Low-Cost Prototype Test:** Create a 3D-printed cap with a simple, manually operated two-color dial (e.g., red for \"not taken,\" green for \"taken\"). Give it to five users with their daily vitamin bottle and observe if they use it correctly and find it reassuring over one week.\n\n---\n\n### 2. The GlowPath (Home Navigation - No-App Solution)\n\n*   **Product Name:** The GlowPath\n*   **One-Sentence Value Proposition:** A pressure-sensitive, under-the-bed lighting system that casts a soft, indirect, and continuous path of light to the bathroom the moment your feet touch the floor at night.\n*   **Primary User Scenario:** At 2 AM, Eleanor, 78, needs to use the restroom. As she swings her legs out of bed and her feet touch the floor, a gentle, warm light illuminates a clear path from her bedside, around the dresser, and to the bathroom door, preventing disorientation and revealing any trip hazards without a jarring overhead light.\n*   **Why Existing Alternatives Fail:** Standard nightlights create pools of light and shadow, which can distort perception and hide hazards. Motion sensors can be startling, have delays, or fail to activate. The GlowPath is proactive, ambient, and provides a complete, uninterrupted guide.\n*   **Likely Adoption Barrier:** Installation requires placing a pressure mat under the bed legs and running adhesive LED strips along the baseboards. This initial setup may require assistance.\n*   **Low-Cost Prototype Test:** Purchase a roll of LED light tape, a simple pressure mat switch, and a power source. Install it crudely in a hallway. Have testers walk through the darkened space, first without the light and then triggering it with the mat, and ask them to compare the feeling of safety and comfort.\n\n---\n\n### 3. The Bridge (Social Connection - Software-Light Solution)\n\n*   **Product Name:** The Bridge\n*   **One-Sentence Value Proposition:** A pair of always-on, zero-interface audio portals that connect two homes for instant, hands-free conversation, eliminating the friction of dialing, apps, or video calls.\n*   **Primary User Scenario:** Carol, 85, lives alone and feels isolated. Her daughter sets up The Bridge in her kitchen. When Carol wants to chat, she simply speaks aloud: \"Hi honey, just putting the kettle on.\" In her daughter's home office, the companion device gently glows and relays the message. Her daughter can reply instantly without stopping her work, creating a sense of shared space and constant, low-stress connection.\n*   **Why Existing Alternatives Fail:** Smartphones and video calling apps (FaceTime, Zoom) require navigating complex interfaces. Simplified devices like GrandPad still require user interaction and are screen-based. The Bridge is ambient and frictionless, akin to having a loved one in the next room.\n*   **Likely Adoption Barrier:** Privacy concerns. Users and their families need to be very comfortable with an \"always-on\" audio link, even if it's end-to-end encrypted and only between two paired devices.\n*   **Low-Cost Prototype Test:** Configure two Raspberry Pi devices with microphones and speakers to create a persistent, private audio stream between two rooms. Test with a user and a family member for a day to see if it fosters connection or feels intrusive.\n\n---\n\n### 4. The Oracle Tray (Medication Safety)\n\n*   **Product Name:** The Oracle Tray\n*   **One-Sentence Value Proposition:** A smart tray that audibly speaks the specific instructions for a medication (e.g., \"Take with food\") when you pick up its bottle, reducing cognitive load and improving adherence to complex regimens.\n*   **Primary User Scenario:** David, 75, manages five different prescriptions with varying rules. He picks up his osteoporosis medication. The tray detects the NFC tag on the bottom of the bottle and a calm voice states, \"Remember to take this one on an empty stomach and remain upright for 30 minutes.\"\n*   **Why Existing Alternatives Fail:** Pharmacist's notes on bottles are tiny and easily ignored. Pill organizers strip away the context and instructions tied to the original bottle. Apps require the user to log information and check their phone. The Oracle Tray provides the right information at the exact moment of intent.\n*   **Likely Adoption Barrier:** The initial setup requires a family member or pharmacist to program the tray by associating each NFC tag with a recorded voice instruction via a simple companion app.\n*   **Low-Cost Prototype Test:** Use a simple NFC reader connected to a speaker and a PC. Stick cheap NFC tags to the bottom of three \"dummy\" pill bottles. Program a simple script that plays a specific MP3 file when a tag is scanned. Have a user test picking up each bottle and see if the audio cue helps them recall the instruction.\n\n---\n\n### 5. The Reach System (Personal Care - No-App Solution)\n\n*   **Product Name:** The Reach System\n*   **One-Sentence Value Proposition:** An elegant, modular long-reach tool with interchangeable, magnetically attached heads (e.g., for lotion, socks, back washing) that restores independence in personal care with dignity.\n*   **Primary User Scenario:** Margaret, 80, has arthritis and shoulder stiffness, making it impossible to put on compression socks or apply lotion to her own back. Instead of using ugly, clinical-looking plastic aids, she uses her Reach System. She clicks the sock-aid head onto the warm, wooden handle to put on her socks, then swaps it for the lotion applicator head to care for her skin, all without assistance.\n*   **Why Existing Alternatives Fail:** Existing aids are typically single-purpose, made of cheap plastic, and look like medical equipment, which can feel stigmatizing. They create clutter and don't feel good to use. The Reach System is a beautiful, unified, and high-quality \"system\" that feels like a personal care tool, not a medical device.\n*   **Likely Adoption Barrier:** Higher cost due to quality materials (e.g., finished wood, machined aluminum, strong magnets) compared to cheap, single-purpose plastic alternatives.\n*   **Low-Cost Prototype Test:** 3D print a handle and several \"heads\" with embedded magnets. The heads don't need to be functional, just demonstrate the magnetic swapping mechanism. Give it to",
+    "confidence": 1.0,
+    "scores": {
+      "agent_0": 1.0
+    },
+    "metadata": {
+      "votes": {
+        "of course. here are 10 original product concepts for independently living adults aged 70+, designed with dignity, autonomy, and privacy as core principles. --- ### 1. the suredose cap (medication safety - no-app solution) * **product name:** the suredose cap * **one-sentence value proposition:** a simple, non-digital replacement bottle cap that provides an unambiguous visual cue that a pill has been taken, eliminating the dangerous \"did i or didn't i?\" moment. * **primary user scenario:** arthur, 82, takes a heart medication every morning. some days, he gets distracted after breakfast and can't remember if he took his pill. instead of risking a double dose or a missed dose, he glances at the bottle; the cap's bright green indicator is visible, confirming he has already opened it today. * **why existing alternatives fail:** digital smart caps require apps, charging, and connectivity, which are barriers. standard pill organizers don't confirm the *action* of taking the pill, only that it was moved from a larger container. the suredose cap is self-contained on the bottle and requires no new habits. * **likely adoption barrier:** users must remember to \"reset\" the cap after taking the pill (e.g., by twisting it an extra turn). the mechanism must be simple enough for those with arthritis. * **low-cost prototype test:** create a 3d-printed cap with a simple, manually operated two-color dial (e.g., red for \"not taken,\" green for \"taken\"). give it to five users with their daily vitamin bottle and observe if they use it correctly and find it reassuring over one week. --- ### 2. the glowpath (home navigation - no-app solution) * **product name:** the glowpath * **one-sentence value proposition:** a pressure-sensitive, under-the-bed lighting system that casts a soft, indirect, and continuous path of light to the bathroom the moment your feet touch the floor at night. * **primary user scenario:** at 2 am, eleanor, 78, needs to use the restroom. as she swings her legs out of bed and her feet touch the floor, a gentle, warm light illuminates a clear path from her bedside, around the dresser, and to the bathroom door, preventing disorientation and revealing any trip hazards without a jarring overhead light. * **why existing alternatives fail:** standard nightlights create pools of light and shadow, which can distort perception and hide hazards. motion sensors can be startling, have delays, or fail to activate. the glowpath is proactive, ambient, and provides a complete, uninterrupted guide. * **likely adoption barrier:** installation requires placing a pressure mat under the bed legs and running adhesive led strips along the baseboards. this initial setup may require assistance. * **low-cost prototype test:** purchase a roll of led light tape, a simple pressure mat switch, and a power source. install it crudely in a hallway. have testers walk through the darkened space, first without the light and then triggering it with the mat, and ask them to compare the feeling of safety and comfort. --- ### 3. the bridge (social connection - software-light solution) * **product name:** the bridge * **one-sentence value proposition:** a pair of always-on, zero-interface audio portals that connect two homes for instant, hands-free conversation, eliminating the friction of dialing, apps, or video calls. * **primary user scenario:** carol, 85, lives alone and feels isolated. her daughter sets up the bridge in her kitchen. when carol wants to chat, she simply speaks aloud: \"hi honey, just putting the kettle on.\" in her daughter's home office, the companion device gently glows and relays the message. her daughter can reply instantly without stopping her work, creating a sense of shared space and constant, low-stress connection. * **why existing alternatives fail:** smartphones and video calling apps (facetime, zoom) require navigating complex interfaces. simplified devices like grandpad still require user interaction and are screen-based. the bridge is ambient and frictionless, akin to having a loved one in the next room. * **likely adoption barrier:** privacy concerns. users and their families need to be very comfortable with an \"always-on\" audio link, even if it's end-to-end encrypted and only between two paired devices. * **low-cost prototype test:** configure two raspberry pi devices with microphones and speakers to create a persistent, private audio stream between two rooms. test with a user and a family member for a day to see if it fosters connection or feels intrusive. --- ### 4. the oracle tray (medication safety) * **product name:** the oracle tray * **one-sentence value proposition:** a smart tray that audibly speaks the specific instructions for a medication (e.g., \"take with food\") when you pick up its bottle, reducing cognitive load and improving adherence to complex regimens. * **primary user scenario:** david, 75, manages five different prescriptions with varying rules. he picks up his osteoporosis medication. the tray detects the nfc tag on the bottom of the bottle and a calm voice states, \"remember to take this one on an empty stomach and remain upright for 30 minutes.\" * **why existing alternatives fail:** pharmacist's notes on bottles are tiny and easily ignored. pill organizers strip away the context and instructions tied to the original bottle. apps require the user to log information and check their phone. the oracle tray provides the right information at the exact moment of intent. * **likely adoption barrier:** the initial setup requires a family member or pharmacist to program the tray by associating each nfc tag with a recorded voice instruction via a simple companion app. * **low-cost prototype test:** use a simple nfc reader connected to a speaker and a pc. stick cheap nfc tags to the bottom of three \"dummy\" pill bottles. program a simple script that plays a specific mp3 file when a tag is scanned. have a user test picking up each bottle and see if the audio cue helps them recall the instruction. --- ### 5. the reach system (personal care - no-app solution) * **product name:** the reach system * **one-sentence value proposition:** an elegant, modular long-reach tool with interchangeable, magnetically attached heads (e.g., for lotion, socks, back washing) that restores independence in personal care with dignity. * **primary user scenario:** margaret, 80, has arthritis and shoulder stiffness, making it impossible to put on compression socks or apply lotion to her own back. instead of using ugly, clinical-looking plastic aids, she uses her reach system. she clicks the sock-aid head onto the warm, wooden handle to put on her socks, then swaps it for the lotion applicator head to care for her skin, all without assistance. * **why existing alternatives fail:** existing aids are typically single-purpose, made of cheap plastic, and look like medical equipment, which can feel stigmatizing. they create clutter and don't feel good to use. the reach system is a beautiful, unified, and high-quality \"system\" that feels like a personal care tool, not a medical device. * **likely adoption barrier:** higher cost due to quality materials (e.g., finished wood, machined aluminum, strong magnets) compared to cheap, single-purpose plastic alternatives. * **low-cost prototype test:** 3d print a handle and several \"heads\" with embedded magnets. the heads don't need to be functional, just demonstrate the magnetic swapping mechanism. give it to": 1
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.5,
+    "corrected_metrics": {
+      "consensus_candidate_id": "final_consensus",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 2,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 1,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-4o": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.5,
+      "gpt-4o": 0.5,
+      "deepseek-v3p2": 0.5
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-4o",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "final_consensus": 0.5,
+        "agent_0": 0.5
+      },
+      "ranking": [
+        "final_consensus",
+        "agent_0"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "gpt-4o": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        },
+        "deepseek-v3p2": {
+          "final_consensus": 0.5,
+          "agent_0": 0.5
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-4o": 1.0,
+          "deepseek-v3p2__vs__gpt-4o": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "final_consensus",
+          "candidate_j": "agent_0",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-4o": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 1.0,
+      "disagreement_rate": 0.0,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.5063613231552163,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 176.645547478177,
+      "readability_fk_grade": 11.26440528634361,
+      "coherence_mean": 0.2374720071862495,
+      "prompt_relevance": 0.47212284009284444,
+      "connective_density": 0.07936507936507936,
+      "word_count": 1175,
+      "repetition_rate": 0.026450511945392493
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}
