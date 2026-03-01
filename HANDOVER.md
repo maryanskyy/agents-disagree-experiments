@@ -1,4 +1,4 @@
-# HANDOVER.md
+﻿# HANDOVER.md
 
 This guide is for the operator running the experiment. Updated 2026-02-28 with
 GenAI Gateway integration and pilot review fixes.
@@ -181,6 +181,32 @@ git checkout results/YYYYMMDD
 
 ---
 
+## After Experiment Completes
+
+1. Reprocess all results:
+   ```bash
+   python scripts/reprocess_results.py
+   python scripts/compute_structural_metrics.py
+   ```
+
+2. Export dataset:
+   ```bash
+   python scripts/export_dataset.py --results-dir results --output-dir results/export
+   ```
+
+3. Upload to GitHub:
+   ```bash
+   tar -czf results/full_results_final.tar.gz results/block*/
+   git add results/export/ results/full_results_final.tar.gz
+   git commit -m "Final experiment results + dataset export"
+   git push origin master
+   ```
+
+4. Upload to HuggingFace:
+   ```bash
+   # Using huggingface_hub CLI
+   huggingface-cli upload maryanskyy/agents-disagree results/export/ --repo-type dataset
+   ```
 ## 9) Troubleshooting
 
 ### A) Token / auth errors
@@ -391,3 +417,4 @@ Those results have known issues (high tie rate, empty outputs, uncorrected BT sc
 - **Option B:** Keep old data but tag it. The `reprocess_results.py` script adds
   `corrected_metrics` to all runs. Post-fix runs can be identified by timestamp
   (after the fix commit) and by having lower tie rates.
+

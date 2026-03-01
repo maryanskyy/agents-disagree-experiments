@@ -182,8 +182,8 @@ on every output text, using only local computation (no API calls):
 6. Word count
 7. Repetition rate (duplicate 4-gram fraction)
 
-These metrics serve as an independent validation of LLM judge decisions.
-Spearman correlation between the structural composite and LLM judge BT scores
-is reported alongside primary results. Runs where structural and LLM assessments
-strongly disagree are flagged for manual review.
+These metrics provide independent structural characterization that complements LLM evaluation.
+We report the structural descriptor alongside primary quality metrics; it is explicitly
+not a quality proxy. Runs where structural signals and LLM assessments strongly
+disagree are flagged for manual review.
 

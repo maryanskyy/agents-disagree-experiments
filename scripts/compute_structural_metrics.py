@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.evaluation.structural_quality import compute_composite_score, compute_structural_metrics
+from src.evaluation.structural_quality import compute_structural_descriptor, compute_structural_metrics
 
 
 def parse_args() -> argparse.Namespace:
@@ -65,7 +65,7 @@ def _row_base(payload: dict[str, Any]) -> dict[str, Any]:
         "block_id": payload.get("block_id"),
         "task_type": cfg.get("task_type"),
         "topology": cfg.get("topology"),
-        "consensus": cfg.get("consensus"),
+        "consensus_method": cfg.get("consensus"),
         "agent_count": cfg.get("agent_count"),
         "disagreement_level": cfg.get("disagreement_level"),
         "condition": _condition_label(cfg),
@@ -76,6 +76,9 @@ def _compute_payload_metrics(payload: dict[str, Any], model_name: str) -> list[d
     task_prompt = str(payload.get("task", {}).get("prompt", ""))
     if not task_prompt:
         return []
+
+    cfg = payload.get("config", {}) or {}
+    task_type = str(cfg.get("task_type", "analytical"))
 
     output_rows: list[dict[str, Any]] = []
 
@@ -91,7 +94,7 @@ def _compute_payload_metrics(payload: dict[str, Any], model_name: str) -> list[d
             "candidate_type": "consensus",
             "candidate_id": "final_consensus",
             **asdict(consensus_metrics),
-            "composite_score": compute_composite_score(consensus_metrics),
+            "structural_descriptor": compute_structural_descriptor(consensus_metrics, task_type=task_type),
         }
     )
 
@@ -107,7 +110,7 @@ def _compute_payload_metrics(payload: dict[str, Any], model_name: str) -> list[d
                 "candidate_type": "agent",
                 "candidate_id": output.get("agent_id", f"agent_{idx}"),
                 **asdict(agent_metrics),
-                "composite_score": compute_composite_score(agent_metrics),
+                "structural_descriptor": compute_structural_descriptor(agent_metrics, task_type=task_type),
             }
         )
 
@@ -135,14 +138,14 @@ def _print_group_summary(rows: list[dict[str, Any]], group_key: str) -> None:
     print(f"\nSummary by {group_key} (consensus outputs only):")
     for group_name in sorted(grouped):
         consensus_rows = [row for row in grouped[group_name] if row["candidate_type"] == "consensus"]
-        composite_values = [float(row["composite_score"]) for row in consensus_rows]
-        coherence_values = [float(row["coherence_mean"]) for row in consensus_rows]
+        descriptor_values = [float(row["structural_descriptor"]) for row in consensus_rows]
+        coherence_values = [float(row["coherence_mean"]) for row in consensus_rows if row["coherence_mean"] == row["coherence_mean"]]
         relevance_values = [float(row["prompt_relevance"]) for row in consensus_rows]
         repetition_values = [float(row["repetition_rate"]) for row in consensus_rows]
 
         print(
             f"  {group_name}: "
-            f"composite={_summary_line(composite_values)} | "
+            f"structural_descriptor={_summary_line(descriptor_values)} | "
             f"coherence={_summary_line(coherence_values)} | "
             f"prompt_relevance={_summary_line(relevance_values)} | "
             f"repetition={_summary_line(repetition_values)}"
@@ -175,7 +178,7 @@ def main() -> None:
         "block_id",
         "task_type",
         "topology",
-        "consensus",
+        "consensus_method",
         "agent_count",
         "disagreement_level",
         "condition",
@@ -188,7 +191,7 @@ def main() -> None:
         "connective_density",
         "word_count",
         "repetition_rate",
-        "composite_score",
+        "structural_descriptor",
     ]
     with args.csv_path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)

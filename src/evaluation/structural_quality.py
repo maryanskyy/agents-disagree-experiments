@@ -1,4 +1,4 @@
-"""Local structural quality metrics for generated text.
+﻿"""Local structural quality metrics for generated text.
 
 This module provides deterministic, non-LLM quality signals that complement
 LLM-as-judge scoring.
@@ -8,9 +8,9 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import dataclass
-import os
 import logging
 import math
+import os
 import re
 from typing import Iterable
 
@@ -31,6 +31,11 @@ try:  # Optional dependency (requested in requirements)
 except Exception:  # pragma: no cover - optional import
     SentenceTransformer = None  # type: ignore[assignment]
 
+try:  # Optional dependency; used when available for robust sentence segmentation
+    from nltk.tokenize import sent_tokenize as nltk_sent_tokenize
+except Exception:  # pragma: no cover - optional import
+    nltk_sent_tokenize = None
+
 
 LOGGER = logging.getLogger(__name__)
 
@@ -41,25 +46,114 @@ DISABLED_EMBEDDING_MODELS = {"", "none", "disabled", "__disabled__"}
 MIN_STD = 1e-6
 NGRAM_SIZE = 4
 
-# Analytical-task normalization anchors used for composite z-scoring.
-# Values are intentionally conservative priors and can be re-calibrated from data.
+# Task-specific normalization anchors estimated from observed T-031 data
+# (400-run summary; consensus outputs).
 ANALYTICAL_NORMS: dict[str, tuple[float, float, str]] = {
-    "mtld": (80.0, 25.0, "higher"),
-    "readability_fk_grade": (13.0, 3.0, "target"),
-    "coherence_mean": (0.45, 0.20, "higher"),
-    "prompt_relevance": (0.55, 0.20, "higher"),
-    "connective_density": (1.20, 0.60, "higher"),
-    "word_count": (450.0, 220.0, "target"),
-    "repetition_rate": (0.08, 0.08, "lower"),
+    "mtld": (123.8, 64.0, "higher"),
+    "readability_fk_grade": (15.2, 5.3, "target"),
+    "coherence_mean": (0.321, 0.101, "higher"),
+    "prompt_relevance": (0.719, 0.089, "higher"),
+    "connective_density": (0.119, 0.106, "higher"),
+    "word_count": (788.0, 485.0, "target"),
+    "repetition_rate": (0.052, 0.066, "lower"),
 }
 
-CAUSAL_CONNECTIVES = {"therefore", "consequently", "because", "since"}
-CONTRASTIVE_CONNECTIVES = {"however", "although", "nevertheless", "but"}
-ADDITIVE_CONNECTIVES = {"furthermore", "moreover", "additionally"}
-ALL_CONNECTIVES = CAUSAL_CONNECTIVES | CONTRASTIVE_CONNECTIVES | ADDITIVE_CONNECTIVES
+CREATIVE_NORMS: dict[str, tuple[float, float, str]] = {
+    "mtld": (154.2, 62.1, "higher"),
+    "readability_fk_grade": (12.0, 4.7, "target"),
+    "coherence_mean": (0.259, 0.113, "higher"),
+    "prompt_relevance": (0.475, 0.150, "higher"),
+    "connective_density": (0.130, 0.167, "higher"),
+    "word_count": (639.0, 465.0, "target"),
+    "repetition_rate": (0.019, 0.060, "lower"),
+}
+
+# Expanded discourse connective inventory (40+ terms) grouped by relation type.
+CAUSAL_CONNECTIVES = {
+    "therefore",
+    "consequently",
+    "because",
+    "since",
+    "thus",
+    "hence",
+    "so",
+    "accordingly",
+    "due",
+    "thereby",
+}
+CONTRASTIVE_CONNECTIVES = {
+    "however",
+    "although",
+    "nevertheless",
+    "but",
+    "yet",
+    "despite",
+    "whereas",
+    "conversely",
+    "nonetheless",
+    "still",
+    "regardless",
+}
+ADDITIVE_CONNECTIVES = {
+    "furthermore",
+    "moreover",
+    "additionally",
+    "also",
+    "besides",
+    "equally",
+    "likewise",
+    "similarly",
+}
+TEMPORAL_CONNECTIVES = {
+    "then",
+    "subsequently",
+    "meanwhile",
+    "finally",
+    "eventually",
+    "previously",
+    "afterward",
+    "initially",
+    "simultaneously",
+}
+
+CONNECTIVE_UNIGRAMS = (
+    CAUSAL_CONNECTIVES
+    | CONTRASTIVE_CONNECTIVES
+    | ADDITIVE_CONNECTIVES
+    | TEMPORAL_CONNECTIVES
+)
+CONNECTIVE_PHRASES = (
+    "as a result",
+    "for this reason",
+    "on the other hand",
+    "in contrast",
+    "in addition",
+    "what is more",
+    "due to",
+)
+CONNECTIVE_PHRASE_PATTERNS = [
+    re.compile(rf"\b{re.escape(phrase)}\b", flags=re.IGNORECASE)
+    for phrase in CONNECTIVE_PHRASES
+]
 
 TOKEN_PATTERN = re.compile(r"[A-Za-z0-9']+")
-SENTENCE_SPLIT_PATTERN = re.compile(r"(?<=[.!?])\s+")
+BASIC_SENTENCE_BOUNDARY_PATTERN = re.compile(r"(?<=[.!?])\s+")
+_DECIMAL_PATTERN = re.compile(r"(?<=\d)\.(?=\d)")
+_DOT_SENTINEL = "<prd>"
+_COMMON_ABBREVIATIONS = (
+    "Dr.",
+    "Mr.",
+    "Mrs.",
+    "Ms.",
+    "Prof.",
+    "Sr.",
+    "Jr.",
+    "St.",
+    "vs.",
+    "e.g.",
+    "i.e.",
+    "etc.",
+)
 
 _MODEL_CACHE: dict[str, SentenceTransformer | None] = {}
 _EMBEDDING_CACHE: dict[tuple[str, str], np.ndarray] = {}
@@ -80,13 +174,51 @@ def _tokenize_words(text: str) -> list[str]:
     return [match.group(0).lower() for match in TOKEN_PATTERN.finditer(text)]
 
 
+def _split_sentences_nltk(text: str) -> list[str] | None:
+    if nltk_sent_tokenize is None:
+        return None
+
+    try:
+        sentences = [segment.strip() for segment in nltk_sent_tokenize(text) if segment.strip()]
+        return sentences if sentences else None
+    except LookupError:
+        # NLTK installed but punkt tokenizer data unavailable.
+        LOGGER.debug("NLTK punkt tokenizer unavailable; using regex sentence splitter fallback.")
+        return None
+    except Exception as exc:  # pragma: no cover - defensive path
+        LOGGER.debug("NLTK sentence tokenization failed: %s", exc)
+        return None
+
+
+def _protect_abbreviations_and_decimals(text: str) -> str:
+    protected = text
+    for abbr in _COMMON_ABBREVIATIONS:
+        replacement = abbr.replace(".", _DOT_SENTINEL)
+        protected = re.sub(re.escape(abbr), replacement, protected, flags=re.IGNORECASE)
+    protected = _DECIMAL_PATTERN.sub(_DOT_SENTINEL, protected)
+    return protected
+
+
+def _split_sentences_regex(text: str) -> list[str]:
+    protected = _protect_abbreviations_and_decimals(text)
+    parts = [
+        segment.strip().replace(_DOT_SENTINEL, ".")
+        for segment in BASIC_SENTENCE_BOUNDARY_PATTERN.split(protected)
+        if segment.strip()
+    ]
+    return parts if parts else [text]
+
+
 def _split_sentences(text: str) -> list[str]:
     stripped = text.strip()
     if not stripped:
         return []
 
-    parts = [segment.strip() for segment in SENTENCE_SPLIT_PATTERN.split(stripped) if segment.strip()]
-    return parts if parts else [stripped]
+    nltk_result = _split_sentences_nltk(stripped)
+    if nltk_result is not None:
+        return nltk_result
+
+    return _split_sentences_regex(stripped)
 
 
 def _estimate_syllables(word: str) -> int:
@@ -146,8 +278,8 @@ def _compute_mtld(tokens: list[str]) -> float:
     if not tokens:
         return 0.0
     if len(tokens) < 10:
-        # MTLD is unstable on short text; return a conservative scaled TTR proxy.
-        return float((len(set(tokens)) / max(1, len(tokens))) * len(tokens))
+        # MTLD is unstable on short text; return a conservative type-count proxy.
+        return float(len(set(tokens)))
 
     forward = _compute_mtld_direction(tokens)
     backward = _compute_mtld_direction(list(reversed(tokens)))
@@ -198,10 +330,9 @@ def _embed_texts(texts: Iterable[str], model_name: str) -> list[np.ndarray] | No
 
 
 def _adjacent_coherence(sentences: list[str], model_name: str) -> float:
-    if not sentences:
-        return 0.0
-    if len(sentences) == 1:
-        return 1.0
+    if not sentences or len(sentences) <= 1:
+        # Coherence is undefined for <=1 sentence; callers can skip NaN in aggregate scoring.
+        return float("nan")
 
     embeddings = _embed_texts(sentences, model_name)
     if embeddings is not None:
@@ -209,7 +340,7 @@ def _adjacent_coherence(sentences: list[str], model_name: str) -> float:
         for idx in range(len(embeddings) - 1):
             sim = float(np.dot(embeddings[idx], embeddings[idx + 1]))
             sims.append(sim)
-        return float(np.mean(sims)) if sims else 0.0
+        return float(np.mean(sims)) if sims else float("nan")
 
     # Lexical-overlap fallback if embeddings are unavailable.
     overlaps: list[float] = []
@@ -221,7 +352,7 @@ def _adjacent_coherence(sentences: list[str], model_name: str) -> float:
             overlaps.append(0.0)
         else:
             overlaps.append(len(left & right) / len(union))
-    return float(np.mean(overlaps)) if overlaps else 0.0
+    return float(np.mean(overlaps)) if overlaps else float("nan")
 
 
 def _prompt_relevance(prompt: str, text: str, model_name: str) -> float:
@@ -242,14 +373,19 @@ def _prompt_relevance(prompt: str, text: str, model_name: str) -> float:
     return float(len(prompt_tokens & output_tokens) / len(prompt_tokens))
 
 
-def _connective_density(tokens: list[str], sentence_count: int) -> float:
+def _connective_density(text: str, tokens: list[str], sentence_count: int) -> float:
     if sentence_count <= 0:
         return 0.0
-    connective_hits = sum(1 for token in tokens if token in ALL_CONNECTIVES)
+
+    unigram_hits = sum(1 for token in tokens if token in CONNECTIVE_UNIGRAMS)
+    lower_text = text.lower()
+    phrase_hits = sum(len(pattern.findall(lower_text)) for pattern in CONNECTIVE_PHRASE_PATTERNS)
+    connective_hits = unigram_hits + phrase_hits
     return float(connective_hits / sentence_count)
 
 
 def _repetition_rate(tokens: list[str], ngram_size: int = NGRAM_SIZE) -> float:
+    """Fraction of n-gram slots that belong to patterns appearing more than once."""
     if len(tokens) < ngram_size:
         return 0.0
 
@@ -259,10 +395,21 @@ def _repetition_rate(tokens: list[str], ngram_size: int = NGRAM_SIZE) -> float:
     return float(repeated_occurrences / len(ngrams)) if ngrams else 0.0
 
 
-def _safe_float(value: float) -> float:
-    if isinstance(value, (int, float)) and math.isfinite(float(value)):
-        return float(value)
+def _safe_float(value: float, *, allow_nan: bool = False) -> float:
+    if isinstance(value, (int, float)):
+        numeric = float(value)
+        if math.isfinite(numeric):
+            return numeric
+        if allow_nan and math.isnan(numeric):
+            return float("nan")
     return 0.0
+
+
+def _norms_for_task(task_type: str | None) -> dict[str, tuple[float, float, str]]:
+    normalized = (task_type or "analytical").strip().lower()
+    if normalized == "creative":
+        return CREATIVE_NORMS
+    return ANALYTICAL_NORMS
 
 
 def compute_structural_metrics(
@@ -287,13 +434,13 @@ def compute_structural_metrics(
 
     coherence = _adjacent_coherence(sentences, model_name)
     relevance = _prompt_relevance(prompt or "", clean_text, model_name)
-    connective_density = _connective_density(tokens, len(sentences))
+    connective_density = _connective_density(clean_text, tokens, len(sentences))
     repetition = _repetition_rate(tokens)
 
     return StructuralMetrics(
         mtld=_safe_float(mtld_value),
         readability_fk_grade=_safe_float(readability),
-        coherence_mean=_safe_float(coherence),
+        coherence_mean=_safe_float(coherence, allow_nan=True),
         prompt_relevance=_safe_float(relevance),
         connective_density=_safe_float(connective_density),
         word_count=int(len(tokens)),
@@ -301,8 +448,8 @@ def compute_structural_metrics(
     )
 
 
-def compute_composite_score(metrics: StructuralMetrics) -> float:
-    """Compute a z-normalized composite score using analytical-task priors."""
+def compute_structural_descriptor(metrics: StructuralMetrics, task_type: str = "analytical") -> float:
+    """This is a structural descriptor, not a quality proxy. It measures textual complexity and completeness, which may or may not correlate with perceived quality."""
     values = {
         "mtld": float(metrics.mtld),
         "readability_fk_grade": float(metrics.readability_fk_grade),
@@ -313,9 +460,14 @@ def compute_composite_score(metrics: StructuralMetrics) -> float:
         "repetition_rate": float(metrics.repetition_rate),
     }
 
+    norms = _norms_for_task(task_type)
+
     z_scores: list[float] = []
     for metric_name, value in values.items():
-        mean_value, std_value, mode = ANALYTICAL_NORMS[metric_name]
+        if not math.isfinite(value):
+            continue
+
+        mean_value, std_value, mode = norms[metric_name]
         std_value = max(std_value, MIN_STD)
 
         if mode == "higher":
@@ -327,7 +479,12 @@ def compute_composite_score(metrics: StructuralMetrics) -> float:
         else:  # pragma: no cover - defensive path
             raise ValueError(f"Unsupported normalization mode '{mode}' for metric '{metric_name}'")
 
-        # Guard against extreme outliers dominating the composite.
+        # Guard against extreme outliers dominating the descriptor.
         z_scores.append(float(max(-3.0, min(3.0, z))))
 
     return float(np.mean(z_scores)) if z_scores else 0.0
+
+
+def compute_composite_score(metrics: StructuralMetrics, task_type: str = "analytical") -> float:
+    """Backward-compatible alias for compute_structural_descriptor."""
+    return compute_structural_descriptor(metrics, task_type=task_type)

@@ -9,7 +9,12 @@ from .metrics import (
     evaluate_analytical,
     evaluate_creative,
 )
-from .structural_quality import StructuralMetrics, compute_composite_score, compute_structural_metrics
+from .structural_quality import (
+    StructuralMetrics,
+    compute_composite_score,
+    compute_structural_descriptor,
+    compute_structural_metrics,
+)
 
 __all__ = [
     "disagreement_summary",
@@ -27,5 +32,6 @@ __all__ = [
     "evaluate_creative",
     "StructuralMetrics",
     "compute_structural_metrics",
+    "compute_structural_descriptor",
     "compute_composite_score",
 ]
