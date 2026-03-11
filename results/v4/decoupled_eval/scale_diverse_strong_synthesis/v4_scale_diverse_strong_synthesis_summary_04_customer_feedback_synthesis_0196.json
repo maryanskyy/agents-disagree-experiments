@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_strong_synthesis_summary_04_customer_feedback_synthesis_0196.json",
+  "block": "scale_diverse_strong_synthesis",
+  "task_type": "Synthesize Large-Scale Customer Feedback with Contradictory Signals",
+  "task_id": "Synthesize Large-Scale Customer Feedback with Contradictory Signals",
+  "run_id": "v4_scale_diverse_strong_synthesis_summary_04_customer_feedback_synthesis_0196",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.34164813820125406,
+    "agent_1": 0.2428586097439863,
+    "agent_2": 0.2428586097439863,
+    "consensus": 0.1726346423107733
+  },
+  "ranking": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.13762047598153307,
+      "agent_1": 0.23335186281275475,
+      "agent_2": 0.39567579839295763,
+      "consensus": 0.2333518628127547
+    },
+    "glm-5": {
+      "agent_0": 0.9970039450780211,
+      "agent_1": 0.0017725487268446015,
+      "agent_2": 0.0008326607048324103,
+      "consensus": 0.00039084549030178286
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": -0.08333333333333333,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": -0.24999999999999997,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 0.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "tie"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T01:53:46.432697+00:00",
+  "consensus_bt_score": 0.1726346423107733,
+  "consensus_rank": 4,
+  "consensus_win_rate": 0.0
+}

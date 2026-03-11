@@ -1,0 +1,163 @@
+task_type: ethics_policy
+version: 1
+instances:
+- id: ethics_01_facial_recognition_transit
+  title: Policy Decision on Facial Recognition in Public Transit Hubs
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A metropolitan transit authority proposes deploying facial recognition cameras in major stations to reduce violent incidents and identify missing persons. Civil-rights groups warn about misidentification, chilling effects on lawful assembly, and disproportionate harms for marginalized communities. Police leadership argues existing staffing levels are insufficient and delays in manual review put riders at risk. The city council must decide whether to approve deployment, impose strict limits, or reject the technology. Budget pressure and upcoming elections intensify the decision. You must provide an ethically rigorous and operationally realistic policy analysis.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Map stakeholders and articulate the primary value conflicts at stake.
+
+    (2) Develop multiple policy options and compare benefits, harms, and distributional impacts.
+
+    (3) Apply at least two ethical lenses (for example rights, welfare, justice, duty, capability) and show where they disagree.
+
+    (4) Recommend a policy path with safeguards, oversight, and measurable review criteria.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: &id001
+  - Depth and balance of ethical analysis across stakeholders.
+  - Quality of policy options and explicit trade-off reasoning.
+  - Practical governance design, safeguards, and accountability mechanisms.
+  - Coherence and defensibility of final recommendation.
+- id: ethics_02_ai_tutor_student_data
+  title: Ethics and Governance of AI Tutor Data Use in Public Schools
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A school district plans to adopt an AI tutoring platform that personalizes assignments and predicts students at risk of falling behind. The vendor requests broad access to student interaction data for model improvement. Teachers welcome workload relief but worry about opaque recommendations and over-reliance by administrators. Parents are split: some value personalization, others fear surveillance and long-term profiling. The district wants innovation without eroding trust, autonomy, or fairness. You must analyze policy options for data governance, consent, transparency, and accountability.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Map stakeholders and articulate the primary value conflicts at stake.
+
+    (2) Develop multiple policy options and compare benefits, harms, and distributional impacts.
+
+    (3) Apply at least two ethical lenses (for example rights, welfare, justice, duty, capability) and show where they disagree.
+
+    (4) Recommend a policy path with safeguards, oversight, and measurable review criteria.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: ethics_03_autonomous_weapons_export
+  title: Export Policy for Autonomous Defense Systems to Allies
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A national government is considering export approval for semi-autonomous defense drones to allied states. Supporters claim exports strengthen deterrence and interoperability; critics warn about escalation, diffusion to unstable regions, and weak accountability if civilian harm occurs. Existing export controls were written for conventional systems and do not clearly define meaningful human control. Diplomats also note that refusal may push allies toward less restrictive suppliers. You must evaluate ethical and geopolitical trade-offs and propose a policy architecture that is principled yet realistic in a competitive security environment.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Map stakeholders and articulate the primary value conflicts at stake.
+
+    (2) Develop multiple policy options and compare benefits, harms, and distributional impacts.
+
+    (3) Apply at least two ethical lenses (for example rights, welfare, justice, duty, capability) and show where they disagree.
+
+    (4) Recommend a policy path with safeguards, oversight, and measurable review criteria.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: ethics_04_organ_allocation_algorithm
+  title: Ethical Design of an Organ Allocation Algorithm Update
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A transplant authority wants to update its organ allocation algorithm to improve survival outcomes using richer predictive models. Current rules prioritize waiting time and urgency, but outcome-based scoring may favor patients with better baseline prognosis, potentially widening inequities. Clinicians, patient advocates, and ethicists disagree on fairness metrics and acceptable trade-offs between maximizing life-years and protecting worst-off patients. Public legitimacy is fragile after recent controversy about geographic disparities. You must propose a decision framework and governance process for updating the algorithm responsibly.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Map stakeholders and articulate the primary value conflicts at stake.
+
+    (2) Develop multiple policy options and compare benefits, harms, and distributional impacts.
+
+    (3) Apply at least two ethical lenses (for example rights, welfare, justice, duty, capability) and show where they disagree.
+
+    (4) Recommend a policy path with safeguards, oversight, and measurable review criteria.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: ethics_05_disaster_ventilator_triage
+  title: Triage Policy for Scarce Ventilators During a Regional Disaster
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A regional hospital network faces a severe respiratory surge after a wildfire and chemical exposure event. Ventilator demand may exceed supply for 5–7 days. Existing protocols are inconsistent across hospitals, and frontline staff are asking for clear triage guidance to reduce moral injury and avoid ad hoc decisions. Community representatives demand transparency and anti-discrimination safeguards. Officials need an ethically defensible policy that can be applied quickly under stress, documented for accountability, and revised as supply conditions change. You must design and justify such a policy.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Map stakeholders and articulate the primary value conflicts at stake.
+
+    (2) Develop multiple policy options and compare benefits, harms, and distributional impacts.
+
+    (3) Apply at least two ethical lenses (for example rights, welfare, justice, duty, capability) and show where they disagree.
+
+    (4) Recommend a policy path with safeguards, oversight, and measurable review criteria.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: ethics_06_carbon_border_adjustment
+  title: Carbon Border Adjustment Policy and Global Equity Trade-Offs
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A coalition of high-income countries plans a carbon border adjustment mechanism (CBAM) to reduce carbon leakage and protect domestic decarbonization efforts. Developing-country partners argue the policy could function as green protectionism, penalize late industrializers, and constrain poverty reduction. Coalition members propose exemptions, revenue recycling, and technology transfer, but disagree on design details and enforcement. You must analyze ethical and policy trade-offs among climate effectiveness, fairness, geopolitical trust, and implementation feasibility, then recommend a concrete path forward with safeguards.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Map stakeholders and articulate the primary value conflicts at stake.
+
+    (2) Develop multiple policy options and compare benefits, harms, and distributional impacts.
+
+    (3) Apply at least two ethical lenses (for example rights, welfare, justice, duty, capability) and show where they disagree.
+
+    (4) Recommend a policy path with safeguards, oversight, and measurable review criteria.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001

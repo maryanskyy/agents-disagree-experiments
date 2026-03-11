@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_mixed_judge_based_science_05_ecosystem_restoration_experiment_0119.json",
+  "block": "scale_diverse_mixed_judge_based",
+  "task_type": "Experimental Design for Coastal Wetland Restoration Outcomes",
+  "task_id": "Experimental Design for Coastal Wetland Restoration Outcomes",
+  "run_id": "v4_scale_diverse_mixed_judge_based_science_05_ecosystem_restoration_experiment_0119",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.3290771946704823,
+    "agent_1": 0.09857492599054117,
+    "agent_2": 0.06378517215943344,
+    "consensus": 0.508562707179543
+  },
+  "ranking": [
+    "consensus",
+    "agent_0",
+    "agent_1",
+    "agent_2"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.13762047598153307,
+      "agent_1": 0.23335186281275472,
+      "agent_2": 0.23335186281275472,
+      "consensus": 0.3956757983929575
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.49979140392409743,
+      "agent_1": 0.000208596075902767,
+      "agent_2": 0.000208596075902767,
+      "consensus": 0.49979140392409693
+    },
+    "glm-5": {
+      "agent_0": 0.4997908265884951,
+      "agent_1": 0.00041834556797902875,
+      "agent_2": 1.2550311775578066e-09,
+      "consensus": 0.49979082658849466
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": 0.0862068965517241,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": 0.75,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": -0.2500000000000001,
+      "glm-5__vs__gpt-4o-mini": -0.24137931034482757
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "right",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "right"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "right"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T00:52:35.776091+00:00",
+  "consensus_bt_score": 0.508562707179543,
+  "consensus_rank": 1,
+  "consensus_win_rate": 1.0
+}

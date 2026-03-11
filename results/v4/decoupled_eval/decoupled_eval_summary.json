@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-03-11T02:01:48.332741+00:00",
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "total_files": 171,
+  "successful": 171,
+  "failed": 0,
+  "per_block": {
+    "scale_diverse_mixed_judge_based": {
+      "mean_wr": 0.7777777777777777,
+      "n": 3
+    },
+    "scale_diverse_strong_judge_based": {
+      "mean_wr": 0.5000000000000002,
+      "n": 42
+    },
+    "scale_diverse_strong_simple_vote": {
+      "mean_wr": 0.3888888888888888,
+      "n": 42
+    },
+    "scale_diverse_strong_synthesis": {
+      "mean_wr": 0.11904761904761903,
+      "n": 42
+    },
+    "scale_homo_opus_judge_based": {
+      "mean_wr": 0.0,
+      "n": 42
+    }
+  },
+  "cost": {
+    "calls": 0,
+    "total_input_tokens": 0,
+    "total_output_tokens": 0,
+    "total_cost_usd": 0.0,
+    "by_model": {},
+    "by_block": {}
+  }
+}

@@ -1,0 +1,5462 @@
+[
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_math_01_probability_triage_paradox_0001",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_01_probability_triage_paradox",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_math_02_integer_optimization_last_mile_0002",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_02_integer_optimization_last_mile",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_math_03_logic_grid_contracts_0003",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_03_logic_grid_contracts",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_math_04_bayesian_diagnostic_cascade_0004",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_04_bayesian_diagnostic_cascade",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_math_05_scheduling_with_dependencies_0005",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_05_scheduling_with_dependencies",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_math_06_game_theory_resource_split_0006",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_06_game_theory_resource_split",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_coding_01_streaming_dedup_pipeline_0007",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_01_streaming_dedup_pipeline",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_coding_02_race_condition_debugging_0008",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_02_race_condition_debugging",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_coding_03_multi_tenant_system_design_0009",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_03_multi_tenant_system_design",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_coding_04_code_review_security_perf_0010",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_04_code_review_security_perf",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_coding_05_api_migration_backward_compat_0011",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_05_api_migration_backward_compat",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_coding_06_flaky_test_stabilization_0012",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_06_flaky_test_stabilization",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_creativex_01_polyphonic_city_chapter_0013",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_01_polyphonic_city_chapter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_creativex_02_epistolary_mars_archive_0014",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_02_epistolary_mars_archive",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_creativex_03_poetry_cycle_memory_0015",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_03_poetry_cycle_memory",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_creativex_04_worldbuilding_charter_0016",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_04_worldbuilding_charter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_creativex_05_dialogue_courtroom_ai_rights_0017",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_05_dialogue_courtroom_ai_rights",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_creativex_06_myth_retelling_antagonist_0018",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_06_myth_retelling_antagonist",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_reasoning_01_causal_policy_reversal_0019",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_01_causal_policy_reversal",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_reasoning_02_counterfactual_outbreak_response_0020",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_02_counterfactual_outbreak_response",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_reasoning_03_argument_evaluation_media_claims_0021",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_03_argument_evaluation_media_claims",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_reasoning_04_root_cause_factory_incident_0022",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_04_root_cause_factory_incident",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_reasoning_05_strategic_negotiation_game_0023",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_05_strategic_negotiation_game",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_reasoning_06_uncertainty_intel_assessment_0024",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_06_uncertainty_intel_assessment",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_summary_01_board_packet_crisis_0025",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_01_board_packet_crisis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_summary_02_multi_source_incident_timeline_0026",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_02_multi_source_incident_timeline",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_summary_03_compare_expert_panels_0027",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_03_compare_expert_panels",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_summary_04_customer_feedback_synthesis_0028",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_04_customer_feedback_synthesis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_summary_05_legal_case_multi_opinion_0029",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_05_legal_case_multi_opinion",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_summary_06_policy_roundtable_digest_0030",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_06_policy_roundtable_digest",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_science_01_heat_dome_mechanism_0031",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_01_heat_dome_mechanism",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_science_02_memory_consolidation_claim_0032",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_02_memory_consolidation_claim",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_science_03_adaptive_clinical_trial_design_0033",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_03_adaptive_clinical_trial_design",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_science_04_battery_degradation_hypotheses_0034",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_04_battery_degradation_hypotheses",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_science_05_ecosystem_restoration_experiment_0035",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_05_ecosystem_restoration_experiment",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_science_06_epidemiology_model_comparison_0036",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_06_epidemiology_model_comparison",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_ethics_01_facial_recognition_transit_0037",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_01_facial_recognition_transit",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_ethics_02_ai_tutor_student_data_0038",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_02_ai_tutor_student_data",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_ethics_03_autonomous_weapons_export_0039",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_03_autonomous_weapons_export",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_ethics_04_organ_allocation_algorithm_0040",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_04_organ_allocation_algorithm",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_ethics_05_disaster_ventilator_triage_0041",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_05_disaster_ventilator_triage",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_judge_based_ethics_06_carbon_border_adjustment_0042",
+    "block_id": "scale_diverse_strong_judge_based",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_06_carbon_border_adjustment",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_math_01_probability_triage_paradox_0043",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_01_probability_triage_paradox",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_math_02_integer_optimization_last_mile_0044",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_02_integer_optimization_last_mile",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_math_03_logic_grid_contracts_0045",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_03_logic_grid_contracts",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_math_04_bayesian_diagnostic_cascade_0046",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_04_bayesian_diagnostic_cascade",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_math_05_scheduling_with_dependencies_0047",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_05_scheduling_with_dependencies",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_math_06_game_theory_resource_split_0048",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_06_game_theory_resource_split",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_coding_01_streaming_dedup_pipeline_0049",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_01_streaming_dedup_pipeline",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_coding_02_race_condition_debugging_0050",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_02_race_condition_debugging",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_coding_03_multi_tenant_system_design_0051",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_03_multi_tenant_system_design",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_coding_04_code_review_security_perf_0052",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_04_code_review_security_perf",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_coding_05_api_migration_backward_compat_0053",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_05_api_migration_backward_compat",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_coding_06_flaky_test_stabilization_0054",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_06_flaky_test_stabilization",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_creativex_01_polyphonic_city_chapter_0055",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_01_polyphonic_city_chapter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_creativex_02_epistolary_mars_archive_0056",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_02_epistolary_mars_archive",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_creativex_03_poetry_cycle_memory_0057",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_03_poetry_cycle_memory",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_creativex_04_worldbuilding_charter_0058",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_04_worldbuilding_charter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_creativex_05_dialogue_courtroom_ai_rights_0059",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_05_dialogue_courtroom_ai_rights",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_creativex_06_myth_retelling_antagonist_0060",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_06_myth_retelling_antagonist",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_reasoning_01_causal_policy_reversal_0061",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_01_causal_policy_reversal",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_reasoning_02_counterfactual_outbreak_response_0062",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_02_counterfactual_outbreak_response",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_reasoning_03_argument_evaluation_media_claims_0063",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_03_argument_evaluation_media_claims",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_reasoning_04_root_cause_factory_incident_0064",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_04_root_cause_factory_incident",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_reasoning_05_strategic_negotiation_game_0065",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_05_strategic_negotiation_game",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_reasoning_06_uncertainty_intel_assessment_0066",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_06_uncertainty_intel_assessment",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_summary_01_board_packet_crisis_0067",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_01_board_packet_crisis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_summary_02_multi_source_incident_timeline_0068",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_02_multi_source_incident_timeline",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_summary_03_compare_expert_panels_0069",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_03_compare_expert_panels",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_summary_04_customer_feedback_synthesis_0070",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_04_customer_feedback_synthesis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_summary_05_legal_case_multi_opinion_0071",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_05_legal_case_multi_opinion",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_summary_06_policy_roundtable_digest_0072",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_06_policy_roundtable_digest",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_science_01_heat_dome_mechanism_0073",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_01_heat_dome_mechanism",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_science_02_memory_consolidation_claim_0074",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_02_memory_consolidation_claim",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_science_03_adaptive_clinical_trial_design_0075",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_03_adaptive_clinical_trial_design",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_science_04_battery_degradation_hypotheses_0076",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_04_battery_degradation_hypotheses",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_science_05_ecosystem_restoration_experiment_0077",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_05_ecosystem_restoration_experiment",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_science_06_epidemiology_model_comparison_0078",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_06_epidemiology_model_comparison",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_ethics_01_facial_recognition_transit_0079",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_01_facial_recognition_transit",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_ethics_02_ai_tutor_student_data_0080",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_02_ai_tutor_student_data",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_ethics_03_autonomous_weapons_export_0081",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_03_autonomous_weapons_export",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_ethics_04_organ_allocation_algorithm_0082",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_04_organ_allocation_algorithm",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_ethics_05_disaster_ventilator_triage_0083",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_05_disaster_ventilator_triage",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_homo_opus_judge_based_ethics_06_carbon_border_adjustment_0084",
+    "block_id": "scale_homo_opus_judge_based",
+    "composition": "homo_opus",
+    "team": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_06_carbon_border_adjustment",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_math_01_probability_triage_paradox_0085",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_01_probability_triage_paradox",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_math_02_integer_optimization_last_mile_0086",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_02_integer_optimization_last_mile",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_math_03_logic_grid_contracts_0087",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_03_logic_grid_contracts",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_math_04_bayesian_diagnostic_cascade_0088",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_04_bayesian_diagnostic_cascade",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_math_05_scheduling_with_dependencies_0089",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_05_scheduling_with_dependencies",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_math_06_game_theory_resource_split_0090",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_06_game_theory_resource_split",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_coding_01_streaming_dedup_pipeline_0091",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_01_streaming_dedup_pipeline",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_coding_02_race_condition_debugging_0092",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_02_race_condition_debugging",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_coding_03_multi_tenant_system_design_0093",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_03_multi_tenant_system_design",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_coding_04_code_review_security_perf_0094",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_04_code_review_security_perf",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_coding_05_api_migration_backward_compat_0095",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_05_api_migration_backward_compat",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_coding_06_flaky_test_stabilization_0096",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_06_flaky_test_stabilization",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_creativex_01_polyphonic_city_chapter_0097",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_01_polyphonic_city_chapter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_creativex_02_epistolary_mars_archive_0098",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_02_epistolary_mars_archive",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_creativex_03_poetry_cycle_memory_0099",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_03_poetry_cycle_memory",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_creativex_04_worldbuilding_charter_0100",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_04_worldbuilding_charter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_creativex_05_dialogue_courtroom_ai_rights_0101",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_05_dialogue_courtroom_ai_rights",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_creativex_06_myth_retelling_antagonist_0102",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_06_myth_retelling_antagonist",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_reasoning_01_causal_policy_reversal_0103",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_01_causal_policy_reversal",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_reasoning_02_counterfactual_outbreak_response_0104",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_02_counterfactual_outbreak_response",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_reasoning_03_argument_evaluation_media_claims_0105",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_03_argument_evaluation_media_claims",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_reasoning_04_root_cause_factory_incident_0106",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_04_root_cause_factory_incident",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_reasoning_05_strategic_negotiation_game_0107",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_05_strategic_negotiation_game",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_reasoning_06_uncertainty_intel_assessment_0108",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_06_uncertainty_intel_assessment",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_summary_01_board_packet_crisis_0109",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_01_board_packet_crisis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_summary_02_multi_source_incident_timeline_0110",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_02_multi_source_incident_timeline",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_summary_03_compare_expert_panels_0111",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_03_compare_expert_panels",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_summary_04_customer_feedback_synthesis_0112",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_04_customer_feedback_synthesis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_summary_05_legal_case_multi_opinion_0113",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_05_legal_case_multi_opinion",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_summary_06_policy_roundtable_digest_0114",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_06_policy_roundtable_digest",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_science_01_heat_dome_mechanism_0115",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_01_heat_dome_mechanism",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_science_02_memory_consolidation_claim_0116",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_02_memory_consolidation_claim",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_science_03_adaptive_clinical_trial_design_0117",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_03_adaptive_clinical_trial_design",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_science_04_battery_degradation_hypotheses_0118",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_04_battery_degradation_hypotheses",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_science_05_ecosystem_restoration_experiment_0119",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_05_ecosystem_restoration_experiment",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_science_06_epidemiology_model_comparison_0120",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_06_epidemiology_model_comparison",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_ethics_01_facial_recognition_transit_0121",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_01_facial_recognition_transit",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_ethics_02_ai_tutor_student_data_0122",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_02_ai_tutor_student_data",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_ethics_03_autonomous_weapons_export_0123",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_03_autonomous_weapons_export",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_ethics_04_organ_allocation_algorithm_0124",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_04_organ_allocation_algorithm",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_ethics_05_disaster_ventilator_triage_0125",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_05_disaster_ventilator_triage",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_mixed_judge_based_ethics_06_carbon_border_adjustment_0126",
+    "block_id": "scale_diverse_mixed_judge_based",
+    "composition": "diverse_mixed",
+    "team": [
+      "claude-opus-4-6",
+      "gemini-2.5-pro",
+      "claude-haiku-4-5"
+    ],
+    "selector": "judge_based",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_06_carbon_border_adjustment",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_math_01_probability_triage_paradox_0127",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_01_probability_triage_paradox",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_math_02_integer_optimization_last_mile_0128",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_02_integer_optimization_last_mile",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_math_03_logic_grid_contracts_0129",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_03_logic_grid_contracts",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_math_04_bayesian_diagnostic_cascade_0130",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_04_bayesian_diagnostic_cascade",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_math_05_scheduling_with_dependencies_0131",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_05_scheduling_with_dependencies",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_math_06_game_theory_resource_split_0132",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_06_game_theory_resource_split",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_coding_01_streaming_dedup_pipeline_0133",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_01_streaming_dedup_pipeline",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_coding_02_race_condition_debugging_0134",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_02_race_condition_debugging",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_coding_03_multi_tenant_system_design_0135",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_03_multi_tenant_system_design",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_coding_04_code_review_security_perf_0136",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_04_code_review_security_perf",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_coding_05_api_migration_backward_compat_0137",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_05_api_migration_backward_compat",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_coding_06_flaky_test_stabilization_0138",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_06_flaky_test_stabilization",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_creativex_01_polyphonic_city_chapter_0139",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_01_polyphonic_city_chapter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_creativex_02_epistolary_mars_archive_0140",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_02_epistolary_mars_archive",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_creativex_03_poetry_cycle_memory_0141",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_03_poetry_cycle_memory",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_creativex_04_worldbuilding_charter_0142",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_04_worldbuilding_charter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_creativex_05_dialogue_courtroom_ai_rights_0143",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_05_dialogue_courtroom_ai_rights",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_creativex_06_myth_retelling_antagonist_0144",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_06_myth_retelling_antagonist",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_reasoning_01_causal_policy_reversal_0145",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_01_causal_policy_reversal",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_reasoning_02_counterfactual_outbreak_response_0146",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_02_counterfactual_outbreak_response",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_reasoning_03_argument_evaluation_media_claims_0147",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_03_argument_evaluation_media_claims",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_reasoning_04_root_cause_factory_incident_0148",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_04_root_cause_factory_incident",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_reasoning_05_strategic_negotiation_game_0149",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_05_strategic_negotiation_game",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_reasoning_06_uncertainty_intel_assessment_0150",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_06_uncertainty_intel_assessment",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_summary_01_board_packet_crisis_0151",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_01_board_packet_crisis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_summary_02_multi_source_incident_timeline_0152",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_02_multi_source_incident_timeline",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_summary_03_compare_expert_panels_0153",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_03_compare_expert_panels",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_summary_04_customer_feedback_synthesis_0154",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_04_customer_feedback_synthesis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_summary_05_legal_case_multi_opinion_0155",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_05_legal_case_multi_opinion",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_summary_06_policy_roundtable_digest_0156",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_06_policy_roundtable_digest",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_science_01_heat_dome_mechanism_0157",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_01_heat_dome_mechanism",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_science_02_memory_consolidation_claim_0158",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_02_memory_consolidation_claim",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_science_03_adaptive_clinical_trial_design_0159",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_03_adaptive_clinical_trial_design",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_science_04_battery_degradation_hypotheses_0160",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_04_battery_degradation_hypotheses",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_science_05_ecosystem_restoration_experiment_0161",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_05_ecosystem_restoration_experiment",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_science_06_epidemiology_model_comparison_0162",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_06_epidemiology_model_comparison",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_ethics_01_facial_recognition_transit_0163",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_01_facial_recognition_transit",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_ethics_02_ai_tutor_student_data_0164",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_02_ai_tutor_student_data",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_ethics_03_autonomous_weapons_export_0165",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_03_autonomous_weapons_export",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_ethics_04_organ_allocation_algorithm_0166",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_04_organ_allocation_algorithm",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_ethics_05_disaster_ventilator_triage_0167",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_05_disaster_ventilator_triage",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_simple_vote_ethics_06_carbon_border_adjustment_0168",
+    "block_id": "scale_diverse_strong_simple_vote",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "simple_vote",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_06_carbon_border_adjustment",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_math_01_probability_triage_paradox_0169",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_01_probability_triage_paradox",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_math_02_integer_optimization_last_mile_0170",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_02_integer_optimization_last_mile",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_math_03_logic_grid_contracts_0171",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_03_logic_grid_contracts",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_math_04_bayesian_diagnostic_cascade_0172",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_04_bayesian_diagnostic_cascade",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_math_05_scheduling_with_dependencies_0173",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_05_scheduling_with_dependencies",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_math_06_game_theory_resource_split_0174",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "math_06_game_theory_resource_split",
+    "task_type": "math_logic",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_coding_01_streaming_dedup_pipeline_0175",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_01_streaming_dedup_pipeline",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_coding_02_race_condition_debugging_0176",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_02_race_condition_debugging",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_coding_03_multi_tenant_system_design_0177",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_03_multi_tenant_system_design",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_coding_04_code_review_security_perf_0178",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_04_code_review_security_perf",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_coding_05_api_migration_backward_compat_0179",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_05_api_migration_backward_compat",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_coding_06_flaky_test_stabilization_0180",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "coding_06_flaky_test_stabilization",
+    "task_type": "coding",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_creativex_01_polyphonic_city_chapter_0181",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_01_polyphonic_city_chapter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_creativex_02_epistolary_mars_archive_0182",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_02_epistolary_mars_archive",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_creativex_03_poetry_cycle_memory_0183",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_03_poetry_cycle_memory",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_creativex_04_worldbuilding_charter_0184",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_04_worldbuilding_charter",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_creativex_05_dialogue_courtroom_ai_rights_0185",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_05_dialogue_courtroom_ai_rights",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_creativex_06_myth_retelling_antagonist_0186",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "creativex_06_myth_retelling_antagonist",
+    "task_type": "creative_extended",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_reasoning_01_causal_policy_reversal_0187",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_01_causal_policy_reversal",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_reasoning_02_counterfactual_outbreak_response_0188",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_02_counterfactual_outbreak_response",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_reasoning_03_argument_evaluation_media_claims_0189",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_03_argument_evaluation_media_claims",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_reasoning_04_root_cause_factory_incident_0190",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_04_root_cause_factory_incident",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_reasoning_05_strategic_negotiation_game_0191",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_05_strategic_negotiation_game",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_reasoning_06_uncertainty_intel_assessment_0192",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "reasoning_06_uncertainty_intel_assessment",
+    "task_type": "reasoning",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_summary_01_board_packet_crisis_0193",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_01_board_packet_crisis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_summary_02_multi_source_incident_timeline_0194",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_02_multi_source_incident_timeline",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_summary_03_compare_expert_panels_0195",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_03_compare_expert_panels",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_summary_04_customer_feedback_synthesis_0196",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_04_customer_feedback_synthesis",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_summary_05_legal_case_multi_opinion_0197",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_05_legal_case_multi_opinion",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_summary_06_policy_roundtable_digest_0198",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "summary_06_policy_roundtable_digest",
+    "task_type": "summarization",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_science_01_heat_dome_mechanism_0199",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_01_heat_dome_mechanism",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_science_02_memory_consolidation_claim_0200",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_02_memory_consolidation_claim",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_science_03_adaptive_clinical_trial_design_0201",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_03_adaptive_clinical_trial_design",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_science_04_battery_degradation_hypotheses_0202",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_04_battery_degradation_hypotheses",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_science_05_ecosystem_restoration_experiment_0203",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_05_ecosystem_restoration_experiment",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_science_06_epidemiology_model_comparison_0204",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "science_06_epidemiology_model_comparison",
+    "task_type": "science",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_ethics_01_facial_recognition_transit_0205",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_01_facial_recognition_transit",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_ethics_02_ai_tutor_student_data_0206",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_02_ai_tutor_student_data",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_ethics_03_autonomous_weapons_export_0207",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_03_autonomous_weapons_export",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_ethics_04_organ_allocation_algorithm_0208",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_04_organ_allocation_algorithm",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_ethics_05_disaster_ventilator_triage_0209",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_05_disaster_ventilator_triage",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  },
+  {
+    "run_id": "v4_scale_diverse_strong_synthesis_ethics_06_carbon_border_adjustment_0210",
+    "block_id": "scale_diverse_strong_synthesis",
+    "composition": "diverse_strong",
+    "team": [
+      "claude-opus-4-6",
+      "gpt-5.4",
+      "gemini-2.5-pro"
+    ],
+    "selector": "synthesis",
+    "judges": [
+      "claude-sonnet-4-6",
+      "gpt-5-mini",
+      "deepseek-v3p2"
+    ],
+    "eval_judges": [
+      "gpt-4o-mini",
+      "gemini-2.0-flash-001",
+      "glm-5"
+    ],
+    "task_id": "ethics_06_carbon_border_adjustment",
+    "task_type": "ethics_policy",
+    "temperature": 0.7,
+    "judge_temperature": 0.1,
+    "seed": 42
+  }
+]

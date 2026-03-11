@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_strong_simple_vote_coding_05_api_migration_backward_compat_0137.json",
+  "block": "scale_diverse_strong_simple_vote",
+  "task_type": "Backward-Compatible API Migration with Contract Guarantees",
+  "task_id": "Backward-Compatible API Migration with Contract Guarantees",
+  "run_id": "v4_scale_diverse_strong_simple_vote_coding_05_api_migration_backward_compat_0137",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.3749999162465261,
+    "agent_1": 0.3749999162465261,
+    "agent_2": 0.12500008375347396,
+    "consensus": 0.12500008375347396
+  },
+  "ranking": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.17754910602514462,
+      "agent_1": 0.621787409864114,
+      "agent_2": 0.10033174205537074,
+      "consensus": 0.10033174205537074
+    },
+    "glm-5": {
+      "agent_0": 0.9960302673606243,
+      "agent_1": 0.003959288965972626,
+      "agent_2": 5.221836701644213e-06,
+      "consensus": 5.221836701644213e-06
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": 0.0606060606060606,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": 0.1818181818181818,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 0.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T01:27:05.133878+00:00",
+  "consensus_bt_score": 0.12500008375347396,
+  "consensus_rank": 4,
+  "consensus_win_rate": 0.0
+}

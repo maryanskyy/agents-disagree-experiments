@@ -1,0 +1,163 @@
+task_type: summarization
+version: 1
+instances:
+- id: summary_01_board_packet_crisis
+  title: Summarize a Board Packet for an Emerging Liquidity Crisis
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    You are given a dense board packet from a mid-size SaaS company showing mixed signals: ARR growth remains strong, but cash conversion has deteriorated, enterprise renewals are lumpy, and customer-support costs rose after a rushed product launch. CFO memo emphasizes temporary billing timing effects; an independent director memo warns structural margin compression and covenant risk within two quarters. Product leadership asks for more hiring despite runway concerns. Your task is to summarize this packet for directors who only have ten minutes before an emergency meeting and need clear priorities, not generic prose.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Provide an executive summary that is concise but decision-ready.
+
+    (2) Extract the highest-priority facts, timeline elements, and unresolved questions.
+
+    (3) Compare stakeholder viewpoints and identify where they truly conflict or align.
+
+    (4) Recommend immediate next actions and what evidence should be collected next.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: &id001
+  - Coverage of the most decision-relevant facts without major omissions.
+  - Faithful synthesis of conflicting viewpoints and uncertainty.
+  - Structure, concision, and prioritization for executive use.
+  - Quality of actionable next steps grounded in the provided material.
+- id: summary_02_multi_source_incident_timeline
+  title: Construct a Reliable Incident Timeline from Conflicting Sources
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    After a major service outage, you receive chat logs, on-call notes, postmortem drafts, and customer escalation emails. Timestamps are inconsistent across systems, and several participants contradict each other about when rollback occurred. Some messages are emotional and speculative, others formal but incomplete. You must create a concise but defensible timeline, highlight where certainty is high versus low, and identify what additional artifacts would resolve disputed moments. The summary should support both internal learning and external communication to affected enterprise customers.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Provide an executive summary that is concise but decision-ready.
+
+    (2) Extract the highest-priority facts, timeline elements, and unresolved questions.
+
+    (3) Compare stakeholder viewpoints and identify where they truly conflict or align.
+
+    (4) Recommend immediate next actions and what evidence should be collected next.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: summary_03_compare_expert_panels
+  title: Compare Insights from Two Expert Panels on AI Regulation
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Panel 1 (industry and startup founders) argues rapid innovation and warns that heavy regulation will entrench incumbents. Panel 2 (civil society and public-interest technologists) argues deployment harms already outpace governance and calls for pre-deployment auditing and liability rules. Both panels agree on need for transparency but define it differently. You must summarize and compare the panels for policymakers preparing a draft bill. The output should reveal substantive disagreements, shared ground, and practical implications rather than simply listing quotes.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Provide an executive summary that is concise but decision-ready.
+
+    (2) Extract the highest-priority facts, timeline elements, and unresolved questions.
+
+    (3) Compare stakeholder viewpoints and identify where they truly conflict or align.
+
+    (4) Recommend immediate next actions and what evidence should be collected next.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: summary_04_customer_feedback_synthesis
+  title: Synthesize Large-Scale Customer Feedback with Contradictory Signals
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A product team collected 1,800 pieces of feedback after launching a new collaboration feature. Power users praise flexibility, new users report confusion, admins fear governance gaps, and sales notes indicate the feature helps deals in regulated industries when configured correctly. NPS moved up overall but churn ticked up for small accounts. Leadership wants a crisp synthesis that explains what is happening, who is affected, and what to do next. Your summary must separate signal from noise and avoid over-indexing on the loudest voices.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Provide an executive summary that is concise but decision-ready.
+
+    (2) Extract the highest-priority facts, timeline elements, and unresolved questions.
+
+    (3) Compare stakeholder viewpoints and identify where they truly conflict or align.
+
+    (4) Recommend immediate next actions and what evidence should be collected next.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: summary_05_legal_case_multi_opinion
+  title: Summarize a Legal Case with Majority, Concurrence, and Dissent
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    You are provided a constitutional court decision including a majority opinion, one concurrence, and two dissents on digital privacy and warrantless data access. The majority narrows permissible access in urgent cases; the concurrence agrees on outcome but different doctrine; dissents warn operational paralysis for law enforcement. Journalists are already misreporting the holding as an outright ban. Prepare a summary for non-lawyer policy staff that accurately captures holding, doctrinal split, implementation consequences, and near-term litigation risk.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Provide an executive summary that is concise but decision-ready.
+
+    (2) Extract the highest-priority facts, timeline elements, and unresolved questions.
+
+    (3) Compare stakeholder viewpoints and identify where they truly conflict or align.
+
+    (4) Recommend immediate next actions and what evidence should be collected next.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: summary_06_policy_roundtable_digest
+  title: Digest a Policy Roundtable on Housing Affordability Interventions
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A mayoral roundtable includes tenant unions, developers, transit planners, and fiscal analysts debating rent stabilization, upzoning, permitting reform, and targeted subsidies. Participants agree affordability is worsening but disagree on primary causes and sequencing. Some proposals offer quick relief but possible long-run supply distortions; others promise long-run gains but little immediate help. You must produce a synthesis memo that preserves nuance while clearly indicating feasible policy bundles and trade-offs for the next budget cycle.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Provide an executive summary that is concise but decision-ready.
+
+    (2) Extract the highest-priority facts, timeline elements, and unresolved questions.
+
+    (3) Compare stakeholder viewpoints and identify where they truly conflict or align.
+
+    (4) Recommend immediate next actions and what evidence should be collected next.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001

@@ -1,0 +1,45 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment and secrets
+.env
+*.pem
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Runtime outputs
+logs/
+*.log
+**/cost_log.jsonl
+**/token_log.jsonl
+**/rejudge_cost_log.jsonl
+
+# Old results and working docs
+results/human_eval/
+results/results/
+paper-v2/
+reviews/
+ACTION_ITEMS.md
+HANDOVER.md
+tests/
+
+# OS artifacts
+.DS_Store
+Thumbs.db

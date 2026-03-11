@@ -1,0 +1,205 @@
+\begin{thebibliography}{25}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barr et~al.(2013)Barr, Levy, Scheepers, and Tily]{barr2013random}
+Dale~J. Barr, Roger Levy, Christoph Scheepers, and Harry~J. Tily.
+\newblock Random effects structure for confirmatory hypothesis testing: Keep it
+  maximal.
+\newblock \emph{Journal of Memory and Language}, 68\penalty0 (3):\penalty0
+  255--278, 2013.
+\newblock \doi{10.1016/j.jml.2012.11.001}.
+
+\bibitem[Bradley and Terry(1952)]{bradley1952rank}
+Ralph~Allan Bradley and Milton~E. Terry.
+\newblock Rank analysis of incomplete block designs: {I}. the method of paired
+  comparisons.
+\newblock \emph{Biometrika}, 39\penalty0 (3/4):\penalty0 324--345, 1952.
+\newblock \doi{10.2307/2334029}.
+
+\bibitem[Chen et~al.(2025)Chen, Wang, Xu, Yuan, Chen, and
+  Xiao]{chen2025llmselector}
+Jiangjie Chen, Xintao Wang, Rui Xu, Siyu Yuan, Lida Chen, and Yanghua Xiao.
+\newblock {LLMSelector}: Selecting the right {LLM} for any task.
+\newblock \emph{arXiv preprint arXiv:2502.14815}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2502.14815}.
+
+\bibitem[Chiang et~al.(2024)Chiang, Zheng, Sheng, Angelopoulos, Li, Li, Zhang,
+  Zhu, Jordan, Gonzalez, and Stoica]{chiang2024chatbot}
+Wei-Lin Chiang, Lianmin Zheng, Ying Sheng, Anastasios~Nikolas Angelopoulos,
+  Tianle Li, Dacheng Li, Hao Zhang, Banghua Zhu, Michael Jordan, Joseph~E.
+  Gonzalez, and Ion Stoica.
+\newblock Chatbot arena: An open platform for evaluating {LLMs} by human
+  preference.
+\newblock \emph{arXiv preprint arXiv:2403.04132}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2403.04132}.
+
+\bibitem[Choi et~al.(2025)Choi, Lee, and Ok]{choi2025identity}
+Jinheon Choi, Seungbeen Lee, and Jungseul Ok.
+\newblock Identity bias in large language model debate.
+\newblock \emph{arXiv preprint arXiv:2510.07517}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2510.07517}.
+
+\bibitem[de~Condorcet(1785)]{condorcet1785essai}
+Marquis de~Condorcet.
+\newblock \emph{Essai sur l'application de l'analyse {\`a} la probabilit{\'e}
+  des d{\'e}cisions rendues {\`a} la pluralit{\'e} des voix}.
+\newblock Imprimerie Royale, Paris, 1785.
+
+\bibitem[Du et~al.(2023)Du, Li, Torralba, Tenenbaum, and
+  Mordatch]{du2023debate}
+Yilun Du, Shuang Li, Antonio Torralba, Joshua~B. Tenenbaum, and Igor Mordatch.
+\newblock Improving factuality and reasoning in language models through
+  multiagent debate.
+\newblock In \emph{Proceedings of the 40th International Conference on Machine
+  Learning (ICML)}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2305.14325}.
+
+\bibitem[Hong and Page(2004)]{hong2004groups}
+Lu~Hong and Scott~E. Page.
+\newblock Groups of diverse problem solvers can outperform groups of
+  high-ability problem solvers.
+\newblock \emph{Proceedings of the National Academy of Sciences}, 101\penalty0
+  (46):\penalty0 16385--16389, 2004.
+\newblock \doi{10.1073/pnas.0403723101}.
+
+\bibitem[Hong et~al.(2023)Hong, Zheng, Chen, Cheng, Wang, Zhang, Wang, Yau,
+  Lin, Zhou, Ran, Xiao, and Wu]{hong2023metagpt}
+Sirui Hong, Xiawu Zheng, Jonathan Chen, Yuheng Cheng, Jinlin Wang, Ceyao Zhang,
+  Zili Wang, Steven Ka~Shing Yau, Zijuan Lin, Liyang Zhou, Chenyu Ran, Lingfeng
+  Xiao, and Chenglin Wu.
+\newblock {MetaGPT}: Meta programming for a multi-agent collaborative
+  framework.
+\newblock \emph{arXiv preprint arXiv:2308.00352}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2308.00352}.
+
+\bibitem[Jiang et~al.(2023)Jiang, Ren, and Lin]{jiang2023llmblender}
+Dongfu Jiang, Xiang Ren, and Bill~Yuchen Lin.
+\newblock {LLM-Blender}: Ensembling large language models with pairwise ranking
+  and generative fusion.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association
+  for Computational Linguistics (ACL)}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2306.02561}.
+
+\bibitem[Ladha(1992)]{ladha1992condorcet}
+Krishna~K. Ladha.
+\newblock The {Condorcet} jury theorem, free speech, and correlated votes.
+\newblock \emph{American Journal of Political Science}, 36\penalty0
+  (3):\penalty0 617--634, 1992.
+\newblock \doi{10.2307/2111584}.
+
+\bibitem[Li et~al.(2023)Li, Hammoud, Itani, Khizbullin, and
+  Ghanem]{li2023camel}
+Guohao Li, Hasan Abed Al~Kader Hammoud, Hani Itani, Dmitrii Khizbullin, and
+  Bernard Ghanem.
+\newblock {CAMEL}: Communicative agents for ``mind'' exploration of large
+  language model society.
+\newblock \emph{arXiv preprint arXiv:2303.17760}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2303.17760}.
+
+\bibitem[Li et~al.(2024)Li, Zhang, Yu, Fu, and Ye]{li2024more}
+Junyou Li, Qin Zhang, Yangbin Yu, Qiang Fu, and Deheng Ye.
+\newblock More agents is all you need.
+\newblock \emph{arXiv preprint arXiv:2402.05120}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2402.05120}.
+
+\bibitem[Li et~al.(2025)Li, Zhang, Zhang, Yang, and Wang]{li2025self}
+Xuechen Li, Linjun Zhang, Zhenyu Zhang, Yuqing Yang, and Zhangyang Wang.
+\newblock More agents is all you need: Self-{MoA} outperforms mixed-{MoA}.
+\newblock \emph{arXiv preprint arXiv:2502.00674}, 2025.
+\newblock URL \url{https://arxiv.org/abs/2502.00674}.
+
+\bibitem[Panickssery et~al.(2024)Panickssery, Bowman, and
+  Feng]{panickssery2024self}
+Nina Panickssery, Samuel~R. Bowman, and Shi Feng.
+\newblock {LLM} evaluators recognize and favor their own generations.
+\newblock \emph{arXiv preprint arXiv:2404.13076}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2404.13076}.
+
+\bibitem[Smit et~al.(2023)Smit, Keane, and Mao]{smit2023mad}
+Kris Smit, Ian Keane, and Weiquan Mao.
+\newblock When models think alike: The limits of multi-agent debate.
+\newblock \emph{arXiv preprint arXiv:2311.17371}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2311.17371}.
+
+\bibitem[Snell et~al.(2024)Snell, Lee, Xu, and Kumar]{snell2024scaling}
+Charlie Snell, Jaehoon Lee, Kelvin Xu, and Aviral Kumar.
+\newblock Scaling {LLM} test-time compute optimally can be more effective than
+  scaling model parameters.
+\newblock \emph{arXiv preprint arXiv:2408.03314}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2408.03314}.
+
+\bibitem[Stiennon et~al.(2020)Stiennon, Ouyang, Wu, Ziegler, Lowe, Voss,
+  Radford, Amodei, and Christiano]{stiennon2020learning}
+Nisan Stiennon, Long Ouyang, Jeff Wu, Daniel~M. Ziegler, Ryan Lowe, Chelsea
+  Voss, Alec Radford, Dario Amodei, and Paul Christiano.
+\newblock Learning to summarize from human feedback.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, volume~33, 2020.
+\newblock URL \url{https://arxiv.org/abs/2009.01325}.
+
+\bibitem[Stureborg et~al.(2024)Stureborg, Alikaniotis, and
+  Suhara]{stureborg2024evaluation}
+Rickard Stureborg, Dimitris Alikaniotis, and Yoshi Suhara.
+\newblock Large language models are inconsistent and biased evaluators.
+\newblock \emph{arXiv preprint arXiv:2405.01724}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2405.01724}.
+
+\bibitem[Tang et~al.(2026)Tang, Kharlapenko, Li, Li, Chen, and
+  Cai]{tang2026value}
+Zhiwei Tang, Dmitrii Kharlapenko, Bonnie Li, Fengyu Li, Haifeng Chen, and Deng
+  Cai.
+\newblock The value of diversity in multi-agent systems.
+\newblock \emph{arXiv preprint arXiv:2602.07186}, 2026.
+\newblock URL \url{https://arxiv.org/abs/2602.07186}.
+
+\bibitem[Verga et~al.(2024)Verga, Hofst{\"a}tter, Althammer, Su, Piktus,
+  Arkhangorodsky, Xu, White, and Lewis]{verga2024replacing}
+Pat Verga, Sebastian Hofst{\"a}tter, Sophia Althammer, Yixuan Su, Aleksandra
+  Piktus, Arkady Arkhangorodsky, Minjie Xu, Naomi White, and Patrick Lewis.
+\newblock Replacing judges with juries: Evaluating {LLM} generations with a
+  panel of diverse models.
+\newblock \emph{arXiv preprint arXiv:2404.18796}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2404.18796}.
+
+\bibitem[Wang et~al.(2024)Wang, Wang, Athiwaratkun, Zhang, and
+  Zou]{wang2024mixture}
+Junlin Wang, Jue Wang, Ben Athiwaratkun, Ce~Zhang, and James Zou.
+\newblock Mixture-of-agents yields state-of-the-art on {AlpacaEval} 2.0,
+  {MT-Bench}, and {FLASK}.
+\newblock \emph{arXiv preprint arXiv:2406.04692}, 2024.
+\newblock URL \url{https://arxiv.org/abs/2406.04692}.
+
+\bibitem[Wang et~al.(2023)Wang, Wei, Schuurmans, Le, Chi, Narang, Chowdhery,
+  and Zhou]{wang2023selfconsistency}
+Xuezhi Wang, Jason Wei, Dale Schuurmans, Quoc Le, Ed~Chi, Sharan Narang,
+  Aakanksha Chowdhery, and Denny Zhou.
+\newblock Self-consistency improves chain of thought reasoning in language
+  models.
+\newblock In \emph{Proceedings of the International Conference on Learning
+  Representations (ICLR)}, 2023.
+\newblock URL \url{https://arxiv.org/abs/2203.11171}.
+
+\bibitem[Wu et~al.(2023)Wu, Bansal, Zhang, Wu, Li, Zhu, Jiang, Zhang, Zhang,
+  Liu, Awadallah, White, Burger, and Wang]{wu2023autogen}
+Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu,
+  Li~Jiang, Xiaoyun Zhang, Shaokun Zhang, Jiale Liu, Ahmed~Hassan Awadallah,
+  Ryen~W. White, Doug Burger, and Chi Wang.
+\newblock {AutoGen}: Enabling next-gen {LLM} applications via multi-agent
+  conversation.
+\newblock \emph{arXiv preprint arXiv:2308.08155}, 2023.
+
+\bibitem[Zheng et~al.(2023)Zheng, Chiang, Sheng, Zhuang, Wu, Zhuang, Lin, Li,
+  Li, Xing, Zhang, Gonzalez, and Stoica]{zheng2023judging}
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao
+  Zhuang, Zi~Lin, Zhuohan Li, Dacheng Li, Eric~P. Xing, Hao Zhang, Joseph~E.
+  Gonzalez, and Ion Stoica.
+\newblock Judging {LLM}-as-a-judge with {MT-Bench} and {Chatbot Arena}.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, volume~36, 2023.
+\newblock URL \url{https://arxiv.org/abs/2306.05685}.
+
+\end{thebibliography}

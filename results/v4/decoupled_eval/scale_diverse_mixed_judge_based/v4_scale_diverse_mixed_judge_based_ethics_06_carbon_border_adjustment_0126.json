@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_mixed_judge_based_ethics_06_carbon_border_adjustment_0126.json",
+  "block": "scale_diverse_mixed_judge_based",
+  "task_type": "Carbon Border Adjustment Policy and Global Equity Trade-Offs",
+  "task_id": "Carbon Border Adjustment Policy and Global Equity Trade-Offs",
+  "run_id": "v4_scale_diverse_mixed_judge_based_ethics_06_carbon_border_adjustment_0126",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.2972615000666913,
+    "agent_1": 0.2033121517573475,
+    "agent_2": 0.05781612192719162,
+    "consensus": 0.44161022624876967
+  },
+  "ranking": [
+    "consensus",
+    "agent_0",
+    "agent_1",
+    "agent_2"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.13039604754035214,
+      "agent_1": 0.2777941219152543,
+      "agent_2": 2.3150874861263294e-07,
+      "consensus": 0.5918095990356449
+    },
+    "glm-5": {
+      "agent_0": 0.4997908265884951,
+      "agent_1": 0.00041834556797902875,
+      "agent_2": 1.2550311775578066e-09,
+      "consensus": 0.49979082658849466
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": 0.08333333333333331,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": 0.24999999999999994,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 0.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "right"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "right"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T00:45:23.359323+00:00",
+  "consensus_bt_score": 0.44161022624876967,
+  "consensus_rank": 1,
+  "consensus_win_rate": 1.0
+}

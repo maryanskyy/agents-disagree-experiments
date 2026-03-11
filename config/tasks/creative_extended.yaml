@@ -1,0 +1,163 @@
+task_type: creative_extended
+version: 1
+instances:
+- id: creativex_01_polyphonic_city_chapter
+  title: Write a Polyphonic Chapter Set During a City-Wide Blackout
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Create a short fiction chapter set in a near-future coastal city during a 12-hour grid blackout. The chapter must weave three viewpoints: a paramedic, a data-center technician, and a teenage radio hobbyist. Their goals conflict but should gradually align. The city has strict flood barriers, an unreliable emergency app, and rumors of sabotage. You must integrate sensory detail, ethical tension, and a plausible chain of events, not just atmosphere. The writing should feel literary but readable for general audiences. Include dialogue that reveals character without heavy exposition and end on a decision that opens a larger story arc.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Produce the requested creative artifact while honoring all structural constraints.
+
+    (2) Explain the key artistic decisions and how they support theme, tone, and character.
+
+    (3) Provide one alternate variation (voice, perspective, or form) and justify what changes.
+
+    (4) Critique your own draft and propose concrete revisions that would improve it.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: &id001
+  - Originality and imaginative quality of the creative output.
+  - Narrative/poetic coherence and internal consistency of the piece.
+  - Depth of thematic reasoning and intentional creative choices.
+  - Quality of revision strategy and reflection on strengths/weaknesses.
+- id: creativex_02_epistolary_mars_archive
+  title: Epistolary Sequence from a Failed Mars Settlement
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Write an epistolary piece composed of three documents: an official incident report, a personal letter, and an unsent voice-message transcript. All documents concern the same turning point in a struggling Mars settlement where water extraction yields are collapsing. Each document should reveal different motives, omissions, and emotional truths. The official report must sound procedural, the letter intimate but conflicted, and the transcript raw and immediate. You should subtly imply a political cover-up without stating it outright. Keep continuity of facts while allowing interpretation of blame to shift across documents.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Produce the requested creative artifact while honoring all structural constraints.
+
+    (2) Explain the key artistic decisions and how they support theme, tone, and character.
+
+    (3) Provide one alternate variation (voice, perspective, or form) and justify what changes.
+
+    (4) Critique your own draft and propose concrete revisions that would improve it.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: creativex_03_poetry_cycle_memory
+  title: Poetry Cycle on Memory, Technology, and Inheritance
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Compose a cycle of three connected poems about memory and inheritance in a family that preserves stories using neural recordings. Poem one should be in free verse, poem two in a constrained syllabic form, and poem three in prose-poetry style. Use recurring imagery (at least two motifs) that evolves meaningfully across the cycle. Tone should move from wonder to unease to guarded reconciliation. Avoid cliché futurist language; instead use concrete domestic detail. The cycle should be interpretable both as literal science fiction and as metaphor for intergenerational expectation.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Produce the requested creative artifact while honoring all structural constraints.
+
+    (2) Explain the key artistic decisions and how they support theme, tone, and character.
+
+    (3) Provide one alternate variation (voice, perspective, or form) and justify what changes.
+
+    (4) Critique your own draft and propose concrete revisions that would improve it.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: creativex_04_worldbuilding_charter
+  title: Worldbuilding Charter for a Floating Archipelago Society
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Design the cultural and political charter for a civilization living on floating engineered islands after sea-level rise. You must describe governance, economy, conflict-resolution norms, education, and ritual life. The society relies on algae bioreactors, strict buoyancy accounting, and seasonal migration routes to avoid storms. Include at least one internal contradiction or pressure point that could drive future stories (for example, equality ideals versus scarce anchor rights). The result should read like a believable in-world founding document excerpt plus narrative annotations from a later historian.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Produce the requested creative artifact while honoring all structural constraints.
+
+    (2) Explain the key artistic decisions and how they support theme, tone, and character.
+
+    (3) Provide one alternate variation (voice, perspective, or form) and justify what changes.
+
+    (4) Critique your own draft and propose concrete revisions that would improve it.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: creativex_05_dialogue_courtroom_ai_rights
+  title: 'Extended Dialogue: Courtroom Hearing on Synthetic Personhood'
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Write an extended dialogue from a high-stakes courtroom hearing where advocates debate legal personhood for a synthetic intelligence managing municipal infrastructure. Characters must include the presiding judge, a civil-rights attorney, a public-safety prosecutor, and the AI itself speaking through a constrained channel. The exchange should include legal argument, emotional appeal, and one unexpected piece of testimony that changes strategic framing. Keep each voice distinct and avoid cartoon villains. End with a provisional ruling that is ambiguous enough to sustain future conflict.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Produce the requested creative artifact while honoring all structural constraints.
+
+    (2) Explain the key artistic decisions and how they support theme, tone, and character.
+
+    (3) Provide one alternate variation (voice, perspective, or form) and justify what changes.
+
+    (4) Critique your own draft and propose concrete revisions that would improve it.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: creativex_06_myth_retelling_antagonist
+  title: Myth Retelling from the Antagonist’s Ethical Perspective
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Retell a well-known myth from the perspective of the traditional antagonist, but make the antagonist’s reasoning morally serious rather than purely defensive. Preserve key canonical events so readers can recognize the source myth, yet reinterpret motivations, stakes, and consequences through a contemporary lens (power, consent, ecological limits, or migration). Use vivid scene work rather than essay-like argument. The piece should not fully exonerate the antagonist; instead it should force readers to hold competing truths at once and reconsider the hero narrative.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Produce the requested creative artifact while honoring all structural constraints.
+
+    (2) Explain the key artistic decisions and how they support theme, tone, and character.
+
+    (3) Provide one alternate variation (voice, perspective, or form) and justify what changes.
+
+    (4) Critique your own draft and propose concrete revisions that would improve it.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001

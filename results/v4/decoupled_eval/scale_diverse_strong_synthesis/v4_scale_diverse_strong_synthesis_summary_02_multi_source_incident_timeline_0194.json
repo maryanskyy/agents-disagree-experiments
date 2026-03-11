@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_strong_synthesis_summary_02_multi_source_incident_timeline_0194.json",
+  "block": "scale_diverse_strong_synthesis",
+  "task_type": "Construct a Reliable Incident Timeline from Conflicting Sources",
+  "task_id": "Construct a Reliable Incident Timeline from Conflicting Sources",
+  "run_id": "v4_scale_diverse_strong_synthesis_summary_02_multi_source_incident_timeline_0194",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.20000004029798898,
+    "agent_1": 0.20000004029798898,
+    "agent_2": 0.3999998791060329,
+    "consensus": 0.20000004029798898
+  },
+  "ranking": [
+    "agent_2",
+    "agent_0",
+    "agent_1",
+    "consensus"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.13762047598153307,
+      "agent_1": 0.23335186281275472,
+      "agent_2": 0.23335186281275472,
+      "consensus": 0.3956757983929575
+    },
+    "glm-5": {
+      "agent_0": 0.0017725487268446206,
+      "agent_1": 0.0008326607048324192,
+      "agent_2": 0.9970039450780211,
+      "consensus": 0.00039084549030178725
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": -2.7755575615628914e-17,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": -8.326672684688674e-17,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 0.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "right"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "right"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T01:54:08.270001+00:00",
+  "consensus_bt_score": 0.20000004029798898,
+  "consensus_rank": 4,
+  "consensus_win_rate": 0.0
+}

@@ -1,0 +1,77 @@
+version: 3
+
+# Agent Pool - models used in multi-agent pipelines
+agent_pool:
+  claude-opus-4-6:
+    provider: anthropic
+    model_id: claude-opus-4-6
+    tier: strong
+    max_output_tokens: 16384
+    rpm_limit: 30
+    tpm_limit: 80000
+
+  gpt-5.4:
+    provider: openai
+    model_id: gpt-5.4
+    tier: strong
+    max_output_tokens: 16384
+    rpm_limit: 35
+    tpm_limit: 150000
+
+  gemini-2.5-pro:
+    provider: google
+    model_id: gemini-2.5-pro
+    tier: strong
+    max_output_tokens: 16384
+    rpm_limit: 35
+    tpm_limit: 200000
+
+  claude-haiku-4-5:
+    provider: anthropic
+    model_id: claude-haiku-4-5
+    tier: weak
+    max_output_tokens: 2048
+    rpm_limit: 50
+    tpm_limit: 100000
+
+  gemini-2.5-flash:
+    provider: google
+    model_id: gemini-2.5-flash
+    tier: weak
+    max_output_tokens: 2048
+    rpm_limit: 80
+    tpm_limit: 500000
+
+# Judge Pool - models used ONLY for evaluation (no overlap with agents)
+judge_pool:
+  claude-sonnet-4-6:
+    provider: anthropic
+    model_id: claude-sonnet-4-6
+    rpm_limit: 35
+
+  gpt-5-mini:
+    provider: openai
+    model_id: gpt-5-mini
+    rpm_limit: 35
+
+  deepseek-v3p2:
+    provider: openai  # DeepSeek uses OpenAI-compatible API
+    model_id: deepseek-v3p2
+    rpm_limit: 30
+
+# Eval Judge Pool - decoupled evaluators (no overlap with agents or selection judges)
+eval_judge_pool:
+  gpt-4o-mini:
+    provider: openai
+    model_id: gpt-4o-mini
+    rpm_limit: 60
+
+  gemini-2.0-flash-001:
+    provider: google
+    model_id: gemini-2.0-flash-001
+    rpm_limit: 60
+
+  glm-5:
+    provider: openai  # ZhiPu GLM uses OpenAI-compatible API
+    model_id: glm-5
+    rpm_limit: 30

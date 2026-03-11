@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_mixed_judge_based_science_01_heat_dome_mechanism_0115.json",
+  "block": "scale_diverse_mixed_judge_based",
+  "task_type": "Explain and Test Competing Mechanisms Behind a Heat Dome Event",
+  "task_id": "Explain and Test Competing Mechanisms Behind a Heat Dome Event",
+  "run_id": "v4_scale_diverse_mixed_judge_based_science_01_heat_dome_mechanism_0115",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.2857142652726973,
+    "agent_1": 0.2857142652726973,
+    "agent_2": 0.1428572041819083,
+    "consensus": 0.28571426527269717
+  },
+  "ranking": [
+    "agent_0",
+    "agent_1",
+    "consensus",
+    "agent_2"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "glm-5": {
+      "agent_0": 0.33333322222237033,
+      "agent_1": 0.33333322222237033,
+      "agent_2": 3.3333288888952317e-07,
+      "consensus": 0.33333322222237033
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": 0.3333333333333333,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": 0.0,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 1.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "right"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T00:49:30.712200+00:00",
+  "consensus_bt_score": 0.28571426527269717,
+  "consensus_rank": 3,
+  "consensus_win_rate": 0.3333333333333333
+}

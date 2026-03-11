@@ -1,0 +1,298 @@
+{
+  "run_id": "v4_scale_homo_opus_judge_based_summary_01_board_packet_crisis_0067",
+  "block_id": "scale_homo_opus_judge_based",
+  "status": "ok",
+  "timestamp_utc": "2026-03-10T21:45:45.957379+00:00",
+  "config": {
+    "task_type": "summarization",
+    "task_id": "summary_01_board_packet_crisis",
+    "topology": "flat",
+    "consensus": "judge_based",
+    "agent_count": 3,
+    "model_assignment": [
+      "claude-opus-4-6",
+      "claude-opus-4-6",
+      "claude-opus-4-6"
+    ],
+    "disagreement_level": 0,
+    "temperature": 0.7,
+    "prompt_strategy": "standard",
+    "repetition": 0,
+    "quality_threshold": null,
+    "posthoc_quality_thresholds": []
+  },
+  "task": {
+    "title": "Summarize a Board Packet for an Emerging Liquidity Crisis",
+    "prompt": "You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.\n\nScenario:\nYou are given a dense board packet from a mid-size SaaS company showing mixed signals: ARR growth remains strong, but cash conversion has deteriorated, enterprise renewals are lumpy, and customer-support costs rose after a rushed product launch. CFO memo emphasizes temporary billing timing effects; an independent director memo warns structural margin compression and covenant risk within two quarters. Product leadership asks for more hiring despite runway concerns. Your task is to summarize this packet for directors who only have ten minutes before an emergency meeting and need clear priorities, not generic prose.\n\nIn your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.\n\nYour tasks:\n(1) Provide an executive summary that is concise but decision-ready.\n(2) Extract the highest-priority facts, timeline elements, and unresolved questions.\n(3) Compare stakeholder viewpoints and identify where they truly conflict or align.\n(4) Recommend immediate next actions and what evidence should be collected next.\n\nFormat your answer with clear section headings corresponding to each numbered request. Conclude with a short 'decision summary' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.",
+    "rubric": [
+      "Coverage of the most decision-relevant facts without major omissions.",
+      "Faithful synthesis of conflicting viewpoints and uncertainty.",
+      "Structure, concision, and prioritization for executive use.",
+      "Quality of actionable next steps grounded in the provided material."
+    ]
+  },
+  "outputs": [
+    {
+      "agent_id": "agent_0",
+      "model_name": "claude-opus-4-6",
+      "text": "# BOARD PACKET SYNTHESIS \u2014 EMERGENCY MEETING BRIEF\n\n---\n\n## (1) EXECUTIVE SUMMARY (Decision-Ready)\n\n**Bottom line up front:** This company has a revenue engine that is still working but a cash engine that is showing warning signs. The central question for this meeting is whether the cash conversion deterioration is a **timing artifact** (CFO's position) or a **structural margin problem** (independent director's position). The answer determines whether the company can safely invest in more hiring or must instead shift to capital preservation mode. Directors should **not approve incremental hiring** until this question is resolved with data, which can be done within 2\u20133 weeks. The covenant risk flagged by the independent director is the most time-critical issue and must be quantified today.\n\n**Key tension:** ARR growth creates the appearance of health, but ARR is an accrual metric \u2014 it says nothing about when or whether cash arrives. If cash conversion has decoupled from ARR growth, the company may be growing itself into a liquidity crisis.\n\n---\n\n## (2) HIGHEST-PRIORITY FACTS, TIMELINE ELEMENTS, AND UNRESOLVED QUESTIONS\n\n### A. Facts (Directly Stated or Clearly Implied by Packet)\n\n| # | Fact | Significance |\n|---|------|-------------|\n| F1 | ARR growth remains strong | Top-line demand signal is intact; the problem is not market fit or pipeline |\n| F2 | Cash conversion has deteriorated | Cash collected per dollar of recognized/booked revenue is declining \u2014 the most operationally dangerous signal in the packet |\n| F3 | Enterprise renewals are \"lumpy\" | Large contracts are not renewing on predictable schedules, introducing volatility into both revenue and cash timing |\n| F4 | Customer-support costs rose post-launch | A rushed product launch created downstream cost \u2014 this is a realized margin hit, not a forecast |\n| F5 | CFO attributes cash conversion issue to billing timing | Management's official explanation is transient/mechanical |\n| F6 | Independent director warns of structural margin compression and covenant risk within two quarters | A board-level fiduciary believes the problem is deeper and has a specific timeline attached |\n| F7 | Product leadership requests more hiring | Headcount expansion = increased fixed cost burn, directly at odds with runway concerns |\n\n### B. Timeline Elements\n\n- **Immediate (0\u20132 weeks):** Covenant compliance must be verified. If covenants are tested quarterly, the next test date is the hard deadline. **[ASSUMPTION: Covenants are likely tied to a credit facility and tested quarterly on trailing metrics. This is standard for mid-size SaaS with debt. Labeled because the specific covenant structure is not stated.]**\n- **Near-term (1\u20132 quarters):** The independent director's two-quarter warning window. If margin compression is structural, covenant breach could occur in this window.\n- **Medium-term (2\u20134 quarters):** Enterprise renewal lumpiness will either normalize (if it's a cohort timing issue) or worsen (if it reflects churn or downsell risk).\n\n### C. Unresolved Questions (Ranked by Urgency)\n\n1. **What are the exact covenant terms, current headroom, and next test date?** This is binary and knowable \u2014 it should have been in the packet. Its absence is itself a concern.\n2. **What is the actual DSO trend over the last 4 quarters, and what is the aged receivables breakdown?** This distinguishes \"billing timing\" from \"collection problems\" from \"contract structure changes.\"\n3. **Is the enterprise renewal lumpiness a timing coincidence or an early churn/contraction signal?** Gross and net retention rates by cohort would answer this.\n4. **What is the incremental support cost per customer post-launch, and is it declining as bugs are fixed, or is it structural (product complexity)?**\n5. **What is current cash runway under (a) status quo burn, (b) approved hiring plan, and (c) worst-case collections scenario?**\n\n---\n\n## (3) STAKEHOLDER VIEWPOINT COMPARISON\n\n### CFO Position: \"Temporary Billing Timing Effects\"\n\n- **Claim:** Cash conversion deterioration is mechanical \u2014 invoices went out late, payment terms shifted on some enterprise deals, or quarter-end timing created a mismatch. This will self-correct.\n- **What would make this credible:** (a) DSO increased but aged AR (90+ days) did not; (b) a small number of large invoices with known payment dates explain the gap; (c) the pattern reverses in the following month's cash receipts.\n- **What makes this suspect:** CFOs have a structural incentive to frame problems as temporary. \"Billing timing\" is the most common explanation offered for cash conversion deterioration and is also the most common explanation that turns out to be wrong. **[ASSUMPTION: Without seeing the AR aging data, I weight this explanation as plausible but unverified. The burden of proof should be on the CFO to demonstrate it with data, not assertion.]**\n\n### Independent Director Position: \"Structural Margin Compression + Covenant Risk\"\n\n- **Claim:** The combination of rising support costs, lumpy renewals, and cash conversion decline is not a coincidence \u2014 it reflects a product/operational problem that is compressing margins, and this trajectory will breach covenants.\n- **What would make this credible:** (a) Gross margin has declined for 2+ consecutive quarters; (b) support cost increase is not just post-launch spike but a new baseline; (c) covenant headroom is thin (e.g., <15\u201320% cushion on EBITDA or liquidity tests).\n- **What makes this suspect:** Independent directors sometimes over-index on downside risk, especially if they have prior experience with distressed companies. The \"within two quarters\" specificity, however, suggests this director has done some math, which increases credibility.\n\n### Product Leadership Position: \"We Need More Hiring\"\n\n- **Claim:** Presumably, more engineers/PMs are needed to fix the product issues that caused the support cost spike, or to build features that drive enterprise retention.\n- **What would make this credible:** If the support cost increase and renewal lumpiness are both caused by product gaps that additional headcount would directly address, then hiring is an investment with a measurable return.\n- **What makes this suspect:** Hiring is the slowest lever to pull (3\u20136 month ramp), the most expensive to reverse (severance, morale), and directly worsens the runway/covenant concern. Product leadership is asking for resources without apparently acknowledging the financial constraint.\n\n### Where They Align\n\nAll three stakeholders implicitly agree that ARR growth is healthy and that the product launch created problems. The disagreement is about **severity and duration** of those problems, not their existence.\n\n### Where They Truly Conflict\n\n| Dimension | CFO | Ind. Director | Product |\n|-----------|-----|---------------|---------|\n| Nature of problem | Transient | Structural | Solvable with investment |\n| Implied action | Stay the course | Conserve capital / renegotiate covenants | Spend more |\n| Risk tolerance | Moderate | Low | High |\n\n**The CFO and independent director are in direct conflict on the same factual question** (is the margin/cash issue temporary or structural?). This is resolvable with data. **Product leadership's request is in direct conflict with the independent director's position** and is only compatible with the CFO's position if the CFO is right.\n\n---\n\n## (4) RECOMMENDED IMMEDIATE NEXT ACTIONS\n\n### Action 1: Quantify Covenant Position (Do Today)\n- **Owner:** CFO, verified by outside counsel or independent director\n- **Deliverable:** Exact covenant terms, current metric values, headroom percentage, next test date, and projected values under current trajectory\n- **Why:** This is a binary constraint. If covenant breach is imminent, it supersedes all other decisions.\n\n### Action 2: Freeze Hiring Approval (Effective Immediately, Revisit in 3 Weeks)\n- **Rationale:** Approving incremental fixed costs while the cash conversion question is unresolved is asymmetrically risky. The cost of a 3-week delay in hiring is low (modest roadmap slip). The cost of hiring into a covenant breach is severe (forced layoffs, lender intervention, loss of board credibility).\n- **[ASSUMPTION: A 3-week freeze is operationally tolerable. If there are signed offer letters outstanding, those should be honored but no new ones issued.]**\n\n### Action 3: Demand AR Aging and Cash Conversion Bridge Analysis (Due Within 1 Week)\n- **Owner:** CFO\n- **Deliverable:** Quarter-over-quarter bridge showing exactly what drove cash conversion decline \u2014 broken into (a) billing timing, (b) contract structure changes (e.g., annual to monthly), (c) collection delays, (d) other. Include specific large-dollar items.\n- **Why:** This is the single analysis that resolves the CFO vs. independent director disagreement.\n\n### Action 4: Enterprise Renewal Deep-Dive (Due Within 2 Weeks)\n- **Owner:** CRO/Head of CS + Finance\n- **Deliverable:** Cohort-level gross and net retention rates, pipeline of upcoming renewals with risk ratings, and explanation for any renewals that slipped or contracted.\n- **Why:** \"Lumpy\" is a description, not an explanation. The board needs to know if this is 2\u20133 large deals with idiosyncratic timing or a broader pattern.\n\n### Action 5: Support Cost Trajectory Analysis (Due Within 2 Weeks)\n- **Owner:** VP Support + Product\n- **Deliverable:** Weekly ticket volume and cost trend since product launch. Is it declining (post-launch spike, self-correcting) or flat/increasing (structural)?\n- **Why:** Determines whether the margin hit is a one-time event or a new baseline.\n\n### Evidence Collection Priority Matrix\n\n| Evidence | Resolves Which Conflict | Difficulty to Obtain | Timeline |\n|----------|------------------------|---------------------|----------|\n| Covenant headroom calc | Director vs. CFO (severity) | Low \u2014 data exists | Today |\n| AR aging + cash bridge | CFO vs. Director (temporary vs. structural) | Low-Medium | 1 week |\n| Retention cohort analysis | Renewal lumpiness explanation | Medium | 2 weeks |\n| Support cost trend | Margin compression durability | Low | 1 week |\n| Scenario-modeled runway | Hiring decision | Medium | 2 weeks |\n\n---\n\n## DECISION SUMMARY\n\n**Recommendation:** Place an immediate freeze on new hiring commitments, mandate covenant compliance verification today, and require the CFO to produce a detailed cash conversion bridge within one week. The board should reconvene in 3 weeks with this data to make a go/no-go decision on both hiring and any preemptive lender conversations. Do not accept the CFO's \"billing timing\" explanation without supporting data, but also do not yet escalate to covenant renegotiation without confirming the independent director's projections.\n\n**Confidence level:** **Moderate-High (approximately 75%)** that the hiring freeze and data demands are correct regardless of which interpretation is right \u2014 they are low-cost, high-information actions. **Moderate (approximately 55%)** that the independent director's structural concern will prove at least partially correct, based on the pattern of multiple simultaneous negative signals (cash conversion + support costs + renewal lumpiness) which is more consistent with an operational issue than a billing timing coincidence.\n\n**Single most important uncertainty that could reverse this conclusion:** If the cash conversion decline is fully explained by 1\u20132 large enterprise invoices with confirmed payment dates in the next 30 days, and covenant headroom exceeds 25%, then the CFO is likely right, the independent director is over-reacting, and a more measured approach to hiring (phased, with milestones) could be appropriate. The AR aging analysis is therefore the decisive document.",
+      "input_tokens": 408,
+      "output_tokens": 2749,
+      "latency_ms": 4281.361681874841,
+      "structural_metrics": {
+        "mtld": 169.51892720117834,
+        "readability_fk_grade": 13.969268230229414,
+        "coherence_mean": 0.28109262610440916,
+        "prompt_relevance": 0.563419439037866,
+        "connective_density": 0.3230769230769231,
+        "word_count": 1677,
+        "repetition_rate": 0.017323775388291517
+      }
+    },
+    {
+      "agent_id": "agent_1",
+      "model_name": "claude-opus-4-6",
+      "text": "# BOARD PACKET SYNTHESIS \u2014 EMERGENCY MEETING BRIEF\n\n---\n\n## (1) EXECUTIVE SUMMARY (Decision-Ready)\n\n**Bottom line up front:** This company has a revenue engine that is still working but a cash engine that is showing warning signs. The central question for this meeting is whether the cash conversion deterioration is a **timing artifact** (CFO's position) or a **structural margin problem** (independent director's position). The answer determines whether the company can safely invest in more hiring or must instead shift to capital preservation mode. Directors should **not approve incremental hiring** until this question is resolved with data, which can be done within 2\u20133 weeks. The covenant risk flagged by the independent director is the most time-critical issue and must be quantified today.\n\n**Key tension:** ARR growth creates the appearance of health, but ARR is an accrual metric \u2014 it says nothing about when or whether cash arrives. If cash conversion has decoupled from ARR growth, the company may be growing itself into a liquidity crisis.\n\n---\n\n## (2) HIGHEST-PRIORITY FACTS, TIMELINE ELEMENTS, AND UNRESOLVED QUESTIONS\n\n### A. Facts (Directly Stated or Clearly Implied by Packet)\n\n| # | Fact | Significance |\n|---|------|-------------|\n| F1 | ARR growth remains strong | Top-line demand signal is intact; the problem is not market fit or pipeline |\n| F2 | Cash conversion has deteriorated | Cash collected per dollar of recognized/booked revenue is declining \u2014 the most operationally dangerous signal in the packet |\n| F3 | Enterprise renewals are \"lumpy\" | Large contracts are not renewing on predictable schedules, introducing volatility into both revenue and cash timing |\n| F4 | Customer-support costs rose post-launch | A rushed product launch created downstream cost \u2014 this is a realized margin hit, not a forecast |\n| F5 | CFO attributes cash conversion issue to billing timing | Management's official explanation is transient/mechanical |\n| F6 | Independent director warns of structural margin compression and covenant risk within two quarters | A board-level fiduciary believes the problem is deeper and has a specific timeline attached |\n| F7 | Product leadership requests more hiring | Headcount expansion = increased fixed cost burn, directly at odds with runway concerns |\n\n### B. Timeline Elements\n\n- **Immediate (0\u20132 weeks):** Covenant compliance must be verified. If covenants are tested quarterly, the next test date is the hard deadline. **[ASSUMPTION: Covenants are likely tied to a credit facility and tested quarterly on trailing metrics. This is standard for mid-size SaaS with debt. Labeled because the specific covenant structure is not stated.]**\n- **Near-term (1\u20132 quarters):** The independent director's two-quarter warning window. If margin compression is structural, covenant breach could occur in this window.\n- **Medium-term (2\u20134 quarters):** Enterprise renewal lumpiness will either normalize (if it's a cohort timing issue) or worsen (if it reflects churn or downsell risk).\n\n### C. Unresolved Questions (Ranked by Urgency)\n\n1. **What are the exact covenant terms, current headroom, and next test date?** This is binary and knowable \u2014 it should have been in the packet. Its absence is itself a concern.\n2. **What is the actual DSO trend over the last 4 quarters, and what is the aged receivables breakdown?** This distinguishes \"billing timing\" from \"collection problems\" from \"contract structure changes.\"\n3. **Is the enterprise renewal lumpiness a timing coincidence or an early churn/contraction signal?** Gross and net retention rates by cohort would answer this.\n4. **What is the incremental support cost per customer post-launch, and is it declining as bugs are fixed, or is it structural (product complexity)?**\n5. **What is current cash runway under (a) status quo burn, (b) approved hiring plan, and (c) worst-case collections scenario?**\n\n---\n\n## (3) STAKEHOLDER VIEWPOINT COMPARISON\n\n### CFO Position: \"Temporary Billing Timing Effects\"\n\n- **Claim:** Cash conversion deterioration is mechanical \u2014 invoices went out late, payment terms shifted on some enterprise deals, or quarter-end timing created a mismatch. This will self-correct.\n- **What would make this credible:** (a) DSO increased but aged AR (90+ days) did not; (b) a small number of large invoices with known payment dates explain the gap; (c) the pattern reverses in the following month's cash receipts.\n- **What makes this suspect:** CFOs have a structural incentive to frame problems as temporary. \"Billing timing\" is the most common explanation offered for cash conversion deterioration and is also the most common explanation that turns out to be wrong. **[ASSUMPTION: Without seeing the AR aging data, I weight this explanation as plausible but unverified. The burden of proof should be on the CFO to demonstrate it with data, not assertion.]**\n\n### Independent Director Position: \"Structural Margin Compression + Covenant Risk\"\n\n- **Claim:** The combination of rising support costs, lumpy renewals, and cash conversion decline is not a coincidence \u2014 it reflects a product/operational problem that is compressing margins, and this trajectory will breach covenants.\n- **What would make this credible:** (a) Gross margin has declined for 2+ consecutive quarters; (b) support cost increase is not just post-launch spike but a new baseline; (c) covenant headroom is thin (e.g., <15\u201320% cushion on EBITDA or liquidity tests).\n- **What makes this suspect:** Independent directors sometimes over-index on downside risk, especially if they have prior experience with distressed companies. The \"within two quarters\" specificity, however, suggests this director has done some math, which increases credibility.\n\n### Product Leadership Position: \"We Need More Hiring\"\n\n- **Claim:** Presumably, more engineers/PMs are needed to fix the product issues that caused the support cost spike, or to build features that drive enterprise retention.\n- **What would make this credible:** If the support cost increase and renewal lumpiness are both caused by product gaps that additional headcount would directly address, then hiring is an investment with a measurable return.\n- **What makes this suspect:** Hiring is the slowest lever to pull (3\u20136 month ramp), the most expensive to reverse (severance, morale), and directly worsens the runway/covenant concern. Product leadership is asking for resources without apparently acknowledging the financial constraint.\n\n### Where They Align\n\nAll three stakeholders implicitly agree that ARR growth is healthy and that the product launch created problems. The disagreement is about **severity and duration** of those problems, not their existence.\n\n### Where They Truly Conflict\n\n| Dimension | CFO | Ind. Director | Product |\n|-----------|-----|---------------|---------|\n| Nature of problem | Transient | Structural | Solvable with investment |\n| Implied action | Stay the course | Conserve capital / renegotiate covenants | Spend more |\n| Risk tolerance | Moderate | Low | High |\n\n**The CFO and independent director are in direct conflict on the same factual question** (is the margin/cash issue temporary or structural?). This is resolvable with data. **Product leadership's request is in direct conflict with the independent director's position** and is only compatible with the CFO's position if the CFO is right.\n\n---\n\n## (4) RECOMMENDED IMMEDIATE NEXT ACTIONS\n\n### Action 1: Quantify Covenant Position (Do Today)\n- **Owner:** CFO, verified by outside counsel or independent director\n- **Deliverable:** Exact covenant terms, current metric values, headroom percentage, next test date, and projected values under current trajectory\n- **Why:** This is a binary constraint. If covenant breach is imminent, it supersedes all other decisions.\n\n### Action 2: Freeze Hiring Approval (Effective Immediately, Revisit in 3 Weeks)\n- **Rationale:** Approving incremental fixed costs while the cash conversion question is unresolved is asymmetrically risky. The cost of a 3-week delay in hiring is low (modest roadmap slip). The cost of hiring into a covenant breach is severe (forced layoffs, lender intervention, loss of board credibility).\n- **[ASSUMPTION: A 3-week freeze is operationally tolerable. If there are signed offer letters outstanding, those should be honored but no new ones issued.]**\n\n### Action 3: Demand AR Aging and Cash Conversion Bridge Analysis (Due Within 1 Week)\n- **Owner:** CFO\n- **Deliverable:** Quarter-over-quarter bridge showing exactly what drove cash conversion decline \u2014 broken into (a) billing timing, (b) contract structure changes (e.g., annual to monthly), (c) collection delays, (d) other. Include specific large-dollar items.\n- **Why:** This is the single analysis that resolves the CFO vs. independent director disagreement.\n\n### Action 4: Enterprise Renewal Deep-Dive (Due Within 2 Weeks)\n- **Owner:** CRO/Head of CS + Finance\n- **Deliverable:** Cohort-level gross and net retention rates, pipeline of upcoming renewals with risk ratings, and explanation for any renewals that slipped or contracted.\n- **Why:** \"Lumpy\" is a description, not an explanation. The board needs to know if this is 2\u20133 large deals with idiosyncratic timing or a broader pattern.\n\n### Action 5: Support Cost Trajectory Analysis (Due Within 2 Weeks)\n- **Owner:** VP Support + Product\n- **Deliverable:** Weekly ticket volume and cost trend since product launch. Is it declining (post-launch spike, self-correcting) or flat/increasing (structural)?\n- **Why:** Determines whether the margin hit is a one-time event or a new baseline.\n\n### Evidence Collection Priority Matrix\n\n| Evidence | Resolves Which Conflict | Difficulty to Obtain | Timeline |\n|----------|------------------------|---------------------|----------|\n| Covenant headroom calc | Director vs. CFO (severity) | Low \u2014 data exists | Today |\n| AR aging + cash bridge | CFO vs. Director (temporary vs. structural) | Low-Medium | 1 week |\n| Retention cohort analysis | Renewal lumpiness explanation | Medium | 2 weeks |\n| Support cost trend | Margin compression durability | Low | 1 week |\n| Scenario-modeled runway | Hiring decision | Medium | 2 weeks |\n\n---\n\n## DECISION SUMMARY\n\n**Recommendation:** Place an immediate freeze on new hiring commitments, mandate covenant compliance verification today, and require the CFO to produce a detailed cash conversion bridge within one week. The board should reconvene in 3 weeks with this data to make a go/no-go decision on both hiring and any preemptive lender conversations. Do not accept the CFO's \"billing timing\" explanation without supporting data, but also do not yet escalate to covenant renegotiation without confirming the independent director's projections.\n\n**Confidence level:** **Moderate-High (approximately 75%)** that the hiring freeze and data demands are correct regardless of which interpretation is right \u2014 they are low-cost, high-information actions. **Moderate (approximately 55%)** that the independent director's structural concern will prove at least partially correct, based on the pattern of multiple simultaneous negative signals (cash conversion + support costs + renewal lumpiness) which is more consistent with an operational issue than a billing timing coincidence.\n\n**Single most important uncertainty that could reverse this conclusion:** If the cash conversion decline is fully explained by 1\u20132 large enterprise invoices with confirmed payment dates in the next 30 days, and covenant headroom exceeds 25%, then the CFO is likely right, the independent director is over-reacting, and a more measured approach to hiring (phased, with milestones) could be appropriate. The AR aging analysis is therefore the decisive document.",
+      "input_tokens": 408,
+      "output_tokens": 2749,
+      "latency_ms": 5226.731082424521,
+      "structural_metrics": {
+        "mtld": 169.51892720117834,
+        "readability_fk_grade": 13.969268230229414,
+        "coherence_mean": 0.28109262610440916,
+        "prompt_relevance": 0.563419439037866,
+        "connective_density": 0.3230769230769231,
+        "word_count": 1677,
+        "repetition_rate": 0.017323775388291517
+      }
+    },
+    {
+      "agent_id": "agent_2",
+      "model_name": "claude-opus-4-6",
+      "text": "# BOARD PACKET SYNTHESIS \u2014 EMERGENCY MEETING BRIEF\n\n---\n\n## (1) EXECUTIVE SUMMARY (Decision-Ready)\n\n**Bottom line up front:** This company has a revenue engine that is still working but a cash engine that is showing warning signs. The central question for this meeting is whether the cash conversion deterioration is a **timing artifact** (CFO's position) or a **structural margin problem** (independent director's position). The answer determines whether the company can safely invest in more hiring or must instead shift to capital preservation mode. Directors should **not approve incremental hiring** until this question is resolved with data, which can be done within 2\u20133 weeks. The covenant risk flagged by the independent director is the most time-critical issue and must be quantified today.\n\n**Key tension:** ARR growth creates the appearance of health, but ARR is an accrual metric \u2014 it says nothing about when or whether cash arrives. If cash conversion has decoupled from ARR growth, the company may be growing itself into a liquidity crisis.\n\n---\n\n## (2) HIGHEST-PRIORITY FACTS, TIMELINE ELEMENTS, AND UNRESOLVED QUESTIONS\n\n### A. Facts (Directly Stated or Clearly Implied by Packet)\n\n| # | Fact | Significance |\n|---|------|-------------|\n| F1 | ARR growth remains strong | Top-line demand signal is intact; the problem is not market fit or pipeline |\n| F2 | Cash conversion has deteriorated | Cash collected per dollar of recognized/booked revenue is declining \u2014 the most operationally dangerous signal in the packet |\n| F3 | Enterprise renewals are \"lumpy\" | Large contracts are not renewing on predictable schedules, introducing volatility into both revenue and cash timing |\n| F4 | Customer-support costs rose post-launch | A rushed product launch created downstream cost \u2014 this is a realized margin hit, not a forecast |\n| F5 | CFO attributes cash conversion issue to billing timing | Management's official explanation is transient/mechanical |\n| F6 | Independent director warns of structural margin compression and covenant risk within two quarters | A board-level fiduciary believes the problem is deeper and has a specific timeline attached |\n| F7 | Product leadership requests more hiring | Headcount expansion = increased fixed cost burn, directly at odds with runway concerns |\n\n### B. Timeline Elements\n\n- **Immediate (0\u20132 weeks):** Covenant compliance must be verified. If covenants are tested quarterly, the next test date is the hard deadline. **[ASSUMPTION: Covenants are likely tied to a credit facility and tested quarterly on trailing metrics. This is standard for mid-size SaaS with debt. Labeled because the specific covenant structure is not stated.]**\n- **Near-term (1\u20132 quarters):** The independent director's two-quarter warning window. If margin compression is structural, covenant breach could occur in this window.\n- **Medium-term (2\u20134 quarters):** Enterprise renewal lumpiness will either normalize (if it's a cohort timing issue) or worsen (if it reflects churn or downsell risk).\n\n### C. Unresolved Questions (Ranked by Urgency)\n\n1. **What are the exact covenant terms, current headroom, and next test date?** This is binary and knowable \u2014 it should have been in the packet. Its absence is itself a concern.\n2. **What is the actual DSO trend over the last 4 quarters, and what is the aged receivables breakdown?** This distinguishes \"billing timing\" from \"collection problems\" from \"contract structure changes.\"\n3. **Is the enterprise renewal lumpiness a timing coincidence or an early churn/contraction signal?** Gross and net retention rates by cohort would answer this.\n4. **What is the incremental support cost per customer post-launch, and is it declining as bugs are fixed, or is it structural (product complexity)?**\n5. **What is current cash runway under (a) status quo burn, (b) approved hiring plan, and (c) worst-case collections scenario?**\n\n---\n\n## (3) STAKEHOLDER VIEWPOINT COMPARISON\n\n### CFO Position: \"Temporary Billing Timing Effects\"\n\n- **Claim:** Cash conversion deterioration is mechanical \u2014 invoices went out late, payment terms shifted on some enterprise deals, or quarter-end timing created a mismatch. This will self-correct.\n- **What would make this credible:** (a) DSO increased but aged AR (90+ days) did not; (b) a small number of large invoices with known payment dates explain the gap; (c) the pattern reverses in the following month's cash receipts.\n- **What makes this suspect:** CFOs have a structural incentive to frame problems as temporary. \"Billing timing\" is the most common explanation offered for cash conversion deterioration and is also the most common explanation that turns out to be wrong. **[ASSUMPTION: Without seeing the AR aging data, I weight this explanation as plausible but unverified. The burden of proof should be on the CFO to demonstrate it with data, not assertion.]**\n\n### Independent Director Position: \"Structural Margin Compression + Covenant Risk\"\n\n- **Claim:** The combination of rising support costs, lumpy renewals, and cash conversion decline is not a coincidence \u2014 it reflects a product/operational problem that is compressing margins, and this trajectory will breach covenants.\n- **What would make this credible:** (a) Gross margin has declined for 2+ consecutive quarters; (b) support cost increase is not just post-launch spike but a new baseline; (c) covenant headroom is thin (e.g., <15\u201320% cushion on EBITDA or liquidity tests).\n- **What makes this suspect:** Independent directors sometimes over-index on downside risk, especially if they have prior experience with distressed companies. The \"within two quarters\" specificity, however, suggests this director has done some math, which increases credibility.\n\n### Product Leadership Position: \"We Need More Hiring\"\n\n- **Claim:** Presumably, more engineers/PMs are needed to fix the product issues that caused the support cost spike, or to build features that drive enterprise retention.\n- **What would make this credible:** If the support cost increase and renewal lumpiness are both caused by product gaps that additional headcount would directly address, then hiring is an investment with a measurable return.\n- **What makes this suspect:** Hiring is the slowest lever to pull (3\u20136 month ramp), the most expensive to reverse (severance, morale), and directly worsens the runway/covenant concern. Product leadership is asking for resources without apparently acknowledging the financial constraint.\n\n### Where They Align\n\nAll three stakeholders implicitly agree that ARR growth is healthy and that the product launch created problems. The disagreement is about **severity and duration** of those problems, not their existence.\n\n### Where They Truly Conflict\n\n| Dimension | CFO | Ind. Director | Product |\n|-----------|-----|---------------|---------|\n| Nature of problem | Transient | Structural | Solvable with investment |\n| Implied action | Stay the course | Conserve capital / renegotiate covenants | Spend more |\n| Risk tolerance | Moderate | Low | High |\n\n**The CFO and independent director are in direct conflict on the same factual question** (is the margin/cash issue temporary or structural?). This is resolvable with data. **Product leadership's request is in direct conflict with the independent director's position** and is only compatible with the CFO's position if the CFO is right.\n\n---\n\n## (4) RECOMMENDED IMMEDIATE NEXT ACTIONS\n\n### Action 1: Quantify Covenant Position (Do Today)\n- **Owner:** CFO, verified by outside counsel or independent director\n- **Deliverable:** Exact covenant terms, current metric values, headroom percentage, next test date, and projected values under current trajectory\n- **Why:** This is a binary constraint. If covenant breach is imminent, it supersedes all other decisions.\n\n### Action 2: Freeze Hiring Approval (Effective Immediately, Revisit in 3 Weeks)\n- **Rationale:** Approving incremental fixed costs while the cash conversion question is unresolved is asymmetrically risky. The cost of a 3-week delay in hiring is low (modest roadmap slip). The cost of hiring into a covenant breach is severe (forced layoffs, lender intervention, loss of board credibility).\n- **[ASSUMPTION: A 3-week freeze is operationally tolerable. If there are signed offer letters outstanding, those should be honored but no new ones issued.]**\n\n### Action 3: Demand AR Aging and Cash Conversion Bridge Analysis (Due Within 1 Week)\n- **Owner:** CFO\n- **Deliverable:** Quarter-over-quarter bridge showing exactly what drove cash conversion decline \u2014 broken into (a) billing timing, (b) contract structure changes (e.g., annual to monthly), (c) collection delays, (d) other. Include specific large-dollar items.\n- **Why:** This is the single analysis that resolves the CFO vs. independent director disagreement.\n\n### Action 4: Enterprise Renewal Deep-Dive (Due Within 2 Weeks)\n- **Owner:** CRO/Head of CS + Finance\n- **Deliverable:** Cohort-level gross and net retention rates, pipeline of upcoming renewals with risk ratings, and explanation for any renewals that slipped or contracted.\n- **Why:** \"Lumpy\" is a description, not an explanation. The board needs to know if this is 2\u20133 large deals with idiosyncratic timing or a broader pattern.\n\n### Action 5: Support Cost Trajectory Analysis (Due Within 2 Weeks)\n- **Owner:** VP Support + Product\n- **Deliverable:** Weekly ticket volume and cost trend since product launch. Is it declining (post-launch spike, self-correcting) or flat/increasing (structural)?\n- **Why:** Determines whether the margin hit is a one-time event or a new baseline.\n\n### Evidence Collection Priority Matrix\n\n| Evidence | Resolves Which Conflict | Difficulty to Obtain | Timeline |\n|----------|------------------------|---------------------|----------|\n| Covenant headroom calc | Director vs. CFO (severity) | Low \u2014 data exists | Today |\n| AR aging + cash bridge | CFO vs. Director (temporary vs. structural) | Low-Medium | 1 week |\n| Retention cohort analysis | Renewal lumpiness explanation | Medium | 2 weeks |\n| Support cost trend | Margin compression durability | Low | 1 week |\n| Scenario-modeled runway | Hiring decision | Medium | 2 weeks |\n\n---\n\n## DECISION SUMMARY\n\n**Recommendation:** Place an immediate freeze on new hiring commitments, mandate covenant compliance verification today, and require the CFO to produce a detailed cash conversion bridge within one week. The board should reconvene in 3 weeks with this data to make a go/no-go decision on both hiring and any preemptive lender conversations. Do not accept the CFO's \"billing timing\" explanation without supporting data, but also do not yet escalate to covenant renegotiation without confirming the independent director's projections.\n\n**Confidence level:** **Moderate-High (approximately 75%)** that the hiring freeze and data demands are correct regardless of which interpretation is right \u2014 they are low-cost, high-information actions. **Moderate (approximately 55%)** that the independent director's structural concern will prove at least partially correct, based on the pattern of multiple simultaneous negative signals (cash conversion + support costs + renewal lumpiness) which is more consistent with an operational issue than a billing timing coincidence.\n\n**Single most important uncertainty that could reverse this conclusion:** If the cash conversion decline is fully explained by 1\u20132 large enterprise invoices with confirmed payment dates in the next 30 days, and covenant headroom exceeds 25%, then the CFO is likely right, the independent director is over-reacting, and a more measured approach to hiring (phased, with milestones) could be appropriate. The AR aging analysis is therefore the decisive document.",
+      "input_tokens": 408,
+      "output_tokens": 2749,
+      "latency_ms": 5553.856718353927,
+      "structural_metrics": {
+        "mtld": 169.51892720117834,
+        "readability_fk_grade": 13.969268230229414,
+        "coherence_mean": 0.28109262610440916,
+        "prompt_relevance": 0.563419439037866,
+        "connective_density": 0.3230769230769231,
+        "word_count": 1677,
+        "repetition_rate": 0.017323775388291517
+      }
+    }
+  ],
+  "consensus": {
+    "method": "judge_based",
+    "selected_agent_id": "agent_0",
+    "selected_text": "# BOARD PACKET SYNTHESIS \u2014 EMERGENCY MEETING BRIEF\n\n---\n\n## (1) EXECUTIVE SUMMARY (Decision-Ready)\n\n**Bottom line up front:** This company has a revenue engine that is still working but a cash engine that is showing warning signs. The central question for this meeting is whether the cash conversion deterioration is a **timing artifact** (CFO's position) or a **structural margin problem** (independent director's position). The answer determines whether the company can safely invest in more hiring or must instead shift to capital preservation mode. Directors should **not approve incremental hiring** until this question is resolved with data, which can be done within 2\u20133 weeks. The covenant risk flagged by the independent director is the most time-critical issue and must be quantified today.\n\n**Key tension:** ARR growth creates the appearance of health, but ARR is an accrual metric \u2014 it says nothing about when or whether cash arrives. If cash conversion has decoupled from ARR growth, the company may be growing itself into a liquidity crisis.\n\n---\n\n## (2) HIGHEST-PRIORITY FACTS, TIMELINE ELEMENTS, AND UNRESOLVED QUESTIONS\n\n### A. Facts (Directly Stated or Clearly Implied by Packet)\n\n| # | Fact | Significance |\n|---|------|-------------|\n| F1 | ARR growth remains strong | Top-line demand signal is intact; the problem is not market fit or pipeline |\n| F2 | Cash conversion has deteriorated | Cash collected per dollar of recognized/booked revenue is declining \u2014 the most operationally dangerous signal in the packet |\n| F3 | Enterprise renewals are \"lumpy\" | Large contracts are not renewing on predictable schedules, introducing volatility into both revenue and cash timing |\n| F4 | Customer-support costs rose post-launch | A rushed product launch created downstream cost \u2014 this is a realized margin hit, not a forecast |\n| F5 | CFO attributes cash conversion issue to billing timing | Management's official explanation is transient/mechanical |\n| F6 | Independent director warns of structural margin compression and covenant risk within two quarters | A board-level fiduciary believes the problem is deeper and has a specific timeline attached |\n| F7 | Product leadership requests more hiring | Headcount expansion = increased fixed cost burn, directly at odds with runway concerns |\n\n### B. Timeline Elements\n\n- **Immediate (0\u20132 weeks):** Covenant compliance must be verified. If covenants are tested quarterly, the next test date is the hard deadline. **[ASSUMPTION: Covenants are likely tied to a credit facility and tested quarterly on trailing metrics. This is standard for mid-size SaaS with debt. Labeled because the specific covenant structure is not stated.]**\n- **Near-term (1\u20132 quarters):** The independent director's two-quarter warning window. If margin compression is structural, covenant breach could occur in this window.\n- **Medium-term (2\u20134 quarters):** Enterprise renewal lumpiness will either normalize (if it's a cohort timing issue) or worsen (if it reflects churn or downsell risk).\n\n### C. Unresolved Questions (Ranked by Urgency)\n\n1. **What are the exact covenant terms, current headroom, and next test date?** This is binary and knowable \u2014 it should have been in the packet. Its absence is itself a concern.\n2. **What is the actual DSO trend over the last 4 quarters, and what is the aged receivables breakdown?** This distinguishes \"billing timing\" from \"collection problems\" from \"contract structure changes.\"\n3. **Is the enterprise renewal lumpiness a timing coincidence or an early churn/contraction signal?** Gross and net retention rates by cohort would answer this.\n4. **What is the incremental support cost per customer post-launch, and is it declining as bugs are fixed, or is it structural (product complexity)?**\n5. **What is current cash runway under (a) status quo burn, (b) approved hiring plan, and (c) worst-case collections scenario?**\n\n---\n\n## (3) STAKEHOLDER VIEWPOINT COMPARISON\n\n### CFO Position: \"Temporary Billing Timing Effects\"\n\n- **Claim:** Cash conversion deterioration is mechanical \u2014 invoices went out late, payment terms shifted on some enterprise deals, or quarter-end timing created a mismatch. This will self-correct.\n- **What would make this credible:** (a) DSO increased but aged AR (90+ days) did not; (b) a small number of large invoices with known payment dates explain the gap; (c) the pattern reverses in the following month's cash receipts.\n- **What makes this suspect:** CFOs have a structural incentive to frame problems as temporary. \"Billing timing\" is the most common explanation offered for cash conversion deterioration and is also the most common explanation that turns out to be wrong. **[ASSUMPTION: Without seeing the AR aging data, I weight this explanation as plausible but unverified. The burden of proof should be on the CFO to demonstrate it with data, not assertion.]**\n\n### Independent Director Position: \"Structural Margin Compression + Covenant Risk\"\n\n- **Claim:** The combination of rising support costs, lumpy renewals, and cash conversion decline is not a coincidence \u2014 it reflects a product/operational problem that is compressing margins, and this trajectory will breach covenants.\n- **What would make this credible:** (a) Gross margin has declined for 2+ consecutive quarters; (b) support cost increase is not just post-launch spike but a new baseline; (c) covenant headroom is thin (e.g., <15\u201320% cushion on EBITDA or liquidity tests).\n- **What makes this suspect:** Independent directors sometimes over-index on downside risk, especially if they have prior experience with distressed companies. The \"within two quarters\" specificity, however, suggests this director has done some math, which increases credibility.\n\n### Product Leadership Position: \"We Need More Hiring\"\n\n- **Claim:** Presumably, more engineers/PMs are needed to fix the product issues that caused the support cost spike, or to build features that drive enterprise retention.\n- **What would make this credible:** If the support cost increase and renewal lumpiness are both caused by product gaps that additional headcount would directly address, then hiring is an investment with a measurable return.\n- **What makes this suspect:** Hiring is the slowest lever to pull (3\u20136 month ramp), the most expensive to reverse (severance, morale), and directly worsens the runway/covenant concern. Product leadership is asking for resources without apparently acknowledging the financial constraint.\n\n### Where They Align\n\nAll three stakeholders implicitly agree that ARR growth is healthy and that the product launch created problems. The disagreement is about **severity and duration** of those problems, not their existence.\n\n### Where They Truly Conflict\n\n| Dimension | CFO | Ind. Director | Product |\n|-----------|-----|---------------|---------|\n| Nature of problem | Transient | Structural | Solvable with investment |\n| Implied action | Stay the course | Conserve capital / renegotiate covenants | Spend more |\n| Risk tolerance | Moderate | Low | High |\n\n**The CFO and independent director are in direct conflict on the same factual question** (is the margin/cash issue temporary or structural?). This is resolvable with data. **Product leadership's request is in direct conflict with the independent director's position** and is only compatible with the CFO's position if the CFO is right.\n\n---\n\n## (4) RECOMMENDED IMMEDIATE NEXT ACTIONS\n\n### Action 1: Quantify Covenant Position (Do Today)\n- **Owner:** CFO, verified by outside counsel or independent director\n- **Deliverable:** Exact covenant terms, current metric values, headroom percentage, next test date, and projected values under current trajectory\n- **Why:** This is a binary constraint. If covenant breach is imminent, it supersedes all other decisions.\n\n### Action 2: Freeze Hiring Approval (Effective Immediately, Revisit in 3 Weeks)\n- **Rationale:** Approving incremental fixed costs while the cash conversion question is unresolved is asymmetrically risky. The cost of a 3-week delay in hiring is low (modest roadmap slip). The cost of hiring into a covenant breach is severe (forced layoffs, lender intervention, loss of board credibility).\n- **[ASSUMPTION: A 3-week freeze is operationally tolerable. If there are signed offer letters outstanding, those should be honored but no new ones issued.]**\n\n### Action 3: Demand AR Aging and Cash Conversion Bridge Analysis (Due Within 1 Week)\n- **Owner:** CFO\n- **Deliverable:** Quarter-over-quarter bridge showing exactly what drove cash conversion decline \u2014 broken into (a) billing timing, (b) contract structure changes (e.g., annual to monthly), (c) collection delays, (d) other. Include specific large-dollar items.\n- **Why:** This is the single analysis that resolves the CFO vs. independent director disagreement.\n\n### Action 4: Enterprise Renewal Deep-Dive (Due Within 2 Weeks)\n- **Owner:** CRO/Head of CS + Finance\n- **Deliverable:** Cohort-level gross and net retention rates, pipeline of upcoming renewals with risk ratings, and explanation for any renewals that slipped or contracted.\n- **Why:** \"Lumpy\" is a description, not an explanation. The board needs to know if this is 2\u20133 large deals with idiosyncratic timing or a broader pattern.\n\n### Action 5: Support Cost Trajectory Analysis (Due Within 2 Weeks)\n- **Owner:** VP Support + Product\n- **Deliverable:** Weekly ticket volume and cost trend since product launch. Is it declining (post-launch spike, self-correcting) or flat/increasing (structural)?\n- **Why:** Determines whether the margin hit is a one-time event or a new baseline.\n\n### Evidence Collection Priority Matrix\n\n| Evidence | Resolves Which Conflict | Difficulty to Obtain | Timeline |\n|----------|------------------------|---------------------|----------|\n| Covenant headroom calc | Director vs. CFO (severity) | Low \u2014 data exists | Today |\n| AR aging + cash bridge | CFO vs. Director (temporary vs. structural) | Low-Medium | 1 week |\n| Retention cohort analysis | Renewal lumpiness explanation | Medium | 2 weeks |\n| Support cost trend | Margin compression durability | Low | 1 week |\n| Scenario-modeled runway | Hiring decision | Medium | 2 weeks |\n\n---\n\n## DECISION SUMMARY\n\n**Recommendation:** Place an immediate freeze on new hiring commitments, mandate covenant compliance verification today, and require the CFO to produce a detailed cash conversion bridge within one week. The board should reconvene in 3 weeks with this data to make a go/no-go decision on both hiring and any preemptive lender conversations. Do not accept the CFO's \"billing timing\" explanation without supporting data, but also do not yet escalate to covenant renegotiation without confirming the independent director's projections.\n\n**Confidence level:** **Moderate-High (approximately 75%)** that the hiring freeze and data demands are correct regardless of which interpretation is right \u2014 they are low-cost, high-information actions. **Moderate (approximately 55%)** that the independent director's structural concern will prove at least partially correct, based on the pattern of multiple simultaneous negative signals (cash conversion + support costs + renewal lumpiness) which is more consistent with an operational issue than a billing timing coincidence.\n\n**Single most important uncertainty that could reverse this conclusion:** If the cash conversion decline is fully explained by 1\u20132 large enterprise invoices with confirmed payment dates in the next 30 days, and covenant headroom exceeds 25%, then the CFO is likely right, the independent director is over-reacting, and a more measured approach to hiring (phased, with milestones) could be appropriate. The AR aging analysis is therefore the decisive document.",
+    "confidence": 0.3333333333333333,
+    "scores": {
+      "agent_0": 0.3333333333333333,
+      "agent_1": 0.3333333333333333,
+      "agent_2": 0.3333333333333333
+    },
+    "metadata": {
+      "judge_panel": {
+        "judges": [
+          "claude-sonnet-4-6",
+          "gpt-5-mini",
+          "deepseek-v3p2"
+        ],
+        "bt_scores": {
+          "agent_0": 0.3333333333333333,
+          "agent_1": 0.3333333333333333,
+          "agent_2": 0.3333333333333333
+        },
+        "ranking": [
+          "agent_0",
+          "agent_1",
+          "agent_2"
+        ],
+        "per_judge_bt_scores": {
+          "claude-sonnet-4-6": {
+            "agent_0": 0.3333333333333333,
+            "agent_1": 0.3333333333333333,
+            "agent_2": 0.3333333333333333
+          },
+          "gpt-5-mini": {
+            "agent_0": 0.3333333333333333,
+            "agent_1": 0.3333333333333333,
+            "agent_2": 0.3333333333333333
+          },
+          "deepseek-v3p2": {
+            "agent_0": 0.3333333333333333,
+            "agent_1": 0.3333333333333333,
+            "agent_2": 0.3333333333333333
+          }
+        },
+        "inter_rater_reliability": {
+          "mean_cohen_kappa": 1.0,
+          "pairwise": {
+            "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+            "claude-sonnet-4-6__vs__gpt-5-mini": 1.0,
+            "deepseek-v3p2__vs__gpt-5-mini": 1.0
+          }
+        },
+        "pairwise_records": [
+          {
+            "candidate_i": "agent_0",
+            "candidate_j": "agent_1",
+            "per_judge": {
+              "claude-sonnet-4-6": "tie",
+              "gpt-5-mini": "tie",
+              "deepseek-v3p2": "tie"
+            },
+            "majority_winner": null
+          },
+          {
+            "candidate_i": "agent_0",
+            "candidate_j": "agent_2",
+            "per_judge": {
+              "claude-sonnet-4-6": "tie",
+              "gpt-5-mini": "tie",
+              "deepseek-v3p2": "tie"
+            },
+            "majority_winner": null
+          },
+          {
+            "candidate_i": "agent_1",
+            "candidate_j": "agent_2",
+            "per_judge": {
+              "claude-sonnet-4-6": "tie",
+              "gpt-5-mini": "tie",
+              "deepseek-v3p2": "tie"
+            },
+            "majority_winner": null
+          }
+        ]
+      }
+    }
+  },
+  "topology": {
+    "name": "flat",
+    "rounds": 1,
+    "metadata": {}
+  },
+  "debate_rounds": [],
+  "evaluation": {
+    "quality_score": 0.3333333333333333,
+    "corrected_metrics": {
+      "consensus_candidate_id": "agent_0",
+      "consensus_win_rate": 0.5,
+      "normalized_bt_score": 1.0,
+      "num_bt_candidates": 3,
+      "consensus_vs_best_agent": true,
+      "consensus_comparisons": 2,
+      "per_judge_consensus_win_rate": {
+        "claude-sonnet-4-6": 0.5,
+        "deepseek-v3p2": 0.5,
+        "gpt-5-mini": 0.5
+      }
+    },
+    "threshold_met": null,
+    "thresholds": {},
+    "selected_per_judge_scores": {
+      "claude-sonnet-4-6": 0.3333333333333333,
+      "gpt-5-mini": 0.3333333333333333,
+      "deepseek-v3p2": 0.3333333333333333
+    },
+    "judge_panel": {
+      "judges": [
+        "claude-sonnet-4-6",
+        "gpt-5-mini",
+        "deepseek-v3p2"
+      ],
+      "bt_scores": {
+        "agent_0": 0.3333333333333333,
+        "agent_1": 0.3333333333333333,
+        "agent_2": 0.3333333333333333
+      },
+      "ranking": [
+        "agent_0",
+        "agent_1",
+        "agent_2"
+      ],
+      "per_judge_bt_scores": {
+        "claude-sonnet-4-6": {
+          "agent_0": 0.3333333333333333,
+          "agent_1": 0.3333333333333333,
+          "agent_2": 0.3333333333333333
+        },
+        "gpt-5-mini": {
+          "agent_0": 0.3333333333333333,
+          "agent_1": 0.3333333333333333,
+          "agent_2": 0.3333333333333333
+        },
+        "deepseek-v3p2": {
+          "agent_0": 0.3333333333333333,
+          "agent_1": 0.3333333333333333,
+          "agent_2": 0.3333333333333333
+        }
+      },
+      "inter_rater_reliability": {
+        "mean_cohen_kappa": 1.0,
+        "pairwise": {
+          "claude-sonnet-4-6__vs__deepseek-v3p2": 1.0,
+          "claude-sonnet-4-6__vs__gpt-5-mini": 1.0,
+          "deepseek-v3p2__vs__gpt-5-mini": 1.0
+        }
+      },
+      "pairwise_records": [
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_1",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-5-mini": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_0",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-5-mini": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        },
+        {
+          "candidate_i": "agent_1",
+          "candidate_j": "agent_2",
+          "per_judge": {
+            "claude-sonnet-4-6": "tie",
+            "gpt-5-mini": "tie",
+            "deepseek-v3p2": "tie"
+          },
+          "majority_winner": null
+        }
+      ]
+    },
+    "disagreement": {
+      "semantic_pairwise_similarity": 0.9999999712685277,
+      "disagreement_rate": 2.8731472312415463e-08,
+      "vote_entropy": 0.0,
+      "lexical_diversity": 0.43419572553430824,
+      "pairwise_similarity_lexical": 1.0
+    },
+    "structural_metrics": {
+      "mtld": 169.51892720117834,
+      "readability_fk_grade": 13.969268230229414,
+      "coherence_mean": 0.28109262610440916,
+      "prompt_relevance": 0.563419439037866,
+      "connective_density": 0.3230769230769231,
+      "word_count": 1677,
+      "repetition_rate": 0.017323775388291517
+    },
+    "human_review": {
+      "flagged": false,
+      "reasons": [],
+      "sheet_path": null
+    }
+  }
+}

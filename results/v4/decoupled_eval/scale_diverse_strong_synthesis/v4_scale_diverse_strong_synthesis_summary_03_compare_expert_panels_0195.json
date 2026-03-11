@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_strong_synthesis_summary_03_compare_expert_panels_0195.json",
+  "block": "scale_diverse_strong_synthesis",
+  "task_type": "Compare Insights from Two Expert Panels on AI Regulation",
+  "task_id": "Compare Insights from Two Expert Panels on AI Regulation",
+  "run_id": "v4_scale_diverse_strong_synthesis_summary_03_compare_expert_panels_0195",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.46223670396662747,
+    "agent_1": 0.15716259141903643,
+    "agent_2": 0.22343811319529955,
+    "consensus": 0.1571625914190364
+  },
+  "ranking": [
+    "agent_0",
+    "agent_2",
+    "agent_1",
+    "consensus"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.37499974958031085,
+      "agent_1": 0.1250002504196893,
+      "agent_2": 0.1250002504196893,
+      "consensus": 0.3749997495803106
+    },
+    "glm-5": {
+      "agent_0": 0.9960240964240551,
+      "agent_1": 1.0498130771882682e-05,
+      "agent_2": 0.0039654054136791,
+      "consensus": 3.149407738492675e-11
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": 0.013333333333333313,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": 0.03999999999999994,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 0.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "right"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T01:53:49.469097+00:00",
+  "consensus_bt_score": 0.1571625914190364,
+  "consensus_rank": 4,
+  "consensus_win_rate": 0.0
+}

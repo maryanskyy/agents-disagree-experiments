@@ -1,0 +1,163 @@
+task_type: coding
+version: 1
+instances:
+- id: coding_01_streaming_dedup_pipeline
+  title: Design a Streaming Deduplication Pipeline at Scale
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    An event platform ingests 120k events/second from mobile clients. Duplicate bursts occur during flaky network reconnects, causing billing inflation and noisy analytics. Duplicates can arrive up to 36 hours late and event payloads are not byte-identical because clients attach new metadata on retry. The team currently keys on event_id only, which misses near-duplicates from legacy SDK versions. Memory budget for hot state is limited, cold storage is cheap but slower, and GDPR deletion requests must propagate across both layers. Product insists on <200ms p95 ingest latency and less than 0.1% accidental collapse of genuinely distinct events.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Diagnose the core technical problem and distinguish symptoms from root causes.
+
+    (2) Propose a concrete implementation plan, including pseudocode or patch-level detail where appropriate.
+
+    (3) Discuss complexity/performance/security trade-offs and why your chosen path is preferable.
+
+    (4) Provide a focused test and rollout plan with observability and rollback triggers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: &id001
+  - Technical correctness of architecture, algorithms, or debugging conclusions.
+  - Depth of reasoning about complexity, reliability, and failure modes.
+  - Quality of implementation guidance (pseudocode, patch strategy, or review comments).
+  - Practicality of rollout, testing, and risk mitigation plan.
+- id: coding_02_race_condition_debugging
+  title: Debug an Intermittent Race Condition in Job Orchestration
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A workflow orchestrator intermittently marks jobs as SUCCESS even when one shard silently fails. The bug appears only under high concurrency and after a recent optimization that parallelized state updates. Logs show out-of-order status writes, occasional retries, and missing heartbeats from one worker pool. The codebase mixes async tasks, Redis locks, and optimistic DB writes. On-call mitigations reduced incidents but increased end-to-end latency by 35%. Leadership wants a durable fix that preserves throughput, improves correctness guarantees, and avoids introducing a global lock that would become a bottleneck during peak hours.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Diagnose the core technical problem and distinguish symptoms from root causes.
+
+    (2) Propose a concrete implementation plan, including pseudocode or patch-level detail where appropriate.
+
+    (3) Discuss complexity/performance/security trade-offs and why your chosen path is preferable.
+
+    (4) Provide a focused test and rollout plan with observability and rollback triggers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: coding_03_multi_tenant_system_design
+  title: System Design for Multi-Tenant Document Collaboration
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    You are designing a new collaborative document service for enterprise customers. Requirements: real-time edits, conflict resolution, audit trails, per-tenant encryption keys, and regional data residency. Some tenants require strict isolation (no shared compute), while others accept pooled infrastructure for cost savings. Traffic is highly bursty around quarter-end reporting. The product team demands offline edits with eventual sync, and compliance requires immutable history for seven years. Existing monolith APIs must continue working during migration for at least six months. You need a design that balances correctness, cost, security, and migration risk.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Diagnose the core technical problem and distinguish symptoms from root causes.
+
+    (2) Propose a concrete implementation plan, including pseudocode or patch-level detail where appropriate.
+
+    (3) Discuss complexity/performance/security trade-offs and why your chosen path is preferable.
+
+    (4) Provide a focused test and rollout plan with observability and rollback triggers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: coding_04_code_review_security_perf
+  title: 'Code Review Task: Security and Performance Regression Analysis'
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A pull request introduces a new caching layer, parallel query fan-out, and dynamic SQL templating. Benchmarks in the PR description show median latency improvement, but p99 worsens in one region. Security reviewers flagged potential SQL injection risk in one code path and possible cross-tenant cache key collisions. The author argues these are theoretical because inputs are "internal only." You are asked to perform a structured review and decide whether to approve, request changes, or block. The team has a release window in 48 hours and cannot absorb broad rewrites unless risk is critical.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Diagnose the core technical problem and distinguish symptoms from root causes.
+
+    (2) Propose a concrete implementation plan, including pseudocode or patch-level detail where appropriate.
+
+    (3) Discuss complexity/performance/security trade-offs and why your chosen path is preferable.
+
+    (4) Provide a focused test and rollout plan with observability and rollback triggers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: coding_05_api_migration_backward_compat
+  title: Backward-Compatible API Migration with Contract Guarantees
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A payments API must migrate from v1 to v2 to support split settlements and richer fraud signals. Thousands of integrators rely on undocumented v1 quirks. Breaking even 2% of clients could trigger major revenue loss. You must design a migration strategy with version negotiation, deprecation timelines, compatibility shims, and client communication. Fraud team wants v2 fields mandatory immediately, but developer relations insists on gradual adoption. There is also a legal constraint: transaction IDs must remain stable across versions for at least 24 months for auditability.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Diagnose the core technical problem and distinguish symptoms from root causes.
+
+    (2) Propose a concrete implementation plan, including pseudocode or patch-level detail where appropriate.
+
+    (3) Discuss complexity/performance/security trade-offs and why your chosen path is preferable.
+
+    (4) Provide a focused test and rollout plan with observability and rollback triggers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: coding_06_flaky_test_stabilization
+  title: Stabilize a Flaky End-to-End Test Suite Without Hiding Defects
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A CI pipeline has 480 tests; about 12% fail intermittently, mostly UI and distributed-integration tests. Developers increasingly rerun CI until green, masking regressions. Some tests depend on wall-clock time, external sandbox APIs, and non-deterministic ordering from message queues. Leadership wants flake rate below 2% in six weeks without simply deleting tests or adding blind retries everywhere. Build minutes are expensive, so any stabilization plan must keep average pipeline duration within 10% of current levels. You need to propose a technical and process strategy that restores trust in CI signals.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Diagnose the core technical problem and distinguish symptoms from root causes.
+
+    (2) Propose a concrete implementation plan, including pseudocode or patch-level detail where appropriate.
+
+    (3) Discuss complexity/performance/security trade-offs and why your chosen path is preferable.
+
+    (4) Provide a focused test and rollout plan with observability and rollback triggers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001

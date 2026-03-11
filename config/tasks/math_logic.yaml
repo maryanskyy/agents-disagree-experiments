@@ -1,0 +1,163 @@
+task_type: math_logic
+version: 1
+instances:
+- id: math_01_probability_triage_paradox
+  title: Probability Triage Under Correlated False Alarms
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A hospital cyber-response unit must classify overnight alerts into "escalate now" or "monitor" before morning rounds. Historical data says 3% of nights contain a true incident. The detector fires on 92% of true incidents, but there are two common benign events (backup drift and vendor maintenance) that each increase the false-positive rate and also co-occur 40% of the time. The on-call lead can run exactly one secondary check due to staffing limits. Missing a true incident costs 50 utility points; escalating a false alarm costs 6 utility points plus analyst fatigue that compounds after three false alarms in a week.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Define variables and constraints in a compact formal model before solving.
+
+    (2) Work through the computation or proof path step by step and show intermediate values.
+
+    (3) Stress-test the answer with at least one edge case or parameter change and explain how the conclusion moves.
+
+    (4) End with a practical interpretation that would help a non-mathematician act on the result.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: &id001
+  - Mathematical correctness and logical validity of the final answer.
+  - Quality of step-by-step reasoning, including assumptions and derivations.
+  - Handling of edge cases, uncertainty, or sensitivity analysis.
+  - Clarity and usability of the final recommendation or interpretation.
+- id: math_02_integer_optimization_last_mile
+  title: Integer Optimization for Last-Mile Delivery Windows
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A city logistics team must assign 18 delivery vans to four districts over a two-day heat emergency. Each district has a minimum service level, different travel times, and a hard cap on safe driving hours. Vans can switch districts between days, but every switch incurs setup delay and failure risk. District A needs at least 30 route-hours per day, B needs 20, C needs 26, D needs 18. A van contributes 6 route-hours/day in normal conditions, but only 4 in districts with peak heat alerts. The city also imposes an equity constraint: no district may receive less than 80% of its baseline service for two consecutive days.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Define variables and constraints in a compact formal model before solving.
+
+    (2) Work through the computation or proof path step by step and show intermediate values.
+
+    (3) Stress-test the answer with at least one edge case or parameter change and explain how the conclusion moves.
+
+    (4) End with a practical interpretation that would help a non-mathematician act on the result.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: math_03_logic_grid_contracts
+  title: Logic Grid Puzzle on Conflicting Contract Clauses
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A procurement office is choosing one cloud vendor among Aurora, Beacon, Cinder, and Delta. Each proposal has exactly one pricing model, one compliance exception, and one migration timeline. Internal memos contain partially reliable statements from legal, security, and finance. Two statements are guaranteed true, one is guaranteed false, and one is conditionally true only if Aurora is not selected. Additional constraints: the vendor with the shortest timeline cannot have the strictest data-residency exception, the usage-based pricing proposal is not from Delta, and finance will reject any proposal whose migration window exceeds 9 months unless it includes fixed pricing.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Define variables and constraints in a compact formal model before solving.
+
+    (2) Work through the computation or proof path step by step and show intermediate values.
+
+    (3) Stress-test the answer with at least one edge case or parameter change and explain how the conclusion moves.
+
+    (4) End with a practical interpretation that would help a non-mathematician act on the result.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: math_04_bayesian_diagnostic_cascade
+  title: Bayesian Diagnostic Cascade for Multi-Test Screening
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A public-health lab screens for a rare pathogen with prevalence 0.8% in the tested population. Stage-1 rapid test has sensitivity 0.95 and specificity 0.91. Positive Stage-1 cases get Stage-2 PCR with sensitivity 0.99 and specificity 0.97, but 12% of samples are degraded, reducing Stage-2 sensitivity to 0.90 for those cases. Officials can optionally add Stage-3 sequencing only for discordant outcomes, but that adds two days and limited throughput. The policy goal is to maximize expected correctly treated patients under a daily budget ceiling and a strict constraint that false reassurance rate among truly infected people must stay below 4%.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Define variables and constraints in a compact formal model before solving.
+
+    (2) Work through the computation or proof path step by step and show intermediate values.
+
+    (3) Stress-test the answer with at least one edge case or parameter change and explain how the conclusion moves.
+
+    (4) End with a practical interpretation that would help a non-mathematician act on the result.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: math_05_scheduling_with_dependencies
+  title: Constraint Scheduling with Shared Specialists
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A research lab needs to schedule 11 experiments across five days. Each experiment requires one instrument slot and possibly one of two scarce specialists. Some experiments must occur before others; two pairs cannot run on the same day due to contamination risk; and one high-value experiment must finish by day three to unlock external funding. Instrument capacity is 3 experiments per day. Specialist S1 can supervise at most 2 experiments/day, S2 at most 1/day. Delaying certain experiments incurs nonlinear penalties because consumables expire. The lab director wants a schedule minimizing total penalty while preserving at least one contingency slot each day for emergency reruns.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Define variables and constraints in a compact formal model before solving.
+
+    (2) Work through the computation or proof path step by step and show intermediate values.
+
+    (3) Stress-test the answer with at least one edge case or parameter change and explain how the conclusion moves.
+
+    (4) End with a practical interpretation that would help a non-mathematician act on the result.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: math_06_game_theory_resource_split
+  title: Game-Theoretic Resource Split with Incentive Compatibility
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Three departments (Platform, Security, Growth) negotiate allocation of a shared 100-unit compute budget. Each department submits a utility curve and can strategically misreport demand. If no agreement is reached, a fallback rule gives each department 25 units and leaves 25 unallocated, causing organization-wide opportunity loss. Leadership wants a mechanism that is approximately strategy-proof, budget-balanced, and easy to explain to non-technical managers. Historical behavior suggests Growth overstates needs by 20% when unconstrained, Security underreports unless breach risk rises above a threshold, and Platform values stability over peak allocation. You are asked to propose and analyze a mechanism for one quarterly planning cycle.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Define variables and constraints in a compact formal model before solving.
+
+    (2) Work through the computation or proof path step by step and show intermediate values.
+
+    (3) Stress-test the answer with at least one edge case or parameter change and explain how the conclusion moves.
+
+    (4) End with a practical interpretation that would help a non-mathematician act on the result.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001

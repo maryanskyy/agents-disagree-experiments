@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_strong_synthesis_creativex_01_polyphonic_city_chapter_0181.json",
+  "block": "scale_diverse_strong_synthesis",
+  "task_type": "Write a Polyphonic Chapter Set During a City-Wide Blackout",
+  "task_id": "Write a Polyphonic Chapter Set During a City-Wide Blackout",
+  "run_id": "v4_scale_diverse_strong_synthesis_creativex_01_polyphonic_city_chapter_0181",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.27547367836101483,
+    "agent_1": 0.39353205689269066,
+    "agent_2": 0.19470214851919374,
+    "consensus": 0.13629211622710086
+  },
+  "ranking": [
+    "agent_1",
+    "agent_0",
+    "agent_2",
+    "consensus"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "glm-5": {
+      "agent_0": 0.00396540541367909,
+      "agent_1": 0.9960240964240549,
+      "agent_2": 1.0498130771882674e-05,
+      "consensus": 3.1494077384926715e-11
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": 0.3333333333333333,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": 0.0,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 1.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "right"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T01:39:16.250463+00:00",
+  "consensus_bt_score": 0.13629211622710086,
+  "consensus_rank": 4,
+  "consensus_win_rate": 0.0
+}

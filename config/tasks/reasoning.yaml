@@ -1,0 +1,163 @@
+task_type: reasoning
+version: 1
+instances:
+- id: reasoning_01_causal_policy_reversal
+  title: Causal Analysis of a Policy Reversal After Public Backlash
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A city introduced congestion pricing, then partially reversed it after three months due to political backlash. During rollout, commute times improved 9%, transit ridership rose 6%, and small-business complaints rose sharply in two districts. Opposition campaigns framed the policy as regressive, while analysts claim implementation glitches (payment app outages and unclear exemptions) drove most anger. You must reason about what actually caused the reversal: policy design, communication failures, temporary shocks, or coordinated political incentives. Assume data is imperfect and stakeholders have strategic narratives.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Build an explicit reasoning structure (causal graph, argument map, or decision tree).
+
+    (2) Evaluate at least two competing explanations and identify what evidence would discriminate among them.
+
+    (3) Perform one counterfactual analysis and describe how conclusions change under that scenario.
+
+    (4) Provide a decision recommendation with confidence level and key uncertainty drivers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: &id001
+  - Logical structure and correctness of causal/argument analysis.
+  - Quality of counterfactual reasoning and handling of alternative explanations.
+  - Use of evidence standards and explicit uncertainty calibration.
+  - Actionability and coherence of final recommendation.
+- id: reasoning_02_counterfactual_outbreak_response
+  title: Counterfactual Reasoning on Outbreak Response Timing
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A regional health authority delayed school-closure guidance by two weeks during an outbreak. Cases later surged, but mobility data also shows a major holiday travel spike during the same period. Some experts argue earlier closures would have substantially reduced peak hospital load; others argue effects would be marginal without travel restrictions. You are asked to evaluate plausible counterfactual worlds under limited observational data. Constraints: decision-makers had uncertain variant severity estimates and feared economic harm from premature closure mandates.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Build an explicit reasoning structure (causal graph, argument map, or decision tree).
+
+    (2) Evaluate at least two competing explanations and identify what evidence would discriminate among them.
+
+    (3) Perform one counterfactual analysis and describe how conclusions change under that scenario.
+
+    (4) Provide a decision recommendation with confidence level and key uncertainty drivers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: reasoning_03_argument_evaluation_media_claims
+  title: Evaluate Competing Media Arguments on Grid Reliability
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Two influential op-eds make opposite claims about a summer blackout. Op-ed A argues renewable penetration caused instability and demands a moratorium. Op-ed B argues underinvestment in transmission and outdated market incentives caused the failure, and that renewables were scapegoated. Both cite selective statistics and expert quotes. As an analyst, you must evaluate argument quality rather than partisan alignment. Your task is to surface hidden assumptions, identify strongest and weakest inferences in each piece, and design a neutral evidentiary test plan that policymakers could trust.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Build an explicit reasoning structure (causal graph, argument map, or decision tree).
+
+    (2) Evaluate at least two competing explanations and identify what evidence would discriminate among them.
+
+    (3) Perform one counterfactual analysis and describe how conclusions change under that scenario.
+
+    (4) Provide a decision recommendation with confidence level and key uncertainty drivers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: reasoning_04_root_cause_factory_incident
+  title: Root-Cause Reasoning for a Near-Miss Industrial Incident
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A chemical plant experienced a near-miss event: pressure exceeded safety threshold but automatic venting prevented catastrophe. Internal reports cite sensor drift, maintenance backlog, and shift-handover communication gaps. Management wants a single root cause; safety engineers warn the event reflects interacting latent conditions. Production leadership is pressuring to resume full output quickly. You need to reason through proximate versus systemic causes, evaluate proposed corrective actions, and prioritize interventions under a fixed two-week shutdown window.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Build an explicit reasoning structure (causal graph, argument map, or decision tree).
+
+    (2) Evaluate at least two competing explanations and identify what evidence would discriminate among them.
+
+    (3) Perform one counterfactual analysis and describe how conclusions change under that scenario.
+
+    (4) Provide a decision recommendation with confidence level and key uncertainty drivers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: reasoning_05_strategic_negotiation_game
+  title: Strategic Reasoning in a Multi-Party Negotiation Game
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Three countries are negotiating a rare-earth export agreement. Country X controls most extraction, Y dominates refining capacity, and Z controls shipping lanes. Each can impose temporary restrictions to improve bargaining power, but overuse triggers retaliatory alliances and long-term trust erosion. Intelligence suggests domestic political cycles will force visible concessions within 90 days. You must reason through strategic moves, credible commitments, and equilibrium risks under incomplete information. The objective is to propose a negotiation sequence that minimizes collapse probability while preserving each actor’s face-saving needs.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Build an explicit reasoning structure (causal graph, argument map, or decision tree).
+
+    (2) Evaluate at least two competing explanations and identify what evidence would discriminate among them.
+
+    (3) Perform one counterfactual analysis and describe how conclusions change under that scenario.
+
+    (4) Provide a decision recommendation with confidence level and key uncertainty drivers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: reasoning_06_uncertainty_intel_assessment
+  title: Uncertainty-Aware Assessment of Conflicting Intelligence
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    An intelligence task force receives conflicting reports about an imminent cyberattack on regional infrastructure. Source A is historically accurate but delayed; Source B is fast but noisy; Source C may be influenced by commercial incentives. Technical telemetry is ambiguous and could indicate either reconnaissance or routine scanning. Leaders need a recommendation in 24 hours on whether to trigger costly emergency protocols. You must reason under uncertainty, avoid false precision, and present a decision framework that can be updated as new evidence arrives.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Build an explicit reasoning structure (causal graph, argument map, or decision tree).
+
+    (2) Evaluate at least two competing explanations and identify what evidence would discriminate among them.
+
+    (3) Perform one counterfactual analysis and describe how conclusions change under that scenario.
+
+    (4) Provide a decision recommendation with confidence level and key uncertainty drivers.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001

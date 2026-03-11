@@ -1,0 +1,118 @@
+{
+  "source_file": "v4_scale_diverse_strong_synthesis_reasoning_04_root_cause_factory_incident_0190.json",
+  "block": "scale_diverse_strong_synthesis",
+  "task_type": "Root-Cause Reasoning for a Near-Miss Industrial Incident",
+  "task_id": "Root-Cause Reasoning for a Near-Miss Industrial Incident",
+  "run_id": "v4_scale_diverse_strong_synthesis_reasoning_04_root_cause_factory_incident_0190",
+  "candidate_labels": [
+    "agent_0",
+    "agent_1",
+    "agent_2",
+    "consensus"
+  ],
+  "eval_judges": [
+    "gpt-4o-mini",
+    "gemini-2.0-flash-001",
+    "glm-5"
+  ],
+  "bt_scores": {
+    "agent_0": 0.3519237177826449,
+    "agent_1": 0.43197659221666146,
+    "agent_2": 0.05469526537517249,
+    "consensus": 0.1614044246255211
+  },
+  "ranking": [
+    "agent_1",
+    "agent_0",
+    "consensus",
+    "agent_2"
+  ],
+  "per_judge_bt_scores": {
+    "gpt-4o-mini": {
+      "agent_0": 0.25,
+      "agent_1": 0.25,
+      "agent_2": 0.25,
+      "consensus": 0.25
+    },
+    "gemini-2.0-flash-001": {
+      "agent_0": 0.2777941219152543,
+      "agent_1": 0.5918095990356449,
+      "agent_2": 2.3150874861263294e-07,
+      "consensus": 0.13039604754035217
+    },
+    "glm-5": {
+      "agent_0": 0.49979082658849483,
+      "agent_1": 0.49979082658849483,
+      "agent_2": 1.255031177557906e-09,
+      "consensus": 0.000418345567979062
+    }
+  },
+  "inter_rater_reliability": {
+    "mean_cohen_kappa": 0.23809523809523814,
+    "pairwise": {
+      "gemini-2.0-flash-001__vs__glm-5": 0.7142857142857144,
+      "gemini-2.0-flash-001__vs__gpt-4o-mini": 0.0,
+      "glm-5__vs__gpt-4o-mini": 0.0
+    }
+  },
+  "pairwise_records": [
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_1",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "tie"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_0",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "tie",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "agent_2",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_1",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "left",
+        "glm-5": "left"
+      }
+    },
+    {
+      "candidate_i": "agent_2",
+      "candidate_j": "consensus",
+      "per_judge": {
+        "gpt-4o-mini": "tie",
+        "gemini-2.0-flash-001": "right",
+        "glm-5": "right"
+      }
+    }
+  ],
+  "timestamp_utc": "2026-03-11T01:49:33.882845+00:00",
+  "consensus_bt_score": 0.1614044246255211,
+  "consensus_rank": 3,
+  "consensus_win_rate": 0.3333333333333333
+}

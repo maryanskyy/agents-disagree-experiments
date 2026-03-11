@@ -1,0 +1,163 @@
+task_type: science
+version: 1
+instances:
+- id: science_01_heat_dome_mechanism
+  title: Explain and Test Competing Mechanisms Behind a Heat Dome Event
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A region experienced a record heat dome with prolonged nighttime temperatures and elevated wildfire risk. Meteorologists debate whether the event was mainly driven by anomalous jet-stream blocking, land-atmosphere feedback from drought, or ocean-surface anomalies that preconditioned the air mass. Policymakers want scientific clarity to prioritize adaptation investments in cooling centers, grid hardening, and land management. You are asked to provide a mechanism-level explanation and propose a study design that can separate these effects using available reanalysis data, satellite observations, and historical analog years.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Explain the relevant scientific mechanism in clear but technically accurate terms.
+
+    (2) Generate competing hypotheses and predictions that could be empirically tested.
+
+    (3) Design an experiment or study with controls, measurements, and analysis plan.
+
+    (4) Discuss confounders, failure modes, and what conclusions would still remain uncertain.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: &id001
+  - Scientific correctness and fidelity to plausible mechanisms.
+  - Quality of hypothesis formation and experimental/observational design.
+  - Treatment of confounders, uncertainty, and statistical validity.
+  - Clarity of interpretation and limits of inference.
+- id: science_02_memory_consolidation_claim
+  title: Evaluate a Neuroscience Claim About Sleep and Memory Consolidation
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A startup claims its audio stimulation protocol during sleep improves long-term memory retention by 25% for language learners. Their pilot involved 48 volunteers, self-selected users, and no sham condition. They report positive outcomes on one delayed recall metric but null effects on transfer tasks. Investors are excited; independent researchers are skeptical about placebo effects and selective reporting. You must evaluate plausibility based on known sleep-stage mechanisms and propose a rigorous follow-up experiment that could credibly validate or falsify the claim.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Explain the relevant scientific mechanism in clear but technically accurate terms.
+
+    (2) Generate competing hypotheses and predictions that could be empirically tested.
+
+    (3) Design an experiment or study with controls, measurements, and analysis plan.
+
+    (4) Discuss confounders, failure modes, and what conclusions would still remain uncertain.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: science_03_adaptive_clinical_trial_design
+  title: Design an Adaptive Clinical Trial for a New Anti-Inflammatory Drug
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A biotech team has early evidence that a new anti-inflammatory compound may reduce severe flare-ups in an autoimmune condition. Phase II resources are limited, and disease heterogeneity is high across patient subtypes. The team wants an adaptive design that can stop for futility, enrich promising subgroups, and maintain statistical integrity. Regulators will scrutinize multiplicity control and endpoint selection. You must propose a scientifically defensible trial design, including randomization strategy, interim analyses, and how safety signals should alter continuation rules.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Explain the relevant scientific mechanism in clear but technically accurate terms.
+
+    (2) Generate competing hypotheses and predictions that could be empirically tested.
+
+    (3) Design an experiment or study with controls, measurements, and analysis plan.
+
+    (4) Discuss confounders, failure modes, and what conclusions would still remain uncertain.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: science_04_battery_degradation_hypotheses
+  title: Hypothesis Evaluation for Fast-Charge Battery Degradation
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    An EV fleet operator sees accelerated battery degradation in vehicles exposed to frequent fast charging in hot climates. Engineering suspects lithium plating, thermal stress, and software-level charging profile issues may all contribute. Field telemetry is noisy and confounded by driver behavior and route characteristics. The operator wants to know which interventions (charging curve updates, thermal preconditioning, or hardware retrofits) are likely to yield the biggest reliability gains in the next year. You must reason through mechanisms and design a data-backed evaluation plan.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Explain the relevant scientific mechanism in clear but technically accurate terms.
+
+    (2) Generate competing hypotheses and predictions that could be empirically tested.
+
+    (3) Design an experiment or study with controls, measurements, and analysis plan.
+
+    (4) Discuss confounders, failure modes, and what conclusions would still remain uncertain.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: science_05_ecosystem_restoration_experiment
+  title: Experimental Design for Coastal Wetland Restoration Outcomes
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    A coastal restoration program is reintroducing native marsh vegetation to reduce storm-surge damage and improve biodiversity. Early reports show patchy success: some sites recover rapidly while others collapse after one season. Potential drivers include salinity shifts, sediment composition, invasive species pressure, and planting density. Funding agencies need stronger causal evidence before expanding the program. You must propose an experimental or quasi-experimental design that can identify high-impact factors and produce actionable restoration guidelines under real-world field constraints.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Explain the relevant scientific mechanism in clear but technically accurate terms.
+
+    (2) Generate competing hypotheses and predictions that could be empirically tested.
+
+    (3) Design an experiment or study with controls, measurements, and analysis plan.
+
+    (4) Discuss confounders, failure modes, and what conclusions would still remain uncertain.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
+- id: science_06_epidemiology_model_comparison
+  title: Compare Epidemiological Models for Vaccine Deployment Strategy
+  prompt: 'You are preparing a high-stakes response for an expert review panel. Treat this as a reasoning-intensive task where superficial answers will be rejected. Use explicit assumptions, show how uncertainty affects your conclusions, and make your logic auditable. Avoid generic advice and focus on the concrete details provided below.
+
+
+    Scenario:
+
+    Public-health planners are deciding between broad early vaccine distribution and targeted deployment to high-contact populations during an emerging respiratory outbreak. Two modeling teams disagree: one compartmental model favors immediate broad rollout, while an agent-based model suggests targeted deployment reduces peak hospitalization more effectively under supply constraints. Assumptions differ on contact mixing, waning immunity, and behavior change after vaccination. Your task is to reconcile model disagreement and propose an evaluation framework to inform policy decisions before the next allocation window.
+
+
+    In your response, separate facts from inferences, and when you introduce an assumption that is not directly stated, label it clearly and explain why it is reasonable. If there are competing interpretations, compare them before deciding. Where quantitative reasoning is possible, include approximate calculations or bounded estimates rather than hand-waving.
+
+
+    Your tasks:
+
+    (1) Explain the relevant scientific mechanism in clear but technically accurate terms.
+
+    (2) Generate competing hypotheses and predictions that could be empirically tested.
+
+    (3) Design an experiment or study with controls, measurements, and analysis plan.
+
+    (4) Discuss confounders, failure modes, and what conclusions would still remain uncertain.
+
+
+    Format your answer with clear section headings corresponding to each numbered request. Conclude with a short ''decision summary'' paragraph that states your final recommendation, confidence level, and the single most important uncertainty that could reverse your conclusion.'
+  rubric: *id001
