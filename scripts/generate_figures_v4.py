@@ -132,7 +132,7 @@ def save(fig, name):
 # FIGURE 1: Selection Bottleneck (2-panel, full-width ~7 in)
 # ================================================================
 def fig1_selection_bottleneck():
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 2.8),
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.1),
                                     gridspec_kw={'width_ratios': [1, 1.15]})
 
     s = np.linspace(0, 1, 300)
@@ -148,9 +148,9 @@ def fig1_selection_bottleneck():
     mask_l = s <= s_star
     mask_r = s >= s_star
     ax1.fill_between(s[mask_l], Q_diverse[mask_l], Q_homo[mask_l],
-                     alpha=0.10, color=CB_RED, linewidth=0)
+                     alpha=0.08, color=CB_RED, linewidth=0)
     ax1.fill_between(s[mask_r], Q_diverse[mask_r], Q_homo[mask_r],
-                     alpha=0.10, color=CB_BLUE, linewidth=0)
+                     alpha=0.08, color=CB_BLUE, linewidth=0)
 
     ax1.plot(s, Q_homo,    color=CB_GRAY, lw=2.2, label='Homogeneous team')
     ax1.plot(s, Q_diverse, color=CB_BLUE, lw=2.2, label='Diverse team')
@@ -159,47 +159,86 @@ def fig1_selection_bottleneck():
 
     ax1.text(s_star + 0.04, mu_best - 0.06, r'$s^*$', fontsize=13,
              fontweight='bold', color=CB_RED)
-    ax1.text(s_star / 2, 0.40, 'Diversity\nhurts', ha='center', fontsize=8,
-             color=CB_RED, fontstyle='italic', alpha=0.85)
-    ax1.text((1 + s_star) / 2, 0.86, 'Diversity\nhelps', ha='center',
-             fontsize=8, color=CB_BLUE, fontstyle='italic', alpha=0.85)
+    ax1.text(s_star / 2, 0.37, 'Diversity\nhurts', ha='center', fontsize=8,
+             color=CB_RED, fontweight='bold', alpha=0.9)
+    ax1.text((1 + s_star) / 2, 0.88, 'Diversity\nhelps', ha='center',
+             fontsize=8, color=CB_BLUE, fontweight='bold', alpha=0.9)
 
     ax1.set_xlabel('Selector quality  $s$')
     ax1.set_ylabel('Output quality  $Q(T, s)$')
     ax1.set_xlim(0, 1)
-    ax1.set_ylim(0.32, 0.98)
-    ax1.legend(loc='lower right', framealpha=0.9, edgecolor='none')
+    ax1.set_ylim(0.30, 1.00)
+    ax1.legend(loc='upper left', framealpha=0.95, edgecolor='#cccccc',
+               fontsize=7.5)
     ax1.set_title('(a)  Selection quality threshold',
                   fontsize=10, fontweight='bold')
 
     # -- Panel (b): V4 empirical operating points --
-    ax2.plot(s, Q_homo,    color=CB_GRAY, lw=2.2)
-    ax2.plot(s, Q_diverse, color=CB_BLUE, lw=2.2)
-    ax2.axvline(x=s_star, color=CB_RED, ls='--', lw=0.8, alpha=0.3)
+    # Theory lines very faint — just contextual backdrop
+    ax2.plot(s, Q_homo,    color=CB_GRAY, lw=1.2, alpha=0.25, zorder=1)
+    ax2.plot(s, Q_diverse, color=CB_BLUE, lw=1.2, alpha=0.25, zorder=1)
+    ax2.axvline(x=s_star, color=CB_RED, ls='--', lw=0.6, alpha=0.15, zorder=1)
 
-    ops = [
-        (0.00, 0.179, 'Synthesis\n(WR = .18)', 's', CB_RED),
-        (0.10, 0.496, 'Vote\n(WR = .50)', 'D', CB_ORANGE),
-        (0.75, 0.810, 'Judge\n(WR = .81)', '^', CB_BLUE),
+    # Homo baseline — dotted, subtle
+    ax2.axhline(y=0.512, color=CB_GRAY, ls=':', lw=0.9, alpha=0.35, zorder=2)
+
+    # Empirical operating points — large markers with white halo
+    markers = [
+        (0.00, 0.179, 's', CB_RED,    12),
+        (0.10, 0.496, 'D', CB_ORANGE, 11),
+        (0.75, 0.810, '^', CB_BLUE,   12),
     ]
-    for sx, wr, lbl, mkr, col in ops:
-        ax2.plot(sx, wr, marker=mkr, ms=10, color=col, zorder=6,
-                 markeredgecolor='white', markeredgewidth=0.8)
-        ha = 'left' if sx < 0.5 else 'right'
-        xoff = 0.05 if sx < 0.5 else -0.05
-        ax2.annotate(lbl, xy=(sx, wr),
-                     xytext=(sx + xoff, wr + 0.05),
-                     fontsize=7.5, color=col, fontweight='bold',
-                     ha=ha, va='bottom')
+    for sx, wy, mkr, col, ms in markers:
+        # White halo
+        ax2.plot(sx, wy, marker=mkr, ms=ms+3, color='white', zorder=5)
+        # Colored marker
+        ax2.plot(sx, wy, marker=mkr, ms=ms, color=col, zorder=6,
+                 markeredgecolor='white', markeredgewidth=1.2)
 
-    # Homo baseline — position label far right to avoid Vote collision
-    ax2.axhline(y=0.512, color=CB_GRAY, ls=':', lw=1.2, alpha=0.5)
-    ax2.text(0.95, 0.43, 'Homo baseline\n(WR = .51)', fontsize=6.5,
-             color=CB_GRAY, ha='right', va='top', fontstyle='italic')
+    # Labels — all placed in clear space with connector arrows
+    # Synthesis: to the right
+    ax2.annotate('Synthesis (WR = .18)', xy=(0.00, 0.179),
+                 xytext=(0.22, 0.14), textcoords='data',
+                 fontsize=7.5, color=CB_RED, fontweight='bold',
+                 ha='left', va='center',
+                 arrowprops=dict(arrowstyle='->', color=CB_RED,
+                                 lw=1.0, shrinkA=0, shrinkB=4),
+                 bbox=dict(boxstyle='round,pad=0.15', fc='white',
+                           ec=CB_RED, lw=0.5, alpha=0.95),
+                 zorder=8)
+
+    # Vote: upper-right quadrant, well clear of baseline
+    ax2.annotate('Vote (WR = .50)', xy=(0.10, 0.496),
+                 xytext=(0.32, 0.72), textcoords='data',
+                 fontsize=7.5, color=CB_ORANGE, fontweight='bold',
+                 ha='center', va='center',
+                 arrowprops=dict(arrowstyle='->', color=CB_ORANGE,
+                                 lw=1.0, shrinkA=0, shrinkB=4),
+                 bbox=dict(boxstyle='round,pad=0.15', fc='white',
+                           ec=CB_ORANGE, lw=0.5, alpha=0.95),
+                 zorder=8)
+
+    # Judge: upper-left of marker
+    ax2.annotate('Judge (WR = .81)', xy=(0.75, 0.810),
+                 xytext=(0.45, 0.94), textcoords='data',
+                 fontsize=7.5, color=CB_BLUE, fontweight='bold',
+                 ha='center', va='center',
+                 arrowprops=dict(arrowstyle='->', color=CB_BLUE,
+                                 lw=1.0, shrinkA=0, shrinkB=4),
+                 bbox=dict(boxstyle='round,pad=0.15', fc='white',
+                           ec=CB_BLUE, lw=0.5, alpha=0.95),
+                 zorder=8)
+
+    # Homo baseline label — right side, below the line
+    ax2.text(0.97, 0.46, 'Homo baseline (WR = .51)', fontsize=6.5,
+             color='#444444', ha='right', va='top',
+             bbox=dict(boxstyle='round,pad=0.12', fc='white',
+                       ec='#aaaaaa', lw=0.5, alpha=0.95),
+             zorder=7)
 
     ax2.set_xlabel('Selector quality  $s$')
-    ax2.set_xlim(0, 1)
-    ax2.set_ylim(0.05, 0.98)
+    ax2.set_xlim(-0.05, 1.05)
+    ax2.set_ylim(0.05, 1.02)
     ax2.set_title('(b)  V4 empirical operating regimes',
                   fontsize=10, fontweight='bold')
 
@@ -211,7 +250,7 @@ def fig1_selection_bottleneck():
 # FIGURE 2: Factorial bar chart (5 cells, horizontal for readability)
 # ================================================================
 def fig2_factorial_heatmap():
-    fig, ax = plt.subplots(figsize=(4.5, 3.2))
+    fig, ax = plt.subplots(figsize=(4.5, 3.0))
 
     names = CELLS_ORDER
     wrs   = [CELLS[n]['wr'] for n in names]
@@ -220,52 +259,40 @@ def fig2_factorial_heatmap():
     yerr_lo = [w - lo for w, lo in zip(wrs, ci_lo)]
     yerr_hi = [hi - w for w, hi in zip(wrs, ci_hi)]
 
-    # Horizontal bars for better label readability
     colors = [CB_LBLUE, CB_BLUE, CB_GRAY, CB_ORANGE, CB_RED]
-    # Clean single-line names for horizontal layout
     clean = [n.replace('\n', ' ') for n in names]
 
     y = np.arange(len(names))
-    bars = ax.barh(y, wrs, height=0.6, color=colors, edgecolor='white',
+    bars = ax.barh(y, wrs, height=0.55, color=colors, edgecolor='white',
                    linewidth=0.8, zorder=3)
     ax.errorbar(wrs, y, xerr=[yerr_lo, yerr_hi], fmt='none',
-                ecolor='#333333', capsize=4, capthick=1.2, linewidth=1.2,
+                ecolor='#333333', capsize=3.5, capthick=1.0, linewidth=1.0,
                 zorder=4)
 
-    # Chance line
-    ax.axvline(x=0.5, color=CB_GRAY, ls=':', lw=1, alpha=0.5, zorder=1)
+    # Chance line — dashed, slightly bolder for visibility through bars
+    ax.axvline(x=0.5, color='#444444', ls='--', lw=0.9, alpha=0.45, zorder=2)
 
-    # Value labels to right of bars
+    # Value labels — with generous spacing from error bar caps
     for i, (v, bar) in enumerate(zip(wrs, bars)):
-        weight = 'bold' if v > 0.7 or v < 0.25 else 'normal'
-        xpos = v + yerr_hi[i] + 0.015
+        xpos = v + yerr_hi[i] + 0.028
         ax.text(xpos, i, f'{v:.3f}', ha='left', va='center',
-                fontsize=9, fontweight=weight, color='#222222')
+                fontsize=8.5, fontweight='bold', color='#222222')
 
-    # Annotations
-    ax.annotate('Weak-model surprise',
-                xy=(0.929, 0), xytext=(0.75, -0.7),
-                fontsize=7, color=CB_LBLUE, fontweight='bold',
-                arrowprops=dict(arrowstyle='->', color=CB_LBLUE, lw=1),
-                ha='center')
-    ax.annotate('Synthesis failure',
-                xy=(0.179, 4), xytext=(0.40, 4.7),
-                fontsize=7, color=CB_RED, fontweight='bold',
-                arrowprops=dict(arrowstyle='->', color=CB_RED, lw=1),
-                ha='center')
+    # Label chance line at the top, out of data area
+    ax.text(0.50, -0.85, 'chance', fontsize=6.5, color='#555555',
+            ha='center', va='center', fontstyle='italic')
+
+    # N annotation — tucked into lower-right, away from bars and axes
+    ax.text(0.97, 4.55, '95% CI;  $N$ = 42 tasks/cell',
+            fontsize=6.5, ha='right', va='center', color='#888888',
+            fontstyle='italic')
 
     ax.set_yticks(y)
     ax.set_yticklabels(clean, fontsize=8.5)
     ax.set_xlabel('BT-Corrected Win Rate')
-    ax.set_xlim(0, 1.08)
-    ax.set_ylim(-1.0, len(names) - 0.3)
+    ax.set_xlim(0, 1.12)
+    ax.set_ylim(-1.1, len(names) - 0.3)
     ax.invert_yaxis()
-
-    # Minimal legend via text
-    ax.text(0.98, len(names) - 0.5,
-            '95% CI shown\n$N$ = 42 tasks per cell',
-            fontsize=6.5, ha='right', va='top', color='#666666',
-            fontstyle='italic')
 
     plt.tight_layout()
     save(fig, 'fig2_factorial_heatmap')
