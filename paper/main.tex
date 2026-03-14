@@ -23,9 +23,9 @@
 
 % Theorem environments
 \newtheorem{proposition}{Proposition}
-\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\theoremstyle{remark}
 \newtheorem{remark}{Remark}
-\newtheorem{axiom}{Axiom}
 
 % Hyperref setup
 \hypersetup{
@@ -53,11 +53,12 @@
 \begin{abstract}
 Multi-agent LLM pipelines produce contradictory evidence on whether team diversity improves output quality: heterogeneous Mixture-of-Agents teams outperform single models, yet homogeneous Self-MoA teams consistently win under synthesis-based aggregation.
 We propose a resolution by identifying the \textit{selection bottleneck}---a crossover threshold in aggregation quality that determines whether diversity helps or hurts.
-We derive a closed-form threshold $s^*$ (Proposition~\ref{prop:bottleneck}) below which diversity is a liability and above which it becomes an asset.
-In a targeted experiment spanning 42 tasks across 7 categories ($N = 210$), a diverse team with judge-based selection achieves a win rate of 0.810 against a single-model baseline, while a homogeneous team scores 0.512---near chance (Hedges' $g = 2.71$ [95\% CI: 2.12, 3.30]).
-Most strikingly, judge-based selection outperforms MoA-style synthesis by $\Delta = +0.631$ ($g = 3.86$ [3.14, 4.58])---the synthesis approach loses to the baseline in 82\% of comparisons, winning in zero of 42 tasks.
-Exploratory evidence suggests that including a weaker model paradoxically improves performance while reducing cost ($p < 10^{-4}$, not pre-registered).
-Practitioners should invest in selector quality before diversifying their generators.
+Under this model, we obtain a closed-form crossover threshold $s^*$ (Proposition~\ref{prop:bottleneck}) that separates the regimes where diversity helps and hurts.
+In a targeted experiment spanning 42 tasks across 7 categories ($N = 210$), a diverse team with judge-based selection achieves a win rate of 0.810 against a single-model baseline, while a homogeneous team scores 0.512---near chance (Glass's $\Delta = 2.07$).
+Judge-based selection outperforms MoA-style synthesis by $\Delta_{\mathrm{WR}} = +0.631$---the synthesis approach is preferred over the baseline in zero of 42 tasks by the judge panel.
+A decoupled evaluation with independent judges confirms all directional findings (Spearman $\rho = 0.90$).
+Exploratory evidence suggests that including a weaker model improves performance while reducing cost ($p < 10^{-4}$, not pre-registered).
+Our results suggest that selector quality may be a more impactful design lever than generator diversity in single-round generate-then-select pipelines.
 \end{abstract}
 
 % ============================================================
@@ -72,11 +73,11 @@ We identify a mechanism that reconciles this tension: the \textbf{selection bott
 
 In a targeted experiment crossing team composition with aggregation mechanism across 42 tasks spanning seven categories, we observe a crossover. A diverse team dramatically outperforms a homogeneous team under judge-based selection, but the same diverse team provides no advantage under majority voting. The largest effect in our data is the comparison practitioners most need: judge-based selection versus MoA-style synthesis. Selection wins in every single one of the 42 tasks across all 7 categories. The synthesis approach, far from combining the best of multiple agents, produces outputs that lose to a single-model baseline over 80\% of the time. The apparent paradox may dissolve: Li et al.\ and Wang et al.\ each describe one side of a crossover governed by aggregator quality.
 
-The formal framework makes this precise. We define a selector quality parameter $s \in [0,1]$ and derive a crossover threshold $s^*$ below which diversity hurts and above which it helps (Proposition~\ref{prop:bottleneck}). The framework further predicts---and the data confirm---that model quality has negligible effect under homogeneity in our data: a homogeneous team of any frontier model performs at chance regardless of selector quality. When all candidates are drawn from the same distribution, there is nothing for even a perfect selector to exploit. Figure~\ref{fig:bottleneck} illustrates the conceptual architecture and crossover geometry.
+A simple linear model makes this precise. We define a selector quality parameter $s \in [0,1]$ and obtain a crossover threshold $s^*$ below which diversity hurts and above which it helps (Proposition~\ref{prop:bottleneck}). The model predicts that selector quality should have no effect for homogeneous teams, consistent with the observed near-chance performance of the homogeneous cell in our data. When all candidates are drawn from the same distribution, there is nothing for even a perfect selector to exploit. Figure~\ref{fig:bottleneck} illustrates the crossover geometry.
 
 One finding warrants particular attention, though we label it exploratory because it was not pre-registered. Adding a substantially weaker model (Claude Haiku) to a strong diverse team is associated with a significantly higher win rate and lower cost. The mechanism is plausible: a model from a different capability tier introduces orthogonal error patterns, raising the oracle ceiling even as it lowers the team mean. A strong selector captures the upside and ignores the downside.
 
-This paper makes three contributions. First, we introduce the \textbf{selection bottleneck framework}, anchored by Proposition~\ref{prop:bottleneck}, which provides a formal crossover threshold $s^*$ unifying pro-diversity and anti-diversity findings. The threshold operationalizes Hong and Page's abstract notion of an ``effective aggregation mechanism.'' Second, we present \textbf{empirical evidence that selection dramatically outperforms synthesis}---the aggregation mechanism used by both Wang et al.\ and Li et al.---with the largest effect size in our study, demonstrating that the MoA paradigm of blending candidates is substantially outperformed by selection in our setting. Third, we report \textbf{exploratory evidence of a weak-model paradox}: including a cheaper, weaker model may simultaneously improve quality and reduce cost, a finding that, if replicated, inverts conventional wisdom about team composition.
+This paper makes three contributions. First, we introduce the \textbf{selection bottleneck model}, which provides a crossover threshold $s^*$ unifying pro-diversity and anti-diversity findings (Proposition~\ref{prop:bottleneck}). The threshold offers one operationalization of Hong and Page's abstract notion of an ``effective aggregation mechanism.'' Second, we present \textbf{empirical evidence that selection dramatically outperforms synthesis}---the aggregation mechanism used by both Wang et al.\ and Li et al.---with the largest effect size in our study, demonstrating that the MoA paradigm of blending candidates is substantially outperformed by selection in our setting. Third, we report \textbf{exploratory evidence of a weak-model paradox}: including a cheaper, weaker model may simultaneously improve quality and reduce cost, a finding that, if replicated, inverts conventional wisdom about team composition.
 
 % --- Figure 1: Selection Bottleneck (full-width) ---
 \begin{figure*}[t]
@@ -137,90 +138,103 @@ Two statistics summarize the candidate pool:
   \item \textbf{Team oracle:} $O(T) = \mathbb{E}[\max_i\, q_i]$, the expected quality of the best candidate.
 \end{itemize}
 
-The gap $\Delta(T) = O(T) - M(T)$ measures the team's \textbf{exploitable diversity}: how much a perfect selector could gain over a random one. A \textbf{selector} $\mathcal{S}$ maps the candidate pool to a single output. We parameterize its effectiveness by a scalar $s \in [0, 1]$.
+The gap $\Delta(T) = O(T) - M(T) \geq 0$ measures the team's \textbf{exploitable diversity}: the gain available to a perfect selector over a random one. A \textbf{selector} $\mathcal{S}$ is a (possibly randomized) function that maps the candidate pool $(q_1, \ldots, q_n)$ to a single index $\mathcal{S}(q_1, \ldots, q_n) \in \{1, \ldots, n\}$. We define the \textbf{selector quality} as:
+\begin{equation}
+s(\mathcal{S}, T) \;=\; \frac{\mathbb{E}[q_{\mathcal{S}}] - M(T)}{O(T) - M(T)},
+\label{eq:selector_quality}
+\end{equation}
+provided $O(T) > M(T)$. A random selector has $s = 0$; a perfect selector (always choosing $\arg\max_i q_i$) has $s = 1$.
 
 \subsection{The Selection Quality Model}
 \label{sec:sqm}
 
-We axiomatize the relationship between team composition, selector quality, and output quality as follows.
+We model the expected output quality as a linear interpolation between the team mean and the team oracle, governed by selector quality.
 
-\begin{axiom}[Selector-Mediated Quality]
-\label{ax:smq}
-The expected output quality of team $T$ under a selector of quality $s$ is:
+\begin{assumption}[Linear Selection Model]
+\label{ass:linear}
+For a team $T$ with selector quality $s \in [0,1]$, the expected quality of the selected output is:
 \begin{equation}
 Q(T, s) \;=\; s \cdot O(T) \;+\; (1 - s) \cdot M(T).
 \label{eq:quality}
 \end{equation}
-\end{axiom}
+\end{assumption}
 
-At $s = 1$, the selector always identifies the best candidate. At $s = 0$, the selector is uninformative---quality collapses to the team mean. Intermediate values interpolate linearly.
+This is a modeling choice, not a derived result. We adopt it for two reasons. First, Eq.~\eqref{eq:quality} is exact when $n = 2$ and the selector operates as a noisy argmax with Gaussian noise. Second, its predictions match the observed data: the model's calibrated $s^*$ places the empirical crossover between diversity-helps and diversity-hurts conditions within a narrow confidence band (Section~\ref{sec:calibration}).
 
-This is a modeling choice, not a derived result. We adopt it for three reasons. First, it is exact for $n = 2$ agents under a Gaussian noisy-argmax selector model. Second, it is a controlled first-order approximation for $n > 2$, with approximation error bounded by $\sqrt{\mathrm{Var}(s^*)} \cdot \sigma_\Delta$. Third, its predictions match the observed data: the model's calibrated $s^*$ places the empirical crossover between diversity-helps and diversity-hurts conditions within a narrow confidence band (Section~\ref{sec:calibration}).
+We are candid about what this model is and is not. It is a descriptive parameterization---a lens for organizing empirical findings and generating testable predictions. Its value lies in predictive power, not mathematical depth. The assumption trades generality for interpretability: a single parameter $s$ compresses the complex behavior of real selectors into a quantity that can be estimated, compared, and communicated to practitioners.
 
-We are candid about what this framework is and is not. It is a descriptive model---a lens for organizing empirical findings and generating predictions. Its value lies in predictive power, not mathematical depth. The axiom trades generality for interpretability: a single parameter $s$ compresses the complex behavior of real selectors into a quantity that can be estimated, compared, and communicated to practitioners.
+\begin{assumption}[Homogeneous Team Invariance]
+\label{ass:homogeneous}
+For a homogeneous team $T_h$ (all agents drawn from the same distribution $F$), within-model sampling variation provides negligible material for selection: $O(T_h) \approx M(T_h) = \mu_F$, so that $Q(T_h, s) \approx \mu_F$ for all $s \in [0,1]$.
+\end{assumption}
+
+This assumption is motivated by the observation that same-model copies at moderate temperature produce functionally identical outputs---our decoupled evaluation confirms this: all 756 pairwise verdicts from independent judges were ties for the homogeneous cell (Section~\ref{sec:separation}).
 
 \subsection{The Selection Bottleneck}
 \label{sec:bottleneck}
 
-The central result follows directly from the axiom.
+The central observation follows from the two assumptions above.
 
-\begin{proposition}[The Selection Bottleneck]
+\begin{proposition}[Crossover Threshold]
 \label{prop:bottleneck}
-Let $T_h$ be a homogeneous team of the best individual model (expected quality $\mu_\mathrm{best}$) and $T_d$ a diverse team with $M(T_d) < \mu_\mathrm{best}$ and $O(T_d) > O(T_h)$. Then $Q(T_d, s) > Q(T_h, s)$ if and only if $s > s^*$, where:
+Suppose Assumptions~\ref{ass:linear} and~\ref{ass:homogeneous} hold. Let $T_h$ be a homogeneous team with mean quality $\mu_{\mathrm{best}}$, and let $T_d$ be a diverse team satisfying:
+\begin{enumerate}[nosep,label=(\roman*)]
+  \item $M(T_d) < \mu_{\mathrm{best}}$ \quad (the diverse team's mean is lower),
+  \item $O(T_d) > \mu_{\mathrm{best}}$ \quad (the diverse team's oracle is higher).
+\end{enumerate}
+Then there exists a unique $s^* \in (0,1)$ such that
+\[
+  Q(T_d, s) > Q(T_h, s) \iff s > s^*,
+\]
+where
 \begin{equation}
-s^* \;=\; \frac{\mu_\mathrm{best} - M(T_d)}{O(T_d) - M(T_d)}.
+s^* \;=\; \frac{\mu_{\mathrm{best}} - M(T_d)}{O(T_d) - M(T_d)}.
 \label{eq:threshold}
 \end{equation}
 \end{proposition}
 
 \begin{proof}
-For the homogeneous team, all candidates are drawn from the same distribution. While $O(T_h) > M(T_h)$ for any non-degenerate distribution, the gap reflects only within-model sampling variance. A selector evaluating outputs from the same model cannot systematically identify the best candidate. We model $O(T_h) \approx M(T_h) \approx \mu_\mathrm{best}$, absorbing the within-model oracle surplus into noise. Thus $Q(T_h, s) = \mu_\mathrm{best}$---constant in $s$.
-
-For the diverse team, $O(T_d) > M(T_d)$ by construction, so $Q(T_d, s)$ is strictly increasing in $s$. Setting $Q(T_d, s^*) = \mu_\mathrm{best}$ and solving:
-\begin{align}
-s^* \cdot O(T_d) + (1 - s^*) \cdot M(T_d) &= \mu_\mathrm{best} \\
-s^* &= \frac{\mu_\mathrm{best} - M(T_d)}{O(T_d) - M(T_d)}.
-\end{align}
-Below $s^*$, the diverse team's mean dilution dominates its oracle advantage. Above $s^*$, the selector captures enough of the oracle gain to overcome the mean deficit.
+By Assumption~\ref{ass:homogeneous}, $Q(T_h, s) = \mu_{\mathrm{best}}$ for all $s$. By Assumption~\ref{ass:linear},
+\[
+  Q(T_d, s) = s \cdot O(T_d) + (1-s) \cdot M(T_d),
+\]
+which is strictly increasing in $s$ since $O(T_d) > M(T_d)$. We have $Q(T_d, 0) = M(T_d) < \mu_{\mathrm{best}}$ by~(i) and $Q(T_d, 1) = O(T_d) > \mu_{\mathrm{best}}$ by~(ii). Setting $Q(T_d, s^*) = \mu_{\mathrm{best}}$ and solving yields Eq.~\eqref{eq:threshold}. The strict monotonicity of $Q(T_d, \cdot)$ gives the if-and-only-if.
 \end{proof}
 
 The proposition formalizes a crossover. Below $s^*$, diversity is a liability---this is the regime Li et al.~\cite{li2025self} documented. Above $s^*$, diversity becomes an asset---this is the regime our judge-based condition operates in.
 
-\begin{remark}
-Proposition~\ref{prop:bottleneck} assumes the linear form of Eq.~\eqref{eq:quality}. The result generalizes to any monotone interpolation $Q(T, s) = g(s) \cdot O(T) + (1 - g(s)) \cdot M(T)$ with $g$ strictly increasing, $g(0) = 0$, $g(1) = 1$; the qualitative structure---a single crossover point---is preserved. The full generalization is provided in the supplementary material.
+\begin{remark}[Nonlinear Generalization]
+Proposition~\ref{prop:bottleneck} extends to any model of the form $Q(T, s) = g(s) \cdot O(T) + (1 - g(s)) \cdot M(T)$ where $g\colon [0,1] \to [0,1]$ is strictly increasing with $g(0) = 0$ and $g(1) = 1$. The crossover point becomes $s^* = g^{-1}\!\bigl((\mu_{\mathrm{best}} - M(T_d))/(O(T_d) - M(T_d))\bigr)$.
 \end{remark}
 
-\begin{corollary}[Model Quality Irrelevance Under Homogeneity]
-\label{cor:irrelevance}
-For any homogeneous team $T_h$, $Q(T_h, s) = \mu_\mathrm{model}$ regardless of $s$. A selector has nothing to select when all candidates come from the same distribution.
-\end{corollary}
+\begin{remark}[Model Quality Irrelevance]
+\label{rem:irrelevance}
+Assumption~\ref{ass:homogeneous} implies that homogeneous teams built from different models should each perform at their respective $\mu_{\mathrm{model}}$ regardless of selector quality---there is nothing to select among when all candidates are distributionally identical. Our design includes one homogeneous cell (\texttt{homo\_opus}); testing with additional homogeneous teams is left to future work.
+\end{remark}
 
-This predicts that two homogeneous teams built from different strong models should perform identically---a strong, falsifiable claim that we test in Section~\ref{sec:confirmatory}.
+\begin{assumption}[Synthesis as Non-Selective Aggregation]
+\label{ass:synthesis}
+A synthesis-based aggregator that blends all candidates into a single output, rather than selecting among them, operates at effective selector quality $s_{\mathrm{synth}} \approx 0$. Under Assumption~\ref{ass:linear}, this yields $Q(T_d, s_{\mathrm{synth}}) \approx M(T_d) < \mu_{\mathrm{best}}$ for a diverse team satisfying condition~(i) of Proposition~\ref{prop:bottleneck}.
+\end{assumption}
 
-\begin{corollary}[Synthesis as Degenerate Selection]
-\label{cor:synthesis}
-A synthesis-based aggregator that blends candidates rather than selecting among them has effective selector quality $s_{\mathrm{synth}} \to 0$, because synthesis does not preserve the identity of individual candidates. For a diverse team, this yields $Q(T_d, 0) = M(T_d) < \mu_{\mathrm{best}}$: diversity becomes a liability because the team mean is diluted by weaker members and no selection mechanism captures the oracle advantage. Synthesis may perform even worse than $M(T_d)$ if the blending process creates ``compromise'' outputs inferior to any individual candidate.
-\end{corollary}
+\begin{remark}
+In practice, synthesis may produce outputs below $M(T_d)$ if blending introduces incoherence. The observed synthesis win rate of $0.179$ (Section~\ref{sec:confirmatory}) is consistent with $s_{\mathrm{synth}} \leq 0$ under our model.
+\end{remark}
 
-This is a central prediction of the framework: MoA-style synthesis should perform poorly with diverse teams not because diversity is harmful, but because synthesis destroys the very signal that diversity creates. We test this prediction directly in Section~\ref{sec:confirmatory}.
+This is a central prediction: MoA-style synthesis should perform poorly with diverse teams not because diversity is harmful, but because synthesis destroys the very signal that diversity creates. We test this prediction directly in Section~\ref{sec:confirmatory}.
 
 \subsection{Optimal Team Size}
 \label{sec:teamsize}
 
-The framework also governs how many agents to include. Define the \textbf{marginal contribution} of adding agent $n + 1$:
+\begin{remark}[Team Expansion]
+\label{rem:teamsize}
+Under Assumption~\ref{ass:linear}, adding agent $m_{n+1}$ with mean quality $\mu_{n+1}$ to team $T_n$ changes expected output quality by
 \begin{equation}
-\delta(n, s) = s \cdot \underbrace{[O(n{+}1) - O(n)]}_{\alpha_n \;\geq\; 0} + (1 - s) \cdot \underbrace{[M(n{+}1) - M(n)]}_{\beta_n \;\leq\; 0}.
+\delta(n, s) = s \cdot \bigl[O(T_{n+1}) - O(T_n)\bigr] + (1-s) \cdot \bigl[M(T_{n+1}) - M(T_n)\bigr].
 \label{eq:marginal}
 \end{equation}
-
-The first term $\alpha_n$ is the \textbf{oracle gain}; the second $\beta_n$ is the \textbf{mean dilution}. Under standard regularity conditions, the optimal team size $n^*(s)$ is:
-\begin{itemize}[nosep]
-  \item $n^*(0) = 1$: with a random selector, every additional agent dilutes quality.
-  \item $n^*(s)$ is non-decreasing in $s$: better selectors justify larger teams.
-  \item $n^*(1) = N$ (pool size): a perfect selector can only benefit from more candidates.
-\end{itemize}
-
-Under an equicorrelated Gaussian model with linearly decaying agent quality, the optimal size grows rapidly as $s \to 1$ and collapses to 1 as $s \to 0$. Our empirical data (Section~\ref{sec:exploratory}) are consistent with the prediction of monotonic improvement with diminishing returns under judge-based selection.
+When $\mu_{n+1} < M(T_n)$---i.e., the new agent is below the team average---the second term is negative, creating a trade-off between oracle gain and mean dilution governed by $s$. Larger $s$ justifies larger teams; at $s = 0$, the optimal team size is 1. Our empirical data (Section~\ref{sec:exploratory}) are consistent with monotonic improvement with diminishing returns under judge-based selection.
+\end{remark}
 
 \subsection{Connection to Classical Results}
 \label{sec:cjt}
@@ -228,10 +242,10 @@ Under an equicorrelated Gaussian model with linearly decaying agent quality, the
 \textbf{Condorcet Jury Theorem.}
 The classical CJT~\cite{condorcet1785essai} shows that majority vote among $n$ independent jurors with accuracy $p > 0.5$ converges to correctness as $n \to \infty$. Ladha~\cite{ladha1992condorcet} extended this to correlated voters: positive correlation $\rho$ reduces the effective number of independent votes.
 
-LLM agents are not independent. In Chatbot Arena~\cite{chiang2024chatbot} (57,477 battles), the tie rate between same-family model pairs is 34.9\%, compared to 28.8\% for cross-family pairs ($\chi^2 = 117.61$, $p < 10^{-27}$; rate difference 6.1 pp [95\% CI: 5.0, 7.2]). In MT-Bench (3,355 human judgments), the same-tier tie rate is 31.9\% versus 20.9\% cross-tier ($\chi^2 = 37.46$, $p < 10^{-6}$; difference 11.0 pp [95\% CI: 7.5, 14.5]). These are not marginal differences---they reflect structural correlations from shared training. Diverse teams reduce $\rho$ by mixing families, providing a second reason why diversity helps under strong selection: not only is the oracle ceiling higher, but the selector's effective accuracy improves because candidates are less redundant. The full CJT generalization is deferred to the supplementary material.
+LLM agents are not independent. In Chatbot Arena~\cite{chiang2024chatbot} (57,477 battles), the tie rate between same-family model pairs is 34.9\%, compared to 28.8\% for cross-family pairs ($\chi^2 = 117.61$, $p < 10^{-27}$; rate difference 6.1 pp [95\% CI: 5.0, 7.2]). In MT-Bench (3,355 human judgments), the same-tier tie rate is 31.9\% versus 20.9\% cross-tier ($\chi^2 = 37.46$, $p < 10^{-6}$; difference 11.0 pp [95\% CI: 7.5, 14.5]). These are not marginal differences---they reflect structural correlations from shared training. Diverse teams reduce $\rho$ by mixing families, which in principle should improve voting accuracy. However, our data show that majority vote achieves only chance-level performance even with a diverse team (WR = 0.496), suggesting that reduced correlation alone is insufficient---the CJT's requirement that individual juror accuracy exceeds 0.5 may not hold for open-ended generation tasks where ``correctness'' is ill-defined. The benefit of reduced correlation may instead manifest through improved selection: candidates are less redundant, giving the judge more distinct options.
 
 \textbf{Hong and Page.}
-Hong and Page~\cite{hong2004groups} proved that diverse groups can outperform ability-selected groups, but their theorem requires an ``effective aggregation mechanism'' without specifying what makes it effective. Our threshold $s^*$ provides the missing quantification: it converts an existence theorem (``conditions exist under which diversity wins'') into a predictive tool (``diversity wins when your selector quality exceeds $s^*$, which you can estimate from pilot data''). The framework also makes explicit three failure regimes: (1)~when $s < s^*$, (2)~when the mean-quality gap is too large, and (3)~when the team is too small for the oracle advantage to accumulate.
+Hong and Page~\cite{hong2004groups} proved that diverse groups can outperform ability-selected groups under specific conditions on a discrete optimization landscape---a setting that differs formally from LLM candidate selection. Their result provides conceptual motivation: they showed that an ``effective aggregation mechanism'' is required but did not specify what makes it effective. Our threshold $s^*$ offers one operationalization: diversity wins when selector quality exceeds $s^*$, which can be estimated from pilot data. The model also makes explicit three failure regimes: (1)~when $s < s^*$, (2)~when the mean-quality gap is too large, and (3)~when the team is too small for the oracle advantage to accumulate.
 
 % ============================================================
 % 4. EXPERIMENTAL SETUP
@@ -364,7 +378,7 @@ Our analysis plan was specified before any V4 experimental runs were executed. W
 \subsection{Confirmatory Results}
 \label{sec:confirmatory}
 
-\textbf{Diversity and selection interact strongly.} Figure~\ref{fig:heatmap} presents BT-corrected win rates across all five cells. The pattern is striking: high win rates appear only when diversity and judge-based selection are combined. A diverse team without a good selector, or a good selector without diversity, both yield near-chance performance.
+\textbf{Diversity and selection interact strongly.} Figure~\ref{fig:heatmap} presents BT-corrected win rates across all five cells. High win rates appear only when diversity and judge-based selection are combined. A diverse team without a good selector, or a good selector without diversity, both yield near-chance performance.
 
 % --- Figure 2: Factorial Heatmap ---
 \begin{figure}[t]
@@ -374,7 +388,7 @@ Our analysis plan was specified before any V4 experimental runs were executed. W
   \label{fig:heatmap}
 \end{figure}
 
-\textbf{Contrast 1: Diversity effect.} The \texttt{diverse\_strong+judge} cell achieves a BT-WR of 0.810 [95\% CI: 0.768, 0.851], while \texttt{homo\_opus+judge} achieves 0.512 [0.500, 0.530]---near chance. The difference is $\Delta = +0.298$ [95\% CI: 0.250, 0.345], Hedges' $g = 2.71$ [95\% CI: 2.12, 3.30], $p = 7.55 \times 10^{-15}$ ($p_\mathrm{adj} < 2 \times 10^{-14}$, Holm--Bonferroni). This is a large effect: the entire benefit of multi-agent consensus, for this configuration, comes from composing the team with diverse models rather than replicating a single strong one. (Note: the extreme variance ratio---SD = 0.054 for the homo cell versus 0.144 for the diverse cell---mechanically inflates pooled-SD-based effect sizes. Glass's $\Delta$, using only the diverse group's SD as denominator, gives $\Delta = 2.07$, a more conservative but still very large effect.)
+\textbf{Contrast 1: Diversity effect.} The \texttt{diverse\_strong+judge} cell achieves a BT-WR of 0.810 [95\% CI: 0.768, 0.851], while \texttt{homo\_opus+judge} achieves 0.512 [0.500, 0.530]---near chance. The difference is $\Delta = +0.298$ [95\% CI: 0.250, 0.345], Hedges' $g = 2.71$ [95\% CI: 2.12, 3.30], $p = 7.55 \times 10^{-15}$ ($p_\mathrm{adj} < 2 \times 10^{-14}$, Holm--Bonferroni). The entire benefit of multi-agent consensus, in this configuration, comes from composing the team with diverse models rather than replicating a single strong one. (Note: the extreme variance ratio---SD = 0.054 for the homo cell versus 0.144 for the diverse cell---mechanically inflates pooled-SD-based effect sizes. Glass's $\Delta$, using only the diverse group's SD as denominator, gives $\Delta = 2.07$, a more conservative but still very large effect.)
 
 \textbf{Contrast 2: Judge vs.\ vote.} Under majority voting, the same diverse team produces $\mathrm{BT\text{-}WR} = 0.496$ [0.425, 0.563]---statistically indistinguishable from the homogeneous baseline. The judge advantage is $\Delta = +0.313$ [0.232, 0.397], $g = 1.61$ [1.12, 2.10], $p = 1.06 \times 10^{-10}$ ($p_\mathrm{adj} < 2 \times 10^{-10}$). Voting makes diversity inert: without a selector that can identify the best candidate, the diverse team's oracle advantage goes to waste.
 
@@ -404,7 +418,7 @@ div\_strong+synth & 0.234 & 0.131 & 0.345 & 0.237 & 0.263 \\
 
 Inter-rater agreement is low for diverse cells ($\bar{\kappa} = 0.095$ for the flagship \texttt{diverse\_strong+judge} cell), reflecting genuine disagreement about candidate ranking. This is expected: diverse teams produce candidates that differ in style and emphasis, leading judges with different evaluation priorities to disagree on rank ordering while agreeing on the direction of the diversity benefit. Two of three judges (Claude Sonnet and GPT-5-mini) show clear diversity preference; DeepSeek-V3p2 shows a weaker effect. The BT scoring framework is designed to aggregate across such disagreements, producing calibrated quality estimates even when individual judges disagree on specific comparisons~\citep{zheng2023judging}. We report these per-judge breakdowns for full transparency.
 
-\textbf{Model quality irrelevance.} The regression (Section~\ref{sec:regression}) confirms Corollary~\ref{cor:irrelevance}: the \texttt{diverse\_strong+vote} cell ($\mathrm{BT\text{-}WR} = 0.496$) is statistically indistinguishable from \texttt{homo\_opus+judge} ($\mathrm{BT\text{-}WR} = 0.512$), with $\Delta = -0.016$ [$-0.089$, 0.057], $p = 0.669$. A diverse team without a good selector performs no better than a homogeneous team---voting negates diversity entirely.
+\textbf{Model quality irrelevance.} The regression (Section~\ref{sec:regression}) is consistent with Assumption~\ref{ass:homogeneous}: the \texttt{diverse\_strong+vote} cell ($\mathrm{BT\text{-}WR} = 0.496$) is statistically indistinguishable from \texttt{homo\_opus+judge} ($\mathrm{BT\text{-}WR} = 0.512$), with $\Delta = -0.016$ [$-0.089$, 0.057], $p = 0.669$. A diverse team without a good selector performs no better than a homogeneous team---voting negates diversity entirely.
 
 \textbf{Consistency across tasks.} Figure~\ref{fig:forest} shows the per-task diversity advantage (\texttt{diverse\_strong+judge} minus \texttt{homo\_opus+judge}) across all 42 tasks. Of 42 tasks, 38 show a positive diversity effect and 4 are ties; zero tasks favor the homogeneous team. Excluding ties, the sign test yields $p = (0.5)^{38} \approx 3.6 \times 10^{-12}$. Including ties conservatively (as non-positive), a binomial test on 38/42 positive yields $p < 3 \times 10^{-8}$ (Clopper--Pearson 95\% CI on the positive proportion: [0.774, 0.973]). The diversity advantage generalizes across all seven task categories, from coding to ethics to summarization.
 
@@ -464,7 +478,7 @@ We fit a cell-level regression with \texttt{homo\_opus+judge} as the reference c
 \subsection{Calibrating the Crossover Threshold}
 \label{sec:calibration}
 
-The five V4 cells confirm the qualitative predictions of Proposition~\ref{prop:bottleneck}. Judge-based selection ($\mathrm{BT\text{-}WR} = 0.810$) operates well above the crossover threshold; majority vote ($0.496$) sits at or below it; and synthesis ($0.179$) falls far below. The synthesis result is particularly informative: Corollary~\ref{cor:synthesis} predicts that synthesis, with $s_\mathrm{synth} \to 0$, should collapse diverse-team quality to the team mean or below. The observed win rate of 0.179---well below the 0.500 baseline---suggests synthesis is not merely non-selective but actively destructive, consistent with the prediction that blending dilutes the best candidate.
+The five V4 cells confirm the qualitative predictions of Proposition~\ref{prop:bottleneck}. Judge-based selection ($\mathrm{BT\text{-}WR} = 0.810$) operates well above the crossover threshold; majority vote ($0.496$) sits at or below it; and synthesis ($0.179$) falls far below. The synthesis result is particularly informative: Assumption~\ref{ass:synthesis} posits that synthesis, with $s_\mathrm{synth} \approx 0$, should collapse diverse-team quality to the team mean or below. The observed win rate of 0.179---well below the 0.500 baseline---suggests synthesis is not merely non-selective but actively destructive, consistent with the prediction that blending dilutes the best candidate.
 
 Monte Carlo calibration on a pilot study (8 tasks, $N = 136$) yielded $s^* \approx 0.567$ [bootstrap 95\% CI: 0.48, 0.65; $B = 10{,}000$]. The V4 scaled experiment is qualitatively consistent: the estimated selector qualities place vote below and judge above this threshold.
 
@@ -481,7 +495,7 @@ The V4 scaled experiment ($N = 210$, 42 tasks) replicates the pilot ($N = 136$, 
 \subsection{Reconciling Conflicting Prior Work}
 \label{sec:reconciling}
 
-We stress that the reconciliation of Li et al.\ and Wang et al.\ offered by the selection bottleneck framework is a \emph{hypothesis}, not a proven explanation. Our experiment was not designed to replicate either study's exact protocol. But the pattern is consistent: the field's conflicting results may reflect incomplete factorial coverage rather than genuine inconsistency. Li et al.'s synthesis-based aggregation operates below $s^*$; Wang et al.'s multi-round refinement implicitly raises effective selector quality above it. Future work that systematically varies both factors should find the same interaction structure.
+We stress that the reconciliation of Li et al.\ and Wang et al.\ offered by the selection bottleneck model is a \emph{hypothesis}, not a proven explanation. Our experiment was not designed to replicate either study's exact protocol. But the pattern is consistent: the field's conflicting results may reflect incomplete factorial coverage rather than genuine inconsistency. Li et al.'s synthesis-based aggregation operates below $s^*$; Wang et al.'s multi-round refinement implicitly raises effective selector quality above it. Future work that systematically varies both factors should find the same interaction structure.
 
 \subsection{Why Synthesis Fails}
 \label{sec:whysynth}
@@ -490,7 +504,7 @@ The selection-vs-synthesis comparison ($g = 3.86$ [3.14, 4.58]) is the largest e
 
 A diverse team's value lies in the \emph{variance} of its candidate pool---specifically, the probability that at least one candidate is excellent. A selection-based aggregator captures this value by identifying and preserving the best candidate. A synthesis-based aggregator destroys it by blending all candidates into a single ``compromise'' output. The resulting synthesis is not the average of the candidates' qualities but something potentially worse, because blending can introduce incoherence, conflicting perspectives, and diluted arguments that no individual candidate exhibited.
 
-The synthesis cell's $\mathrm{BT\text{-}WR} = 0.179$ means the synthesized output loses to a single model's output 82\% of the time. In the selection bottleneck framework, this is exactly what Corollary~\ref{cor:synthesis} predicts: when $s \to 0$ (synthesis has no selection capacity), diversity has no mechanism to help. The practical implication is stark: practitioners using MoA-style synthesis should consider switching to judge-based selection, which requires no additional training or infrastructure---only a structured evaluation prompt.
+The synthesis cell's $\mathrm{BT\text{-}WR} = 0.179$ means the synthesized output loses to a single model's output 82\% of the time. In the selection bottleneck model, this is exactly what Assumption~\ref{ass:synthesis} predicts: when $s \approx 0$ (synthesis has no selection capacity), diversity has no mechanism to help. The practical implication is stark: practitioners using MoA-style synthesis should consider switching to judge-based selection, which requires no additional training or infrastructure---only a structured evaluation prompt.
 
 We note that our synthesis implementation uses single-round aggregation by Claude Sonnet. Multi-round iterative synthesis, as proposed in the original MoA architecture~\citep{wang2024mixture}, may yield different results. Our finding applies specifically to single-round synthesis, which is the more commonly deployed variant due to latency and cost constraints.
 
@@ -563,11 +577,11 @@ Three directions follow. First, \textbf{replicating the weak-model finding} with
 \section{Conclusion}
 \label{sec:conclusion}
 
-This paper makes three contributions. First, the \emph{selection bottleneck framework} provides a formal crossover threshold $s^*$ (Proposition~\ref{prop:bottleneck}) unifying pro-diversity and anti-diversity findings: when aggregation operates below $s^*$, diversity hurts; above it, diversity helps. Second, our \emph{targeted experiment} demonstrates that selection-based aggregation dramatically outperforms MoA-style synthesis ($g = 3.86$ [3.14, 4.58]), with the synthesis approach losing to a single-model baseline in all 42 tasks---a finding that challenges the dominant pipeline paradigm. Third, we report \emph{exploratory evidence} that including a weaker, cheaper model paradoxically improves performance ($g = 0.87$ [0.42, 1.32]), suggesting that optimal team composition may not require all-frontier models.
+This paper makes three contributions. First, the \emph{selection bottleneck model} provides a formal crossover threshold $s^*$ (Proposition~\ref{prop:bottleneck}) unifying pro-diversity and anti-diversity findings: when aggregation operates below $s^*$, diversity hurts; above it, diversity helps. Second, our \emph{targeted experiment} demonstrates that selection-based aggregation dramatically outperforms MoA-style synthesis ($g = 3.86$ [3.14, 4.58]), with the synthesis approach losing to a single-model baseline in all 42 tasks---a finding that challenges the dominant pipeline paradigm. Third, we report \emph{exploratory evidence} that including a weaker, cheaper model paradoxically improves performance ($g = 0.87$ [0.42, 1.32]), suggesting that optimal team composition may not require all-frontier models.
 
 The selection bottleneck is, we conjecture, a structural property of generate-then-select pipelines more broadly: the value of variance in the candidate pool depends entirely on the mechanism that exploits it. The field has spent considerable effort building better individual generators. Our results suggest that substantial gains are available by building better selectors. A decoupled evaluation pass using fully independent judges confirms all directional findings with attenuated effect sizes (Table~\ref{tab:decoupled}; Spearman $\rho = 0.90$), indicating that the core results survive even when selection--evaluation circularity is removed.
 
-An important and neglected frontier is not building better individual models---it is building better ways to listen to the choir.
+Our results suggest that selector design may offer larger quality gains than generator improvement in multi-agent pipelines, a hypothesis we encourage future work to test across broader settings.
 
 \paragraph{Reproducibility.} All experimental code, task prompts, judge evaluation prompts, raw pairwise preferences, and BT scoring scripts are available at \url{https://github.com/maryanskyy/agents-disagree-experiments}.
 
